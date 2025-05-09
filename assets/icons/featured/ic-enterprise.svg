@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57" height="55" viewBox="0 0 57 55">
+  <g id="ic-enterprise" transform="translate(2.327 1.943)">
+    <g id="导航图标" transform="translate(0 0)">
+      <g id="编组">
+        <line id="路径" x2="53" transform="translate(-0.327 51.057)" fill="none" stroke="#3f9cc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <rect id="矩形" width="15" height="28" rx="1" transform="translate(5.673 23.057)" fill="none" stroke="#3f9cc5" stroke-linejoin="round" stroke-width="4"/>
+        <rect id="矩形-2" data-name="矩形" width="27" height="51" rx="1" transform="translate(20.673 0.057)" fill="none" stroke="#3f9cc5" stroke-linejoin="round" stroke-width="4"/>
+        <line id="路径-2" data-name="路径" x2="5" transform="translate(31.673 38.057)" fill="none" stroke="#3f9cc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <line id="路径-3" data-name="路径" x2="6" transform="translate(9.673 38.057)" fill="none" stroke="#3f9cc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <line id="路径-4" data-name="路径" x2="5.339" transform="translate(31.819 25.172)" fill="none" stroke="#3f9cc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <line id="路径-5" data-name="路径" x2="5" transform="translate(31.673 13.057)" fill="none" stroke="#3f9cc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+</svg>

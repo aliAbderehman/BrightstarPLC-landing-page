@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="60.063" viewBox="0 0 64 60.063">
+  <g id="ic-printer" transform="translate(0 -1.969)">
+    <path id="Path_52" data-name="Path 52" d="M57.788,14.031H52.5V5.969a4,4,0,0,0-4-4h-33a4,4,0,0,0-4,4v8.062H6.212A6.219,6.219,0,0,0,0,20.243v26.27a6.22,6.22,0,0,0,6.212,6.212h2.38a1,1,0,0,0,0-2H6.212A4.217,4.217,0,0,1,2,46.514V20.243a4.217,4.217,0,0,1,4.212-4.212H57.788A4.217,4.217,0,0,1,62,20.243v26.27a4.217,4.217,0,0,1-4.212,4.212H56a1,1,0,0,0,0,2h1.788A6.219,6.219,0,0,0,64,46.514V20.243A6.219,6.219,0,0,0,57.788,14.031ZM13.5,5.969a2,2,0,0,1,2-2h33a2,2,0,0,1,2,2v8h-37Z" fill="#46c7ff"/>
+    <path id="Path_53" data-name="Path 53" d="M44,45.032H20a1,1,0,0,0,0,2H44a1,1,0,0,0,0-2Z" fill="#46c7ff"/>
+    <path id="Path_54" data-name="Path 54" d="M44,52.032H20a1,1,0,0,0,0,2H44a1,1,0,0,0,0-2Z" fill="#46c7ff"/>
+    <circle id="Ellipse_21" data-name="Ellipse 21" cx="2" cy="2" r="2" transform="translate(5.959 19.84)" fill="#46c7ff"/>
+    <circle id="Ellipse_22" data-name="Ellipse 22" cx="2" cy="2" r="2" transform="translate(12.286 19.84)" fill="#46c7ff"/>
+    <circle id="Ellipse_23" data-name="Ellipse 23" cx="2" cy="2" r="2" transform="translate(18.612 19.84)" fill="#46c7ff"/>
+    <path id="Path_55" data-name="Path 55" d="M11,62.031H53v-26H11Zm2.4-23.6H50.6V59.628H13.4Z" fill="#46c7ff"/>
+  </g>
+</svg>
