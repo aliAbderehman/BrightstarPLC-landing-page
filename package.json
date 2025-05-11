@@ -1,0 +1,24 @@
+{
+  "name": "brightstar",
+  "version": "1.0.0",
+  "description": "Landing page for Brightstar PLC",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass sass/main.scss css/style.css --watch",
+    "start": "npx live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliAbderehman/BrightstarPLC-landing-page.git"
+  },
+  "author": "Abderehman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliAbderehman/BrightstarPLC-landing-page/issues"
+  },
+  "homepage": "https://github.com/aliAbderehman/BrightstarPLC-landing-page#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "sass": "^1.88.0"
+  }
+}

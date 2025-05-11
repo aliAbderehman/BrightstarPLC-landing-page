@@ -1,0 +1,25 @@
+.hero {
+  // Layout and structure
+  width: 1280px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 10rem;
+  align-items: center;
+  margin: 0 auto;
+
+  &__txt-box {
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 8rem;
+  }
+
+  &__img-1 {
+    height: 55rem;
+  }
+}

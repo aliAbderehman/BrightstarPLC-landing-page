@@ -1,0 +1,16 @@
+.hero__decor {
+  &-1 {
+    position: absolute;
+    top: -6.5rem;
+    height: 120%;
+    z-index: -5;
+  }
+
+  &-2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: -5;
+  }
+}

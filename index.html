@@ -6,14 +6,19 @@
     <title>Brightstar PLC</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     </style>
     <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <header class="header"></header>
 
     <main class="main">
-      <div id="tsparticles">
+      <div id="tsparticles" class="hero__decor">
         <img
           src="./assets/materials/bg-material-01.svg"
           alt=""
@@ -24,28 +29,59 @@
 
       <section class="hero">
         <div class="hero__txt-box">
-          <h1 class="hero__txt">Smart Tech Solutions for a Smarter Future</h1>
-          <h3 class="hero__sub-txt">
+          <h1 class="hero__txt animate__animated animate__fadeInDown">
+            Smart Tech Solutions for a Smarter Future
+          </h1>
+          <h3 class="hero__sub-txt animate__animated animate__fadeInUp">
             From cutting-edge surveillance to seamless IT infrastructure, we
             help businesses thrive through reliable, scalable technology
             solutions.
           </h3>
 
           <div class="hero__buttons">
-            <a href="#" class="hero__btn btn btn--primary"
-              >Explore out services</a
+            <a
+              href="#"
+              class="btn btn--primary animate__animated animate__fadeInDown"
+              >Explore our services</a
             >
-            <a href="#" class="hero__btn btn btn--secondary"
-              >Get a free consultation</a
+            <a
+              href="#"
+              class="btn btn--secondary animate__animated animate__fadeInDown cus-anim"
+              >Free Consultation</a
             >
           </div>
         </div>
 
         <div class="hero__img-box">
-          <img src="./assets/images/Group 399.png" alt="" class="hero__img-1" />
+          <img
+            src="./assets/images/Group 399.png"
+            alt=""
+            class="hero__img-1 animate__animated animate__fadeInDown"
+          />
         </div>
       </section>
+
+      <section class="featured"></section>
     </main>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__txt-box">
+          <h2 class="footer__txt">Brightstar PLC</h2>
+          <p class="footer__sub-txt">
+            Your trusted partner in technology solutions.
+          </p>
+        </div>
+        <div class="footer__socials">
+          <a href="#" class="social-icon">FB</a>
+          <a href="#" class="social-icon">TW</a>
+          <a href="#" class="social-icon">IG</a>
+        </div>
+      </div>
+      <div class="footer__decor-1">
+        <!-- <img src="./assets/materials/Path 2.svg" alt="" /> -->
+      </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script src="./js/hero-animation.js"></script>

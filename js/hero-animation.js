@@ -12,7 +12,7 @@ tsParticles.load("tsparticles", {
     color: { value: "#00ffff" },
     shape: { type: "circle" },
     opacity: {
-      value: 0.3,
+      value: 0.5,
       anim: { enable: false },
     },
     size: {
@@ -42,6 +42,7 @@ tsParticles.load("tsparticles", {
         enable: true,
         mode: "grab",
         parallax: { enable: false },
+        // parallax: { enable: true, force: 60, smooth: 10 },
       },
       resize: true,
     },
