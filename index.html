@@ -18,37 +18,44 @@
     <header class="header">
       <nav class="header__navbar">
         <div class="header__nav-left">
-
-        
-        <div class="header__logo">
-          <img src="./assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
-        </div>
-        <ul class="header__nav-list">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blogs</a></li>
-        </ul>
+          <div class="header__logo">
+            <img
+              src="./assets/logo/main-logo-01.svg"
+              alt="Brightstar PLC Logo"
+            />
+          </div>
+          <ul class="header__nav-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
         </div>
         <div class="header__nav-btn">
-          <button class="btn btn--primary">contact us</button>
+          <!-- <button class="btn btn--primary">contact us</button> -->
+          <a href="#" class="btn btn--primary">contact us</a>
         </div>
       </nav>
     </header>
 
     <main class="main">
-      <div id="tsparticles" class="hero__decor">
-        <img
-          src="./assets/materials/bg-material-01.svg"
-          alt=""
-          class="hero__decor-1"
-        />
-        <img src="./assets/materials/Path 2.svg" alt="" class="hero__decor-2" />
-      </div>
-
       <section class="hero">
+        <div id="tsparticles" class="hero__decor">
+          <img
+            src="./assets/materials/bg-material-01.svg"
+            alt=""
+            class="hero__decor-1"
+          />
+          <img
+            src="./assets/materials/Path 2.svg"
+            alt=""
+            class="hero__decor-2"
+          />
+        </div>
         <div class="hero__txt-box">
-          <h1 class="hero__txt animate__animated animate__fadeInDown">
+          <h1
+            class="heading-primary hero__txt animate__animated animate__fadeInDown"
+          >
             Smart Tech Solutions for a Smarter Future
           </h1>
           <h3 class="hero__sub-txt animate__animated animate__fadeInUp">
@@ -58,16 +65,13 @@
           </h3>
 
           <div class="hero__buttons">
-            <a
-              href="#"
-              class="btn btn--primary animate__animated animate__fadeInDown"
-              >Explore our services</a
-            >
-            <a
-              href="#"
-              class="btn btn--secondary animate__animated animate__fadeInDown cus-anim"
-              >Free Consultation</a
-            >
+            <div class="animate__animated animate__fadeInDown">
+              <a href="#" class="btn btn--primary">Explore our services</a>
+            </div>
+
+            <div class="animate__animated animate__fadeInDown cus-anim">
+              <a href="#" class="btn btn--secondary">Free Consultation</a>
+            </div>
           </div>
         </div>
 
@@ -80,7 +84,9 @@
         </div>
       </section>
 
-      <section class="featured"></section>
+      <section class="featured">
+        <div></div>
+      </section>
     </main>
 
     <footer class="footer">

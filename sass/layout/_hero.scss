@@ -1,14 +1,11 @@
-// .container{
-//   max-width: 1200px;
-// }
 .hero {
   // Layout and structure
+
   padding: 2rem;
-  width: 1280px;
+  max-width: 128rem;
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10rem;
   align-items: center;
   margin: 0 auto;
 
@@ -18,12 +15,20 @@
   }
 
   &__buttons {
+    z-index: 30;
     display: flex;
     gap: 2rem;
     margin-top: 8rem;
   }
 
+  &__img-box {
+    text-align: end;
+  }
+
   &__img-1 {
-    height: 55rem;
+    align-self: flex-end;
+    justify-self: flex-end;
+    width: 70%;
+    height: auto;
   }
 }
