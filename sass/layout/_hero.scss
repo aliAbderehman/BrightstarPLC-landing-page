@@ -1,9 +1,13 @@
+// .container{
+//   max-width: 1200px;
+// }
 .hero {
   // Layout and structure
+  padding: 2rem;
   width: 1280px;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10rem;
   align-items: center;
   margin: 0 auto;

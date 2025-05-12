@@ -1,0 +1,76 @@
+
+.header{
+
+        width: 100vw;
+        height: 8rem;
+        position: absolute  ;
+        text-align: center;
+        display: flex;
+        align-items: center ;
+        background-color: rgba($color: $primary-color-dark, $alpha: 0.5);
+        backdrop-filter: blur(50px);
+
+
+        &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        border-radius: 0 50px 0 0;
+        left: 0;
+        width: 30rem;
+        height: 100%;
+        background-color: $primary-color;
+        z-index: 1;
+    }
+
+    &__logo{
+            z-index: 20;
+
+        img{
+            width: 70%;
+            height: auto;
+        }
+    }
+
+
+    &__nav-left{
+        gap: 2rem;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+    }
+
+
+    &__navbar{
+        
+        // height: 4rem;
+        width: 1280px;
+        padding: 2rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__nav-list{
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+
+        a{
+            text-decoration: none;
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+                color: $color-grey-light;
+            }
+        }
+    }
+
+    &__nav-btn{
+
+    }
+}

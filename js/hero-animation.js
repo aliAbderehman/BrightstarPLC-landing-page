@@ -2,11 +2,14 @@ tsParticles.load("tsparticles", {
   fullScreen: { enable: false },
   // background: { color: "#09101e" },
   particles: {
+
+    fps_limit: 60,
     number: {
+      
       value: 100,
       density: {
-        enable: true,
-        value_area: 800,
+        enable: false,
+        // value_area: 800,
       },
     },
     color: { value: "#00ffff" },
