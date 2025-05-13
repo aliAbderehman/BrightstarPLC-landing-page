@@ -1,0 +1,105 @@
+.hero {
+  // Layout and structure
+
+  padding: 2rem;
+  max-width: 128rem;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 0 auto;
+
+  &__txt-box {
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__buttons {
+    z-index: 30;
+    display: flex;
+    gap: 2rem;
+    margin-top: 8rem;
+  }
+
+  &__img-box {
+    text-align: center;
+  }
+
+  &__img-1 {
+    align-self: flex-start;
+    justify-self: flex-end;
+    width: 70%;
+    height: auto;
+  }
+}
+
+.section-featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .featured__cards {
+    position: relative;
+    top: -10rem;
+    @include container-size;
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+  }
+
+  .featured-post {
+    @include container-size;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+
+    &__text-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    &__txt {
+      position: relative;
+      margin-left: 2rem;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        left: -2rem;
+        width: 5px;
+        border-radius: 50px;
+        height: 150%;
+        background-color: $secondary-color;
+      }
+    }
+
+    &__img-box {
+      justify-self: flex-end;
+      text-align: end;
+      img {
+        position: relative;
+        right: -10rem;
+        width: 90%;
+        height: auto;
+      }
+    }
+
+    &__highlights-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    &__highlight {
+      display: flex;
+      gap: 1.2rem;
+
+      img {
+        width: 45%;
+        height: 45%;
+      }
+    }
+  }
+}

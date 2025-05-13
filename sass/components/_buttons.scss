@@ -6,10 +6,11 @@
   line-height: 1.2;
   font-size: 2rem;
   font-weight: 600;
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
   text-decoration: none;
   text-transform: capitalize;
+  width: fit-content;
 
   position: relative;
 }
@@ -17,7 +18,7 @@
 .btn {
   &--primary {
     background: $secondary-color;
-    color: $primary-color;
+    color: $color-black;
     transition: all 0.3s ease-in-out;
 
     &::after {
@@ -68,13 +69,59 @@
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-      color: $primary-color;
+      color: $color-black;
       &::after {
         width: 120%;
         height: 120%;
         transform: translate(-50%, -50%);
         opacity: 1;
       }
+    }
+  }
+
+  &--text {
+    font-size: $default-font-size;
+    color: $primary-color;
+    display: inline-block;
+    text-decoration: none;
+    padding: 3px;
+    position: relative;
+    transition: all 0.3s;
+    overflow: hidden;
+    border-bottom: 2px solid $primary-color;
+    transition: all 0.3s;
+
+    z-index: 3;
+
+    &::before {
+      content: "";
+      background-color: $primary-color;
+      position: absolute;
+
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+
+      transform: translateY(98%);
+      transition: all 0.3s ease;
+    }
+
+    &:hover::before {
+      z-index: -1;
+
+      transform: translateY(0);
+    }
+
+    &:hover {
+      color: $color-white;
+      box-shadow: 0 1.5rem 2rem rgba($color: $color-black, $alpha: 0.15);
+    }
+
+    &:active {
+      box-shadow: 0 0.5rem 1rem rgba($color: $color-black, $alpha: 0.15);
+      transform: translateY(0);
     }
   }
 }
