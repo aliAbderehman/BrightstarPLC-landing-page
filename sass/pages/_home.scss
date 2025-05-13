@@ -10,7 +10,6 @@
   margin: 0 auto;
 
   &__txt-box {
-    color: $color-white;
     text-align: center;
   }
 
@@ -37,27 +36,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .featured__cards {
     position: relative;
     top: -10rem;
     @include container-size;
     display: flex;
-    gap: 2.5rem;
-    justify-content: center;
+    gap: 4rem;
+    justify-content: space-between;
   }
 
   .featured-post {
-    @include container-size;
     display: flex;
-    gap: 1rem;
-    justify-content: space-between;
 
     &__text-box {
       display: flex;
       flex-direction: column;
+      align-items: start;
       gap: 2rem;
     }
 
+    //WILL TREAT THIS AS A COMPONENT
     &__txt {
       position: relative;
       margin-left: 2rem;
@@ -74,13 +73,12 @@
     }
 
     &__img-box {
-      justify-self: flex-end;
-      text-align: end;
       img {
         position: relative;
-        right: -10rem;
-        width: 90%;
-        height: auto;
+        right: -20rem;
+        bottom: 0;
+        width: 100%;
+        display: block;
       }
     }
 
@@ -88,18 +86,42 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
 
-      gap: 2rem;
+      column-gap: 2rem;
+      row-gap: 4rem;
       margin-top: 4rem;
     }
 
     &__highlight {
-      display: flex;
-      gap: 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+
+      // gap: 1.2rem;
+
+      svg {
+        width: 70%;
+        height: 70%;
+      }
 
       img {
-        width: 45%;
-        height: 45%;
+        width: 60%;
+        height: 60%;
       }
+    }
+  }
+}
+
+.section-services {
+  width: 100%;
+  // height: 80vh;
+  padding: 8rem 0 8rem 0;
+  background-color: $primary-color;
+
+  .services {
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      column-gap: 2rem;
+      row-gap: 4rem;
     }
   }
 }

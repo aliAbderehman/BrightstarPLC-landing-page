@@ -1,21 +1,21 @@
-.btn,
-.btn:link,
-.btn:visited {
-  padding: 1.5rem 3rem;
-  border-radius: 0.8rem;
-  line-height: 1.2;
-  font-size: 2rem;
-  font-weight: 600;
-  display: inline-block;
-  align-items: center;
-  text-decoration: none;
-  text-transform: capitalize;
-  width: fit-content;
-
-  position: relative;
-}
-
 .btn {
+  &:link,
+  &:visited {
+    padding: 1.5rem 3rem;
+    border-radius: 0.5rem;
+    line-height: 1.2;
+    font-size: 2rem;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    position: relative;
+
+    // border: none;
+    cursor: pointer;
+  }
+
   &--primary {
     background: $secondary-color;
     color: $color-black;
@@ -38,6 +38,7 @@
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      background-color: darken($secondary-color, 10%);
 
       &::after {
         transform: scaleX(1.2) scaleY(1.4);
@@ -74,6 +75,7 @@
         width: 120%;
         height: 120%;
         transform: translate(-50%, -50%);
+        background-color: darken($secondary-color, 10%);
         opacity: 1;
       }
     }
@@ -84,11 +86,12 @@
     color: $primary-color;
     display: inline-block;
     text-decoration: none;
-    padding: 3px;
+    padding: 1rem 1.5rem !important;
     position: relative;
     transition: all 0.3s;
     overflow: hidden;
     border-bottom: 2px solid $primary-color;
+    border-radius: 0;
     transition: all 0.3s;
 
     z-index: 3;

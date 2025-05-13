@@ -1,9 +1,9 @@
 .featured__card {
-  background-color: rgba($color: $color-white, $alpha: 0.9);
+  background-color: rgba($color: $color-white, $alpha: 0.8);
   border-radius: 1.6rem;
-  box-shadow: 0 1rem 2 rem rgba($color-black, 0.2);
+  box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
   padding: 2rem;
-  max-width: 30rem;
+  max-width: 35rem;
   display: grid;
   flex-direction: column;
   gap: 2rem;
@@ -20,5 +20,34 @@
     background-color: $secondary-color;
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 2.9rem 3rem rgba($secondary-color, 0.3);
+  }
+}
+
+.services {
+  &__card {
+    background-image: linear-gradient(to bottom, #021c5e, rgba(#021c5e, 0.3));
+    border-radius: 1.6rem;
+    padding: 4rem;
+    max-width: 35rem;
+    display: grid;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: start;
+    align-items: start;
+    transition: all 0.3s ease-in-out;
+
+    img {
+      width: 20%;
+      height: auto;
+    }
+
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        #2b7bcc,
+        rgba(#021c5e, 0.3) 45%
+      );
+      transform: translateY(-5px) scale(1.02);
+    }
   }
 }
