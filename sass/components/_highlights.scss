@@ -1,0 +1,54 @@
+.featured-post {
+  &__highlights-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 2rem;
+    row-gap: 4rem;
+    margin-top: 4rem;
+  }
+
+  &__highlight {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+    // gap: 1.2rem;
+
+    svg {
+      width: 70%;
+      height: 70%;
+    }
+
+    img {
+      width: 60%;
+      height: 60%;
+    }
+  }
+}
+
+.abouts {
+  &__features {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__feature {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__highlights {
+    padding-top: $space-section;
+  }
+
+  &__logos {
+    display: flex;
+    background-color: $primary-color;
+
+    img {
+      width: 10%;
+      height: auto;
+      padding: $space-between;
+    }
+  }
+}

@@ -55,58 +55,6 @@
       align-items: start;
       gap: 2rem;
     }
-
-    //WILL TREAT THIS AS A COMPONENT
-    &__txt {
-      position: relative;
-      margin-left: 2rem;
-      &::before {
-        content: "";
-        position: absolute;
-        top: -20%;
-        left: -2rem;
-        width: 5px;
-        border-radius: 50px;
-        height: 150%;
-        background-color: $secondary-color;
-      }
-    }
-
-    &__img-box {
-      img {
-        position: relative;
-        right: -20rem;
-        bottom: 0;
-        width: 100%;
-        display: block;
-      }
-    }
-
-    &__highlights-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      column-gap: 2rem;
-      row-gap: 4rem;
-      margin-top: 4rem;
-    }
-
-    &__highlight {
-      display: grid;
-      grid-template-columns: 1fr 4fr;
-
-      // gap: 1.2rem;
-
-      svg {
-        width: 70%;
-        height: 70%;
-      }
-
-      img {
-        width: 60%;
-        height: 60%;
-      }
-    }
   }
 }
 
@@ -122,6 +70,23 @@
       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
       column-gap: 2rem;
       row-gap: 4rem;
+    }
+  }
+}
+
+.section-abouts {
+  width: 100%;
+  padding: $space-section 0;
+
+  .abouts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    justify-content: start;
+
+    &__title-discription {
+      margin-bottom: 2rem;
+    }
+    &__text-box {
     }
   }
 }
