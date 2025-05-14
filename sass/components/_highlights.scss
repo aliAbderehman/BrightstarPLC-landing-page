@@ -42,13 +42,115 @@
   }
 
   &__logos {
+    padding: 4rem;
     display: flex;
-    background-color: $primary-color;
+    width: 100%;
+    gap: $space-between;
+    background-image: radial-gradient(
+      circle,
+      rgba(darken($primary-color, 2), 1) 0%,
+      rgba(darken($primary-color, 5%), 1) 100%
+    );
+    // gap: $space-between;
+    // overflow: hidden;
+    align-items: center;
 
     img {
-      width: 10%;
+      width: 70%;
       height: auto;
-      padding: $space-between;
+      filter: brightness(1.8);
+      object-fit: contain;
     }
+  }
+
+  &__logo-box {
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: lighten($primary-color, 5%);
+    border-radius: 10px;
+    box-shadow: 0 0 1rem 0.5rem rgba($color-black, 0.1);
+    padding: 4rem;
+    height: 10rem;
+    width: 20rem;
+  }
+}
+
+.scroller {
+  &__wrapper {
+    padding-block: 1.4rem;
+    background-color: $primary-color;
+  }
+  width: 100vw;
+  // @include container-size;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+
+  &__inner {
+    background-color: $primary-color;
+    display: flex;
+    flex-wrap: wrap;
+    padding-block: 2rem;
+    gap: 3rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: darken($primary-color, 10%);
+      border-radius: 5px;
+      box-shadow: 0 0 1rem rgba($color: $color-black, $alpha: 0.2);
+      padding: $space-between;
+
+      img {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        user-drag: none;
+        width: 15rem;
+        height: 10rem;
+        object-fit: contain;
+        filter: brightness(1.8);
+      }
+    }
+  }
+
+  &[data-animated="true"] {
+    overflow: hidden;
+
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      $primary-color 20%,
+      $primary-color 80%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      $primary-color 20%,
+      $primary-color 80%,
+      transparent
+    );
+  }
+
+  &[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 30s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+
+  &[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+
+  &[data-direction="right"] {
+    --_animation-direction: reverse;
   }
 }

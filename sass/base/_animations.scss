@@ -1,3 +1,13 @@
 .cus-anim {
   animation-delay: 0.2s;
 }
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.test {
+  background-color: red;
+}
