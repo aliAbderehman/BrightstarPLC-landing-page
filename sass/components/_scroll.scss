@@ -1,6 +1,6 @@
 .scroller {
   &__wrapper {
-    padding-block: 1.4rem;
+    // padding-block: 1.4rem;
     background-color: $primary-color;
     // background-color: #000080;
   }
@@ -14,6 +14,7 @@
   &__inner {
     background-color: $primary-color;
     // background-color: #000080;
+    // background-color: #dddddd;
     display: flex;
     flex-wrap: wrap;
     padding-block: 2rem;
@@ -23,7 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      //   background-color: #2626a0;
+      // background-color: #2626a0;
       border-radius: 5px;
       //   box-shadow: 0 0 1rem rgba($color: $color-black, $alpha: 0.2);
       padding: $space-between;
@@ -31,12 +32,14 @@
       img {
         -webkit-user-select: none;
         user-select: none;
-        -webkit-user-drag: none;
-        user-drag: none;
-        width: 15rem;
-        height: 10rem;
+        width: 12rem;
+        height: 7rem;
         object-fit: contain;
         filter: brightness(2);
+      }
+
+      svg {
+        fill: red;
       }
     }
   }
@@ -47,15 +50,15 @@
     -webkit-mask: linear-gradient(
       90deg,
       transparent,
-      $color-white 20%,
-      $color-white 80%,
+      $color-white 10%,
+      $color-white 90%,
       transparent
     );
     mask: linear-gradient(
       90deg,
       transparent,
-      $color-white 20%,
-      $color-white 80%,
+      $color-white 10%,
+      $color-white 90%,
       transparent
     );
   }

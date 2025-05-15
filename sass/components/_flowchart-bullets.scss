@@ -1,0 +1,36 @@
+.workflow {
+  &__chart ul {
+    position: relative;
+    display: grid;
+    gap: $space-content;
+    list-style: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba($color: $color-white, $alpha: 0.4);
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  &__chart ul li {
+    color: $color-white;
+    font-size: 2.5rem;
+    position: relative;
+    padding-left: 2.4rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -4.5px;
+      background-color: $color-white;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+  }
+}
