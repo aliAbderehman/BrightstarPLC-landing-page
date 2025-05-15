@@ -33,6 +33,7 @@
 }
 
 .section-featured {
+  padding-bottom: $space-section;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +63,7 @@
 .section-services {
   width: 100%;
 
-  padding: $space-section * 2 0 $space-section 0;
+  padding-block: $space-section;
   background-color: $primary-color;
 
   .services {
@@ -89,5 +90,12 @@
     }
     &__text-box {
     }
+  }
+}
+
+.trust {
+  padding-block: $space-section;
+  &__title-discription {
+    width: 70%;
   }
 }

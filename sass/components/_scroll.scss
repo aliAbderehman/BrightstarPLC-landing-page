@@ -1,0 +1,77 @@
+.scroller {
+  &__wrapper {
+    padding-block: 1.4rem;
+    background-color: $primary-color;
+    // background-color: #000080;
+  }
+  width: 100vw;
+  // @include container-size;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+
+  &__inner {
+    background-color: $primary-color;
+    // background-color: #000080;
+    display: flex;
+    flex-wrap: wrap;
+    padding-block: 2rem;
+    gap: 3rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //   background-color: #2626a0;
+      border-radius: 5px;
+      //   box-shadow: 0 0 1rem rgba($color: $color-black, $alpha: 0.2);
+      padding: $space-between;
+
+      img {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        user-drag: none;
+        width: 15rem;
+        height: 10rem;
+        object-fit: contain;
+        filter: brightness(2);
+      }
+    }
+  }
+
+  &[data-animated="true"] {
+    overflow: hidden;
+
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      $color-white 20%,
+      $color-white 80%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      $color-white 20%,
+      $color-white 80%,
+      transparent
+    );
+  }
+
+  &[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 30s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+
+  &[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+
+  &[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+}
