@@ -1,6 +1,5 @@
 .hero {
   // Layout and structure
-
   padding: 2rem;
   max-width: 128rem;
   height: 100vh;
@@ -8,10 +7,6 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   margin: 0 auto;
-
-  &__txt-box {
-    text-align: center;
-  }
 
   &__buttons {
     z-index: 30;
@@ -21,52 +16,51 @@
   }
 
   &__img-box {
-    text-align: center;
+    text-align: end;
   }
 
   &__img-1 {
-    align-self: flex-start;
-    justify-self: flex-end;
     width: 70%;
     height: auto;
   }
 }
 
 .section-featured {
-  padding-bottom: $space-section;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
-  .featured__cards {
+  .featured__cards-box {
     position: relative;
-    top: -10rem;
+    top: -6rem;
     @include container-size;
     display: flex;
-    gap: 4rem;
     justify-content: space-between;
   }
 
   .featured-post {
-    padding: $space-section 0 0 0;
+    padding-top: $space-section;
     display: flex;
+    position: relative;
 
     &__text-box {
+      width: 50%;
+      padding-bottom: $space-section;
       display: flex;
       flex-direction: column;
       align-items: start;
-      gap: 2rem;
     }
   }
 }
 
 .section-services {
   width: 100%;
-
-  padding-block: $space-section;
+  padding-top: $space-section;
   background-color: $primary-color;
 
   .services {
+    padding-bottom: $space-section;
     &__cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -78,100 +72,49 @@
 
 .section-abouts {
   width: 100%;
-  padding: $space-section 0;
+  padding-top: $space-section;
 
   .abouts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     justify-content: start;
 
-    &__title-discription {
-      margin-bottom: 2rem;
+    &__wrapper {
+      position: relative;
     }
+
     &__text-box {
+      justify-self: flex-end;
+      width: 50%;
     }
   }
 }
 
 .trust {
-  padding-block: $space-section;
+  display: flex;
+  flex-direction: column;
+  padding-top: $space-section;
 
-  &__title {
-    padding-bottom: $space-title;
+  &__subtitle {
+    width: 75%;
   }
 
-  &__title-discription {
-    width: 70%;
-  }
-
-  &__cards-box {
-    padding-block: $space-title;
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  &__card {
-    display: flex;
-    flex: 1;
-    width: 28rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    text-align: center;
-    gap: $space-between;
-  }
-
-  &__icon {
-    padding: 1.4rem;
-    height: 6rem;
-    width: 6rem;
-    object-fit: contain;
-    background-color: $primary-color;
-    border-radius: 5px;
+  &__btn {
+    align-self: flex-end;
   }
 }
 
 .section-workflow {
-  padding-block: $space-section;
+  margin-top: $space-section;
+  padding-block: $space-section $space-content * 2;
   background-color: $primary-color;
   background-image: url(../../assets/materials/bg-material-02.svg);
-  background-size: 55%;
+  background-size: 48%;
   background-repeat: no-repeat;
   background-position: bottom left;
-  .workflow {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
+}
 
-    &__title-sec {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    &__bg-img {
-      width: 70%;
-      height: auto;
-      justify-self: flex-end;
-      align-self: flex-end;
-    }
-
-    &__card {
-      width: 20rem;
-    }
-
-    &__card-title {
-      line-height: normal;
-      font-size: 2.4rem;
-      display: flex;
-      align-items: center;
-    }
-
-    &__card-title span {
-      opacity: 0.58;
-      line-height: normal;
-
-      font-size: 4.8rem;
-    }
-  }
+.section-contacts {
+  margin-top: $space-section * 2;
+  position: relative;
 }
