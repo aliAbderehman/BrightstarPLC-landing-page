@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="521" height="459" viewBox="0 0 521 459">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_149" data-name="Rectangle 149" width="521" height="459" transform="translate(178 8944)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_20" data-name="Mask Group 20" transform="translate(-178 -8944)" clip-path="url(#clip-path)">
+    <g id="Group_462" data-name="Group 462">
+      <g id="Group_411" data-name="Group 411" transform="translate(171.698 2665.244)" opacity="0.31" style="mix-blend-mode: hard-light;isolation: isolate">
+        <path id="Path_80" data-name="Path 80" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10272.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_81" data-name="Path 81" d="M0,0,77.034,77.034,0,154.068" transform="translate(232.302 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_82" data-name="Path 82" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10233.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_83" data-name="Path 83" d="M-13.146-12.717l90.18,89.75-90.18,89.989" transform="translate(206.136 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+      </g>
+      <g id="Group_412" data-name="Group 412" transform="translate(338.408 2828.244)" opacity="0.31" style="mix-blend-mode: hard-light;isolation: isolate">
+        <path id="Path_80-2" data-name="Path 80" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10272.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_81-2" data-name="Path 81" d="M0,0,77.034,77.034,0,154.068" transform="translate(232.302 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_82-2" data-name="Path 82" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10233.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_83-2" data-name="Path 83" d="M-13.146-12.717l90.18,89.75-90.18,89.989" transform="translate(206.136 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+      </g>
+      <g id="Group_413" data-name="Group 413" transform="translate(450.408 2488.602)" opacity="0.31" style="mix-blend-mode: hard-light;isolation: isolate">
+        <path id="Path_80-3" data-name="Path 80" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10272.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_81-3" data-name="Path 81" d="M0,0,77.034,77.034,0,154.068" transform="translate(232.302 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_82-3" data-name="Path 82" d="M10299.663,8452.282l114.82,114.82-114.82,114.821" transform="translate(-10233.781 -1892.882)" fill="none" stroke="#707070" stroke-width="19"/>
+        <path id="Path_83-3" data-name="Path 83" d="M-13.146-12.717l90.18,89.75-90.18,89.989" transform="translate(206.136 6649.756) rotate(180)" fill="none" stroke="#707070" stroke-width="19"/>
+      </g>
+    </g>
+  </g>
+</svg>

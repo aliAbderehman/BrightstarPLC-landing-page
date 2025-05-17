@@ -118,3 +118,24 @@
   margin-top: $space-section * 2;
   position: relative;
 }
+
+.section-blog {
+  padding-block: $space-section;
+  background-image: url(../../assets/materials/Mask\ Group\ 20.svg);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: left bottom;
+
+  .blog {
+    display: flex;
+  }
+
+  .blog__cards {
+    flex: 2;
+  }
+
+  .blog__nav {
+    justify-self: flex-end;
+    flex: 1;
+  }
+}

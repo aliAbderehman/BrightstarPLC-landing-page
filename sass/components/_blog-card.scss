@@ -1,0 +1,59 @@
+.blog {
+  &__cards {
+    padding: $space-content;
+    display: flex;
+    gap: 1rem; /* optional: spacing between cards */
+    overflow-x: auto; /* enables horizontal scroll */
+    padding-bottom: 1rem; /* optional: avoids cutting off shadows */
+    scroll-snap-type: x mandatory; /* optional: snap to cards */
+  }
+  &__card {
+    flex: 0 0 auto; // 🔥 Don't shrink, don't grow, take natural width
+    width: 30rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.3);
+
+    &:not(:last-child) {
+      margin-right: $space-content;
+    }
+  }
+
+  &__img-box {
+    position: relative;
+    display: inline-block;
+    &::after {
+      content: "";
+      height: 100%;
+      z-index: 20;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 8px;
+      background-color: rgba($color: $primary-color, $alpha: 0.3);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  &__catagory {
+    color: lighten($color: $color-grey-dark-1, $amount: 15%);
+    padding: 1.4rem 2rem 0 0;
+    text-align: end;
+  }
+
+  &__title-sec {
+    gap: $space-between;
+    padding: 0 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
