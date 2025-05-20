@@ -58,8 +58,12 @@
 .section-services {
   width: 100%;
   padding-top: $space-section;
-  background-color: $primary-color;
-
+  background-image: linear-gradient(
+    to bottom,
+    $color-white,
+    rgba(#3671ea, 0.8),
+    $color-white
+  );
   .services {
     padding-bottom: $space-section;
     &__cards {
