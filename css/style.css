@@ -279,6 +279,8 @@ body {
   padding-bottom: 1rem; /* optional: avoids cutting off shadows */
   scroll-snap-type: x mandatory; /* optional: snap to cards */
   scroll-behavior: smooth;
+  -webkit-mask: linear-gradient(90deg, transparent, #fff 5%, #fff 100%, transparent);
+  mask: linear-gradient(90deg, transparent, #fff 5%, #fff 100%, transparent);
 }
 .blog__card {
   flex: 0 0 auto;
@@ -342,7 +344,8 @@ body {
   height: auto;
 }
 .featured__card:hover {
-  background-image: linear-gradient(to bottom, #2b7bcc, rgba(2, 28, 94, 0.3) 45%);
+  border: 2px solid #00f2ff;
+  background-color: rgba(69, 216, 243, 0.3);
   transform: translateY(-5px) scale(1.02);
 }
 .featured__text {
@@ -369,7 +372,8 @@ body {
   height: auto;
 }
 .services__card:hover {
-  background-image: linear-gradient(to bottom, #2b7bcc, rgba(2, 28, 94, 0.3) 45%);
+  border: 2px solid #00f2ff;
+  background-color: rgba(69, 216, 243, 0.3);
   transform: translateY(-5px) scale(1.02);
 }
 
@@ -555,7 +559,7 @@ body {
   z-index: -1000;
   background: linear-gradient(#fff);
   transform: translateZ(0);
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .hero__decor {
@@ -662,6 +666,7 @@ body {
 .header__nav-list a:hover {
   color: #dcdcdc;
 }
+
 .scroller {
   width: 100vw;
   position: relative;

@@ -7,6 +7,21 @@
     padding-bottom: 1rem; /* optional: avoids cutting off shadows */
     scroll-snap-type: x mandatory; /* optional: snap to cards */
     scroll-behavior: smooth;
+
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      $color-white 5%,
+      $color-white 100%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      $color-white 5%,
+      $color-white 100%,
+      transparent
+    );
   }
   &__card {
     flex: 0 0 auto; // 🔥 Don't shrink, don't grow, take natural width

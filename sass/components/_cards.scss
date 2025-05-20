@@ -17,11 +17,13 @@
     }
 
     &:hover {
-      background-image: linear-gradient(
-        to bottom,
-        #2b7bcc,
-        rgba(#021c5e, 0.3) 45%
-      );
+      // background-image: linear-gradient(
+      //   to bottom,
+      //   #2b7bcc,
+      //   rgba(#021c5e, 0.3) 45%
+      // );
+      border: 2px solid $secondary-color;
+      background-color: rgba(69, 216, 243, 0.3);
       transform: translateY(-5px) scale(1.02);
     }
 
@@ -59,11 +61,13 @@
     }
 
     &:hover {
-      background-image: linear-gradient(
-        to bottom,
-        #2b7bcc,
-        rgba(#021c5e, 0.3) 45%
-      );
+      // background-image: linear-gradient(
+      //   to bottom,
+      //   #2b7bcc,
+      //   rgba(#021c5e, 0.3) 45%
+      // );
+      border: 2px solid $secondary-color;
+      background-color: rgba(69, 216, 243, 0.3);
       transform: translateY(-5px) scale(1.02);
     }
   }
