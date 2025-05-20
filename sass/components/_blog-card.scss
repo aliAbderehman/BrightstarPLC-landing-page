@@ -6,10 +6,11 @@
     overflow-x: auto; /* enables horizontal scroll */
     padding-bottom: 1rem; /* optional: avoids cutting off shadows */
     scroll-snap-type: x mandatory; /* optional: snap to cards */
+    scroll-behavior: smooth;
   }
   &__card {
     flex: 0 0 auto; // 🔥 Don't shrink, don't grow, take natural width
-    width: 30rem;
+    width: 35rem;
     border-radius: 8px;
     overflow: hidden;
     background-color: rgb(255, 255, 255);

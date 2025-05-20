@@ -10,10 +10,10 @@ tsParticles.load("tsparticles", {
         // value_area: 800,
       },
     },
-    color: { value: "#00ffff" },
+    color: { value: "#058FCC" },
     shape: { type: "circle" },
     opacity: {
-      value: 0.5,
+      value: 0.8,
       anim: { enable: false },
     },
     size: {
@@ -31,8 +31,8 @@ tsParticles.load("tsparticles", {
     links: {
       enable: true,
       distance: 150,
-      color: "#00ffff",
-      opacity: 0.2,
+      color: "#0FA8EC",
+      opacity: 0.5,
       width: 0.5,
     },
   },

@@ -5,46 +5,34 @@
   text-align: center;
   display: flex;
   align-items: center;
-  //   background-color: rgba($color: $primary-color-dark, $alpha: 0.5);
-  //   -webkit-backdrop-filter: blur(3px);
-  //   backdrop-filter: blur(3px);
+  justify-content: center;
 
-  //   &::after {
-  //     content: "";
-  //     position: absolute;
-  //     top: 0;
-  //     border-radius: 0 50px 0 0;
-  //     left: 0;
-  //     width: 25%;
-  //     height: 100%;
-  //     background-color: $primary-color;
-  //     z-index: 1;
-  //   }
-
-  &__logo {
-    z-index: 20;
-    text-align: left;
-
-    img {
-      width: 70%;
-      height: auto;
-    }
-  }
-
-  &__nav-left {
-    justify-content: flex-start;
-    gap: 2rem;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-  }
-
-  &__navbar {
+  .navbar {
+    position: fixed;
+    z-index: 999;
     width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    padding: 1.3rem 2rem;
     align-items: center;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 1rem 0rem 2rem rgba($color: $color-black, $alpha: 0.2);
+    transition: top 0.3s ease;
+
+    &__logo {
+      z-index: 20;
+      text-align: left;
+
+      img {
+        width: 70%;
+        height: auto;
+      }
+    }
   }
 
   &__nav-list {
@@ -54,7 +42,7 @@
 
     a {
       text-decoration: none;
-      color: $color-white;
+      color: $color-grey-dark-1;
       font-size: 1.6rem;
       font-weight: 500;
       transition: all 0.3s ease-in-out;

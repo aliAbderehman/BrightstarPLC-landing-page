@@ -36,6 +36,7 @@
     top: -6rem;
     @include container-size;
     display: flex;
+    gap: $space-between;
     justify-content: space-between;
   }
 

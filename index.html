@@ -16,38 +16,31 @@
   </head>
   <body>
     <header class="header">
-      <nav class="header__navbar">
-        <div class="header__nav-left">
-          <div class="header__logo">
-            <img
-              src="./assets/logo/main-logo-01.svg"
-              alt="Brightstar PLC Logo"
-            />
-          </div>
-          <ul class="header__nav-list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Blogs</a></li>
-          </ul>
+      <nav class="navbar u-margin-top-small" id="navbar">
+        <div class="navbar__logo">
+          <img src="./assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
         </div>
-        <div class="header__nav-btn">
-          <!-- <button class="btn btn--primary">contact us</button> -->
-          <a href="#" class="btn btn--primary">contact us</a>
-        </div>
+        <ul class="header__nav-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blogs</a></li>
+        </ul>
+
+        <a href="#" class="btn btn--primary">contact us</a>
       </nav>
     </header>
 
     <main class="main">
       <section class="hero">
         <div id="tsparticles" class="hero__decor">
-          <img
+          <!-- <img
             src="./assets/materials/bg-material-01.svg"
             alt=""
             class="hero__decor-1"
-          />
+          /> -->
           <img
-            src="./assets/materials/Path 2.svg"
+            src="./assets/materials/hero-bg-material-01.svg"
             alt=""
             class="hero__decor-2"
           />
@@ -56,9 +49,7 @@
           <h1 class="heading-primary animate__animated animate__fadeInDown">
             Smart Tech Solutions for a Smarter Future
           </h1>
-          <p
-            class="heading-subtitle-1 text--white animate__animated animate__fadeInUp"
-          >
+          <p class="heading-subtitle-1 animate__animated animate__fadeInUp">
             From cutting-edge surveillance to seamless IT infrastructure, we
             help businesses thrive through reliable, scalable technology
             solutions.
@@ -77,7 +68,7 @@
 
         <div class="hero__img-box">
           <img
-            src="./assets/images/Group 399.png"
+            src="./assets/images/hero-img-02.svg"
             alt=""
             class="hero__img-1 animate__animated animate__fadeInDown"
           />
@@ -87,20 +78,15 @@
       <section class="section-featured">
         <div class="featured container">
           <div class="featured__cards-box">
-            <div class="featured__card">
-              <img
-                src="./assets/icons/featured/ic-equipments.svg"
-                alt="equipments icon"
-              />
-              <h3 class="heading-tertiary featured__card-title">
-                Electronics Import & Distribution
+            <div class="featured__text">
+              <h3 class="heading-secondary featured__card-title">
+                One step to Improve your workflow
               </h3>
-              <p class="featured__card-txt lable-txt">
-                We source and supply a wide range of electronic devices —
-                including laptops, desktops, and monitors — directly from
-                trusted international manufacturers.
+              <p class="featured__card-txt text--default u-margin-top-small">
+                Every IT equipment in one place
               </p>
             </div>
+
             <div class="featured__card">
               <img
                 src="./assets/icons/featured/ic-enterprise.svg"
@@ -128,6 +114,61 @@
                 cameras and integrated surveillance networks tailored for your
                 business.
               </p>
+            </div>
+          </div>
+
+          <div class="abouts__highlights u-center-text">
+            <h2 class="heading-secondary u-margin-bottom-small">
+              Top Brands We Distribute
+            </h2>
+
+            <div class="scroller__wrapper">
+              <div class="scroller">
+                <ul class="scroller__inner">
+                  <li>
+                    <img src="./assets/brands/dell.png" alt="dell logo" />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/cisco.png" alt="cisco logo" />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/fujitsu.png" alt="fujitsu logo" />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/fargo.png" alt="fargo logo" />
+                  </li>
+                  <li>
+                    <img
+                      src="./assets/brands/hikvision.png"
+                      alt="hikvision logo"
+                    />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/hp.png" alt="hp logo" />
+                  </li>
+                  <li>
+                    <img
+                      src="./assets/brands/kaspersky.png"
+                      alt="kaspersky logo"
+                    />
+                  </li>
+                  <li>
+                    <img
+                      src="./assets/brands/microsoft.png"
+                      alt="microsoft logo"
+                    />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/lg.png" alt="lg logo" />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/samsung.png" alt="samsung logo" />
+                  </li>
+                  <li>
+                    <img src="./assets/brands/tp-link.png" alt="tp-link logo" />
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="visual visual-right visual-camera"></div>
@@ -361,61 +402,6 @@
             </div>
           </div>
         </div>
-
-        <div class="abouts__highlights u-center-text">
-          <h2 class="heading-subtitle-2 u-margin-bottom-medium">
-            Top Brands We Distribute
-          </h2>
-
-          <div class="scroller__wrapper">
-            <div class="scroller">
-              <ul class="scroller__inner">
-                <li>
-                  <img src="./assets/brands/dell.png" alt="dell logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/cisco.png" alt="cisco logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/fujitsu.png" alt="fujitsu logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/fargo.png" alt="fargo logo" />
-                </li>
-                <li>
-                  <img
-                    src="./assets/brands/hikvision.png"
-                    alt="hikvision logo"
-                  />
-                </li>
-                <li>
-                  <img src="./assets/brands/hp.png" alt="hp logo" />
-                </li>
-                <li>
-                  <img
-                    src="./assets/brands/kaspersky.png"
-                    alt="kaspersky logo"
-                  />
-                </li>
-                <li>
-                  <img
-                    src="./assets/brands/microsoft.png"
-                    alt="microsoft logo"
-                  />
-                </li>
-                <li>
-                  <img src="./assets/brands/lg.png" alt="lg logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/samsung.png" alt="samsung logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/tp-link.png" alt="tp-link logo" />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section class="section-trust">
@@ -641,9 +627,11 @@
             <p class="heading-subtitle-2 u-margin-bottom-medium">
               Recent Blogs
             </p>
+            <button onclick="scrollNext()">Next</button>
+            <button onclick="scrollPrev()">Previous</button>
           </div>
 
-          <div class="blog__cards">
+          <div class="blog__cards scroll-container" id="cardContainer"">
             <div class="blog__card">
               <div class="blog__img-box">
                 <img
@@ -747,5 +735,7 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script src="./js/horizontal-scroll.js"></script>
     <script src="./js/hero-animation.js"></script>
+    <script src="./js/scroll-cards.js"></script>
+    <script src="./js/hide-on-scroll.js"></script>
   </body>
 </html>
