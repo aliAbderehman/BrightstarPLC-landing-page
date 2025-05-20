@@ -71,8 +71,9 @@
 }
 
 .section-abouts {
-  width: 100%;
+  // width: 100%;
   padding-top: $space-section;
+  position: relative;
 
   .abouts {
     display: grid;

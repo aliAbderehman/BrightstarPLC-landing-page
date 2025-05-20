@@ -48,7 +48,7 @@ body {
 
 .heading-secondary {
   font-family: "poppins", sans-serif;
-  font-size: 4.8rem;
+  font-size: 4rem;
   line-height: 1.3;
   font-weight: 700;
   color: #333;
@@ -106,6 +106,12 @@ body {
   border-radius: 50px;
   height: 90%;
   background-color: #00f2ff;
+}
+
+.text--default {
+  font-size: 1.8rem;
+  font-family: "montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .u-center-text {
@@ -483,6 +489,12 @@ body {
   border-radius: 50%;
 }
 
+.footer {
+  padding-block: 12rem;
+  background-color: #061328;
+  color: #fff;
+}
+
 .form__group:not(:last-child) {
   margin-bottom: 2rem;
 }
@@ -712,7 +724,7 @@ body {
 }
 
 .visual {
-  width: 40%;
+  width: 35%;
   height: 100%;
   background-size: contain;
   background-position: right bottom;
@@ -801,8 +813,8 @@ body {
 }
 
 .section-abouts {
-  width: 100%;
   padding-top: 12rem;
+  position: relative;
 }
 .section-abouts .abouts {
   display: grid;
