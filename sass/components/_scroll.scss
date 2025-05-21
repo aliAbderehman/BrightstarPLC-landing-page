@@ -17,32 +17,30 @@
     // background-color: #dddddd;
     display: flex;
     flex-wrap: wrap;
+    gap: 2rem;
     padding-block: 2rem;
-    gap: 3rem;
+    list-style: none;
+    justify-content: center;
 
     li {
+      // background-color: #2626a0;
+      border-radius: 5px;
       display: flex;
       align-items: center;
       justify-content: center;
-      // background-color: #2626a0;
-      border-radius: 5px;
-      //   box-shadow: 0 0 1rem rgba($color: $color-black, $alpha: 0.2);
-      padding: $space-between;
 
       img {
-        -webkit-user-select: none;
-        user-select: none;
-        width: 12rem;
-        height: 7rem;
+        max-width: 70%;
+        max-height: 70%;
         object-fit: contain;
-        // filter: brightness(10);
+        user-select: none;
       }
 
-      svg {
-        width: 12rem;
-        height: 7rem;
-        fill: $color-white;
-      }
+      // svg {
+      //   width: 12rem;
+      //   height: 7rem;
+      //   fill: $color-white;
+      // }
     }
   }
 

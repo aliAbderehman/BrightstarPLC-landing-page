@@ -156,9 +156,7 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   background-color: rgba(255, 255, 255, 0.4); /* Make it semi-transparent */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 2rem;
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .btn:link, .btn:visited {
@@ -230,6 +228,36 @@ body {
 .btn--secondary:hover::after {
   transform: scaleX(1.2) scaleY(1.4);
   opacity: 0;
+}
+.btn--outlined {
+  position: relative;
+  background-color: transparent;
+  color: rgb(10.7831325301, 30.1927710843, 78.7168674699);
+  outline: 2px solid #333;
+  filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.5));
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.btn--outlined::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  inset: 0;
+  background-color: rgba(69, 216, 243, 0.3);
+  z-index: -5;
+}
+.btn--outlined:hover {
+  outline: 2px solid #00f2ff;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn--outlined:hover::after {
+  transform: translateX(0%);
 }
 .btn--text {
   font-size: 1.8rem;
@@ -327,7 +355,7 @@ body {
   justify-content: space-between;
 }
 
-.featured__card {
+.card {
   border-radius: 1.6rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   padding: 2rem;
@@ -339,42 +367,23 @@ body {
   align-items: start;
   transition: all 0.3s ease-in-out;
 }
-.featured__card img {
+.card img {
   width: 12%;
   height: auto;
 }
-.featured__card:hover {
+.card:hover {
   border: 2px solid #00f2ff;
   background-color: rgba(69, 216, 243, 0.3);
   transform: translateY(-5px) scale(1.02);
-}
-.featured__text {
-  max-width: 42rem;
-  align-self: flex-end;
-}
-.featured__text h3 {
-  font-size: 3.2rem;
 }
 
-.services__card {
-  border-radius: 1.6rem;
+.services .card {
+  box-shadow: none;
   padding: 4rem;
-  max-width: 35rem;
-  display: grid;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: start;
-  align-items: start;
-  transition: all 0.3s ease-in-out;
 }
-.services__card img {
-  width: 20%;
+.services .card img {
+  width: 18%;
   height: auto;
-}
-.services__card:hover {
-  border: 2px solid #00f2ff;
-  background-color: rgba(69, 216, 243, 0.3);
-  transform: translateY(-5px) scale(1.02);
 }
 
 .trust__cards-box {
@@ -677,27 +686,22 @@ body {
 .scroller__inner {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   padding-block: 2rem;
-  gap: 3rem;
+  list-style: none;
+  justify-content: center;
 }
 .scroller__inner li {
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  padding: 2.4rem;
 }
 .scroller__inner li img {
-  -webkit-user-select: none;
-  user-select: none;
-  width: 12rem;
-  height: 7rem;
+  max-width: 70%;
+  max-height: 70%;
   object-fit: contain;
-}
-.scroller__inner li svg {
-  width: 12rem;
-  height: 7rem;
-  fill: #fff;
+  user-select: none;
 }
 .scroller[data-animated=true] {
   overflow: hidden;
@@ -733,7 +737,7 @@ body {
 }
 
 .visual {
-  width: 35%;
+  width: 38%;
   height: 100%;
   background-size: contain;
   background-position: right bottom;
@@ -750,7 +754,7 @@ body {
   left: 0 !important;
 }
 .visual-camera {
-  background-image: url(../../assets/images/img-camera.png);
+  background-image: url(../../assets/images/img-main-01.png);
 }
 .visual-device {
   background-image: url(../../assets/images/Mask\ Group\ 20.png);
@@ -794,22 +798,25 @@ body {
   gap: 2.4rem;
   justify-content: space-between;
 }
-.section-featured .featured-post {
-  padding-top: 12rem;
+
+.featured-post {
   display: flex;
+  padding-top: 24rem;
   position: relative;
 }
-.section-featured .featured-post__text-box {
+.featured-post__text-box {
   width: 50%;
-  padding-bottom: 12rem;
+  position: relative;
+  left: 50%;
   display: flex;
-  flex-direction: column;
   align-items: start;
+  flex-direction: column;
 }
 
 .section-services {
   width: 100%;
-  padding-top: 12rem;
+  padding-block: 12rem;
+  margin-top: 12rem;
   background-image: linear-gradient(to bottom, #fff, rgba(54, 113, 234, 0.8), #fff);
 }
 .section-services .services {
