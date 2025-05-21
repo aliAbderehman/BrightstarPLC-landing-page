@@ -5,124 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hero Section with Particles</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body,
-      html {
-        height: 100%;
-        font-family: "Segoe UI", sans-serif;
-        background: #0d1117;
-      }
-
-      .hero {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-      }
-
-      .particles-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        padding: 2rem;
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: #a0aec0;
-      }
-
-      .cta-btn {
-        background: #00ffff;
-        color: #0d1117;
-        padding: 0.75rem 1.5rem;
-        border-radius: 9999px;
-        text-decoration: none;
+      .stat-number {
+        font-size: 48px;
         font-weight: bold;
-        transition: background 0.3s;
-      }
-
-      .cta-btn:hover {
-        background: #00cccc;
       }
     </style>
   </head>
   <body>
-    <section class="hero">
-      <div id="tsparticles" class="particles-bg"></div>
-      <div class="hero-content">
-        <h1>Build Beyond Limits</h1>
-        <p>Modern web experiences that captivate and convert.</p>
-        <a href="#projects" class="cta-btn">View Projects</a>
-      </div>
-    </section>
+    <div class="stat">
+      <div class="stat-number count-up" data-target="1000">0</div>
+      <div class="stat-label">Devices Delivered</div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script>
-      tsParticles.load("tsparticles", {
-        fullScreen: { enable: false },
-        particles: {
-          number: { value: 60, density: { enable: true, value_area: 800 } },
-          color: { value: "#00ffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.3 },
-          size: { value: 3, random: true },
-          move: {
-            enable: true,
-            speed: 1.2,
-            direction: "none",
-            outModes: { default: "bounce" },
-          },
-          links: {
-            enable: true,
-            distance: 120,
-            color: "#00ffff",
-            opacity: 0.2,
-            width: 1,
-          },
-        },
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "grab",
-            },
-            resize: true,
-          },
-          modes: {
-            grab: {
-              distance: 140,
-              line_linked: {
-                opacity: 0.5,
-              },
-            },
-          },
-        },
-        retina_detect: true,
-      });
+      function animateCountUp(element) {
+        const target = +element.getAttribute("data-target");
+        const speed = 200; // smaller = faster
+
+        const updateCount = () => {
+          const current = +element.innerText;
+          const increment = Math.ceil(target / speed);
+
+          if (current < target) {
+            element.innerText = current + increment;
+            requestAnimationFrame(updateCount);
+          } else {
+            element.innerText = target;
+          }
+        };
+
+        updateCount();
+      }
+
+      function handleScrollAnimations() {
+        const counters = document.querySelectorAll(".count-up");
+        counters.forEach((counter) => {
+          const rect = counter.getBoundingClientRect();
+          if (
+            rect.top < window.innerHeight &&
+            !counter.classList.contains("counted")
+          ) {
+            counter.classList.add("counted"); // Prevent re-trigger
+            animateCountUp(counter);
+          }
+        });
+      }
+
+      window.addEventListener("scroll", handleScrollAnimations);
+      window.addEventListener("load", handleScrollAnimations); // in case some are already in view
     </script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 .card {
+  border: 2px solid rgba($color-white, 0.3);
   border-radius: 1.6rem;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
   padding: 2rem;
@@ -36,19 +37,40 @@
 
 .trust {
   &__cards-box {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100rem;
     gap: 2rem;
+    // background-color: aqua;
   }
 
   &__card {
     display: flex;
-    width: 28rem;
-    flex-direction: column;
+    width: 38rem;
     align-items: center;
     justify-content: start;
     text-align: center;
+    padding: 1.5rem 2rem;
     gap: 1rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    transition: all 0.5s ease;
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    p {
+      display: none;
+    }
+
+    &:hover {
+      filter: drop-shadow(
+        0rem 0rem 1rem rgba($color: $color-black, $alpha: 0.4)
+      );
+      border: 2px solid rgba($color: $color-grey-dark-2, $alpha: 0.5);
+    }
   }
 
   &__icon {
@@ -56,7 +78,7 @@
     height: 6rem;
     width: 6rem;
     object-fit: contain;
-    background-color: $primary-color;
+    background-color: rgba(87, 202, 255, 0.6);
     border-radius: 5px;
   }
 }

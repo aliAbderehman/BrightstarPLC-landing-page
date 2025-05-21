@@ -1,0 +1,21 @@
+.stats {
+  display: flex;
+  justify-content: space-around;
+  width: 1280px;
+
+  padding: 4rem 2rem;
+  align-items: center;
+  border-radius: 2.4rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(215, 215, 215, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1rem 4rem rgba($color: $color-black, $alpha: 0.15);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

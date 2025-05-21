@@ -25,27 +25,23 @@
   }
 }
 
-.section-featured {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-
-  .featured__cards-box {
+.section-core-features {
+  @include flex-center;
+  padding-bottom: $space-section;
+  .core-features {
+    display: flex;
     position: relative;
     top: -6rem;
-    @include container-size;
-    display: flex;
     gap: $space-between;
-    justify-content: space-between;
+    align-items: end;
   }
 }
 
-.featured-post {
+.work {
   display: flex;
   padding-top: $space-section * 2;
   position: relative;
-  &__text-box {
+  &__content {
     width: 50%;
     position: relative;
     left: 50%;
@@ -55,10 +51,14 @@
   }
 }
 
+.section-brands {
+  padding-top: $space-section;
+  width: 100%;
+}
+
 .section-services {
   width: 100%;
-  padding-block: $space-section;
-  margin-top: $space-section;
+  padding-top: $space-section;
   background-image: linear-gradient(
     to bottom,
     $color-white,
@@ -76,50 +76,43 @@
   }
 }
 
-.section-abouts {
-  // width: 100%;
-  padding-top: $space-section;
+.section-stats {
+  padding-block: $space-section;
+  @include flex-center;
+}
+
+.section-showcase {
+  @include flex-center;
+  padding-block: $space-section;
+}
+
+.section-trust {
+  padding-block: $space-section;
   position: relative;
 
-  .abouts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    justify-content: start;
+  .trust {
+    display: flex;
+    flex-direction: column;
 
-    &__wrapper {
-      position: relative;
-    }
-
-    &__text-box {
-      justify-self: flex-end;
+    &__title {
       width: 50%;
     }
+
+    &__btn {
+      align-self: center;
+    }
   }
 }
 
-.trust {
-  display: flex;
-  flex-direction: column;
-  padding-top: $space-section;
-
-  &__subtitle {
-    width: 75%;
-  }
-
-  &__btn {
-    align-self: flex-end;
-  }
-}
-
-.section-workflow {
-  margin-top: $space-section;
-  padding-block: $space-section $space-content * 2;
-  background-color: $primary-color;
-  background-image: url(../../assets/materials/bg-material-02.svg);
-  background-size: 48%;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-}
+// .section-workflow {
+//   margin-top: $space-section;
+//   padding-block: $space-section $space-content * 2;
+//   background-color: $primary-color;
+//   background-image: url(../../assets/materials/bg-material-02.svg);
+//   background-size: 48%;
+//   background-repeat: no-repeat;
+//   background-position: bottom left;
+// }
 
 .section-contacts {
   margin-top: $space-section * 2;
@@ -128,21 +121,40 @@
 
 .section-blog {
   padding-block: $space-section;
-  background-image: url(../../assets/materials/Mask\ Group\ 20.svg);
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: left bottom;
+  display: flex;
+  justify-content: center;
 
   .blog {
     display: flex;
+    overflow: hidden;
+
+    &__navigation {
+      display: flex;
+      gap: 2rem;
+    }
   }
 
   .blog__cards {
+    overflow: hidden;
+
     flex: 2;
   }
 
+  .blog__navigation {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 100%;
+    margin-top: auto;
+    // align-self: flex-end;
+    // justify-self: flex-end;
+  }
+
   .blog__nav {
-    justify-self: flex-end;
     flex: 1;
+    display: flex; // make it a flex container
+    flex-direction: column; // vertical layout
+
+    padding: 2rem;
   }
 }
