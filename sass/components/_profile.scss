@@ -4,11 +4,15 @@
   gap: $space-between;
   color: $color-white;
   text-align: end;
+
   &__shape {
     overflow: hidden;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 0 50% 50% 50%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
   }
   &__img {
     object-fit: cover;

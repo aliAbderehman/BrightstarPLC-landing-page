@@ -1,6 +1,6 @@
 .showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: $space-between;
   align-items: stretch;
 
@@ -41,15 +41,12 @@
     background-image: linear-gradient(#4f7ede, #1c4fb8);
     display: flex;
     flex-direction: column;
-
     gap: $space-between;
-  }
+    transition: all 0.3s;
 
-  .separator {
-    height: 1px;
-    width: 80%;
-    background-color: $color-grey-light;
-    align-self: center;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__1 {
@@ -61,6 +58,9 @@
   &__4 {
     grid-row: 3/4;
     height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__5 {
     grid-column: 2/4;

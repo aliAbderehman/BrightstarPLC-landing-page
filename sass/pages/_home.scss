@@ -104,57 +104,14 @@
   }
 }
 
-// .section-workflow {
-//   margin-top: $space-section;
-//   padding-block: $space-section $space-content * 2;
-//   background-color: $primary-color;
-//   background-image: url(../../assets/materials/bg-material-02.svg);
-//   background-size: 48%;
-//   background-repeat: no-repeat;
-//   background-position: bottom left;
-// }
-
 .section-contacts {
-  margin-top: $space-section * 2;
+  margin-block: $space-section;
   position: relative;
 }
 
 .section-blog {
   padding-block: $space-section;
   display: flex;
+  padding-left: $space-content;
   justify-content: center;
-
-  .blog {
-    display: flex;
-    overflow: hidden;
-
-    &__navigation {
-      display: flex;
-      gap: 2rem;
-    }
-  }
-
-  .blog__cards {
-    overflow: hidden;
-
-    flex: 2;
-  }
-
-  .blog__navigation {
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    height: 100%;
-    margin-top: auto;
-    // align-self: flex-end;
-    // justify-self: flex-end;
-  }
-
-  .blog__nav {
-    flex: 1;
-    display: flex; // make it a flex container
-    flex-direction: column; // vertical layout
-
-    padding: 2rem;
-  }
 }

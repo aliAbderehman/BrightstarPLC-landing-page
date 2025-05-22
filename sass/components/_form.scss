@@ -4,8 +4,9 @@
   }
 
   &__group {
-    text-align: end;
+    // text-align: end;
     button {
+      align-self: flex-end;
     }
   }
 
@@ -18,6 +19,7 @@
     border: none;
     transition: all 0.3sec;
     border-bottom: 3px solid transparent;
+    border-radius: 10px;
     width: 100%;
     display: block;
     transition: border-bottom-color 0.3s;
