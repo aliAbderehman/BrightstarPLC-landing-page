@@ -539,92 +539,26 @@
               Recent Blogs
             </p>
             <div class="blog__navigation u-margin-top-medium">
-              <button class="btn btn--navigation" onclick="scrollPrev()">
+              <button
+                id="scrollLeftBtn"
+                class="btn btn--navigation"
+                onclick="scrollPrev()"
+              >
                 &larr;
               </button>
 
-              <button class="btn btn--navigation" onclick="scrollNext()">
+              <button
+                id="scrollRightBtn"
+                class="btn btn--navigation"
+                onclick="scrollNext()"
+              >
                 &rarr;
               </button>
             </div>
           </div>
 
-          <div class="blog__cards scroll-container" id="cardContainer"">
-          <div class="blog__card">
-            <div class="blog__img-box">
-              <img
-                src="./assets/images/pexels-diva-plavalaguna-6149781.png"
-                alt=""
-              />
-            </div>
-            <h3 class="blog__catagory">Tech</h3>
-            <div class="blog__title-sec">
-              <h3 class="heading-tertiary">Fiver optics to the scape</h3>
-
-              <p class="lable-txt">
-                The chicken who was in the fridge got roased yeasterday and
-                those who was not happy about it claimed it was not fair at all
-                as the chicken was just chiling in the fridge without harming
-                anyone
-              </p>
-            </div>
-          </div>
-          <div class="blog__card">
-            <div class="blog__img-box">
-              <img
-                src="./assets/images/pexels-divinetechygirl-1181354.png"
-                alt=""
-              />
-            </div>
-            <h3 class="blog__catagory">Tech</h3>
-            <div class="blog__title-sec">
-              <h3 class="heading-tertiary">Fiver optics to the scape</h3>
-
-              <p class="lable-txt">
-                The chicken who was in the fridge got roased yeasterday and
-                those who was not happy about it claimed it was not fair at all
-                as the chicken was just chiling in the fridge without harming
-                anyone
-              </p>
-            </div>
-          </div>
-          <div class="blog__card">
-            <div class="blog__img-box">
-              <img
-                src="./assets/images/pexels-jakubzerdzicki-16423102.png"
-                alt=""
-              />
-            </div>
-            <h3 class="blog__catagory">Tech</h3>
-            <div class="blog__title-sec">
-              <h3 class="heading-tertiary">Fiver optics to the scape</h3>
-
-              <p class="lable-txt">
-                The chicken who was in the fridge got roased yeasterday and
-                those who was not happy about it claimed it was not fair at all
-                as the chicken was just chiling in the fridge without harming
-                anyone
-              </p>
-            </div>
-          </div>
-          <div class="blog__card">
-            <div class="blog__img-box">
-              <img
-                src="./assets/images/pexels-nikhil-soni-159587696-16114809.png"
-                alt=""
-              />
-            </div>
-            <h3 class="blog__catagory">Tech</h3>
-            <div class="blog__title-sec">
-              <h3 class="heading-tertiary">Fiver optics to the scape</h3>
-
-              <p class="lable-txt">
-                The chicken who was in the fridge got roased yeasterday and
-                those who was not happy about it claimed it was not fair at all
-                as the chicken was just chiling in the fridge without harming
-                anyone
-              </p>
-            </div>
+          <div class="blog__cards scroll-container" id="cardContainer">
+            <!-- cards go here -->
           </div>
         </div>
       </section>
@@ -744,5 +678,6 @@
     <script src="./js/scroll-cards.js"></script>
     <script src="./js/hide-on-scroll.js"></script>
     <script src="./js/count-animation.js"></script>
+    <script src="./js/blogs.js"></script>
   </body>
 </html>

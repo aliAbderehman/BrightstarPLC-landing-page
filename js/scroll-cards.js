@@ -1,72 +1,67 @@
-const container = document.getElementById("cardContainer");
-const scrollAmount = 300; // Adjust based on your card width
+// horizontalScroll.js
+document.addEventListener("DOMContentLoaded", () => {
+  // ...the same code as above
+});
 
-const cardWidth = container.querySelector(".blog__card").offsetWidth + 50; // includes gap
+// const container = document.querySelector(".blog__cards");
 
-function scrollNext() {
-  // container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  container.scrollBy({ left: cardWidth, behavior: "smooth" });
+// let isAtEnd = false;
+
+// container.addEventListener("mouseenter", () => {
+//   window.addEventListener("wheel", handleWheel, { passive: false });
+// });
+
+// container.addEventListener("mouseleave", () => {
+//   window.removeEventListener("wheel", handleWheel);
+// });
+
+// function handleWheel(e) {
+//   // Only handle vertical scrolling converted to horizontal
+//   if (e.deltaY === 0) return;
+
+//   const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+//   if (
+//     (container.scrollLeft === 0 && e.deltaY < 0) || // Already at start
+//     (container.scrollLeft >= maxScrollLeft && e.deltaY > 0) // Already at end
+//   ) {
+//     // Let it scroll normally outside
+//     return;
+//   }
+
+//   // Prevent default vertical scroll
+//   e.preventDefault();
+//   container.scrollLeft += e.deltaY * 3; // 2x faster
+// }
+
+function setupScroll() {
+  const container = document.getElementById("cardContainer");
+
+  // Wait until at least one card is available
+  const sampleCard = container.querySelector(".blog__card");
+
+  if (!sampleCard) {
+    console.warn("No cards found to calculate scroll width.");
+    return;
+  }
+
+  const gap = 32; // same as gap in CSS
+  const cardWidth = sampleCard.offsetWidth + gap; // Adjust spacing if needed
+
+  // Optional: Expose for external buttons (good for external use)
+  window.scrollNext = function () {
+    container.scrollBy({ left: cardWidth, behavior: "smooth" });
+  };
+
+  window.scrollPrev = function () {
+    container.scrollBy({ left: -cardWidth, behavior: "smooth" });
+  };
 }
 
-function scrollPrev() {
-  // container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  container.scrollBy({ left: -cardWidth, behavior: "smooth" });
-}
-
-// /////////////////
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-container.addEventListener("mousedown", (e) => {
-  isDown = true;
-  container.classList.add("active");
-  startX = e.pageX - container.offsetLeft;
-  scrollLeft = container.scrollLeft;
+document.getElementById("scrollLeftBtn").addEventListener("click", () => {
+  if (window.scrollPrev) scrollPrev();
 });
 
-container.addEventListener("mouseleave", () => {
-  isDown = false;
-  container.classList.remove("active");
+document.getElementById("scrollRightBtn").addEventListener("click", () => {
+  if (window.scrollNext) scrollNext();
 });
-
-container.addEventListener("mouseup", () => {
-  isDown = false;
-  container.classList.remove("active");
-});
-
-container.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startX) * 1.5; // scroll-fast multiplier
-  container.scrollLeft = scrollLeft - walk;
-});
-
-// const container = document.querySelector('.cards-container');
-
-container.addEventListener(
-  "wheel",
-  (e) => {
-    const isHovering = container.matches(":hover");
-    const hasHorizontalScroll = container.scrollWidth > container.clientWidth;
-    const isVerticalScroll = Math.abs(e.deltaY) > Math.abs(e.deltaX);
-
-    const tolerance = 5;
-    const atEnd =
-      container.scrollLeft + container.clientWidth >=
-      container.scrollWidth - tolerance;
-    const atStart = container.scrollLeft <= tolerance;
-
-    const scrollSpeed = 2.5;
-
-    if (isHovering && hasHorizontalScroll && isVerticalScroll) {
-      if (!(atEnd && e.deltaY > 0) && !(atStart && e.deltaY < 0)) {
-        e.preventDefault();
-        container.scrollLeft += e.deltaY * scrollSpeed;
-      }
-    }
-  },
-  { passive: false }
-);

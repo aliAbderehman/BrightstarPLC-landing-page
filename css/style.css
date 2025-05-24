@@ -367,7 +367,7 @@ body {
   padding: 3rem 2rem;
   display: flex;
   flex: 2;
-  gap: 1rem;
+  gap: 3.2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -378,13 +378,21 @@ body {
 .blog__card {
   flex: 0 0 auto;
   width: 38rem;
+  height: 50rem;
   border-radius: 8px;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 }
-.blog__card:not(:last-child) {
-  margin-right: 3.2rem;
+.blog__card .lable-txt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines you want */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blog__card-link {
+  text-decoration: none;
 }
 .blog__img-box {
   position: relative;

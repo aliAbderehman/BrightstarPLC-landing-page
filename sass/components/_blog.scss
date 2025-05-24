@@ -29,7 +29,7 @@
 
     display: flex;
     flex: 2;
-    gap: 1rem;
+    gap: $space-content;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -42,14 +42,27 @@
   &__card {
     flex: 0 0 auto;
     width: 38rem;
+    height: 50rem;
     border-radius: 8px;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.3);
 
-    &:not(:last-child) {
-      margin-right: $space-content;
+    // &:not(:last-child) {
+    //   margin-right: $space-content;
+    // }
+
+    .lable-txt {
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines you want */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+  }
+
+  &__card-link {
+    text-decoration: none;
   }
 
   &__img-box {
