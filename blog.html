@@ -1,164 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brightstar PLC</title>
+    <title>Brightstar Blog</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      .blog-post {
+        margin-bottom: 40px;
+      }
+      .blog-post img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+      }
     </style>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar u-margin-top-small" id="navbar">
-        <div class="navbar__logo">
-          <img src="./assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
-        </div>
-        <ul class="header__nav-list">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blogs</a></li>
-        </ul>
+    <h1>Our Blog</h1>
+    <div id="blog-list"></div>
 
-        <a href="#" class="btn btn--secondary">contact us</a>
-      </nav>
-    </header>
-
-    <main>
-      <section
-        class=""
-        id="blogPostContainer"
-        style="height: 100vh; background-color: yellow"
-      ></section>
-    </main>
-
-    <!-- <footer class="footer">
-      <div class="footer__container container">
-        <div class="footer__top">
-          <div class="footer__txt-box">
-            <div class="logo">
-              <img
-                src="./assets/logo/Group 405.svg"
-                alt="brightstar"
-                class="log-img"
-              />
-            </div>
-            <p class="footer__sub-txt lable-txt text--white">
-              Importing & distributing electronics, office equipment, and IT
-              infrastructure across Ethiopia.
-            </p>
-            <p class="footer__sub-txt lable-txt text--white">
-              Addis Ababa, Ethiopia
-            </p>
-          </div>
-          <div class="footer__socials">
-            <a href="#" class="social-icon">FB</a>
-            <a href="#" class="social-icon">TW</a>
-            <a href="#" class="social-icon">IG</a>
-          </div>
-        </div>
-        <div class="separator u-margin-top-medium"></div>
-
-        <div class="footer__midle">
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">
-                <a class="text--white" href="#">Home</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">About Us</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Services</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Testimonials</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Services</h2>
-            <ul class="lists">
-              <li class="list-item">Electronics Import</li>
-              <li class="list-item">Office Equipment</li>
-              <li class="list-item">Surveillance Installation</li>
-              <li class="list-item">Data Center Setup</li>
-              <li class="list-item">Tech Support</li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">Home</li>
-              <li class="list-item">About Us</li>
-              <li class="list-item">Services</li>
-              <li class="list-item">Testimonials</li>
-              <li class="list-item">Contact Us</li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Contact</h2>
-            <ul class="lists">
-              <li class="list-item">Phone: +1 234 567 89</li>
-              <li class="list-item">Email: info@brightstar.com</li>
-              <li class="list-item">
-                Address: 123 Care Lane, Health City, HC 56789s
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">Home</li>
-              <li class="list-item">About Us</li>
-              <li class="list-item">Services</li>
-              <li class="list-item">Testimonials</li>
-              <li class="list-item">Contact Us</li>
-            </ul>
-          </div>
-        </div>
-        <div class="separator u-margin-top-medium"></div>
-        <div class="footer__bottom">
-          <p class="lable-txt">© 2025 Brightstar. All rights reserved.</p>
-          <p class="lable-txt u-margin-bottom-small">
-            <a class="" href="#">Privacy Policy</a> |
-            <a class="" href="#">Terms of Service</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="footer__decor-1">
-        <!-- <img src="./assets/materials/Path 2.svg" alt="" /> -->
-    <!-- </div>
-    </footer> -->
-    -->
-
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-    <script src="./js/horizontal-scroll.js"></script>
-    <script src="./js/hero-animation.js"></script>
-    <script src="./js/scroll-cards.js"></script>
-    <script src="./js/hide-on-scroll.js"></script>
-    <script src="./js/count-animation.js"></script>
-    <script src="./js/blogs.js"></script>
-    <script src="./js/blog-detail.js"></script>
+    <script>
+      fetch("http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?_embed")
+        .then((res) => res.json())
+        .then((posts) => {
+          const blogList = document.getElementById("blog-list");
+          posts.forEach((post) => {
+            const image =
+              post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
+            const postEl = document.createElement("div");
+            postEl.className = "blog-post";
+            postEl.innerHTML = `
+            <a href="blog-detail.html?slug=${post.slug}">
+              ${
+                image
+                  ? `<img src="${image}" alt="${post.title.rendered}"/>`
+                  : ""
+              }
+              <h2>${post.title.rendered}</h2>
+              <div>${post.excerpt.rendered}</div>
+            </a>
+          `;
+            blogList.appendChild(postEl);
+          });
+        });
+    </script>
   </body>
 </html>

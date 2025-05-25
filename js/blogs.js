@@ -54,14 +54,14 @@ function renderCards(posts) {
     const category = post._embedded["wp:term"][0]?.[0]?.name || "General";
     const image =
       post._embedded["wp:featuredmedia"]?.[0]?.source_url ||
-      "./assets/images/placeholder.jpg"; // fallback
+      "./assets/images/placeholder.png"; // fallback
     const link = post.link; // full post URL from WordPress
 
     const card = document.createElement("div");
     card.classList.add("blog__card");
 
     card.innerHTML = `
-  <a href="blog.html?slug=${post.slug}" class="blog__card-link">
+  <a href="blog-detail.html?slug=${post.slug}" class="blog__card-link">
     <div class="blog__img-box">
       <img src="${image}" alt="${title}" />
     </div>

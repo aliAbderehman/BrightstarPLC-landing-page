@@ -1,0 +1,227 @@
+const params = new URLSearchParams(window.location.search);
+const slug = params.get("slug");
+const container = document.getElementById("blogPostContainer");
+
+if (!slug) {
+  container.innerHTML = "<h1>Post not found.</h1>";
+  throw new Error("No slug provided.");
+}
+
+fetch(
+  `http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`
+)
+  .then((res) => res.json())
+  .then((data) => {
+    const post = data[0];
+    const postId = post.id;
+
+    // Function to refresh comments
+    const refreshComments = () => {
+      fetch(
+        `http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
+      )
+        .then((res) => res.json())
+        .then((comments) => {
+          // Remove existing comments section
+          const existingComments = document.querySelector(".comments");
+          if (existingComments) existingComments.remove();
+
+          // Create new comments HTML
+          const renderComments = (comments, parentId = 0) => {
+            return comments
+              .filter((c) => c.parent === parentId)
+              .map((comment) => {
+                const childComments = renderComments(comments, comment.id);
+                const hasReplies = comments.some(
+                  (c) => c.parent === comment.id
+                );
+
+                return `
+        <div class="comment" data-id="${comment.id}" style="margin-left: ${
+                  parentId ? "30px" : "0"
+                }">
+          <h4>${comment.author_name}</h4>
+          <p>${comment.content.rendered}</p>
+          <button class="reply-btn" data-parent="${comment.id}">Reply</button>
+          ${
+            hasReplies
+              ? `<button class="toggle-replies-btn" data-id="${comment.id}">Show Replies</button>`
+              : ""
+          }
+          <div class="reply-form-container" data-parent="${comment.id}"></div>
+          <div class="replies" data-replies-for="${
+            comment.id
+          }" style="display: none;">
+            ${childComments}
+          </div>
+        </div>
+      `;
+              })
+              .join("");
+          };
+
+          // Insert new comments section
+          container.insertAdjacentHTML(
+            "beforeend",
+            `
+  <section class="comments">
+    <h2>Comments</h2>
+    ${renderComments(comments) || "<p>No comments yet.</p>"}
+  </section>
+`
+          );
+        });
+    };
+
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("reply-btn")) {
+        const parentId = e.target.dataset.parent;
+        const container = document.querySelector(
+          `.reply-form-container[data-parent="${parentId}"]`
+        );
+
+        // Avoid multiple reply forms
+        if (container.innerHTML.trim() !== "") return;
+
+        container.innerHTML = `
+      <div class="reply">
+        <form class="reply-form form">
+          <div class="form__group">
+          <input type="text" id="c-name" placeholder="Your Name" required class="reply-name form__input">
+          <label for="name" class="form__lable">Full Name</label>
+          </div>
+          <div class="form__group">
+          <input type="email" id="c-email" placeholder="Your Email" required class="reply-email form__input">
+          <label for="c-email" class="form__lable">Full Name</label>
+          </div>
+          <div class="form__group">
+          <textarea placeholder="Your Reply" id="c-message" required class="reply-content form__input"></textarea>
+          <label for="c-message" class="form__lable">Message</label>
+          </div>
+          <button class="btn btn--secondary" type="submit">Submit Reply</button>
+          <div class="reply-message"></div>
+        </form>
+      </div>
+    `;
+
+        container
+          .querySelector(".reply-form")
+          .addEventListener("submit", async (ev) => {
+            ev.preventDefault();
+
+            const author_name = container.querySelector(".reply-name").value;
+            const author_email = container.querySelector(".reply-email").value;
+            const content = container.querySelector(".reply-content").value;
+
+            try {
+              const res = await fetch(
+                "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    post: postId,
+                    author_name,
+                    author_email,
+                    content,
+                    parent: parseInt(parentId),
+                  }),
+                }
+              );
+
+              if (!res.ok) throw new Error("Reply failed");
+
+              refreshComments();
+            } catch (err) {
+              console.error(err);
+              container.querySelector(".reply-message").textContent =
+                "Error submitting reply";
+            }
+          });
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("toggle-replies-btn")) {
+        const id = e.target.dataset.id;
+        const repliesContainer = document.querySelector(
+          `.replies[data-replies-for="${id}"]`
+        );
+
+        const isVisible = repliesContainer.style.display === "block";
+        repliesContainer.style.display = isVisible ? "none" : "block";
+        e.target.textContent = isVisible ? "Show Replies" : "Hide Replies";
+      }
+    });
+
+    // Initial render
+    container.innerHTML = `
+      <article class="blog__detail">
+        <h1 class="blog__detail-title">${post.title.rendered}</h1>
+        <div class="blog__detail-img">
+          <img src="${
+            post._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
+          }" alt="${post.title.rendered}">
+        </div>
+        <div class="blog__detail-content">${post.content.rendered}</div>
+      </article>
+
+      <section class="comment-form">
+        <h3>Leave a Comment</h3>
+        <form id="commentForm">
+          <input class="form__input" type="text" id="name" placeholder="Your Name" required>
+          <input class="form__input" type="email" id="email" placeholder="Your Email" required>
+          <textarea id="comment" placeholder="Your Comment" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="commentMessage"></div>
+      </section>
+    `;
+
+    // Add comment form handler
+    document
+      .getElementById("commentForm")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const author_name = document.getElementById("name").value;
+        const author_email = document.getElementById("email").value;
+        const content = document.getElementById("comment").value;
+
+        try {
+          const res = await fetch(
+            "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                post: postId,
+                author_name,
+                author_email,
+                content,
+              }),
+            }
+          );
+
+          if (!res.ok) throw new Error("Failed to submit comment");
+
+          // Refresh comments after successful submission
+          refreshComments();
+
+          document.getElementById("commentMessage").textContent =
+            "Comment submitted!";
+          document.getElementById("commentForm").reset();
+        } catch (err) {
+          console.error(err);
+          document.getElementById("commentMessage").textContent =
+            "Error submitting comment";
+        }
+      });
+
+    // Load initial comments
+    refreshComments();
+  })
+  .catch((err) => {
+    console.error(err);
+    container.innerHTML = "<h1>Error loading post.</h1>";
+  });

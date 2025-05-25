@@ -109,3 +109,55 @@
 
 .blog__nav {
 }
+
+.comment {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  position: relative;
+}
+
+// .replies {
+//   margin-left: 30px;
+//   border-left: 2px solid #ddd;
+//   padding-left: 20px;
+// }
+
+.reply-btn {
+  background: none;
+  border: none;
+  color: #0066cc;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+// .reply-form {
+//   margin: 15px 0;
+//   padding: 15px;
+//   background: #f8f9fa;
+//   border-radius: 8px;
+// }
+
+.comment {
+  border-left: 2px solid #ddd;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.reply-btn,
+.toggle-replies-btn {
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.replies {
+  margin-top: 10px;
+}
+
+.reply {
+  width: 50%;
+}

@@ -18,15 +18,19 @@
 @import "./components/hero-decor";
 @import "./components/highlights";
 @import "./components/navbar";
+@import "./components/popup";
 @import "./components/profile";
+@import "./components/reply";
 @import "./components/scroll";
 @import "./components/separator";
 @import "./components/showcase";
 @import "./components/stats";
+@import "./components/subscribe";
 @import "./components/visual";
 
 @import "./layout/hero";
 
+@import "./pages/blog-detail";
 @import "./pages/home";
 
 @import "animate.css";

@@ -1,0 +1,58 @@
+.subscribe {
+  background-color: $color-grey-light;
+  //   padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  //   width: 130%;
+
+  .form__group {
+    background-color: transparent;
+    margin: 0;
+    height: 100%;
+  }
+
+  .form__lable {
+    color: $color-white;
+  }
+
+  &__input {
+    flex: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 10px;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:-webkit-autofill {
+      box-shadow: none !important; /* your desired background */
+      -webkit-text-fill-color: white !important; /* your text color */
+      transition: background-color 5000s ease-in-out 0s; /* prevent quick override */
+    }
+  }
+
+  &__btn {
+    display: inline-flex; /* or flex */
+    align-items: center; /* vertical centering */
+    justify-content: center;
+    line-height: 1;
+    height: 2rem;
+    width: 2rem;
+    font-size: 2.8rem;
+    border-radius: 50%;
+
+    padding: 2.6rem;
+    color: $color-white;
+    background-color: #0073a5;
+    box-shadow: 0.5rem 0rem 1rem rgba($color: $color-black, $alpha: 0.2);
+    // width: 90%;
+  }
+}

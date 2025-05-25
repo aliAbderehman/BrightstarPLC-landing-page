@@ -40,6 +40,11 @@
     display: flex;
     flex-direction: column;
     gap: $space-between;
+
+    &:last-child {
+      // min-width: 32rem;
+      flex-grow: 1;
+    }
   }
 
   .lists {

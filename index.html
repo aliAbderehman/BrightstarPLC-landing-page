@@ -28,7 +28,7 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">About Us</a></li>
-          <li><a href="#">Blogs</a></li>
+          <li><a href="./blog.html">Blogs</a></li>
         </ul>
 
         <a href="#" class="btn btn--secondary">contact us</a>
@@ -456,7 +456,7 @@
               Let's Get In Touch.
             </h2>
 
-            <form action="#" class="form">
+            <form class="form">
               <div class="form__group">
                 <input
                   type="text"
@@ -491,7 +491,11 @@
                 <label for="message" class="form__lable">Message</label>
               </div>
               <div class="form__group">
-                <button type="submit" class="btn btn--secondary" type="button">
+                <button
+                  type="submit"
+                  class="btn btn--secondary"
+                  id="submit-btn"
+                >
                   Send Message
                 </button>
               </div>
@@ -625,17 +629,6 @@
           </div>
 
           <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">Home</li>
-              <li class="list-item">About Us</li>
-              <li class="list-item">Services</li>
-              <li class="list-item">Testimonials</li>
-              <li class="list-item">Contact Us</li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
             <h2 class="heading-tertiary text--white">Contact</h2>
             <ul class="lists">
               <li class="list-item">Phone: +1 234 567 89</li>
@@ -647,14 +640,25 @@
           </div>
 
           <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">Home</li>
-              <li class="list-item">About Us</li>
-              <li class="list-item">Services</li>
-              <li class="list-item">Testimonials</li>
-              <li class="list-item">Contact Us</li>
-            </ul>
+            <h2 class="heading-tertiary text--white">
+              Subscribe to our news letter
+            </h2>
+            <form id="subscribe-form" class="subscribe">
+              <div class="form__group">
+                <input
+                  type="email"
+                  id="subscriber-email"
+                  placeholder="Enter your email"
+                  required
+                  class="subscribe__input form__input"
+                />
+                <label for="subscriber-email" class="form__lable"
+                  >Enter your email</label
+                >
+              </div>
+              <button type="submit" class="btn subscribe__btn">&rarr;</button>
+            </form>
+            <p id="success-message"></p>
           </div>
         </div>
         <div class="separator u-margin-top-medium"></div>
@@ -672,6 +676,13 @@
       </div>
     </footer>
 
+    <div id="popup" class="popup hidden">
+      <div class="popup__content">
+        <p id="popup-message" class="text--default"></p>
+        <button onclick="closePopup()" class="btn btn--secondary">Close</button>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script src="./js/horizontal-scroll.js"></script>
     <script src="./js/hero-animation.js"></script>
@@ -679,5 +690,7 @@
     <script src="./js/hide-on-scroll.js"></script>
     <script src="./js/count-animation.js"></script>
     <script src="./js/blogs.js"></script>
+    <script src="./js/subscriber-email.js"></script>
+    <script src="./js/contact-form.js"></script>
   </body>
 </html>

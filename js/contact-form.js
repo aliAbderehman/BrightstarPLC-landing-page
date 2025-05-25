@@ -1,0 +1,99 @@
+// function showPopup(message) {
+//   document.getElementById("popup-message").textContent = message;
+//   document.getElementById("popup").classList.remove("hidden");
+
+//   setTimeout(closePopup, 4000); // closes after 4 seconds
+// }
+
+// function closePopup() {
+//   document.getElementById("popup").classList.add("hidden");
+// }
+
+// document.querySelector(".form").addEventListener("submit", function (e) {
+//   e.preventDefault();
+
+//   const name = document.getElementById("name").value.trim();
+//   const email = document.getElementById("email").value.trim();
+//   const message = document.getElementById("message").value.trim();
+
+//   if (!name || !email || !message) {
+//     showPopup("Please fill all fields.");
+//     return;
+//   }
+
+//   fetch("http://localhost:8080/brightstar-cms/wp-json/custom/v1/contact", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ name, email, message }),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       if (data.success) {
+//         showPopup("Message sent successfully!");
+//         e.target.reset();
+//       } else {
+//         showPopup(
+//           "Failed to send message: " + (data.message || "Unknown error")
+//         );
+//       }
+//     })
+//     .catch(() => showPopup("Something went wrong. Please try again later."));
+// });
+
+const form = document.querySelector(".form");
+const submitBtn = document.getElementById("submit-btn");
+
+function showPopup(message) {
+  document.getElementById("popup-message").textContent = message;
+  document.getElementById("popup").classList.remove("hidden");
+}
+
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
+}
+
+function setLoading(isLoading) {
+  if (isLoading) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending<span class="spinner"></span>';
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "Send Message";
+  }
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    showPopup("Please fill all fields.");
+    return;
+  }
+
+  setLoading(true); // Show loading state
+
+  fetch("http://localhost:8080/brightstar-cms/wp-json/custom/v1/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        showPopup("Message sent successfully!");
+        form.reset();
+      } else {
+        showPopup(
+          "Failed to send message: " + (data.message || "Unknown error")
+        );
+      }
+    })
+    .catch(() => showPopup("Something went wrong. Please try again later."))
+    .finally(() => {
+      setLoading(false); // Reset loading state
+    });
+});
