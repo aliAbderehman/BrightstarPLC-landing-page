@@ -8,8 +8,8 @@
 @import "./base/utilities";
 
 @import "./components/buttons";
-@import "./components/blog";
-@import "./components/blog-card";
+@import "./components/featured-blog";
+// @import "./components/blog-card";
 @import "./components/cards";
 @import "./components/contacts";
 @import "./components/flowchart-bullets";
@@ -30,6 +30,7 @@
 
 @import "./layout/hero";
 
+@import "./pages/blog";
 @import "./pages/blog-detail";
 @import "./pages/home";
 

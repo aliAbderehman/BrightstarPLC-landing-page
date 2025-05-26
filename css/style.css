@@ -59,6 +59,14 @@ body {
   color: #333;
 }
 
+.heading-quaternary {
+  font-family: "poppins", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #333;
+}
+
 .heading-subtitle-1 {
   font-size: 2rem;
   margin-top: 1rem;
@@ -1182,8 +1190,62 @@ body {
   background-image: url(../../assets/images/Mask\ Group\ 20.png);
 }
 
+.blog-post {
+  margin-bottom: 40px;
+}
+
+.blog-post img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
 .section-blog-detail {
   padding-block: 12rem;
+  position: relative;
+}
+
+.blog-detail__title {
+  z-index: 30;
+  color: #fff;
+  position: relative;
+}
+.blog-detail__img {
+  background-color: green;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  overflow: hidden;
+  border-radius: 0 0 0 58px;
+}
+.blog-detail__img::after {
+  content: "";
+  height: 100%;
+  z-index: 20;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  background-color: rgba(20, 56, 146, 0.6);
+}
+.blog-detail__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.blog-detail__content {
+  padding-top: 24rem;
+  width: 50%;
+}
+.blog-detail__content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .hero {

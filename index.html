@@ -17,6 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcDJ0orAAAAAMd25aHuBFAt99TYURh8jRSixCK7"></script>
   </head>
   <body>
     <header class="header">
@@ -28,7 +29,7 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">About Us</a></li>
-          <li><a href="./blog.html">Blogs</a></li>
+          <li><a href="./pages/blog.html">Blogs</a></li>
         </ul>
 
         <a href="#" class="btn btn--secondary">contact us</a>
@@ -656,8 +657,10 @@
                   >Enter your email</label
                 >
               </div>
+
               <button type="submit" class="btn subscribe__btn">&rarr;</button>
             </form>
+            <div id="subscribe-message"></div>
             <p id="success-message"></p>
           </div>
         </div>
@@ -689,8 +692,9 @@
     <script src="./js/scroll-cards.js"></script>
     <script src="./js/hide-on-scroll.js"></script>
     <script src="./js/count-animation.js"></script>
-    <script src="./js/blogs.js"></script>
+    <script src="./js/featured-blogs.js"></script>
     <script src="./js/subscriber-email.js"></script>
     <script src="./js/contact-form.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>

@@ -43,9 +43,11 @@ fetch(
                   <div class="comment" data-id="${
                     comment.id
                   }" style="margin-left: ${parentId ? "30px" : "0"}">
-                    <h4>${comment.author_name}</h4>
-                    <p>${comment.content.rendered}</p>
-                    <button class="reply-btn" data-parent="${
+                    <h4 class="heading-quaternary">${comment.author_name}</h4>
+                    <div class="text--default">
+                      <p class="text--default">${comment.content.rendered}</p>
+                    </div>
+                    <button class="reply-btn lable-txt" data-parent="${
                       comment.id
                     }">Reply</button>
 
@@ -71,8 +73,8 @@ fetch(
             commentForm.insertAdjacentHTML(
               "beforebegin",
               `
-          <section class="comments">
-            <h2>Comments</h2>
+          <section class="comments container u-margin-top-large">
+            <h2 class="heading-tertiary">Comments</h2>
             ${renderComments(comments) || "<p>No comments yet.</p>"}
           </section>
         `
@@ -82,8 +84,8 @@ fetch(
             container.insertAdjacentHTML(
               "beforeend",
               `
-          <section class="comments">
-            <h2>Comments</h2>
+          <section class="comments container u-margin-top-large">
+            <h2 class="heading-tertiary">Comments</h2>
             ${renderComments(comments) || "<p>No comments yet.</p>"}
           </section>
         `
@@ -91,63 +93,6 @@ fetch(
           }
         });
     };
-
-    // const refreshComments = () => {
-    //   fetch(
-    //     `http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
-    //   )
-    //     .then((res) => res.json())
-    //     .then((comments) => {
-    //       // Remove existing comments section
-    //       const existingComments = document.querySelector(".comments");
-    //       if (existingComments) existingComments.remove();
-
-    //       // Create new comments HTML
-    //       const renderComments = (comments, parentId = 0) => {
-    //         return comments
-    //           .filter((c) => c.parent === parentId)
-    //           .map((comment) => {
-    //             const childComments = renderComments(comments, comment.id);
-    //             const hasReplies = comments.some(
-    //               (c) => c.parent === comment.id
-    //             );
-
-    //             return `
-    //               <div class="comment" data-id="${
-    //                 comment.id
-    //               }" style="margin-left: ${parentId ? "30px" : "0"}">
-    //                 <h4>${comment.author_name}</h4>
-    //                 <p>${comment.content.rendered}</p>
-    //                 <button class="reply-btn" data-parent="${
-    //                   comment.id
-    //                 }">Reply</button>
-
-    //                 <div class="reply-form-container" data-parent="${
-    //                   comment.id
-    //                 }"></div>
-    //                 <div class="replies" data-replies-for="${
-    //                   comment.id
-    //                 }" style="display: none;">
-    //                   ${childComments}
-    //                 </div>
-    //               </div>
-    //             `;
-    //           })
-    //           .join("");
-    //       };
-
-    //       // Insert new comments section
-    //       container.insertAdjacentHTML(
-    //         "beforeend",
-    //         `
-    //           <section class="comments">
-    //             <h2>Comments</h2>
-    //             ${renderComments(comments) || "<p>No comments yet.</p>"}
-    //           </section>
-    //         `
-    //       );
-    //     });
-    // };
 
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
@@ -175,25 +120,33 @@ fetch(
           // Show form if not already present
           if (formContainer.innerHTML.trim() === "") {
             formContainer.innerHTML = `
-          <div class="reply">
-            <form class="reply-form form">
-              <div class="form__group">
-                <input type="text" placeholder="Your Name" required class="reply-name form__input">
-                <label class="form__label">Full Name</label>
-              </div>
-              <div class="form__group">
-                <input type="email" placeholder="Your Email" required class="reply-email form__input">
-                <label class="form__label">Email</label>
-              </div>
-              <div class="form__group">
-                <textarea placeholder="Your Reply" required class="reply-content form__input"></textarea>
-                <label class="form__label">Message</label>
-              </div>
-              <button class="btn btn--secondary" type="submit">Post Reply</button>
-              <div class="reply-message"></div>
-            </form>
+                <div class="reply">
+                  <form class="reply-form form">
+
+                  <div class="form__group">
+            <textarea class="form__input" id="reply" rows="6" placeholder="Your Reply" required></textarea>
+            <label for="reply" class="form__lable">Your Reply</label>
           </div>
-        `;
+
+                    
+
+                    <div class="form__group">
+                      <input type="text" id="rep-name" placeholder="Your Name" required class="reply-name form__input">
+                      <label class="form__label" for="rep-name">Full Name</label>
+                    </div>
+
+                    <div class="form__group">
+                      <input type="email" placeholder="Your Email" required class="reply-email form__input">
+                      <label class="form__label">Email</label>
+                    </div>
+
+                    
+
+                    <button class="btn btn--secondary" type="submit">Post Reply</button>
+                    <div class="reply-message"></div>
+                  </form>
+                </div>
+              `;
 
             formContainer
               .querySelector(".reply-form")
@@ -242,22 +195,30 @@ fetch(
                     if (formContainer) {
                       formContainer.innerHTML = `
                         <div class="reply">
+
                           <form class="reply-form form">
+
+                          <div class="form__group">
+            <textarea class="form__input" id="reply" rows="6" placeholder="Your Reply" required></textarea>
+            <label for="reply" class="form__lable">Your Reply</label>
+          </div>
+
                             <div class="form__group">
-                              <input type="text" placeholder="Your Name" required class="reply-name form__input">
-                              <label class="form__label">Full Name</label>
+                              <input type="text" id="rep-name" placeholder="Your Name" required class="reply-name form__input">
+                              <label class="form__label" for="rep-name">Full Name</label>
                             </div>
+
                             <div class="form__group">
                               <input type="email" placeholder="Your Email" required class="reply-email form__input">
                               <label class="form__label">Email</label>
                             </div>
-                            <div class="form__group">
-                              <textarea placeholder="Your Reply" required class="reply-content form__input"></textarea>
-                              <label class="form__label">Message</label>
-                            </div>
+
+                            
+
                             <button class="btn btn--secondary" type="submit">Post Reply</button>
                             <div class="reply-message"></div>
                           </form>
+
                         </div>
                       `;
                     }
@@ -275,32 +236,37 @@ fetch(
 
     // Initial render
     container.innerHTML = `
-      <article class="blog__detail">
-        <h1 class="blog__detail-title">${post.title.rendered}</h1>
-        <div class="blog__detail-img">
+      <article class="blog-detail__article container u-margin-top-large">
+        <h1 class="blog-detail__title heading-secondary">${
+          post.title.rendered
+        }</h1>
+        <div class="blog-detail__img">
           <img src="${
             post._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
           }" alt="${post.title.rendered}">
         </div>
-        <div class="blog__detail-content">${post.content.rendered}</div>
+        <div class="blog-detail__content text--default">${
+          post.content.rendered
+        }</div>
       </article>
 
-      <section class="comment-form">
-        <h3>Leave a Comment</h3>
+      <section class="comment-form container u-margin-top-large">
+        <h3 class="heading-tertiary">Leave a Comment</h3>
         <form id="commentForm">
 
+        <div class="form__group">
+            <textarea class="form__input" id="comment" rows="8" placeholder="Your Comment" required></textarea>
+            <label for="comment" class="form__lable">Your Comment</label>
+          </div>
+
           <input class="form__input" type="text" id="com-name" placeholder="Your Name" required>
-          <label for="com-name" class="form__lable">Full Name</label>
+          <label for="com-name" class="form__lable">Your Name</label>
 
           <div class="form__group">
             <input class="form__input" type="email" id="com-email" placeholder="Your Email" required>
-            <label for="com-email" class="form__lable">Full Name</label>
+            <label for="com-email" class="form__lable">Your Email</label>
           </div>
 
-          <div class="form__group">
-            <textarea class="form__input" id="comment" rows="5" placeholder="Your Comment" required></textarea>
-            <label for="commen" class="form__lable">Full Name</label>
-          </div>
 
           <button class="btn btn--secondary" type="submit">Post Comment</button>
 

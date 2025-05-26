@@ -74,26 +74,45 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  setLoading(true); // Show loading state
+  setLoading(true); // show loading spinner and disable button
 
-  fetch("http://localhost:8080/brightstar-cms/wp-json/custom/v1/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, message }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        showPopup("Message sent successfully!");
-        form.reset();
-      } else {
-        showPopup(
-          "Failed to send message: " + (data.message || "Unknown error")
-        );
-      }
-    })
-    .catch(() => showPopup("Something went wrong. Please try again later."))
-    .finally(() => {
-      setLoading(false); // Reset loading state
-    });
+  grecaptcha.ready(function () {
+    grecaptcha
+      .execute("6LcDJ0orAAAAAMd25aHuBFAt99TYURh8jRSixCK7", {
+        action: "contact",
+      })
+      .then(function (token) {
+        // Now send the form data including the token to your backend:
+        fetch(
+          "http://localhost:8080/brightstar-cms/wp-json/custom/v1/contact",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              email,
+              message,
+              recaptcha: token, // send token to backend for verification
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              showPopup("Message sent successfully!");
+              form.reset();
+            } else {
+              showPopup(
+                "Failed to send message: " + (data.message || "Unknown error")
+              );
+            }
+          })
+          .catch(() =>
+            showPopup("Something went wrong. Please try again later.")
+          )
+          .finally(() => {
+            setLoading(false); // reset loading spinner & button state
+          });
+      });
+  });
 });
