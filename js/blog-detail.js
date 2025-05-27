@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");
 const container = document.getElementById("blogPostContainer");
+const blogImg = document.getElementById("blogPostImg");
 
 if (!slug) {
   container.innerHTML = "<h1>Post not found.</h1>";
@@ -20,76 +21,149 @@ fetch(
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
 
-    const refreshComments = () => {
+    function generateReplyForm(parentId) {
+      return `
+    <div class="reply">
+      <form class="reply-form form">
+
+        <div class="form__group">
+          <textarea class="form__input reply-content" rows="6" placeholder="Your Reply" required></textarea>
+          <label class="form__label">Your Reply</label>
+        </div>
+
+        <div class="form__group">
+          <input type="text" placeholder="Your Name" required class="reply-name form__input">
+          <label class="form__label">Full Name</label>
+        </div>
+
+        <div class="form__group">
+          <input type="email" placeholder="Your Email" required class="reply-email form__input">
+          <label class="form__label">Email</label>
+        </div>
+
+        <button class="btn btn--secondary" type="submit">Post Reply</button>
+        <div class="reply-message"></div>
+      </form>
+    </div>
+  `;
+    }
+
+    const refreshComments = (openReplyId = null) => {
       fetch(
         `http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
       )
         .then((res) => res.json())
         .then((comments) => {
           const existingComments = document.querySelector(".comments");
+
           if (existingComments) existingComments.remove();
 
-          // Create new comments HTML
           const renderComments = (comments, parentId = 0) => {
             return comments
               .filter((c) => c.parent === parentId)
               .map((comment) => {
                 const childComments = renderComments(comments, comment.id);
-                const hasReplies = comments.some(
-                  (c) => c.parent === comment.id
-                );
+                const avatarUrl = comment.author_avatar_urls["48"];
+
+                // Make the replies visible if this was the last open one
+                const showReplies = openReplyId == comment.id;
 
                 return `
-                  <div class="comment" data-id="${
-                    comment.id
-                  }" style="margin-left: ${parentId ? "30px" : "0"}">
-                    <h4 class="heading-quaternary">${comment.author_name}</h4>
-                    <div class="text--default">
-                      <p class="text--default">${comment.content.rendered}</p>
-                    </div>
-                    <button class="reply-btn lable-txt" data-parent="${
-                      comment.id
-                    }">Reply</button>
+  <div class="comment" data-id="${comment.id}" style="margin-left: ${
+                  parentId ? "30px" : "0"
+                }">
+    <div class="comment-header" style="display: flex; align-items: center; gap: 10px;">
+      <img src="${avatarUrl}" alt="${
+                  comment.author_name
+                }" style="width: 48px; height: 48px; border-radius: 50%;" />
+      <h4 class="heading-quaternary">${comment.author_name}</h4>
+    </div>
+    <div class="text--default">
+      <p>${comment.content.rendered}</p>
+    </div>
+    <button class="reply-btn lable-txt" data-parent="${
+      comment.id
+    }">Reply</button>
 
-                    <div class="reply-form-container" data-parent="${
-                      comment.id
-                    }"></div>
-                    <div class="replies" data-replies-for="${
-                      comment.id
-                    }" style="display: none;">
-                      ${childComments}
-                    </div>
-                  </div>
-                `;
+    <div class="replies" data-replies-for="${
+      comment.id
+    }" style="display: none;">
+      ${childComments}
+    </div>
+
+    <div class="reply-form-container" data-parent="${comment.id}"></div>
+  </div>
+`;
               })
               .join("");
           };
 
-          // Get reference to the comment form
           const commentForm = container.querySelector(".comment-form");
 
-          // Insert comments section before the comment form
+          const commentSectionHTML = `
+        <section class="comments u-margin-top-small">
+          <h2 class="heading-tertiary">Comments</h2>
+          ${renderComments(comments) || "<p>No comments yet.</p>"}
+        </section>
+      `;
+
           if (commentForm) {
-            commentForm.insertAdjacentHTML(
-              "beforebegin",
-              `
-          <section class="comments container u-margin-top-large">
-            <h2 class="heading-tertiary">Comments</h2>
-            ${renderComments(comments) || "<p>No comments yet.</p>"}
-          </section>
-        `
-            );
+            commentForm.insertAdjacentHTML("beforebegin", commentSectionHTML);
           } else {
-            // Fallback if comment form isn't found
-            container.insertAdjacentHTML(
-              "beforeend",
-              `
-          <section class="comments container u-margin-top-large">
-            <h2 class="heading-tertiary">Comments</h2>
-            ${renderComments(comments) || "<p>No comments yet.</p>"}
-          </section>
-        `
+            container.insertAdjacentHTML("beforeend", commentSectionHTML);
+          }
+
+          // Automatically open the reply section if openReplyId is provided
+          if (openReplyId) {
+            const repliesContainer = document.querySelector(
+              `.replies[data-replies-for="${openReplyId}"]`
             );
+            const formContainer = document.querySelector(
+              `.reply-form-container[data-parent="${openReplyId}"]`
+            );
+
+            if (repliesContainer) repliesContainer.style.display = "block";
+            if (formContainer && formContainer.innerHTML.trim() === "") {
+              formContainer.innerHTML = generateReplyForm(openReplyId);
+
+              formContainer
+                .querySelector(".reply-form")
+                .addEventListener("submit", async (ev) => {
+                  ev.preventDefault();
+
+                  const author_name =
+                    formContainer.querySelector(".reply-name").value;
+                  const author_email =
+                    formContainer.querySelector(".reply-email").value;
+                  const content =
+                    formContainer.querySelector(".reply-content").value;
+
+                  try {
+                    const res = await fetch(
+                      "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+                      {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          post: postId,
+                          author_name,
+                          author_email,
+                          content,
+                          parent: parseInt(openReplyId),
+                        }),
+                      }
+                    );
+
+                    if (!res.ok) throw new Error("Reply failed");
+
+                    refreshComments(openReplyId); // Keep it open again
+                  } catch (err) {
+                    console.error(err);
+                    formContainer.querySelector(".reply-message").textContent =
+                      "Error submitting reply";
+                  }
+                });
+            }
           }
         });
     };
@@ -106,47 +180,15 @@ fetch(
         const formContainer = document.querySelector(
           `.reply-form-container[data-parent="${parentId}"]`
         );
-
         const isVisible = repliesContainer.style.display === "block";
 
         if (isVisible) {
-          // Hide replies and form
           repliesContainer.style.display = "none";
-          formContainer.innerHTML = ""; // remove form
+          formContainer.innerHTML = "";
         } else {
-          // Show replies
           repliesContainer.style.display = "block";
-
-          // Show form if not already present
           if (formContainer.innerHTML.trim() === "") {
-            formContainer.innerHTML = `
-                <div class="reply">
-                  <form class="reply-form form">
-
-                  <div class="form__group">
-            <textarea class="form__input" id="reply" rows="6" placeholder="Your Reply" required></textarea>
-            <label for="reply" class="form__lable">Your Reply</label>
-          </div>
-
-                    
-
-                    <div class="form__group">
-                      <input type="text" id="rep-name" placeholder="Your Name" required class="reply-name form__input">
-                      <label class="form__label" for="rep-name">Full Name</label>
-                    </div>
-
-                    <div class="form__group">
-                      <input type="email" placeholder="Your Email" required class="reply-email form__input">
-                      <label class="form__label">Email</label>
-                    </div>
-
-                    
-
-                    <button class="btn btn--secondary" type="submit">Post Reply</button>
-                    <div class="reply-message"></div>
-                  </form>
-                </div>
-              `;
+            formContainer.innerHTML = generateReplyForm(parentId);
 
             formContainer
               .querySelector(".reply-form")
@@ -178,51 +220,7 @@ fetch(
 
                   if (!res.ok) throw new Error("Reply failed");
 
-                  await refreshComments();
-
-                  // Re-open the replies and form after refresh
-                  setTimeout(() => {
-                    const repliesContainer = document.querySelector(
-                      `.replies[data-replies-for="${parentId}"]`
-                    );
-                    const formContainer = document.querySelector(
-                      `.reply-form-container[data-parent="${parentId}"]`
-                    );
-
-                    if (repliesContainer)
-                      repliesContainer.style.display = "block";
-
-                    if (formContainer) {
-                      formContainer.innerHTML = `
-                        <div class="reply">
-
-                          <form class="reply-form form">
-
-                          <div class="form__group">
-            <textarea class="form__input" id="reply" rows="6" placeholder="Your Reply" required></textarea>
-            <label for="reply" class="form__lable">Your Reply</label>
-          </div>
-
-                            <div class="form__group">
-                              <input type="text" id="rep-name" placeholder="Your Name" required class="reply-name form__input">
-                              <label class="form__label" for="rep-name">Full Name</label>
-                            </div>
-
-                            <div class="form__group">
-                              <input type="email" placeholder="Your Email" required class="reply-email form__input">
-                              <label class="form__label">Email</label>
-                            </div>
-
-                            
-
-                            <button class="btn btn--secondary" type="submit">Post Reply</button>
-                            <div class="reply-message"></div>
-                          </form>
-
-                        </div>
-                      `;
-                    }
-                  }, 300); // slight delay to allow refreshComments() to finish
+                  refreshComments(parentId); // ✅ Keep it open
                 } catch (err) {
                   console.error(err);
                   formContainer.querySelector(".reply-message").textContent =
@@ -235,25 +233,30 @@ fetch(
     });
 
     // Initial render
-    container.innerHTML = `
-      <article class="blog-detail__article container u-margin-top-large">
-        <h1 class="blog-detail__title heading-secondary">${
-          post.title.rendered
-        }</h1>
-        <div class="blog-detail__img">
+
+    blogImg.innerHTML = `
+    <div class="blog-detail__img">
+    <h1 class="blog-detail__title heading-secondary container">${
+      post.title.rendered
+    }</h1>
           <img src="${
             post._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
           }" alt="${post.title.rendered}">
-        </div>
-        <div class="blog-detail__content text--default">${
-          post.content.rendered
-        }</div>
+
+          
+        </div>`;
+
+    container.innerHTML = `
+      <article class="blog-detail__article u-margin-top-large">
+        
+        
+        <div class="blog-detail__content text--default">${post.content.rendered}</div>
       </article>
 
-      <section class="comment-form container u-margin-top-large">
-        <h3 class="heading-tertiary">Leave a Comment</h3>
-        <form id="commentForm">
-
+      <section class="comment-form-box  u-margin-top-large">
+        
+        <form id="commentForm" class="comment-form u-margin-top-medium">
+<h3 class="heading-tertiary">Leave a Comment</h3>
         <div class="form__group">
             <textarea class="form__input" id="comment" rows="8" placeholder="Your Comment" required></textarea>
             <label for="comment" class="form__lable">Your Comment</label>

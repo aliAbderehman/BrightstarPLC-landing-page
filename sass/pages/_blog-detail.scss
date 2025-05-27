@@ -1,28 +1,65 @@
 .section-blog-detail {
-  padding-block: $space-section;
-  // background-color: green;
-  position: relative;
+  padding-bottom: $space-section;
+  display: grid;
+  grid-template-rows: auto auto;
+
+  .blog__cards {
+    grid-column: 2/3;
+    grid-row: 2/3;
+
+    flex-direction: column;
+  }
+
+  .blog-img {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* blog-detail is wider than cards */
+    gap: 2rem; /* space between the two columns */
+    align-items: start;
+    padding: 0 2rem;
+  }
 }
 
 .blog-detail {
+  // background-color: $secondary-color-dark;
+  display: flex;
+
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  flex-direction: column;
+  justify-content: start;
   &__article {
   }
 
   &__title {
     z-index: 30;
     color: $color-white;
-    position: relative;
+    position: absolute;
+    padding-left: $space-section * 1.3;
+    padding-bottom: $space-title;
+    // background-color: green;
+    width: 50%;
+    justify-self: flex-start;
   }
 
   &__img {
     background-color: green;
-    position: absolute;
+    position: relative;
+
     top: 0;
     left: 0;
     width: 100%;
-    height: 20%;
+    height: 40rem;
     overflow: hidden;
     border-radius: 0 0 0 58px;
+    z-index: 0;
+    display: flex;
+    align-items: end;
+    justify-content: start;
 
     &::after {
       content: "";
@@ -33,7 +70,7 @@
       top: 0;
       left: 0;
       border-radius: 8px;
-      background-color: rgba($color: $primary-color, $alpha: 0.6);
+      background-color: rgba($color: darken($primary-color, 10%), $alpha: 0.8);
     }
 
     img {
@@ -45,14 +82,27 @@
   }
 
   &__content {
-    padding-top: $space-section * 2;
-    width: 50%;
+    padding-top: $space-content;
+    // width: 50%;
+    padding-inline: $space-content;
+    grid-row: 2 / 3;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 8px;
+      margin-top: $space-title;
     }
   }
+}
+
+.comments {
+  // width: 50%;
+  padding-inline: $space-content;
+}
+
+.comment-form {
+  // width: 50%;
+  padding-inline: $space-content;
 }

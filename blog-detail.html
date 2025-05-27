@@ -32,7 +32,7 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">About Us</a></li>
-          <li><a href="#">Blogs</a></li>
+          <li><a href="/pages/blog.html">Blogs</a></li>
         </ul>
 
         <a href="#" class="btn btn--secondary">contact us</a>
@@ -41,7 +41,13 @@
 
     <main>
       <section class="section-blog-detail">
-        <div class="blog-detail" id="blogPostContainer"></div>
+        <div class="blog-img" id="blogPostImg"></div>
+
+        <div class="content-grid container">
+          <div class="blog-detail" id="blogPostContainer"></div>
+          <div class="blog__cards scroll-container" id="cardContainer"></div>
+          <!-- cards go here -->
+        </div>
       </section>
     </main>
 
@@ -160,7 +166,11 @@
     <script src="./js/hide-on-scroll.js"></script>
     <script src="./js/count-animation.js"></script>
     <script src="./js/blogs.js"></script>
+    <script src="./js/featured-blogs.js"></script>
+    <script src="./js/scroll-cards.js"></script>
+
     <script src="./js/blog-detail.js"></script>
+
     <!-- <script src="./js/blog-detail-gq.js"></script> -->
   </body>
 </html>
