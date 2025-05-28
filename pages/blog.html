@@ -24,9 +24,31 @@
       </nav>
     </header>
     <main>
-      <section class="blog">
+      <section class="blog container">
+        <div id="blog-filters">
+          <div class="form__group">
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search posts by title or category..."
+              class="form__input"
+            />
+            <label for="search-input" class="form__lable"
+              >Search posts by title or category...</label
+            >
+          </div>
+          <select id="category-filter" class="text--default">
+            <option value="">All Categories</option>
+            <!-- JS will populate categories -->
+          </select>
+        </div>
+
         <div id="blog-list"></div>
-        <div id="pagination-controls">
+
+        <div
+          id="pagination-controls"
+          class="pagination u-margin-top-medium u-margin-bottom-medium"
+        >
           <button id="prev-btn" class="btn btn--outlined">Previous</button>
           <button id="next-btn" class="btn btn--outlined">Next</button>
         </div>

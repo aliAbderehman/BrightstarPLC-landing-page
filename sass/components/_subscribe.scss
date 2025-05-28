@@ -27,6 +27,7 @@
     outline: none;
     border: none;
     padding: 10px;
+    color: $color-grey-dark-2;
 
     &:focus {
       box-shadow: none;
@@ -34,7 +35,7 @@
 
     &:-webkit-autofill {
       box-shadow: none !important; /* your desired background */
-      -webkit-text-fill-color: white !important; /* your text color */
+      -webkit-text-fill-color: $color-grey-dark-2 !important; /* your text color */
       transition: background-color 5000s ease-in-out 0s; /* prevent quick override */
     }
   }

@@ -64,7 +64,7 @@ fetch(
               .map((comment) => {
                 const childComments = renderComments(comments, comment.id);
                 const avatarUrl = comment.author_avatar_urls["48"];
-
+                const date = new Date(comment.date).toLocaleString();
                 // Make the replies visible if this was the last open one
                 const showReplies = openReplyId == comment.id;
 
@@ -76,7 +76,10 @@ fetch(
       <img src="${avatarUrl}" alt="${
                   comment.author_name
                 }" style="width: 48px; height: 48px; border-radius: 50%;" />
-      <h4 class="heading-quaternary">${comment.author_name}</h4>
+      <div>
+        <h4 class="heading-quaternary">${comment.author_name}</h4>
+        <small style="color: #888;">${date}</small>
+      </div>
     </div>
     <div class="text--default">
       <p>${comment.content.rendered}</p>
@@ -84,13 +87,11 @@ fetch(
     <button class="reply-btn lable-txt" data-parent="${
       comment.id
     }">Reply</button>
-
     <div class="replies" data-replies-for="${
       comment.id
     }" style="display: none;">
       ${childComments}
     </div>
-
     <div class="reply-form-container" data-parent="${comment.id}"></div>
   </div>
 `;
@@ -167,6 +168,79 @@ fetch(
           }
         });
     };
+
+    function truncateTitle(title, maxLength = 35) {
+      return title.length > maxLength
+        ? title.substring(0, maxLength) + "..."
+        : title;
+    }
+
+    fetch(
+      "http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
+    )
+      .then((res) => res.json())
+      .then((posts) => {
+        const index = posts.findIndex((p) => p.id === postId);
+        const prevPost = posts[index + 1]; // Newer post
+        const nextPost = posts[index - 1]; // Older post
+
+        // Fetch category details for each category ID in post.categories
+        const categoryIds = post.categories; // array of category IDs
+
+        if (categoryIds.length > 0) {
+          // Fetch category details
+          fetch(
+            `http://localhost:8080/brightstar-cms/wp-json/wp/v2/categories?include=${categoryIds.join(
+              ","
+            )}`
+          )
+            .then((res) => res.json())
+            .then((categories) => {
+              // Create chips HTML
+              const chipsHTML = categories
+                .map(
+                  (cat) => `
+        <a href="blog-category.html?id=${cat.id}" class="blog-detail__category-chip">
+          ${cat.name}
+        </a>
+      `
+                )
+                .join("");
+
+              // Insert chips at the top of the blog-detail content container
+              const blogContent = container.querySelector(
+                ".blog-detail__content"
+              );
+              if (blogContent) {
+                blogContent.insertAdjacentHTML(
+                  "beforebegin",
+                  `<div class="category-chips" style="margin-bottom: 16px;">${chipsHTML}</div>`
+                );
+              }
+            });
+        }
+
+        const navHTML = `
+      <div class="blog-nav u-margin-top-medium" style="display: flex; justify-content: space-between;">
+        ${
+          prevPost
+            ? `<a class="btn" href="blog-detail.html?slug=${
+                prevPost.slug
+              }">&larr; ${truncateTitle(prevPost.title.rendered)}</a>`
+            : `<span></span>`
+        }
+        ${
+          nextPost
+            ? `<a class="btn" href="blog-detail.html?slug=${
+                nextPost.slug
+              }">${truncateTitle(nextPost.title.rendered)} &rarr;</a>`
+            : `<span></span>`
+        }
+      </div>
+    `;
+
+        container.insertAdjacentHTML("beforeend", navHTML);
+      });
 
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
@@ -247,7 +321,7 @@ fetch(
         </div>`;
 
     container.innerHTML = `
-      <article class="blog-detail__article u-margin-top-large">
+      <article class="blog-detail__article">
         
         
         <div class="blog-detail__content text--default">${post.content.rendered}</div>

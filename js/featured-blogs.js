@@ -54,7 +54,7 @@ function renderCards(posts) {
     const category = post._embedded["wp:term"][0]?.[0]?.name || "General";
     const image =
       post._embedded["wp:featuredmedia"]?.[0]?.source_url ||
-      "./assets/images/placeholder.png"; // fallback
+      "./assets/images/img-featured.png"; // fallback
     const link = post.link; // full post URL from WordPress
 
     const card = document.createElement("div");
