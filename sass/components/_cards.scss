@@ -11,6 +11,8 @@
   align-items: start;
   transition: all 0.3s ease-in-out;
 
+  will-change: transform;
+
   img {
     width: 12%;
     height: auto;

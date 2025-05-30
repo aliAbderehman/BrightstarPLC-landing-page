@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const postEl = document.createElement("div");
       postEl.className = "blog-post";
       postEl.innerHTML = `
-      <a href="/blog-detail.html?slug=${post.slug}">
+      <a href="/pages/blog-detail.html?slug=${post.slug}">
         <div class="blog-post__img-box">${
           image
             ? `<img src="${image}" alt="${post.title.rendered}"/>`
@@ -127,6 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
       blogList.appendChild(postEl);
     });
+
+    // ✅ Notify GSAP or other scripts that posts are now in the DOM
+    document.dispatchEvent(new Event("blogsReady"));
   }
 
   function setupPagination() {

@@ -8,7 +8,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     </style>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -22,19 +22,31 @@
     <header class="header">
       <nav class="navbar u-margin-top-small" id="navbar">
         <div class="navbar__logo">
-          <a href="./index.html" class="logo-link"
-            ><img
-              src="./assets/logo/main-logo-01.svg"
-              alt="Brightstar PLC Logo"
-          /></a>
+          <img src="/assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
         </div>
         <ul class="header__nav-list">
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="/pages/blog.html">Blogs</a></li>
+          <li>
+            <a href="/index.html" class="nav-link page-btn" data-page="home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link page-btn" data-page="services"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link page-btn" data-page="about">About Us</a>
+          </li>
+          <li>
+            <a
+              href="/pages/blogs.html"
+              class="nav-link page-btn"
+              data-page="page"
+              >Blogs</a
+            >
+          </li>
         </ul>
-
         <a href="#" class="btn btn--secondary">contact us</a>
       </nav>
     </header>
@@ -48,6 +60,9 @@
 
           <div class="blog__cards featured">
             <h3 class="heading-tertiary">Featured</h3>
+            <div id="loadingSpinner" class="spinner" style="display: none">
+              <div class="spinner-icon"></div>
+            </div>
             <div
               class="featured-cards scroll-container"
               id="cardContainer"
@@ -141,14 +156,26 @@
           </div>
 
           <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">Home</li>
-              <li class="list-item">About Us</li>
-              <li class="list-item">Services</li>
-              <li class="list-item">Testimonials</li>
-              <li class="list-item">Contact Us</li>
-            </ul>
+            <h2 class="heading-tertiary text--white">
+              Subscribe to our news letter
+            </h2>
+            <form id="subscribe-form" class="subscribe">
+              <div class="form__group">
+                <input
+                  type="email"
+                  id="subscriber-email"
+                  placeholder="Enter your email"
+                  required
+                  class="subscribe__input form__input"
+                />
+                <label for="subscriber-email" class="form__lable"
+                  >Enter your email</label
+                >
+              </div>
+              <button type="submit" class="btn subscribe__btn">&rarr;</button>
+            </form>
+            <div id="subscribe-message"></div>
+            <p id="success-message"></p>
           </div>
         </div>
         <div class="separator u-margin-top-medium"></div>
@@ -161,23 +188,15 @@
         </div>
       </div>
 
-      <div class="footer__decor-1">
-        <!-- <img src="./assets/materials/Path 2.svg" alt="" /> -->
-      </div>
+      <div class="footer__decor-1"></div>
     </footer>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script> -->
-    <script src="./js/horizontal-scroll.js"></script>
-    <!-- <script src="./js/hero-animation.js"></script> -->
-    <script src="./js/scroll-cards.js"></script>
-    <script src="./js/hide-on-scroll.js"></script>
-    <script src="./js/count-animation.js"></script>
-    <script src="./js/blogs.js"></script>
-    <script src="./js/featured-blogs.js"></script>
-    <script src="./js/scroll-cards.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
-    <script src="./js/blog-detail.js"></script>
-
-    <!-- <script src="./js/blog-detail-gq.js"></script> -->
+    <script src="/js/hide-on-scroll.js"></script>
+    <script src="/js/blog/featured-blogs.js"></script>
+    <script src="/js/blog/blog-detail.js"></script>
+    <script src="./js/subscriber-email.js"></script>
+    <script src="/js/active-link.js"></script>
   </body>
 </html>

@@ -3,57 +3,465 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hero Section with Particles</title>
+    <title>Brightstar PLC - Navigation Fixed</title>
     <style>
-      .stat-number {
-        font-size: 48px;
-        font-weight: bold;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      .header {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        padding: 15px 30px;
+        margin-bottom: 40px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .navbar__logo img {
+        height: 50px;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      }
+
+      .header__nav-list {
+        display: flex;
+        list-style: none;
+        position: relative;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+      }
+
+      .header__nav-list li {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 12px 25px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+      }
+
+      .nav-link:hover {
+        color: #fff;
+      }
+
+      .nav-link.active {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .nav-indicator {
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(90deg, #ff8a00, #e52e71);
+        border-radius: 50px;
+        z-index: 0;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn--secondary {
+        background: linear-gradient(90deg, #00c9ff, #92fe9d);
+        color: #1a2a6c;
+        border: none;
+      }
+
+      .btn--secondary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 201, 255, 0.4);
+      }
+
+      .content {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 15px;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #00c9ff;
+        text-shadow: 0 0 10px rgba(0, 201, 255, 0.5);
+      }
+
+      .explanation {
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: #ff8a00;
+        margin-bottom: 15px;
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        margin: 20px 0;
+        padding-left: 30px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 30px 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      pre {
+        color: #f8f8f2;
+        line-height: 1.5;
+      }
+
+      .comment {
+        color: #6a9955;
+      }
+
+      .keyword {
+        color: #569cd6;
+      }
+
+      .function {
+        color: #dcdcaa;
+      }
+
+      .string {
+        color: #ce9178;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .header__nav-list {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="stat">
-      <div class="stat-number count-up" data-target="1000">0</div>
-      <div class="stat-label">Devices Delivered</div>
+    <div class="container">
+      <header class="header">
+        <nav class="navbar" id="navbar">
+          <div class="navbar__logo">
+            <!-- Inline SVG logo for demo -->
+            <svg width="200" height="50" viewBox="0 0 200 50">
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ff8a00" />
+                <stop offset="100%" stop-color="#e52e71" />
+              </linearGradient>
+              <text
+                x="10"
+                y="35"
+                font-family="Arial"
+                font-size="30"
+                fill="url(#gradient)"
+                font-weight="bold"
+              >
+                BRIGHTSTAR PLC
+              </text>
+            </svg>
+          </div>
+          <ul class="header__nav-list">
+            <div class="nav-indicator"></div>
+            <li>
+              <a href="#" class="nav-link page-btn" data-page="home">Home</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link page-btn" data-page="services"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link page-btn" data-page="about"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link page-btn" data-page="blog">Blogs</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn--secondary">contact us</a>
+        </nav>
+      </header>
+
+      <div class="content">
+        <h1>Fixed Navigation with Active Link Indicator</h1>
+
+        <div class="explanation">
+          <h2>Fixed Issues:</h2>
+          <ul>
+            <li>
+              <strong>Multiple Active Links</strong>: Only one link is active at
+              a time now
+            </li>
+            <li>
+              <strong>Home Page Detection</strong>: Added proper home page
+              detection
+            </li>
+            <li>
+              <strong>Indicator Positioning</strong>: Fixed calculation for
+              accurate positioning
+            </li>
+            <li>
+              <strong>Smooth Transitions</strong>: Added smooth animation for
+              the indicator
+            </li>
+            <li>
+              <strong>Resize Handling</strong>: Improved resize event handling
+            </li>
+          </ul>
+
+          <p>
+            Try clicking the navigation links to see the indicator in action!
+          </p>
+        </div>
+
+        <div class="code-block">
+          <h2>Fixed JavaScript:</h2>
+          <pre><code><span class="keyword">const</span> links = document.<span class="function">querySelectorAll</span>(<span class="string">".nav-link"</span>);
+<span class="keyword">const</span> indicator = document.<span class="function">querySelector</span>(<span class="string">".nav-indicator"</span>);
+
+<span class="comment">// Initialize the indicator</span>
+<span class="keyword">function</span> <span class="function">initIndicator</span>() {
+    <span class="keyword">const</span> activeLink = document.<span class="function">querySelector</span>(<span class="string">".nav-link.active"</span>);
+    <span class="keyword">if</span> (activeLink) {
+        <span class="function">setIndicator</span>(activeLink);
+    } <span class="keyword">else if</span> (links.length > 0) {
+        <span class="comment">// Set first link as active if none is active</span>
+        links[0].classList.<span class="function">add</span>(<span class="string">"active"</span>);
+        <span class="function">setIndicator</span>(links[0]);
+    }
+}
+
+<span class="comment">// Set indicator position and width</span>
+<span class="keyword">function</span> <span class="function">setIndicator</span>(el) {
+    <span class="keyword">const</span> rect = el.<span class="function">getBoundingClientRect</span>();
+    <span class="keyword">const</span> navList = el.closest(<span class="string">".header__nav-list"</span>);
+    <span class="keyword">const</span> navRect = navList.<span class="function">getBoundingClientRect</span>();
+    
+    indicator.style.width = <span class="string">`${rect.width}px`</span>;
+    indicator.style.left = <span class="string">`${rect.left - navRect.left}px`</span>;
+}
+
+<span class="comment">// Set initial indicator position</span>
+window.<span class="function">addEventListener</span>(<span class="string">"DOMContentLoaded"</span>, () => {
+    <span class="comment">// Detect home page</span>
+    <span class="keyword">const</span> path = window.location.pathname;
+    <span class="keyword">const</span> isHomePage = path.endsWith(<span class="string">"/"</span>) || path.endsWith(<span class="string">"index.html"</span>) || path === <span class="string">""</span>;
+    
+    <span class="comment">// Remove active class from all links</span>
+    links.<span class="function">forEach</span>(link => link.classList.<span class="function">remove</span>(<span class="string">"active"</span>));
+    
+    <span class="keyword">let</span> activeLink = <span class="keyword">null</span>;
+    
+    <span class="comment">// Find matching link</span>
+    links.<span class="function">forEach</span>(link => {
+        <span class="keyword">const</span> page = link.<span class="function">getAttribute</span>(<span class="string">"data-page"</span>);
+        
+        <span class="comment">// Special handling for home page</span>
+        <span class="keyword">if</span> (isHomePage && page === <span class="string">"home"</span>) {
+            activeLink = link;
+        }
+        <span class="comment">// For other pages</span>
+        <span class="keyword">else if</span> (path.<span class="function">includes</span>(page)) {
+            activeLink = link;
+        }
+    });
+    
+    <span class="comment">// Set active link</span>
+    <span class="keyword">if</span> (activeLink) {
+        activeLink.classList.<span class="function">add</span>(<span class="string">"active"</span>);
+    } <span class="keyword">else if</span> (links.length > 0) {
+        <span class="comment">// Fallback to first link</span>
+        links[0].classList.<span class="function">add</span>(<span class="string">"active"</span>);
+    }
+    
+    <span class="function">initIndicator</span>();
+});
+
+<span class="comment">// Update indicator on link click</span>
+links.<span class="function">forEach</span>((link) => {
+    link.<span class="function">addEventListener</span>(<span class="string">"click"</span>, (e) => {
+        e.<span class="function">preventDefault</span>();
+        
+        <span class="comment">// Remove active class from all links</span>
+        links.<span class="function">forEach</span>((l) => l.classList.<span class="function">remove</span>(<span class="string">"active"</span>));
+        
+        <span class="comment">// Add active class to clicked link</span>
+        link.classList.<span class="function">add</span>(<span class="string">"active"</span>);
+        
+        <span class="comment">// Update indicator position</span>
+        <span class="function">setIndicator</span>(link);
+    });
+});
+
+<span class="comment">// Update indicator on window resize</span>
+window.<span class="function">addEventListener</span>(<span class="string">"resize"</span>, () => {
+    <span class="keyword">const</span> active = document.<span class="function">querySelector</span>(<span class="string">".nav-link.active"</span>);
+    <span class="keyword">if</span> (active) <span class="function">setIndicator</span>(active);
+});</code></pre>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>Brightstar PLC Navigation Solution | Fixed Active Link Indicator</p>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script>
-      function animateCountUp(element) {
-        const target = +element.getAttribute("data-target");
-        const speed = 200; // smaller = faster
+      // Fixed JavaScript implementation
+      const links = document.querySelectorAll(".nav-link");
+      const indicator = document.querySelector(".nav-indicator");
 
-        const updateCount = () => {
-          const current = +element.innerText;
-          const increment = Math.ceil(target / speed);
-
-          if (current < target) {
-            element.innerText = current + increment;
-            requestAnimationFrame(updateCount);
-          } else {
-            element.innerText = target;
-          }
-        };
-
-        updateCount();
+      // Initialize the indicator
+      function initIndicator() {
+        const activeLink = document.querySelector(".nav-link.active");
+        if (activeLink) {
+          setIndicator(activeLink);
+        } else if (links.length > 0) {
+          // Set first link as active if none is active
+          links[0].classList.add("active");
+          setIndicator(links[0]);
+        }
       }
 
-      function handleScrollAnimations() {
-        const counters = document.querySelectorAll(".count-up");
-        counters.forEach((counter) => {
-          const rect = counter.getBoundingClientRect();
-          if (
-            rect.top < window.innerHeight &&
-            !counter.classList.contains("counted")
-          ) {
-            counter.classList.add("counted"); // Prevent re-trigger
-            animateCountUp(counter);
+      // Set indicator position and width
+      function setIndicator(el) {
+        const rect = el.getBoundingClientRect();
+        const navList = el.closest(".header__nav-list");
+        const navRect = navList.getBoundingClientRect();
+
+        indicator.style.width = `${rect.width}px`;
+        indicator.style.left = `${rect.left - navRect.left}px`;
+      }
+
+      // Set initial indicator position
+      window.addEventListener("DOMContentLoaded", () => {
+        // Detect home page
+        const path = window.location.pathname;
+        const isHomePage =
+          path.endsWith("/") || path.endsWith("index.html") || path === "";
+
+        // Remove active class from all links
+        links.forEach((link) => link.classList.remove("active"));
+
+        let activeLink = null;
+
+        // Find matching link
+        links.forEach((link) => {
+          const page = link.getAttribute("data-page");
+
+          // Special handling for home page
+          if (isHomePage && page === "home") {
+            activeLink = link;
+          }
+          // For other pages
+          else if (path.includes(page)) {
+            activeLink = link;
           }
         });
-      }
 
-      window.addEventListener("scroll", handleScrollAnimations);
-      window.addEventListener("load", handleScrollAnimations); // in case some are already in view
+        // Set active link
+        if (activeLink) {
+          activeLink.classList.add("active");
+        } else if (links.length > 0) {
+          // Fallback to first link
+          links[0].classList.add("active");
+        }
+
+        initIndicator();
+      });
+
+      // Update indicator on link click
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Remove active class from all links
+          links.forEach((l) => l.classList.remove("active"));
+
+          // Add active class to clicked link
+          link.classList.add("active");
+
+          // Update indicator position
+          setIndicator(link);
+        });
+      });
+
+      // Update indicator on window resize
+      window.addEventListener("resize", () => {
+        const active = document.querySelector(".nav-link.active");
+        if (active) setIndicator(active);
+      });
     </script>
   </body>
 </html>

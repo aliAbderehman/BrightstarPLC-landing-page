@@ -8,18 +8,42 @@
     <header class="header">
       <nav class="navbar u-margin-top-small" id="navbar">
         <div class="navbar__logo">
-          <img
-            src="../assets/logo/main-logo-01.svg"
-            alt="Brightstar PLC Logo"
-          />
+          <img src="/assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
         </div>
-        <ul class="header__nav-list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="./blog.html">Blogs</a></li>
-        </ul>
-
+        <div class="nav-container">
+          <ul class="header__nav-list nav-links">
+            <li>
+              <a href="/index.html" class="nav-link page-btn" data-page="home"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="/#services"
+                class="nav-link page-btn"
+                data-page="services"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/about.html"
+                class="nav-link page-btn"
+                data-page="about"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/blogs.html"
+                class="nav-link page-btn"
+                data-page="blog"
+                >Blogs</a
+              >
+            </li>
+            <div class="active-indicator"></div>
+          </ul>
+        </div>
         <a href="#" class="btn btn--secondary">contact us</a>
       </nav>
     </header>
@@ -59,13 +83,15 @@
       <div class="footer__container container">
         <div class="footer__top">
           <div class="footer__txt-box">
-            <div class="logo">
-              <img
-                src="/assets/logo/Group 405.svg"
-                alt="brightstar"
-                class="log-img"
-              />
-            </div>
+            <a href="#">
+              <div class="logo">
+                <img
+                  src="/assets/logo/Group 405.svg"
+                  alt="brightstar"
+                  class="log-img"
+                />
+              </div>
+            </a>
             <p class="footer__sub-txt lable-txt text--white">
               Importing & distributing electronics, office equipment, and IT
               infrastructure across Ethiopia.
@@ -163,7 +189,13 @@
       </div>
     </footer>
 
-    <script src="/js/blog.js"></script>
+    <!-- lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script src="/js/blog/blogs.js"></script>
     <script src="/js/subscriber-email.js"></script>
+
+    <script src="/js/animation/smooth-scroll.js"></script>
+    <script src="/js/active-link.js"></script>
   </body>
 </html>

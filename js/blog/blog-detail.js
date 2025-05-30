@@ -23,29 +23,29 @@ fetch(
 
     function generateReplyForm(parentId) {
       return `
-    <div class="reply">
-      <form class="reply-form form">
+        <div class="reply">
+          <form class="reply-form form">
 
-        <div class="form__group">
-          <textarea class="form__input reply-content" rows="6" placeholder="Your Reply" required></textarea>
-          <label class="form__label">Your Reply</label>
+            <div class="form__group">
+              <textarea class="form__input reply-content" rows="6" placeholder="Your Reply" required></textarea>
+              <label class="form__label">Your Reply</label>
+            </div>
+
+            <div class="form__group">
+              <input type="text" placeholder="Your Name" required class="reply-name form__input">
+              <label class="form__label">Full Name</label>
+            </div>
+
+            <div class="form__group">
+              <input type="email" placeholder="Your Email" required class="reply-email form__input">
+              <label class="form__label">Email</label>
+            </div>
+
+            <button class="btn btn--secondary" type="submit" >Post Reply</button>
+            <div class="reply-message"></div>
+          </form>
         </div>
-
-        <div class="form__group">
-          <input type="text" placeholder="Your Name" required class="reply-name form__input">
-          <label class="form__label">Full Name</label>
-        </div>
-
-        <div class="form__group">
-          <input type="email" placeholder="Your Email" required class="reply-email form__input">
-          <label class="form__label">Email</label>
-        </div>
-
-        <button class="btn btn--secondary" type="submit">Post Reply</button>
-        <div class="reply-message"></div>
-      </form>
-    </div>
-  `;
+      `;
     }
 
     const refreshComments = (openReplyId = null) => {
@@ -69,7 +69,7 @@ fetch(
                 const showReplies = openReplyId == comment.id;
 
                 return `
-  <div class="comment" data-id="${comment.id}" style="margin-left: ${
+    <div class="comment" data-id="${comment.id}" style="margin-left: ${
                   parentId ? "30px" : "0"
                 }">
     <div class="comment-header" style="display: flex; align-items: center; gap: 10px;">
@@ -93,8 +93,8 @@ fetch(
       ${childComments}
     </div>
     <div class="reply-form-container" data-parent="${comment.id}"></div>
-  </div>
-`;
+    </div>
+    `;
               })
               .join("");
           };
@@ -224,14 +224,14 @@ fetch(
       <div class="blog-nav u-margin-top-medium" style="display: flex; justify-content: space-between;">
         ${
           prevPost
-            ? `<a class="btn" href="blog-detail.html?slug=${
+            ? `<a class="btn" href="/pages/blog-detail.html?slug=${
                 prevPost.slug
               }">&larr; ${truncateTitle(prevPost.title.rendered)}</a>`
             : `<span></span>`
         }
         ${
           nextPost
-            ? `<a class="btn" href="blog-detail.html?slug=${
+            ? `<a class="btn" href="/pages/blog-detail.html?slug=${
                 nextPost.slug
               }">${truncateTitle(nextPost.title.rendered)} &rarr;</a>`
             : `<span></span>`
@@ -330,7 +330,7 @@ fetch(
       <section class="comment-form-box  u-margin-top-large">
         
         <form id="commentForm" class="comment-form u-margin-top-medium">
-<h3 class="heading-tertiary">Leave a Comment</h3>
+    <h3 class="heading-tertiary">Leave a Comment</h3>
         <div class="form__group">
             <textarea class="form__input" id="comment" rows="8" placeholder="Your Comment" required></textarea>
             <label for="comment" class="form__lable">Your Comment</label>
@@ -392,7 +392,10 @@ fetch(
         }
       });
 
-    // Load initial comments
+    setTimeout(() => {
+      window.lenis.update();
+    }, 50);
+
     refreshComments();
   })
   .catch((err) => {

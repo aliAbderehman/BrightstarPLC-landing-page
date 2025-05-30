@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brightstar Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar u-margin-top-small" id="navbar">
+        <div class="navbar__logo">
+          <img src="/assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
+        </div>
+        <div class="nav-container">
+          <ul class="header__nav-list nav-links">
+            <li>
+              <a href="/index.html" class="nav-link page-btn" data-page="home"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="/#services"
+                class="nav-link page-btn"
+                data-page="services"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/about.html"
+                class="nav-link page-btn"
+                data-page="about"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/blogs.html"
+                class="nav-link page-btn"
+                data-page="blog"
+                >Blogs</a
+              >
+            </li>
+            <div class="active-indicator"></div>
+          </ul>
+        </div>
+        <a href="#" class="btn btn--secondary">contact us</a>
+      </nav>
+    </header>
+    <main>
+      <section class="blog container">
+        <div id="blog-filters">
+          <div class="form__group">
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search posts by title or category..."
+              class="form__input"
+            />
+            <label for="search-input" class="form__lable"
+              >Search posts by title or category...</label
+            >
+          </div>
+          <select id="category-filter" class="text--default">
+            <option value="">All Categories</option>
+            <!-- JS will populate categories -->
+          </select>
+        </div>
+
+        <div id="blog-list"></div>
+
+        <div
+          id="pagination-controls"
+          class="pagination u-margin-top-medium u-margin-bottom-medium"
+        >
+          <button id="prev-btn" class="btn btn--outlined">Previous</button>
+          <button id="next-btn" class="btn btn--outlined">Next</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container container">
+        <div class="footer__top">
+          <div class="footer__txt-box">
+            <a href="#">
+              <div class="logo">
+                <img
+                  src="/assets/logo/Group 405.svg"
+                  alt="brightstar"
+                  class="log-img"
+                />
+              </div>
+            </a>
+            <p class="footer__sub-txt lable-txt text--white">
+              Importing & distributing electronics, office equipment, and IT
+              infrastructure across Ethiopia.
+            </p>
+            <p class="footer__sub-txt lable-txt text--white">
+              Addis Ababa, Ethiopia
+            </p>
+          </div>
+          <div class="footer__socials">
+            <a href="#" class="social-icon">FB</a>
+            <a href="#" class="social-icon">TW</a>
+            <a href="#" class="social-icon">IG</a>
+          </div>
+        </div>
+        <div class="separator u-margin-top-medium"></div>
+
+        <div class="footer__midle">
+          <div class="footer__block">
+            <h2 class="heading-tertiary text--white">Quick links</h2>
+            <ul class="lists">
+              <li class="list-item">
+                <a class="text--white" href="#">Home</a>
+              </li>
+              <li class="list-item">
+                <a class="text--white" href="#">About Us</a>
+              </li>
+              <li class="list-item">
+                <a class="text--white" href="#">Services</a>
+              </li>
+              <li class="list-item">
+                <a class="text--white" href="#">Testimonials</a>
+              </li>
+              <li class="list-item">
+                <a class="text--white" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__block">
+            <h2 class="heading-tertiary text--white">Services</h2>
+            <ul class="lists">
+              <li class="list-item">Electronics Import</li>
+              <li class="list-item">Office Equipment</li>
+              <li class="list-item">Surveillance Installation</li>
+              <li class="list-item">Data Center Setup</li>
+              <li class="list-item">Tech Support</li>
+            </ul>
+          </div>
+
+          <div class="footer__block">
+            <h2 class="heading-tertiary text--white">Contact</h2>
+            <ul class="lists">
+              <li class="list-item">Phone: +1 234 567 89</li>
+              <li class="list-item">Email: info@brightstar.com</li>
+              <li class="list-item">
+                Address: 123 Care Lane, Health City, HC 56789s
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__block">
+            <h2 class="heading-tertiary text--white">
+              Subscribe to our news letter
+            </h2>
+            <form id="subscribe-form" class="subscribe">
+              <div class="form__group">
+                <input
+                  type="email"
+                  id="subscriber-email"
+                  placeholder="Enter your email"
+                  required
+                  class="subscribe__input form__input"
+                />
+                <label for="subscriber-email" class="form__lable"
+                  >Enter your email</label
+                >
+              </div>
+              <button type="submit" class="btn subscribe__btn">&rarr;</button>
+            </form>
+            <p id="success-message"></p>
+          </div>
+        </div>
+        <div class="separator u-margin-top-medium"></div>
+        <div class="footer__bottom">
+          <p class="lable-txt">© 2025 Brightstar. All rights reserved.</p>
+          <p class="lable-txt u-margin-bottom-small">
+            <a class="" href="#">Privacy Policy</a> |
+            <a class="" href="#">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer__decor-1">
+        <!-- <img src="./assets/materials/Path 2.svg" alt="" /> -->
+      </div>
+    </footer>
+
+    <!-- lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script src="/js/blog/blogs.js"></script>
+    <script src="/js/subscriber-email.js"></script>
+
+    <script src="/js/animation/smooth-scroll.js"></script>
+    <script src="/js/active-link.js"></script>
+  </body>
+</html>

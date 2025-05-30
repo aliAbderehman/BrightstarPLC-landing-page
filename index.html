@@ -9,10 +9,10 @@
       @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     </style>
     <link rel="stylesheet" href="./css/style.css" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    /> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -20,681 +20,756 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LcDJ0orAAAAAMd25aHuBFAt99TYURh8jRSixCK7"></script>
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar u-margin-top-small" id="navbar">
-        <div class="navbar__logo">
-          <img src="./assets/logo/main-logo-01.svg" alt="Brightstar PLC Logo" />
-        </div>
-        <ul class="header__nav-list">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="./pages/blog.html">Blogs</a></li>
-        </ul>
-
-        <a href="#" class="btn btn--secondary">contact us</a>
-      </nav>
-    </header>
-
-    <main class="main">
-      <section class="hero">
-        <div id="tsparticles" class="hero__decor">
-          <img
-            src="./assets/materials/hero-bg-material-01.svg"
-            alt=""
-            class="hero__decor-2"
-          />
-        </div>
-        <div class="hero__txt-box">
-          <h1 class="heading-primary animate__animated animate__fadeInDown">
-            Smart Tech Solutions for a Smarter Future
-          </h1>
-          <p class="heading-subtitle-1 animate__animated animate__fadeInUp">
-            From cutting-edge surveillance to seamless IT infrastructure, we
-            help businesses thrive through reliable, scalable technology
-            solutions.
-          </p>
-
-          <div class="hero__buttons">
-            <div class="animate__animated animate__fadeInDown">
-              <a href="#" class="btn btn--primary">Explore our services</a>
+    <div class="smooth-wrapper">
+      <div class="smooth-content">
+        <header class="header">
+          <nav class="navbar u-margin-top-small" id="navbar">
+            <div class="navbar__logo">
+              <a href="/index.html">
+                <img
+                  src="./assets/logo/main-logo-01.svg"
+                  alt="Brightstar PLC Logo"
+                />
+              </a>
             </div>
-
-            <div class="animate__animated animate__fadeInDown cus-anim">
-              <a href="#" class="btn btn--secondary">Free Consultation</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__img-box">
-          <img
-            src="./assets/images/hero-img-02.png"
-            alt=""
-            class="hero__img-1 animate__animated animate__fadeInDown"
-          />
-        </div>
-      </section>
-
-      <section class="section-core-features">
-        <div class="core-features container">
-          <div class="core-features__text">
-            <h3 class="heading-secondary featured__card-title">
-              Your IT, Streamlined
-            </h3>
-            <p class="featured__card-txt text--default u-margin-top-small">
-              One provider, every solution — secure, scalable, and simplified.
-            </p>
-          </div>
-          <div class="card glass">
-            <img
-              src="./assets/icons/featured/ic-enterprise.svg"
-              alt="equipments icon"
-            />
-            <h3 class="heading-tertiary">Enterprise IT Installation</h3>
-            <p class="lable-txt">
-              We offer full-scale IT setup for offices and organizations—
-              structured cabling, networking, servers, power backups, and system
-              integration handled by certified professionals.
-            </p>
-          </div>
-          <div class="card glass">
-            <img
-              src="./assets/icons/featured/ic-equipments.svg"
-              alt="equipments icon"
-            />
-            <h3 class="heading-tertiary">Advanced Surveillance System</h3>
-            <p class="lable-txt">
-              Monitor, protect, and respond faster with AI-powered security
-              cameras and integrated surveillance networks tailored for your
-              business.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-work">
-        <div class="work">
-          <div class="visual visual-left visual-camera"></div>
-          <div class="work__wrapper container">
-            <div class="work__content">
-              <h2
-                class="heading-secondary featured-post__title u-margin-bottom-medium"
-              >
-                Simplifying IT, One Solution at a Time
-              </h2>
-              <p class="text--default">
-                We specialize in delivering high-performance hardware, secure
-                networking, surveillance systems, and full-scale tech support —
-                trusted by businesses across Ethiopia.
-              </p>
-              <a href="#" class="btn btn--outlined u-margin-top-medium"
-                >About The Company <span>&rarr;</span></a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-brands">
-        <div class="brands u-center-text">
-          <!-- <h2 class="heading-secondary">Top Brands We Distribute</h2> -->
-
-          <div class="scroller__wrapper u-margin-bottom-large">
-            <div class="scroller">
-              <ul class="scroller__inner">
+            <div class="nav-container">
+              <ul class="header__nav-list nav-links">
                 <li>
-                  <img src="./assets/brands/dell.png" alt="dell logo" />
-                </li>
-
-                <li>
-                  <img src="./assets/brands/fujitsu.png" alt="fujitsu logo" />
-                </li>
-
-                <!-- <li>
-                    <img src="./assets/brands/cisco.png" alt="cisco logo" />
-                  </li> -->
-                <li>
-                  <img src="./assets/brands/fargo.png" alt="fargo logo" />
+                  <a
+                    href="index.html"
+                    class="nav-link page-btn"
+                    data-page="home"
+                    >Home</a
+                  >
                 </li>
                 <li>
-                  <img
-                    src="./assets/brands/hikvision.png"
-                    alt="hikvision logo"
-                  />
+                  <a
+                    href="#services"
+                    class="nav-link page-btn"
+                    data-page="services"
+                    >Services</a
+                  >
                 </li>
                 <li>
-                  <img src="./assets/brands/hp.png" alt="hp logo" />
+                  <a
+                    href="/pages/about.html"
+                    class="nav-link page-btn"
+                    data-page="about"
+                    >About Us</a
+                  >
                 </li>
                 <li>
-                  <img
-                    src="./assets/brands/kaspersky.png"
-                    alt="kaspersky logo"
-                  />
+                  <a
+                    href="/pages/blogs.html"
+                    class="nav-link page-btn"
+                    data-page="blog"
+                    >Blogs</a
+                  >
                 </li>
-                <li>
-                  <img
-                    src="./assets/brands/microsoft.png"
-                    alt="microsoft logo"
-                  />
-                </li>
-                <li>
-                  <img src="./assets/brands/lg.png" alt="lg logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/samsung.png" alt="samsung logo" />
-                </li>
-                <li>
-                  <img src="./assets/brands/tp-link.png" alt="tp-link logo" />
-                </li>
+                <div class="active-indicator"></div>
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-services">
-        <div class="services container">
-          <h2 class="heading-secondary services__title u-margin-bottom-large">
-            What We Offer
-          </h2>
-
-          <div class="services__cards">
-            <div class="card glass">
+            <a href="#" class="btn btn--secondary">contact us</a>
+          </nav>
+        </header>
+        <main class="main">
+          <section class="hero">
+            <div id="tsparticles" class="hero__decor hero-bg">
               <img
-                src="./assets/icons/services/ic-ship.svg"
-                alt="shipping icon"
+                src="./assets/materials/hero-bg-material-01.svg"
+                alt=""
+                class="hero__decor-2"
               />
-              <h3 class="heading-tertiary">
-                Electronics Import & Distribution
-              </h3>
-              <p class="lable-txt">
-                We import and distribute cutting-edge electronics sourced
-                globally, ensuring quality, reliability, and timely delivery.
+            </div>
+            <div class="hero__txt-box">
+              <h1 class="heading-primary">
+                Smart Tech Solutions for a Smarter Future
+              </h1>
+              <p class="heading-subtitle-1">
+                From cutting-edge surveillance to seamless IT infrastructure, we
+                help businesses thrive through reliable, scalable technology
+                solutions.
               </p>
-            </div>
-
-            <div class="card glass">
-              <img
-                src="./assets/icons/services/ic-printer.svg"
-                alt="shipping icon"
-              />
-              <h3 class="heading-tertiary">Office Equipment Supply</h3>
-              <p class="lable-txt">
-                From printers to projectors, we provide durable and efficient
-                office equipment that supports productivity and growth.
-              </p>
-            </div>
-
-            <div class="card glass">
-              <img
-                src="./assets/icons/services/ic-camera.svg"
-                alt="shipping icon"
-              />
-              <h3 class="heading-tertiary">Surveillance Camera Installation</h3>
-              <p class="lable-txt">
-                Keep your premises secure with our professional surveillance
-                systems, installed and configured for full coverage.
-              </p>
-            </div>
-
-            <div class="card glass">
-              <img
-                src="./assets/icons/services/ic-server.svg"
-                alt="shipping icon"
-              />
-              <h3 class="heading-tertiary">Data Center Infrastructure</h3>
-              <p class="lable-txt">
-                We design and install scalable, energy-efficient data center
-                systems with robust power and cooling solutions.
-              </p>
-            </div>
-
-            <div class="card glass">
-              <img
-                src="./assets/icons/services/ic-install.svg"
-                alt="shipping icon"
-              />
-              <h3 class="heading-tertiary">
-                Expert Installation & Maintenance
-              </h3>
-              <p class="lable-txt">
-                Certified technicians deliver smooth installation and reliable
-                aftercare for all your electronic and IT systems.
-              </p>
-            </div>
-
-            <div class="card glass">
-              <img
-                src="./assets/icons/services/ic-node.svg"
-                alt="shipping icon"
-              />
-              <h3 class="heading-tertiary">Networking & IT Solutions</h3>
-              <p class="lable-txt">
-                Customized network setups and IT support to keep your operations
-                connected, secure, and always online.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-stats container">
-        <div class="stats">
-          <div class="stats__content">
-            <h2
-              class="heading-secondary count-up montserrat"
-              data-target="1000"
-            >
-              0
-            </h2>
-            <p class="lable-txt">Devices Delivered</p>
-          </div>
-          <div class="stats__content">
-            <h2 class="heading-secondary count-up montserrat" data-target="3">
-              0
-            </h2>
-            <p class="lable-txt">Years of Experience</p>
-          </div>
-          <div class="stats__content">
-            <h2 class="heading-secondary count-up montserrat" data-target="200">
-              0
-            </h2>
-            <p class="lable-txt">Happy Clients</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-showcase">
-        <div class="showcase container">
-          <div class="showcase__img showcase__1">
-            <img src="./assets/images/cyberspace-2784907.png" alt="" class="" />
-          </div>
-          <div class="showcase__img showcase__2">
-            <img
-              src="./assets/images/pexels-jakubzerdzicki-16423102.png"
-              alt=""
-              class=""
-            />
-          </div>
-          <div class="showcase__testimonial showcase__3">
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </div>
-
-            <p class="text--default text--white">
-              Astonishing performance they built and make it ready just within a
-              week Astonishing performance they built and
-            </p>
-
-            <div class="separator"></div>
-
-            <figure class="profile">
-              <div class="profile__caption">
-                <figcaption class="profile__name montserrat">
-                  Mary Smith
-                </figcaption>
-                <figcaption class="profile__description montserrat">
-                  CEO at abc organization
-                </figcaption>
+              <div class="hero__buttons">
+                <div class="">
+                  <a href="#" class="btn btn--primary">Explore our services</a>
+                </div>
+                <div class="">
+                  <a href="#" class="btn btn--secondary">Free Consultation</a>
+                </div>
               </div>
-              <div class="profile__shape">
+            </div>
+            <div class="hero__img-box" data-speed="0.3">
+              <img
+                src="./assets/images/hero-img-02.png"
+                alt=""
+                class="hero__img-1"
+              />
+            </div>
+          </section>
+          <section class="section-core-features">
+            <div class="core-features container">
+              <div class="core-features__text">
+                <h3 class="heading-secondary featured__card-title">
+                  Your IT, Streamlined
+                </h3>
+                <p class="featured__card-txt text--default u-margin-top-small">
+                  One provider, every solution — secure, scalable, and
+                  simplified.
+                </p>
+              </div>
+              <div class="card glass" data-speed="0.5">
                 <img
-                  src="./assets/images/ChatGPT Image May 6, 2025, 12_56_06 AM.png"
-                  alt="person on a tour"
-                  class="profile__img"
+                  src="./assets/icons/featured/ic-enterprise.svg"
+                  alt="equipments icon"
                 />
+                <h3 class="heading-tertiary">Enterprise IT Installation</h3>
+                <p class="lable-txt">
+                  We offer full-scale IT setup for offices and organizations—
+                  structured cabling, networking, servers, power backups, and
+                  system integration handled by certified professionals.
+                </p>
               </div>
-            </figure>
-          </div>
-          <div class="showcase__testimonial showcase__4">
-            <p class="heading-subtitle-2 text--white">Projects Delivered</p>
-            <p class="heading-primary count-up text--white" data-target="204">
-              0
-            </p>
-          </div>
-          <div class="showcase__img showcase__5">
-            <img
-              src="./assets/images/pexels-divinetechygirl-1181354.png"
-              alt=""
-              class=""
-            />
-          </div>
-        </div>
-      </section>
-
-      <section class="section-trust">
-        <div id="tsparticles-trust">
-          <!-- <img
-            src="./assets/materials/hero-bg-material-01.svg"
-            alt=""
-            class="hero__decor-2"
-          /> -->
-        </div>
-        <div class="trust container">
-          <div class="trust__title">
-            <h2 class="heading-secondary u-margin-bottom-small">
-              Trusted by Businesses, Chosen for Excellence
-            </h2>
-            <p class="text--default u-margin-bottom-medium">
-              Powering Businesses with Smart Electronics and Scalable IT
-              Infrastructure
-            </p>
-          </div>
-
-          <div class="trust__cards-box u-margin-top-medium">
-            <div class="trust__card">
-              <img
-                class="trust__icon"
-                src="./assets/icons/trust/ic-checkmark.svg"
-                alt="checkmark icon"
-              />
-              <h3 class="lable-txt">Trusted Partnerships</h3>
-              <p class="lable-txt">
-                We’ve built long-term partnerships with global brands to ensure
-                consistency, value, and trust in every project.
-              </p>
-            </div>
-            <div class="trust__card">
-              <img
-                class="trust__icon"
-                src="./assets/icons/trust/ic-nodes.svg"
-                alt="checkmark icon"
-              />
-              <h3 class="lable-txt">Tailored IT Infrastructure</h3>
-              <p class="lable-txt">
-                We design IT solutions that grow with your business—delivering
-                reliability, scalability, and peace of mind.
-              </p>
-            </div>
-            <div class="trust__card">
-              <img
-                class="trust__icon"
-                src="./assets/icons/trust/ic-wrench.svg"
-                alt="checkmark icon"
-              />
-              <h3 class="lable-txt">Expert Installation</h3>
-              <p class="lable-txt">
-                Our certified technicians ensure every setup is installed to
-                perfection and supported long-term.
-              </p>
-            </div>
-            <div class="trust__card">
-              <img
-                class="trust__icon"
-                src="./assets/icons/trust//ic-globe.svg"
-                alt="checkmark icon"
-              />
-              <h3 class="lable-txt">Trusted Partnerships</h3>
-              <p class="lable-txt">
-                With a strong global logistics network, we ensure fast and
-                consistent supply chain delivery.
-              </p>
-            </div>
-          </div>
-          <a href="#" class="trust__btn btn btn--outlined u-margin-top-large"
-            >Explore Our Capabilities</a
-          >
-        </div>
-      </section>
-
-      <section class="section-contacts">
-        <div class="contacts__bg-decore">
-          <img
-            src="./assets/materials/hero-bg-material-01.svg"
-            alt=""
-            class="hero__decor-2"
-          />
-        </div>
-        <div class="contacts container">
-          <div class="contacts__form">
-            <h2
-              class="contacts__title heading-secondary u-margin-bottom-medium"
-            >
-              Let's Get In Touch.
-            </h2>
-
-            <form class="form">
-              <div class="form__group">
-                <input
-                  type="text"
-                  class="form__input"
-                  placeholder="Full Name"
-                  id="name"
-                  required
+              <div class="card glass" data-speed="1.8">
+                <img
+                  src="./assets/icons/featured/ic-equipments.svg"
+                  alt="equipments icon"
                 />
-                <label for="name" class="form__lable">Full Name</label>
+                <h3 class="heading-tertiary">Advanced Surveillance System</h3>
+                <p class="lable-txt">
+                  Monitor, protect, and respond faster with AI-powered security
+                  cameras and integrated surveillance networks tailored for your
+                  business.
+                </p>
               </div>
-
-              <div class="form__group">
-                <input
-                  type="email"
-                  class="form__input"
-                  placeholder="Email Address"
-                  id="email"
-                  required
-                />
-
-                <label for="email" class="form__lable">Email Address</label>
-              </div>
-              <div class="form__group u-margin-bottom-medium">
-                <textarea
-                  class="form__input"
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  placeholder="How can we help you?"
-                ></textarea>
-                <label for="message" class="form__lable">Message</label>
-              </div>
-              <div class="form__group">
-                <button
-                  type="submit"
-                  class="btn btn--secondary"
-                  id="submit-btn"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
-          <div class="contacts__text-box">
-            <p
-              class="contacts__subtitle heading-subtitle-2 u-margin-bottom-medium"
-            >
-              A seamless process tailored to your needs.
-            </p>
-
-            <div class="contacts__card">
-              <img
-                src="./assets/icons/socials/ic-phone-outlined.svg"
-                alt="phone icon"
-              />
-              <p class="lable-txt">+251 91 234 5678</p>
             </div>
-            <div class="contacts__card">
-              <img
-                src="./assets/icons/socials/ic-mail-outlined.svg"
-                alt="phone icon"
-              />
-              <p class="lable-txt">contact@brightstarplc.com</p>
+          </section>
+          <section class="section-work">
+            <div class="work">
+              <div class="visual visual-left visual-camera"></div>
+              <div class="work__wrapper container">
+                <div class="work__content">
+                  <h2
+                    class="heading-secondary featured-post__title u-margin-bottom-medium"
+                  >
+                    Simplifying IT, One Solution at a Time
+                  </h2>
+                  <p class="text--default">
+                    We specialize in delivering high-performance hardware,
+                    secure networking, surveillance systems, and full-scale tech
+                    support — trusted by businesses across Ethiopia.
+                  </p>
+                  <a href="#" class="btn btn--outlined u-margin-top-medium"
+                    >About The Company <span>&rarr;</span></a
+                  >
+                </div>
+              </div>
             </div>
-            <div class="contacts__card">
-              <img
-                src="./assets/icons/socials/ic-location-outlined.svg"
-                alt="phone icon"
-              />
-              <p class="lable-txt">123 Tech Avenue, Addis Ababa, Ethiopia</p>
+          </section>
+          <section class="section-brands">
+            <div class="brands u-center-text">
+              <!-- <h2 class="heading-secondary">Top Brands We Distribute</h2> -->
+              <div class="scroller__wrapper u-margin-bottom-large">
+                <div class="scroller">
+                  <ul class="scroller__inner">
+                    <li>
+                      <img src="./assets/brands/dell.png" alt="dell logo" />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/fujitsu.png"
+                        alt="fujitsu logo"
+                      />
+                    </li>
+                    <!-- <li>
+                        <img src="./assets/brands/cisco.png" alt="cisco logo" />
+                      </li> -->
+                    <li>
+                      <img src="./assets/brands/fargo.png" alt="fargo logo" />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/hikvision.png"
+                        alt="hikvision logo"
+                      />
+                    </li>
+                    <li>
+                      <img src="./assets/brands/hp.png" alt="hp logo" />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/kaspersky.png"
+                        alt="kaspersky logo"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/microsoft.png"
+                        alt="microsoft logo"
+                      />
+                    </li>
+                    <li>
+                      <img src="./assets/brands/lg.png" alt="lg logo" />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/samsung.png"
+                        alt="samsung logo"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="./assets/brands/tp-link.png"
+                        alt="tp-link logo"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-blog">
-        <div class="blog">
-          <div class="blog__nav">
-            <h2 class="contacts__title heading-secondary u-margin-bottom-small">
-              Insites
-            </h2>
-            <p class="heading-subtitle-2 u-margin-bottom-medium">
-              Recent Blogs
-            </p>
-            <div class="blog__navigation u-margin-top-medium">
-              <button
-                id="scrollLeftBtn"
-                class="btn btn--navigation"
-                onclick="scrollPrev()"
+          </section>
+          <section class="section-services" id="services">
+            <div class="services container">
+              <h2
+                class="heading-secondary services__title u-margin-bottom-large"
               >
-                &larr;
-              </button>
-
-              <button
-                id="scrollRightBtn"
-                class="btn btn--navigation"
-                onclick="scrollNext()"
-              >
-                &rarr;
-              </button>
+                Our Solutions
+              </h2>
+              <div class="services__cards">
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-ship.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">
+                    Electronics Import & Distribution
+                  </h3>
+                  <p class="lable-txt">
+                    We import and distribute cutting-edge electronics sourced
+                    globally, ensuring quality, reliability, and timely
+                    delivery.
+                  </p>
+                </div>
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-printer.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">Office Equipment Supply</h3>
+                  <p class="lable-txt">
+                    From printers to projectors, we provide durable and
+                    efficient office equipment that supports productivity and
+                    growth.
+                  </p>
+                </div>
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-camera.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">
+                    Surveillance Camera Installation
+                  </h3>
+                  <p class="lable-txt">
+                    Keep your premises secure with our professional surveillance
+                    systems, installed and configured for full coverage.
+                  </p>
+                </div>
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-server.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">Data Center Infrastructure</h3>
+                  <p class="lable-txt">
+                    We design and install scalable, energy-efficient data center
+                    systems with robust power and cooling solutions.
+                  </p>
+                </div>
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-install.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">
+                    Expert Installation & Maintenance
+                  </h3>
+                  <p class="lable-txt">
+                    Certified technicians deliver smooth installation and
+                    reliable aftercare for all your electronic and IT systems.
+                  </p>
+                </div>
+                <div class="card glass">
+                  <img
+                    src="./assets/icons/services/ic-node.svg"
+                    alt="shipping icon"
+                  />
+                  <h3 class="heading-tertiary">Networking & IT Solutions</h3>
+                  <p class="lable-txt">
+                    Customized network setups and IT support to keep your
+                    operations connected, secure, and always online.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="blog__cards scroll-container" id="cardContainer">
-            <!-- cards go here -->
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer__container container">
-        <div class="footer__top">
-          <div class="footer__txt-box">
-            <div class="logo">
+          </section>
+          <section class="section-stats container">
+            <div class="stats">
+              <div class="stats__content">
+                <h2
+                  class="heading-secondary count-up montserrat"
+                  data-target="1000"
+                >
+                  0
+                </h2>
+                <p class="lable-txt">Devices Delivered</p>
+              </div>
+              <div class="stats__content">
+                <h2
+                  class="heading-secondary count-up montserrat"
+                  data-target="3"
+                >
+                  0
+                </h2>
+                <p class="lable-txt">Years of Experience</p>
+              </div>
+              <div class="stats__content">
+                <h2
+                  class="heading-secondary count-up montserrat"
+                  data-target="200"
+                >
+                  0
+                </h2>
+                <p class="lable-txt">Happy Clients</p>
+              </div>
+            </div>
+          </section>
+          <section class="section-showcase">
+            <div class="showcase container">
+              <div class="showcase__img showcase__1">
+                <img
+                  src="./assets/images/cyberspace-2784907.png"
+                  alt=""
+                  class=""
+                />
+              </div>
+              <div class="showcase__img showcase__2">
+                <img
+                  src="./assets/images/pexels-jakubzerdzicki-16423102.png"
+                  alt=""
+                  class=""
+                />
+              </div>
+              <div class="showcase__testimonial showcase__3">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="text--default text--white">
+                  Astonishing performance they built and make it ready just
+                  within a week Astonishing performance they built and
+                </p>
+                <div class="separator"></div>
+                <figure class="profile">
+                  <div class="profile__caption">
+                    <figcaption class="profile__name montserrat">
+                      Mary Smith
+                    </figcaption>
+                    <figcaption class="profile__description montserrat">
+                      CEO at abc organization
+                    </figcaption>
+                  </div>
+                  <div class="profile__shape">
+                    <img
+                      src="./assets/images/ChatGPT Image May 6, 2025, 12_56_06 AM.png"
+                      alt="person on a tour"
+                      class="profile__img"
+                    />
+                  </div>
+                </figure>
+              </div>
+              <div class="showcase__testimonial showcase__4">
+                <p class="heading-subtitle-2 text--white">Projects Delivered</p>
+                <p
+                  class="heading-primary count-up text--white"
+                  data-target="204"
+                >
+                  0
+                </p>
+              </div>
+              <div class="showcase__img showcase__5">
+                <img
+                  src="./assets/images/pexels-divinetechygirl-1181354.png"
+                  alt=""
+                  class=""
+                />
+              </div>
+            </div>
+          </section>
+          <section class="section-trust">
+            <div id="tsparticles-trust">
+              <!-- <img
+                src="./assets/materials/hero-bg-material-01.svg"
+                alt=""
+                class="hero__decor-2"
+              /> -->
+            </div>
+            <div class="trust container">
+              <div class="trust__title">
+                <h2 class="heading-secondary u-margin-bottom-small">
+                  Trusted by Businesses, Chosen for Excellence
+                </h2>
+                <p class="text--default u-margin-bottom-medium">
+                  Powering Businesses with Smart Electronics and Scalable IT
+                  Infrastructure
+                </p>
+              </div>
+              <div class="trust__cards-box u-margin-top-medium">
+                <div class="trust__card">
+                  <img
+                    class="trust__icon"
+                    src="./assets/icons/trust/ic-checkmark.svg"
+                    alt="checkmark icon"
+                  />
+                  <h3 class="lable-txt">Trusted Partnerships</h3>
+                  <p class="lable-txt">
+                    We’ve built long-term partnerships with global brands to
+                    ensure consistency, value, and trust in every project.
+                  </p>
+                </div>
+                <div class="trust__card">
+                  <img
+                    class="trust__icon"
+                    src="./assets/icons/trust/ic-nodes.svg"
+                    alt="checkmark icon"
+                  />
+                  <h3 class="lable-txt">Tailored IT Infrastructure</h3>
+                  <p class="lable-txt">
+                    We design IT solutions that grow with your
+                    business—delivering reliability, scalability, and peace of
+                    mind.
+                  </p>
+                </div>
+                <div class="trust__card">
+                  <img
+                    class="trust__icon"
+                    src="./assets/icons/trust/ic-wrench.svg"
+                    alt="checkmark icon"
+                  />
+                  <h3 class="lable-txt">Expert Installation</h3>
+                  <p class="lable-txt">
+                    Our certified technicians ensure every setup is installed to
+                    perfection and supported long-term.
+                  </p>
+                </div>
+                <div class="trust__card">
+                  <img
+                    class="trust__icon"
+                    src="./assets/icons/trust//ic-globe.svg"
+                    alt="checkmark icon"
+                  />
+                  <h3 class="lable-txt">Trusted Partnerships</h3>
+                  <p class="lable-txt">
+                    With a strong global logistics network, we ensure fast and
+                    consistent supply chain delivery.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="#"
+                class="trust__btn btn btn--outlined u-margin-top-large"
+                >Explore Our Capabilities</a
+              >
+            </div>
+          </section>
+          <section class="section-contacts">
+            <div class="contacts__bg-decore">
               <img
-                src="./assets/logo/Group 405.svg"
-                alt="brightstar"
-                class="log-img"
+                src="./assets/materials/hero-bg-material-01.svg"
+                alt=""
+                class="hero__decor-2"
               />
             </div>
-            <p class="footer__sub-txt lable-txt text--white">
-              Importing & distributing electronics, office equipment, and IT
-              infrastructure across Ethiopia.
-            </p>
-            <p class="footer__sub-txt lable-txt text--white">
-              Addis Ababa, Ethiopia
-            </p>
-          </div>
-          <div class="footer__socials">
-            <a href="#" class="social-icon">FB</a>
-            <a href="#" class="social-icon">TW</a>
-            <a href="#" class="social-icon">IG</a>
-          </div>
-        </div>
-        <div class="separator u-margin-top-medium"></div>
-
-        <div class="footer__midle">
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Quick links</h2>
-            <ul class="lists">
-              <li class="list-item">
-                <a class="text--white" href="#">Home</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">About Us</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Services</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Testimonials</a>
-              </li>
-              <li class="list-item">
-                <a class="text--white" href="#">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Services</h2>
-            <ul class="lists">
-              <li class="list-item">Electronics Import</li>
-              <li class="list-item">Office Equipment</li>
-              <li class="list-item">Surveillance Installation</li>
-              <li class="list-item">Data Center Setup</li>
-              <li class="list-item">Tech Support</li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">Contact</h2>
-            <ul class="lists">
-              <li class="list-item">Phone: +1 234 567 89</li>
-              <li class="list-item">Email: info@brightstar.com</li>
-              <li class="list-item">
-                Address: 123 Care Lane, Health City, HC 56789s
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer__block">
-            <h2 class="heading-tertiary text--white">
-              Subscribe to our news letter
-            </h2>
-            <form id="subscribe-form" class="subscribe">
-              <div class="form__group">
-                <input
-                  type="email"
-                  id="subscriber-email"
-                  placeholder="Enter your email"
-                  required
-                  class="subscribe__input form__input"
-                />
-                <label for="subscriber-email" class="form__lable"
-                  >Enter your email</label
+            <div class="contacts container">
+              <div class="contacts__form">
+                <h2
+                  class="contacts__title heading-secondary u-margin-bottom-medium"
                 >
+                  Let's Get In Touch.
+                </h2>
+                <form class="form">
+                  <div class="form__group">
+                    <input
+                      type="text"
+                      class="form__input"
+                      placeholder="Full Name"
+                      id="name"
+                      required
+                    />
+                    <label for="name" class="form__lable">Full Name</label>
+                  </div>
+                  <div class="form__group">
+                    <input
+                      type="email"
+                      class="form__input"
+                      placeholder="Email Address"
+                      id="email"
+                      required
+                    />
+                    <label for="email" class="form__lable">Email Address</label>
+                  </div>
+                  <div class="form__group u-margin-bottom-medium">
+                    <textarea
+                      class="form__input"
+                      id="message"
+                      name="message"
+                      rows="5"
+                      required
+                      placeholder="How can we help you?"
+                    ></textarea>
+                    <label for="message" class="form__lable">Message</label>
+                  </div>
+                  <div class="form__group">
+                    <button
+                      type="submit"
+                      class="btn btn--secondary"
+                      id="submit-btn"
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                </form>
               </div>
-
-              <button type="submit" class="btn subscribe__btn">&rarr;</button>
-            </form>
-            <div id="subscribe-message"></div>
-            <p id="success-message"></p>
+              <div class="contacts__text-box">
+                <p
+                  class="contacts__subtitle heading-subtitle-2 u-margin-bottom-medium"
+                >
+                  We're one message away from helping you with your IT needs.
+                </p>
+                <div class="contacts__card">
+                  <img
+                    src="./assets/icons/socials/ic-phone-outlined.svg"
+                    alt="phone icon"
+                  />
+                  <p class="lable-txt">+251 91 234 5678</p>
+                </div>
+                <div class="contacts__card">
+                  <img
+                    src="./assets/icons/socials/ic-mail-outlined.svg"
+                    alt="phone icon"
+                  />
+                  <p class="lable-txt">contact@brightstarplc.com</p>
+                </div>
+                <div class="contacts__card">
+                  <img
+                    src="./assets/icons/socials/ic-location-outlined.svg"
+                    alt="phone icon"
+                  />
+                  <p class="lable-txt">
+                    123 Tech Avenue, Addis Ababa, Ethiopia
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section-blog">
+            <div class="blog">
+              <div class="blog__nav">
+                <h2
+                  class="contacts__title heading-secondary u-margin-bottom-small"
+                >
+                  Insites
+                </h2>
+                <p class="heading-subtitle-2 u-margin-bottom-medium">
+                  Recent Blogs
+                </p>
+                <div class="blog__navigation u-margin-top-medium">
+                  <button
+                    id="scrollLeftBtn"
+                    class="btn btn--navigation"
+                    onclick="scrollPrev()"
+                  >
+                    &larr;
+                  </button>
+                  <button
+                    id="scrollRightBtn"
+                    class="btn btn--navigation"
+                    onclick="scrollNext()"
+                  >
+                    &rarr;
+                  </button>
+                </div>
+              </div>
+              <div id="loadingSpinner" class="spinner" style="display: none">
+                <div class="spinner-icon"></div>
+              </div>
+              <div class="blog__cards scroll-container" id="cardContainer">
+                <!-- cards go here -->
+              </div>
+            </div>
+          </section>
+          <!-- <div class="scroll-indicator" id="scrollTopBtn">↑</div> -->
+          <div class="arrow-container" id="arrowContainer">
+            <svg viewBox="0 0 89.08 89.08">
+              <!-- Group for rotating the arrow -->
+              <g id="arrowGroup" transform="rotate(0 44.54 44.54)">
+                <!-- SVG Arrow -->
+                <path
+                  class="cls-2"
+                  d="M89.08,42.64l-2.26,3.9-2.25,3.9-2.24-3.9-2.26-3.9c1.33.6,2.67,1.19,4,1.77-.07-21.71-17.75-39.36-39.49-39.36-12.5,0-24,5.74-31.55,15.73l-.8-.61C19.98,9.93,31.77,4.05,44.58,4.05c22.32,0,40.47,18.15,40.49,40.46,1.33-.62,2.67-1.24,4.01-1.87Z"
+                ></path>
+              </g>
+            </svg>
+            <div class="percentage" id="percentage">0%</div>
+          </div>
+        </main>
+        <footer class="footer footer-anim">
+          <div class="footer__container container">
+            <div class="footer__top">
+              <div class="footer__txt-box">
+                <div class="logo">
+                  <img
+                    src="./assets/logo/Group 405.svg"
+                    alt="brightstar"
+                    class="log-img"
+                  />
+                </div>
+                <p class="footer__sub-txt lable-txt text--white">
+                  Importing & distributing electronics, office equipment, and IT
+                  infrastructure across Ethiopia.
+                </p>
+                <p class="footer__sub-txt lable-txt text--white">
+                  Addis Ababa, Ethiopia
+                </p>
+              </div>
+              <div class="footer__socials">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">IG</a>
+              </div>
+            </div>
+            <div class="separator u-margin-top-medium"></div>
+            <div class="footer__midle">
+              <div class="footer__block">
+                <h2 class="heading-tertiary text--white">Quick links</h2>
+                <ul class="lists">
+                  <li class="list-item">
+                    <a class="text--white" href="#">Home</a>
+                  </li>
+                  <li class="list-item">
+                    <a class="text--white" href="#">About Us</a>
+                  </li>
+                  <li class="list-item">
+                    <a class="text--white" href="#">Services</a>
+                  </li>
+                  <li class="list-item">
+                    <a class="text--white" href="#">Testimonials</a>
+                  </li>
+                  <li class="list-item">
+                    <a class="text--white" href="#">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__block">
+                <h2 class="heading-tertiary text--white">Services</h2>
+                <ul class="lists">
+                  <li class="list-item">Electronics Import</li>
+                  <li class="list-item">Office Equipment</li>
+                  <li class="list-item">Surveillance Installation</li>
+                  <li class="list-item">Data Center Setup</li>
+                  <li class="list-item">Tech Support</li>
+                </ul>
+              </div>
+              <div class="footer__block">
+                <h2 class="heading-tertiary text--white">Contact</h2>
+                <ul class="lists">
+                  <li class="list-item">Phone: +1 234 567 89</li>
+                  <li class="list-item">Email: info@brightstar.com</li>
+                  <li class="list-item">
+                    Address: 123 Care Lane, Health City, HC 56789s
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__block">
+                <h2 class="heading-tertiary text--white">
+                  Subscribe to our news letter
+                </h2>
+                <form id="subscribe-form" class="subscribe">
+                  <div class="form__group">
+                    <input
+                      type="email"
+                      id="subscriber-email"
+                      placeholder="Enter your email"
+                      required
+                      class="subscribe__input form__input"
+                    />
+                    <label for="subscriber-email" class="form__lable"
+                      >Enter your email</label
+                    >
+                  </div>
+                  <button type="submit" class="btn subscribe__btn">
+                    &rarr;
+                  </button>
+                </form>
+                <div id="subscribe-message"></div>
+                <p id="success-message"></p>
+              </div>
+            </div>
+            <div class="separator u-margin-top-medium"></div>
+            <div class="footer__bottom">
+              <p class="lable-txt">© 2025 Brightstar. All rights reserved.</p>
+              <p class="lable-txt u-margin-bottom-small">
+                <a class="" href="#">Privacy Policy</a> |
+                <a class="" href="#">Terms of Service</a>
+              </p>
+            </div>
+          </div>
+        </footer>
+        <div id="popup" class="popup hidden">
+          <div class="popup__content">
+            <p id="popup-message" class="text--default"></p>
+            <button onclick="closePopup()" class="btn btn--secondary">
+              Close
+            </button>
           </div>
         </div>
-        <div class="separator u-margin-top-medium"></div>
-        <div class="footer__bottom">
-          <p class="lable-txt">© 2025 Brightstar. All rights reserved.</p>
-          <p class="lable-txt u-margin-bottom-small">
-            <a class="" href="#">Privacy Policy</a> |
-            <a class="" href="#">Terms of Service</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="footer__decor-1">
-        <!-- <img src="./assets/materials/Path 2.svg" alt="" /> -->
-      </div>
-    </footer>
-
-    <div id="popup" class="popup hidden">
-      <div class="popup__content">
-        <p id="popup-message" class="text--default"></p>
-        <button onclick="closePopup()" class="btn btn--secondary">Close</button>
       </div>
     </div>
 
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+    <!-- lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <!-- tsparticles -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
     <script src="./js/horizontal-scroll.js"></script>
-    <script src="./js/hero-animation.js"></script>
+    <script src="./js/animation/hero-animation.js"></script>
     <script src="./js/scroll-cards.js"></script>
     <script src="./js/hide-on-scroll.js"></script>
-    <script src="./js/count-animation.js"></script>
-    <script src="./js/featured-blogs.js"></script>
-    <script src="./js/subscriber-email.js"></script>
-    <script src="./js/contact-form.js"></script>
+
+    <!-- server fetched -->
+    <script src="./js/blog/featured-blogs.js"></script>
+
+    <!-- form handlers -->
+    <script src="./js/form_handlers/subscriber-email.js"></script>
+    <script src="./js/form_handlers/contact-form.js"></script>
+
+    <!-- animations -->
+    <script src="./js/animation/count-animation.js"></script>
+    <script src="/js/animation/smooth-scroll.js"></script>
+    <script src="/js/animation/scroll-indicator.js"></script>
+    <script src="/js/animation/animation.js"></script>
+    <script src="/js/active-link.js"></script>
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>

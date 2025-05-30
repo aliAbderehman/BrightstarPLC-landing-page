@@ -9,3 +9,18 @@
 html {
   font-size: 62.5%;
 }
+
+html,
+body {
+  height: 100%;
+  // overflow: hidden; /* important so native scrollbar is hidden */
+}
+
+#smooth-wrapper {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#smooth-content {
+  min-height: 100vh;
+}
