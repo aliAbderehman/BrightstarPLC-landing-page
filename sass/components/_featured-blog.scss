@@ -54,8 +54,8 @@
     height: 50rem;
     border-radius: 8px;
     overflow: hidden;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.3);
+    background-color: var(--color-background);
+    box-shadow: var(--shadow);
     scroll-snap-align: start;
 
     // &:not(:last-child) {
@@ -90,7 +90,7 @@
       top: 0;
       left: 0;
       border-radius: 8px;
-      background-color: rgba($color: $primary-color, $alpha: 0.3);
+      background-color: rgba($color: var(--color-primary), $alpha: 0.3);
     }
   }
 
@@ -103,7 +103,7 @@
   }
 
   &__catagory {
-    color: lighten($color: $color-grey-dark-1, $amount: 15%);
+    color: $color-grey-light;
     padding: 1.4rem 2rem 0 0;
     text-align: end;
   }

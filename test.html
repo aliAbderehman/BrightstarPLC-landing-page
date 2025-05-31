@@ -1,466 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brightstar PLC - Navigation Fixed</title>
+    <title>Morphing Theme Toggle</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      :root {
+        --day-bg: #87ceeb;
+        --night-bg: #0f2027;
+        --day-toggle: #ffd700;
+        --night-toggle: #1e1e1e;
       }
 
       body {
-        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-        color: #fff;
-        min-height: 100vh;
+        margin: 0;
+        height: 100vh;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        padding: 20px;
+        background: var(--day-bg);
+        transition: background 0.5s ease;
       }
 
-      .container {
-        max-width: 1000px;
+      .toggle-container {
+        position: relative;
+        width: 120px;
+        height: 60px;
+      }
+
+      .toggle-input {
+        display: none;
+      }
+
+      .toggle-label {
+        position: absolute;
         width: 100%;
+        height: 100%;
+        background: var(--day-toggle);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background 0.5s ease;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
       }
 
-      .header {
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        padding: 15px 30px;
-        margin-bottom: 40px;
-      }
-
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      .navbar__logo img {
+      /* Sun/Moon container */
+      .icon-container {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 50px;
         height: 50px;
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-      }
-
-      .header__nav-list {
-        display: flex;
-        list-style: none;
-        position: relative;
-        gap: 10px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50px;
-      }
-
-      .header__nav-list li {
-        position: relative;
-        z-index: 1;
-      }
-
-      .nav-link {
-        display: block;
-        padding: 12px 25px;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.8);
-        font-weight: 600;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        position: relative;
+        border-radius: 50%;
+        background: white;
         z-index: 2;
       }
 
-      .nav-link:hover {
-        color: #fff;
-      }
-
-      .nav-link.active {
-        color: #fff;
-        font-weight: 700;
-      }
-
-      .nav-indicator {
+      /* Sun (circle) */
+      .sun {
         position: absolute;
-        height: 100%;
-        background: linear-gradient(90deg, #ff8a00, #e52e71);
-        border-radius: 50px;
-        z-index: 0;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
+        width: 30px;
+        height: 30px;
+        background: #ffd700;
+        border-radius: 50%;
+        top: 10px;
+        left: 10px;
       }
 
-      .btn {
-        display: inline-block;
-        padding: 12px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      /* Moon (crescent shape) */
+      .moon {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #f0f0f0;
+        border-radius: 50%;
+        top: 10px;
+        left: 10px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        transform: scale(0);
+        opacity: 0;
       }
 
-      .btn--secondary {
-        background: linear-gradient(90deg, #00c9ff, #92fe9d);
-        color: #1a2a6c;
-        border: none;
-      }
-
-      .btn--secondary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 201, 255, 0.4);
-      }
-
-      .content {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 30px;
-        border-radius: 15px;
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        margin-top: 20px;
+        height: 100%;
+        background: transparent;
+        transition: background 0.5s ease;
       }
 
-      h1 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #00c9ff;
-        text-shadow: 0 0 10px rgba(0, 201, 255, 0.5);
+      /* Dark mode styles */
+      [data-theme="dark"] body {
+        background: var(--night-bg);
       }
 
-      .explanation {
-        margin-bottom: 30px;
+      [data-theme="dark"] .toggle-label {
+        background: var(--night-toggle);
       }
 
-      h2 {
-        color: #ff8a00;
-        margin-bottom: 15px;
-      }
-
-      p {
-        line-height: 1.6;
-        margin-bottom: 15px;
-      }
-
-      ul {
-        margin: 20px 0;
-        padding-left: 30px;
-      }
-
-      li {
-        margin-bottom: 10px;
-        line-height: 1.6;
-      }
-
-      .code-block {
-        background: #1e1e1e;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 30px 0;
-        overflow-x: auto;
-        font-family: "Courier New", monospace;
-      }
-
-      pre {
-        color: #f8f8f2;
-        line-height: 1.5;
-      }
-
-      .comment {
-        color: #6a9955;
-      }
-
-      .keyword {
-        color: #569cd6;
-      }
-
-      .function {
-        color: #dcdcaa;
-      }
-
-      .string {
-        color: #ce9178;
-      }
-
-      .footer {
-        text-align: center;
-        margin-top: 40px;
-        padding: 20px;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 768px) {
-        .navbar {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .header__nav-list {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
+      [data-theme="dark"] .stars {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="80" cy="20" r="1" fill="white"/><circle cx="30" cy="60" r="1" fill="white"/><circle cx="70" cy="70" r="1" fill="white"/></svg>');
+        opacity: 0.8;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <header class="header">
-        <nav class="navbar" id="navbar">
-          <div class="navbar__logo">
-            <!-- Inline SVG logo for demo -->
-            <svg width="200" height="50" viewBox="0 0 200 50">
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#ff8a00" />
-                <stop offset="100%" stop-color="#e52e71" />
-              </linearGradient>
-              <text
-                x="10"
-                y="35"
-                font-family="Arial"
-                font-size="30"
-                fill="url(#gradient)"
-                font-weight="bold"
-              >
-                BRIGHTSTAR PLC
-              </text>
-            </svg>
-          </div>
-          <ul class="header__nav-list">
-            <div class="nav-indicator"></div>
-            <li>
-              <a href="#" class="nav-link page-btn" data-page="home">Home</a>
-            </li>
-            <li>
-              <a href="#" class="nav-link page-btn" data-page="services"
-                >Services</a
-              >
-            </li>
-            <li>
-              <a href="#" class="nav-link page-btn" data-page="about"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a href="#" class="nav-link page-btn" data-page="blog">Blogs</a>
-            </li>
-          </ul>
-          <a href="#" class="btn btn--secondary">contact us</a>
-        </nav>
-      </header>
+    <div class="visual-camera"></div>
 
-      <div class="content">
-        <h1>Fixed Navigation with Active Link Indicator</h1>
-
-        <div class="explanation">
-          <h2>Fixed Issues:</h2>
-          <ul>
-            <li>
-              <strong>Multiple Active Links</strong>: Only one link is active at
-              a time now
-            </li>
-            <li>
-              <strong>Home Page Detection</strong>: Added proper home page
-              detection
-            </li>
-            <li>
-              <strong>Indicator Positioning</strong>: Fixed calculation for
-              accurate positioning
-            </li>
-            <li>
-              <strong>Smooth Transitions</strong>: Added smooth animation for
-              the indicator
-            </li>
-            <li>
-              <strong>Resize Handling</strong>: Improved resize event handling
-            </li>
-          </ul>
-
-          <p>
-            Try clicking the navigation links to see the indicator in action!
-          </p>
+    <div class="toggle-container">
+      <input type="checkbox" id="themeToggle" class="toggle-input" />
+      <label for="themeToggle" class="toggle-label">
+        <div class="icon-container">
+          <div class="sun"></div>
+          <div class="moon"></div>
         </div>
-
-        <div class="code-block">
-          <h2>Fixed JavaScript:</h2>
-          <pre><code><span class="keyword">const</span> links = document.<span class="function">querySelectorAll</span>(<span class="string">".nav-link"</span>);
-<span class="keyword">const</span> indicator = document.<span class="function">querySelector</span>(<span class="string">".nav-indicator"</span>);
-
-<span class="comment">// Initialize the indicator</span>
-<span class="keyword">function</span> <span class="function">initIndicator</span>() {
-    <span class="keyword">const</span> activeLink = document.<span class="function">querySelector</span>(<span class="string">".nav-link.active"</span>);
-    <span class="keyword">if</span> (activeLink) {
-        <span class="function">setIndicator</span>(activeLink);
-    } <span class="keyword">else if</span> (links.length > 0) {
-        <span class="comment">// Set first link as active if none is active</span>
-        links[0].classList.<span class="function">add</span>(<span class="string">"active"</span>);
-        <span class="function">setIndicator</span>(links[0]);
-    }
-}
-
-<span class="comment">// Set indicator position and width</span>
-<span class="keyword">function</span> <span class="function">setIndicator</span>(el) {
-    <span class="keyword">const</span> rect = el.<span class="function">getBoundingClientRect</span>();
-    <span class="keyword">const</span> navList = el.closest(<span class="string">".header__nav-list"</span>);
-    <span class="keyword">const</span> navRect = navList.<span class="function">getBoundingClientRect</span>();
-    
-    indicator.style.width = <span class="string">`${rect.width}px`</span>;
-    indicator.style.left = <span class="string">`${rect.left - navRect.left}px`</span>;
-}
-
-<span class="comment">// Set initial indicator position</span>
-window.<span class="function">addEventListener</span>(<span class="string">"DOMContentLoaded"</span>, () => {
-    <span class="comment">// Detect home page</span>
-    <span class="keyword">const</span> path = window.location.pathname;
-    <span class="keyword">const</span> isHomePage = path.endsWith(<span class="string">"/"</span>) || path.endsWith(<span class="string">"index.html"</span>) || path === <span class="string">""</span>;
-    
-    <span class="comment">// Remove active class from all links</span>
-    links.<span class="function">forEach</span>(link => link.classList.<span class="function">remove</span>(<span class="string">"active"</span>));
-    
-    <span class="keyword">let</span> activeLink = <span class="keyword">null</span>;
-    
-    <span class="comment">// Find matching link</span>
-    links.<span class="function">forEach</span>(link => {
-        <span class="keyword">const</span> page = link.<span class="function">getAttribute</span>(<span class="string">"data-page"</span>);
-        
-        <span class="comment">// Special handling for home page</span>
-        <span class="keyword">if</span> (isHomePage && page === <span class="string">"home"</span>) {
-            activeLink = link;
-        }
-        <span class="comment">// For other pages</span>
-        <span class="keyword">else if</span> (path.<span class="function">includes</span>(page)) {
-            activeLink = link;
-        }
-    });
-    
-    <span class="comment">// Set active link</span>
-    <span class="keyword">if</span> (activeLink) {
-        activeLink.classList.<span class="function">add</span>(<span class="string">"active"</span>);
-    } <span class="keyword">else if</span> (links.length > 0) {
-        <span class="comment">// Fallback to first link</span>
-        links[0].classList.<span class="function">add</span>(<span class="string">"active"</span>);
-    }
-    
-    <span class="function">initIndicator</span>();
-});
-
-<span class="comment">// Update indicator on link click</span>
-links.<span class="function">forEach</span>((link) => {
-    link.<span class="function">addEventListener</span>(<span class="string">"click"</span>, (e) => {
-        e.<span class="function">preventDefault</span>();
-        
-        <span class="comment">// Remove active class from all links</span>
-        links.<span class="function">forEach</span>((l) => l.classList.<span class="function">remove</span>(<span class="string">"active"</span>));
-        
-        <span class="comment">// Add active class to clicked link</span>
-        link.classList.<span class="function">add</span>(<span class="string">"active"</span>);
-        
-        <span class="comment">// Update indicator position</span>
-        <span class="function">setIndicator</span>(link);
-    });
-});
-
-<span class="comment">// Update indicator on window resize</span>
-window.<span class="function">addEventListener</span>(<span class="string">"resize"</span>, () => {
-    <span class="keyword">const</span> active = document.<span class="function">querySelector</span>(<span class="string">".nav-link.active"</span>);
-    <span class="keyword">if</span> (active) <span class="function">setIndicator</span>(active);
-});</code></pre>
-        </div>
-      </div>
-
-      <div class="footer">
-        <p>Brightstar PLC Navigation Solution | Fixed Active Link Indicator</p>
-      </div>
+        <div class="stars"></div>
+      </label>
     </div>
 
     <script>
-      // Fixed JavaScript implementation
-      const links = document.querySelectorAll(".nav-link");
-      const indicator = document.querySelector(".nav-indicator");
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.querySelector(".toggle-input");
+        const visualElement = document.querySelector(".visual-camera");
+        const sun = document.querySelector(".sun");
+        const moon = document.querySelector(".moon");
+        const iconContainer = document.querySelector(".icon-container");
 
-      // Initialize the indicator
-      function initIndicator() {
-        const activeLink = document.querySelector(".nav-link.active");
-        if (activeLink) {
-          setIndicator(activeLink);
-        } else if (links.length > 0) {
-          // Set first link as active if none is active
-          links[0].classList.add("active");
-          setIndicator(links[0]);
-        }
-      }
+        // Initialize theme
+        const currentTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", currentTheme);
 
-      // Set indicator position and width
-      function setIndicator(el) {
-        const rect = el.getBoundingClientRect();
-        const navList = el.closest(".header__nav-list");
-        const navRect = navList.getBoundingClientRect();
-
-        indicator.style.width = `${rect.width}px`;
-        indicator.style.left = `${rect.left - navRect.left}px`;
-      }
-
-      // Set initial indicator position
-      window.addEventListener("DOMContentLoaded", () => {
-        // Detect home page
-        const path = window.location.pathname;
-        const isHomePage =
-          path.endsWith("/") || path.endsWith("index.html") || path === "";
-
-        // Remove active class from all links
-        links.forEach((link) => link.classList.remove("active"));
-
-        let activeLink = null;
-
-        // Find matching link
-        links.forEach((link) => {
-          const page = link.getAttribute("data-page");
-
-          // Special handling for home page
-          if (isHomePage && page === "home") {
-            activeLink = link;
-          }
-          // For other pages
-          else if (path.includes(page)) {
-            activeLink = link;
-          }
-        });
-
-        // Set active link
-        if (activeLink) {
-          activeLink.classList.add("active");
-        } else if (links.length > 0) {
-          // Fallback to first link
-          links[0].classList.add("active");
+        // Set initial toggle state
+        if (currentTheme === "dark") {
+          themeToggle.checked = true;
+          gsap.set(moon, { transform: "scale(1)", opacity: 1 });
+          gsap.set(sun, { transform: "scale(0)", opacity: 0 });
+          visualElement.style.backgroundImage =
+            "url('/assets/images/dark/img-main-01.png')";
+        } else {
+          themeToggle.checked = false;
+          visualElement.style.backgroundImage =
+            "url('/assets/images/light/img-main-01.png')";
         }
 
-        initIndicator();
-      });
+        // Toggle theme with morph animation
+        themeToggle.addEventListener("change", () => {
+          const theme = document.documentElement.getAttribute("data-theme");
+          let newTheme;
 
-      // Update indicator on link click
-      links.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
+          if (theme === "dark") {
+            newTheme = "light";
+            // Sun rises (moon -> sun)
+            gsap
+              .timeline()
+              .to(moon, {
+                duration: 0.3,
+                scale: 0,
+                opacity: 0,
+                ease: "power2.in",
+              })
+              .to(
+                sun,
+                { duration: 0.3, scale: 1, opacity: 1, ease: "power2.out" },
+                "<0.2"
+              );
+            visualElement.style.backgroundImage =
+              "url('/assets/images/light/img-main-01.png')";
+          } else {
+            newTheme = "dark";
+            // Moon appears (sun -> moon)
+            gsap
+              .timeline()
+              .to(sun, {
+                duration: 0.3,
+                scale: 0,
+                opacity: 0,
+                ease: "power2.in",
+              })
+              .to(
+                moon,
+                {
+                  duration: 0.3,
+                  scale: 1,
+                  opacity: 1,
+                  clipPath: "polygon(30% 0%, 100% 50%, 30% 100%, 0% 50%)", // Crescent shape
+                  ease: "power2.out",
+                },
+                "<0.2"
+              );
+            visualElement.style.backgroundImage =
+              "url('/assets/images/dark/img-main-01.png')";
+          }
 
-          // Remove active class from all links
-          links.forEach((l) => l.classList.remove("active"));
+          // Move toggle container
+          gsap.to(iconContainer, {
+            x: theme === "dark" ? 0 : 60,
+            duration: 0.5,
+            ease: "power2.inOut",
+          });
 
-          // Add active class to clicked link
-          link.classList.add("active");
-
-          // Update indicator position
-          setIndicator(link);
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
         });
-      });
-
-      // Update indicator on window resize
-      window.addEventListener("resize", () => {
-        const active = document.querySelector(".nav-link.active");
-        if (active) setIndicator(active);
       });
     </script>
   </body>

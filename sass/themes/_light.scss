@@ -1,0 +1,49 @@
+[data-theme="light"],
+:root {
+  // Color palette
+  --color-primary: #143892;
+  --color-primary-dark: #0b1e4f;
+  --color-text: #212121;
+  --color-background: #ffffff;
+  --color-surface: #f5f5f5;
+
+  --color-secondary: #00f2ff;
+  --color-secondary-dark: 0, 189, 199;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #404040;
+
+  --color-glass: rgba(255, 255, 255, 0.4);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+
+  --color-grey-light: #dcdcdc;
+
+  // Additional light theme variables
+  --shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+  --color-indicator: #c7c7c74f;
+  --color-footer-bg: linear-gradient(#4f7ede, #1c4fb8);
+}
+
+// $primary-color: #143892;
+// $primary-color-dark: #0b1e4f;
+
+// $secondary-color: #00f2ff;
+// $secondary-color-dark: #00bdc7;
+
+// $color-grey-dark-1: #333;
+// $color-grey-dark-2: #404040;
+
+// $color-grey-light: #dcdcdc;
+// $color-white: #fff;
+// $color-black: #000;
+
+// // FONT
+// $default-font-size: 1.8rem;
+
+// // _spacing
+
+// $space-section: 12rem;
+// $space-title: 4.8rem;
+// $space-content: 3.2rem;
+// $space-between: 2.4rem;

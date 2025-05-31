@@ -19,11 +19,11 @@
   }
 
   &--primary {
-    background-color: $color-white;
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-    color: $color-black;
+    // background-color: $color-white;
+    background-color: var(--color-background);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease-in-out;
-    color: darken($primary-color, 15%);
+    color: var(--color-primary-dark);
 
     &::after {
       content: "";
@@ -34,15 +34,15 @@
       top: 0;
       left: 0;
       z-index: -100;
-      background-color: $color-white;
+      background-color: var(--color-background);
 
       transition: all 0.3s ease-in-out;
     }
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-      background-color: $color-white;
+      box-shadow: var(--shadow);
+      background-color: var(--color-background);
 
       &::after {
         transform: scaleX(1.2) scaleY(1.4);
@@ -53,11 +53,11 @@
 
   &--secondary {
     // outline: solid 2px $secondary-color;
-    background-color: $primary-color;
+    background-color: var(--color-primary);
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-    color: $color-black;
+    // color: $color-black;
     transition: all 0.3s ease-in-out;
-    color: $color-white;
+    color: var(--color-background);
 
     &::after {
       content: "";
@@ -68,7 +68,7 @@
       top: 0;
       left: 0;
       z-index: -100;
-      background-color: $primary-color;
+      background-color: var(--color-primary);
 
       transition: all 0.3s ease-in-out;
     }
@@ -76,7 +76,7 @@
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-      background-color: $primary-color;
+      background-color: var(--color-primary);
 
       &::after {
         transform: scaleX(1.2) scaleY(1.4);
@@ -88,7 +88,7 @@
   &--outlined {
     position: relative;
     background-color: transparent;
-    color: darken($primary-color, 15%);
+    color: var(--color-primary-dark);
     outline: 2px solid $color-grey-dark-1;
     filter: drop-shadow(0 0.5rem 1rem rgba($color-black, 0.5));
     overflow: hidden; // ⬅️ Needed to keep pseudo-element inside
@@ -125,14 +125,14 @@
 
   &--text {
     font-size: $default-font-size;
-    color: $primary-color;
+    color: var(--color-primary);
     display: inline-block;
     text-decoration: none;
     padding: 1rem 1.5rem !important;
     position: relative;
     transition: all 0.3s;
     overflow: hidden;
-    border-bottom: 5px solid $primary-color;
+    border-bottom: 5px solid var(--color-primary);
     border-radius: 0 !important;
     transition: all 0.3s;
 
@@ -140,7 +140,7 @@
 
     &::before {
       content: "";
-      background-color: $primary-color;
+      background-color: var(--color-primary);
       position: absolute;
 
       height: 110%;
@@ -178,12 +178,13 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    outline: 2px solid $color-grey-dark-1;
+    outline: 2px solid var(--color-grey-dark-1);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     transition: all 0.3s;
+    color: var(--color-text);
 
     &::after {
       content: "";
@@ -204,8 +205,8 @@
     z-index: 1;
 
     &:hover {
-      outline: 2px solid $secondary-color;
-      box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
+      outline: 2px solid var(--color-secondary);
+      box-shadow: var(--shadow);
       transform: scale(1.1);
     }
 

@@ -16,6 +16,8 @@
 @import "./components/footer";
 @import "./components/form";
 @import "./components/hero-decor";
+@import "./components/hero-img";
+@import "./components/hero-txt";
 @import "./components/highlights";
 @import "./components/navbar";
 @import "./components/popup";
@@ -28,6 +30,8 @@
 @import "./components/spinner";
 @import "./components/stats";
 @import "./components/subscribe";
+@import "./components/theme-toggle";
+@import "./components/theme-toggle";
 @import "./components/visual";
 
 @import "./layout/hero";
@@ -35,5 +39,7 @@
 @import "./pages/blog";
 @import "./pages/blog-detail";
 @import "./pages/home";
+
+@import "./themes/themes";
 
 @import "animate.css";

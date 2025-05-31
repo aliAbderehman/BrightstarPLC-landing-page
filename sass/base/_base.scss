@@ -4,6 +4,10 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+
+  transition: background-color var(--transition-duration)
+      var(--transition-timing),
+    color var(--transition-duration) var(--transition-timing);
 }
 
 html {
@@ -14,7 +18,20 @@ html,
 body {
   height: 100%;
   // overflow: hidden; /* important so native scrollbar is hidden */
+  position: relative;
+  background-color: var(--color-background);
+  z-index: -200;
+  color: var(--text-color);
 }
+
+:root {
+  --transition-duration: 0.3s;
+  --transition-timing: ease-in-out;
+}
+
+// * {
+
+// }
 
 #smooth-wrapper {
   height: 100vh;

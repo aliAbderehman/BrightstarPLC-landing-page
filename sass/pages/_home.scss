@@ -16,12 +16,23 @@
   }
 
   &__img-box {
-    text-align: end;
+    align-self: center; /* Or center */
+    justify-self: end;
+    width: 70%;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: inline-block;
+    border: 1px solid var(--color-grey-light);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    background-color: #0b58933a;
   }
 
   &__img-1 {
-    width: 70%;
+    display: block;
+    width: auto;
     height: auto;
+    max-width: 100%; /* optional */
   }
 }
 
@@ -33,7 +44,11 @@
     position: relative;
     top: -6rem;
     gap: $space-between;
-    align-items: end;
+    // align-items: end;
+
+    &__text {
+      align-self: flex-end;
+    }
   }
 }
 
@@ -61,9 +76,9 @@
   padding-top: $space-section;
   background-image: linear-gradient(
     to bottom,
-    $color-white,
+    var(--color-background),
     rgba(#3671ea, 0.8),
-    $color-white
+    var(--color-background)
   );
   .services {
     padding-bottom: $space-section;

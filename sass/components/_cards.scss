@@ -9,7 +9,8 @@
   gap: 2rem;
   justify-content: start;
   align-items: start;
-  transition: all 0.3s ease-in-out;
+  // transition: transform 0.3s ease, background-color 0.3s ease-in-out,
+  //   border 0.3s ease-in-out;
 
   will-change: transform;
 
@@ -20,7 +21,7 @@
 
   &:hover {
     border: 2px solid $secondary-color;
-    background-color: rgba(69, 216, 243, 0.3);
+    background-color: rgba(var(--color-secondary-dark), 0.3);
     transform: translateY(-5px) scale(1.02);
   }
 }

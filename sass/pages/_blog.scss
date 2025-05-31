@@ -62,15 +62,15 @@ main > .blog {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
-  background: #ffffff;
+  background: var(--color-background);
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   // overflow: hidden;
 }
 
 .blog-post:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow);
   transform: translateY(-4px);
 }
 

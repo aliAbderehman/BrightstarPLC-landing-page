@@ -1,0 +1,27 @@
+[data-theme="dark"] {
+  // Color palette
+  --color-primary: #3eb6e6;
+  --color-primary-dark: #3cacd8;
+
+  --color-text: #f1f1f1;
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+
+  --color-secondary: #068187;
+  // --color-secondary-dark: rgba(0, 189, 199, 0.3);
+  --color-secondary-dark: 2, 128, 134;
+
+  --color-grey-dark-1: #eee;
+  --color-grey-dark-2: #bfbfbf;
+
+  --color-glass: rgba(255, 255, 255, 0.15);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+
+  --color-grey-light: #4a4a4a;
+
+  // Additional dark theme variables
+  --shadow: 0 0rem 2rem rgba(69, 69, 69, 0.4);
+
+  --color-indicator: #2e2e2e61;
+  --color-footer-bg: linear-gradient(#264686, #08255e);
+}
