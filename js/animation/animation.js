@@ -57,6 +57,7 @@ let split = SplitText.create(".heading-primary", {
   type: " lines",
   // wordsClass: "word",
   linesClass: "line",
+  aria: true,
 });
 
 gsap.from(split.lines, {
@@ -77,3 +78,81 @@ gsap.from(split.lines, {
 //     });
 //   },
 // });
+
+// /////////////////////////////////////////
+// path animation?
+// /////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const fillPath = document.querySelector(".fill-path");
+  if (!fillPath) return;
+
+  // Calculate path length
+  const pathLength = fillPath.getTotalLength();
+  fillPath.style.strokeDasharray = pathLength;
+  fillPath.style.strokeDashoffset = pathLength;
+
+  // Animation timeline
+  gsap.to(fillPath, {
+    strokeDashoffset: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".path-container", // Use the container as trigger
+      start: "top 90%", // Start when top of container hits 80% viewport
+      end: "top 20%", // End when top of container hits 30% viewport
+      scrub: 1, // Smooth scrubbing
+      // markers: true, // For debugging (remove in production)
+      // toggleActions: "play none none none" // Alternative to scrub
+    },
+  });
+
+  // Optional: Color change during scroll
+  gsap.to(fillPath, {
+    stroke: "#00B1F7FF",
+    scrollTrigger: {
+      trigger: ".path-container",
+      start: "top 80%",
+      end: "top 10%",
+      scrub: 1,
+    },
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const fillPath = document.querySelector(".fill-path-footer");
+  if (!fillPath) return;
+
+  // Calculate path length
+  const pathLength = fillPath.getTotalLength();
+  fillPath.style.strokeDasharray = pathLength;
+  fillPath.style.strokeDashoffset = pathLength;
+
+  // Animation timeline
+  gsap.to(fillPath, {
+    strokeDashoffset: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".path-container-footer", // Use the container as trigger
+      start: "top 50%", // Start when top of container hits 80% viewport
+      end: "top -30%", // End when top of container hits 30% viewport
+      scrub: 1, // Smooth scrubbing
+      // markers: true, // For debugging (remove in production)
+      // toggleActions: "play none none none" // Alternative to scrub
+    },
+  });
+
+  // Optional: Color change during scroll
+  gsap.to(fillPath, {
+    stroke: "#00B1F7FF",
+    scrollTrigger: {
+      trigger: ".path-container",
+      start: "top 80%",
+      end: "top 10%",
+      scrub: 1,
+    },
+  });
+});

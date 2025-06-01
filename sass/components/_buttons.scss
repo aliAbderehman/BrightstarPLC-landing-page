@@ -215,4 +215,16 @@
       transform: translateX(0%);
     }
   }
+
+  &--read-more {
+    padding: 0 !important;
+    font-size: 1.6rem !important;
+    font-weight: 600;
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-secondary);
+      text-decoration: underline;
+    }
+  }
 }

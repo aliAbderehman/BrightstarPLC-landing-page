@@ -1,4 +1,3 @@
-@import "animate.css";
 .cus-anim {
   animation-delay: 0.2s;
 }
@@ -138,6 +137,13 @@ body {
   font-size: 1.8rem;
   font-family: "montserrat", sans-serif;
   font-weight: 400;
+}
+
+.text--small {
+  font-size: 1.4rem;
+  font-family: "montserrat", sans-serif;
+  font-weight: 400;
+  color: var(--color-grey-light-2);
 }
 
 .poppins-regular {
@@ -371,6 +377,16 @@ body {
 .btn--navigation:hover::after {
   transform: translateX(0%);
 }
+.btn--read-more {
+  padding: 0 !important;
+  font-size: 1.6rem !important;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.btn--read-more:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
 
 .blog {
   display: flex;
@@ -397,6 +413,7 @@ body {
   display: flex;
   flex: 1;
   min-width: 0;
+  align-items: start;
   gap: 3.2rem;
   padding: 3rem 4rem;
   border-radius: 14px;
@@ -413,29 +430,35 @@ body {
 }
 .blog__card {
   flex: 0 0 auto;
-  width: 38rem;
-  height: 50rem;
+  width: 44rem;
+  border: transparent solid 2px;
   border-radius: 8px;
+  text-decoration: none;
   overflow: hidden;
-  background-color: var(--color-background);
-  box-shadow: var(--shadow);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   scroll-snap-align: start;
+  transition: transform 0.3s ease, border 0.3s ease;
 }
-.blog__card .lable-txt {
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines you want */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.blog__card a {
+  text-decoration: inherit;
+}
+.blog__card:hover {
+  transform: translateY(-3px);
+  border: var(--color-primary) solid 2px;
+}
+.blog__card-content {
+  padding: 2rem;
+  text-decoration: none;
 }
 .blog__card-link {
   text-decoration: none;
 }
 .blog__img-box {
   position: relative;
+  overflow: hidden;
   display: inline-block;
   width: 100%;
-  height: 40%;
+  height: 23rem;
 }
 .blog__img-box::after {
   content: "";
@@ -452,20 +475,13 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   border-radius: 8px;
   object-fit: cover;
 }
 .blog__catagory {
-  color: #dcdcdc;
-  padding: 1.4rem 2rem 0 0;
+  color: var(--color-grey-light-2);
   text-align: end;
-}
-.blog__title-sec {
-  gap: 2.4rem;
-  padding: 0 2rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .comment {
@@ -508,7 +524,7 @@ body {
 }
 
 .card {
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--color-glass-border);
   border-radius: 1.6rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   padding: 2rem;
@@ -525,13 +541,12 @@ body {
   height: auto;
 }
 .card:hover {
-  border: 2px solid #00f2ff;
-  background-color: rgba(var(--color-secondary-dark), 0.3);
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-card-hover);
   transform: translateY(-5px) scale(1.02);
 }
 
 .services .card {
-  box-shadow: none;
   padding: 4rem;
 }
 .services .card img {
@@ -673,8 +688,20 @@ body {
   background-image: var(--color-primary);
   color: var(--color-text);
   border-radius: 5rem 5rem 0 0;
+  flex-direction: column;
   display: flex;
   justify-content: center;
+}
+.footer .path-container {
+  width: 100%;
+  top: 2rem;
+  margin: 0 auto;
+  /* Add some vertical space around the path */
+}
+.footer .svg-container {
+  top: 8rem;
+  position: relative;
+  height: 100%;
 }
 .footer__top {
   display: flex;
@@ -735,7 +762,31 @@ body {
 .footer__bottom p,
 .footer__bottom a {
   font-size: 1.4rem;
-  color: var(--color-grey-dark-2);
+  color: var(--color-text);
+}
+.footer__socials {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.footer__socials a {
+  background-color: var();
+  color: var(--color-text);
+  transition: all 0.3s;
+}
+.footer__socials a:hover {
+  color: var(--color-secondary);
+}
+.footer__socials svg {
+  width: 2.8rem;
+  height: 2.8rem;
+  fill: #0073a5;
+  transition: all 0.3s;
+}
+.footer__socials svg:hover {
+  fill: var(--color-secondary);
 }
 
 .form__group:not(:last-child) {
@@ -962,6 +1013,43 @@ body {
   z-index: 0;
 }
 
+/* Remove fixed positioning and center alignment */
+.path-container {
+  width: 100%;
+  position: sticky;
+  top: 2rem;
+  margin: 0 auto;
+  /* Add some vertical space around the path */
+}
+
+.base-path {
+  stroke: var(--color-grey-light);
+  stroke-width: 3;
+  fill: none;
+}
+
+.svg-container {
+  height: 50vh;
+}
+
+.fill-path {
+  stroke: #3498db;
+  stroke-width: 5;
+  fill: none;
+  /* These will be set by JavaScript */
+  /* stroke-dasharray: 1000; */
+  /* stroke-dashoffset: 1000; */
+}
+
+.fill-path-footer {
+  stroke: #3498db;
+  stroke-width: 5;
+  fill: none;
+  /* These will be set by JavaScript */
+  /* stroke-dasharray: 1000; */
+  /* stroke-dashoffset: 1000; */
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -1058,7 +1146,7 @@ body {
   mix-blend-mode: difference;
   width: 100%;
   height: 100%;
-  stroke: #a6c0f6; /* Default stroke color */
+  stroke: #18a6ea; /* Default stroke color */
   stroke-width: 4;
 }
 
@@ -1197,6 +1285,7 @@ body {
   align-items: center;
   min-height: 150px; /* Adjust height as needed */
   min-width: 150px; /* Adjust height as needed */
+  border: none;
   flex: 1;
 }
 
@@ -1462,11 +1551,10 @@ body {
   width: 38%;
   height: 100%;
   background-size: contain;
-  background-position: right bottom;
+  background-position: left bottom;
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
-  right: 0;
   z-index: -20;
 }
 .visual-right {
@@ -1477,6 +1565,7 @@ body {
 }
 .visual-camera {
   background-image: url(../../assets/images/dark/img-main-01.png);
+  left: 0;
 }
 .visual-device {
   background-image: url(../../assets/images/Mask\ Group\ 20.png);
@@ -1828,7 +1917,7 @@ main > .blog {
 
 .work {
   display: flex;
-  padding-top: 24rem;
+  padding-top: 12rem;
   position: relative;
 }
 .work__content {
@@ -1912,6 +2001,7 @@ main > .blog {
   --color-glass: rgba(255, 255, 255, 0.4);
   --color-glass-border: rgba(255, 255, 255, 0.5);
   --color-grey-light: #dcdcdc;
+  --color-grey-light-2: #595959;
   --shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   --color-indicator: #c7c7c74f;
   --color-footer-bg: linear-gradient(#4f7ede, #1c4fb8);
@@ -1927,12 +2017,14 @@ main > .blog {
   --color-secondary-dark: 2, 128, 134;
   --color-grey-dark-1: #eee;
   --color-grey-dark-2: #bfbfbf;
-  --color-glass: rgba(255, 255, 255, 0.15);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass: rgba(255, 255, 255, 0.057);
+  --color-glass-border: rgba(255, 255, 255, 0.03);
   --color-grey-light: #4a4a4a;
+  --color-grey-light-2: #a1a1a1;
   --shadow: 0 0rem 2rem rgba(69, 69, 69, 0.4);
   --color-indicator: #2e2e2e61;
   --color-footer-bg: linear-gradient(#264686, #08255e);
+  --color-card-hover: rgba(255, 255, 255, 0.128);
 }
 
 * {

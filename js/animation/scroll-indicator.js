@@ -46,10 +46,10 @@ arrowContainer.addEventListener("click", () => {
   });
 });
 
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-scrollTopBtn.addEventListener("click", () => {
-  window.lenis.scrollTo(0, {
-    duration: 1.5,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  });
-});
+// const scrollTopBtn = document.getElementById("scrollTopBtn");
+// scrollTopBtn.addEventListener("click", () => {
+//   window.lenis.scrollTo(0, {
+//     duration: 1.5,
+//     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+//   });
+// });

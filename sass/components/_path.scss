@@ -1,0 +1,39 @@
+/* Remove fixed positioning and center alignment */
+.path-container {
+  width: 100%;
+  //   max-width: 800px;
+  position: sticky;
+  top: 2rem;
+  margin: 0 auto;
+
+  /* Add some vertical space around the path */
+  //   padding: 100px 0;
+}
+
+.base-path {
+  stroke: var(--color-grey-light);
+  stroke-width: 3;
+  fill: none;
+}
+
+.svg-container {
+  height: 50vh;
+  //   background-color: gray;
+}
+.fill-path {
+  stroke: #3498db;
+  stroke-width: 5;
+  fill: none;
+  /* These will be set by JavaScript */
+  /* stroke-dasharray: 1000; */
+  /* stroke-dashoffset: 1000; */
+}
+
+.fill-path-footer {
+  stroke: #3498db;
+  stroke-width: 5;
+  fill: none;
+  /* These will be set by JavaScript */
+  /* stroke-dasharray: 1000; */
+  /* stroke-dashoffset: 1000; */
+}

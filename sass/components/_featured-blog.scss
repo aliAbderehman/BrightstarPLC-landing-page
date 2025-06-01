@@ -27,6 +27,7 @@
     display: flex;
     flex: 1;
     min-width: 0;
+    align-items: start;
     gap: $space-content;
     padding: 3rem 4rem;
     // background-color: rgb(217, 236, 240);
@@ -50,25 +51,29 @@
 
   &__card {
     flex: 0 0 auto;
-    width: 38rem;
-    height: 50rem;
+    width: 44rem;
+    // height: 50rem;\
+    border: transparent solid 2px;
     border-radius: 8px;
+    text-decoration: none;
     overflow: hidden;
-    background-color: var(--color-background);
-    box-shadow: var(--shadow);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
     scroll-snap-align: start;
+    transition: transform 0.3s ease, border 0.3s ease;
 
-    // &:not(:last-child) {
-    //   margin-right: $space-content;
-    // }
-
-    .lable-txt {
-      display: -webkit-box;
-      -webkit-line-clamp: 3; /* number of lines you want */
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    a {
+      text-decoration: inherit;
     }
+
+    &:hover {
+      transform: translateY(-3px);
+      border: var(--color-primary) solid 2px;
+    }
+  }
+
+  &__card-content {
+    padding: 2rem;
+    text-decoration: none;
   }
 
   &__card-link {
@@ -77,9 +82,10 @@
 
   &__img-box {
     position: relative;
+    overflow: hidden;
     display: inline-block;
     width: 100%;
-    height: 40%;
+    height: 23rem;
 
     &::after {
       content: "";
@@ -98,22 +104,14 @@
     display: block;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     border-radius: 8px;
     object-fit: cover;
   }
 
   &__catagory {
-    color: $color-grey-light;
-    padding: 1.4rem 2rem 0 0;
+    color: var(--color-grey-light-2);
     text-align: end;
-  }
-
-  &__title-sec {
-    gap: $space-between;
-    padding: 0 2rem 2rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }
 

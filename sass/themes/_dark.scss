@@ -14,14 +14,16 @@
   --color-grey-dark-1: #eee;
   --color-grey-dark-2: #bfbfbf;
 
-  --color-glass: rgba(255, 255, 255, 0.15);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass: rgba(255, 255, 255, 0.057);
+  --color-glass-border: rgba(255, 255, 255, 0.03);
 
   --color-grey-light: #4a4a4a;
+  --color-grey-light-2: #a1a1a1;
 
   // Additional dark theme variables
   --shadow: 0 0rem 2rem rgba(69, 69, 69, 0.4);
 
   --color-indicator: #2e2e2e61;
   --color-footer-bg: linear-gradient(#264686, #08255e);
+  --color-card-hover: rgba(255, 255, 255, 0.128);
 }

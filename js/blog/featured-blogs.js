@@ -63,6 +63,7 @@ function renderCards(posts) {
 
   posts.forEach((post) => {
     const title = post.title.rendered;
+
     const excerpt = post.excerpt.rendered;
     const category = post._embedded["wp:term"][0]?.[0]?.name || "General";
     const image =
@@ -70,18 +71,30 @@ function renderCards(posts) {
       "./assets/images/img-featured.png"; // fallback
     const link = post.link; // full post URL from WordPress
 
+    const rawDate = post.date;
+    const date = new Date(rawDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+
     const card = document.createElement("div");
     card.classList.add("blog__card");
+    card.classList.add("glass");
 
     card.innerHTML = `
-  <a href="/pages/blog-detail.html?slug=${post.slug}" class="blog__card-link">
+  <a href="/pages/blog-detail.html?slug=${post.slug}" >
     <div class="blog__img-box">
-      <img src="${image}" alt="${title}" />
+      <img src="${image}" alt="${title}" loading="lazy" />
     </div>
-    <h3 class="blog__catagory">${category}</h3>
-    <div class="blog__title-sec">
-      <h3 class="heading-tertiary">${title}</h3>
-      <div class="lable-txt">${excerpt}</div>
+    <div class="blog__card-content">
+      <h3 class="blog__catagory">${category}</h3>
+      <p class="text--small u-margin-bottom-small">${date}</p>
+      <div class="blog__title-sec">
+        <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
+        <div class="lable-txt blog__card-text u-margin-bottom-medium">${excerpt}</div>
+        <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
+      </div>
     </div>
   </a>
 `;
