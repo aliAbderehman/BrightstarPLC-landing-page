@@ -7,3 +7,52 @@
   display: flex;
   justify-content: center;
 }
+
+// breackpoint arguement choices:
+// phone
+// tab-port
+// tab-land
+// big-desktop
+
+// @mixin respond($breakpoint) {
+//   @if $breakpoint == xs {
+//     @media (max-width: 30em) {
+//       //480px
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == sm {
+//     @media (max-width: 48em) {
+//       //768px
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == md {
+//     @media (max-width: 64em) {
+//       //1024px
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == break1 {
+//     @media (max-width: 76em) {
+//       //1200px
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == xl {
+//     @media (min-width: 90em) {
+//       //1440px
+//       @content;
+//     }
+//   }
+// }
+
+@mixin respond-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found.";
+  }
+}

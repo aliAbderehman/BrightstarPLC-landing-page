@@ -8,9 +8,9 @@
   position: relative;
 
   .svg-container {
-    top: 8rem;
-    position: relative;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
     //   background-color: gray;
   }
 

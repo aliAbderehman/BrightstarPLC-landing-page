@@ -1,18 +1,27 @@
 .section-hero {
-  overflow-x: hidden;
-  height: 100vh;
+  overflow: hidden;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-inline: $space-between;
 
   .hero {
-    // Layout and structure
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    // margin: 0 auto;
+    justify-content: center;
+    justify-items: center;
+
+    &__txt-box {
+      h1 {
+        text-transform: uppercase;
+        line-height: 0.8;
+        font-size: 6rem;
+      }
+    }
 
     &__buttons {
       z-index: 30;
@@ -22,12 +31,12 @@
     }
 
     &__img-box {
-      align-self: center; /* Or center */
+      align-self: center;
       justify-self: end;
-      width: 70%;
       padding: 2rem;
+      max-width: 70%;
+
       border-radius: 1.5rem;
-      display: inline-block;
       border: 1px solid var(--color-grey-light);
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
@@ -36,17 +45,46 @@
 
     &__img-1 {
       display: block;
-      width: auto;
+      width: 100%;
       height: auto;
-      max-width: 100%; /* optional */
+
+      justify-self: end;
+    }
+
+    @include respond-down("break4") {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      padding-top: $space-section * 2;
+      padding-bottom: $space-section;
+
+      &__img-box {
+        grid-row: 1/2;
+        justify-self: center;
+        max-width: 50%;
+      }
+      &__txt-box {
+        padding: $space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__txt-box h1,
+      p {
+        text-align: center;
+      }
     }
   }
 }
 
 .section-core-features {
+  // overflow-x: hidden;
+  // background-color: green;
   @include flex-center;
   padding-bottom: $space-section;
   .core-features {
+    overflow: hidden;
+    padding: $space-between;
     display: flex;
     position: relative;
     top: -6rem;
@@ -59,28 +97,46 @@
   }
 }
 
+.section-work {
+  // overflow-x: hidden;
+}
+
 .work {
   display: flex;
   padding-top: $space-section;
+  padding-inline: $space-between;
   position: relative;
   &__content {
+    overflow-x: hidden;
+    // overflow-y: auto;
     width: 50%;
     position: relative;
+    padding-block: $space-between;
+    padding-left: $space-between;
     left: 50%;
     display: flex;
     align-items: start;
     flex-direction: column;
+
+    h2 {
+      position: relative;
+    }
   }
 }
 
 .section-brands {
   padding-top: $space-section;
+  overflow-y: hidden;
+  // display: flex;
+  // justify-content: center;
   width: 100%;
 }
 
 .section-services {
   width: 100vw;
-  min-height: 100vh;
+  // min-height: 100vh;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   padding-top: $space-section;
   background-image: linear-gradient(
@@ -140,8 +196,10 @@
 
 .section-blog {
   padding-block: $space-section;
-  // display: flex;
+
+  display: flex;
+
   padding-left: $space-content;
   padding-bottom: $space-section * 3;
-  justify-content: start;
+  justify-content: center;
 }

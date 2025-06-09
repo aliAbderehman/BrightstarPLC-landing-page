@@ -16,6 +16,38 @@
 
 html {
   font-size: 62.5%;
+
+  @include respond-down(break1) {
+    font-size: 56.25%;
+  }
+
+  @include respond-down(break2) {
+    font-size: 50%;
+  }
+
+  @include respond-down(break3) {
+    font-size: 43.75%;
+  }
+
+  // @include respond(lg) {
+  //   font-size: 56.25%;
+  // }
+
+  // @include respond(md) {
+  //   font-size: 50%;
+  // }
+
+  // @include respond(sm) {
+  //   font-size: 43.75%;
+  // }
+
+  // @include respond(xs) {
+  //   font-size: 37.5%;
+  // }
+
+  // @include respond(xl) {
+  //   font-size: 63%;
+  // }
 }
 
 body {
@@ -25,10 +57,7 @@ body {
 html,
 body {
   height: 100%;
-  // overflow: hidden; /* important so native scrollbar is hidden */
-  // position: relative;
   background-color: var(--color-background);
-
   color: var(--text-color);
 }
 
@@ -45,18 +74,3 @@ body {
 #smooth-content {
   min-height: 100vh;
 }
-
-// const outRight = document.querySelectorAll(".out-right");
-// const outRightCont = document.querySelectorAll(".out-right-cont");
-
-// const outLeft = document.querySelectorAll(".out-left");
-// const outLeftCont = document.querySelectorAll(".out-left-cont");
-
-// const inRight = document.querySelectorAll(".in-right");
-// const inRightCont = document.querySelectorAll(".in-right-cont");
-
-// const inLeft = document.querySelectorAll(".in-left");
-// const inLeftCont = document.querySelectorAll(".in-left-cont");
-
-// const outFadeUp = document.querySelectorAll(".out-fade-up");
-// const inFadeUp = document.querySelectorAll(".in-fade-up");

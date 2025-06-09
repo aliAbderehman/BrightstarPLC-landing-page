@@ -1,6 +1,7 @@
 @import "./abstracts/functions";
 @import "./abstracts/mixins";
 @import "./abstracts/variables";
+@import "./abstracts/breakpoints";
 
 @import "./base/animations";
 @import "./base/base";
@@ -12,6 +13,7 @@
 // @import "./components/blog-card";
 @import "./components/cards";
 @import "./components/contacts";
+@import "./components/core-features";
 @import "./components/flowchart-bullets";
 @import "./components/footer";
 @import "./components/form";
@@ -34,8 +36,6 @@
 @import "./components/theme-toggle";
 @import "./components/theme-toggle";
 @import "./components/visual";
-
-@import "./layout/hero";
 
 @import "./pages/blog";
 @import "./pages/blog-detail";

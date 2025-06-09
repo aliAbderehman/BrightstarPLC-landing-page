@@ -88,11 +88,13 @@ function renderCards(posts) {
         <img src="${image}" alt="${title}" loading="lazy" />
       </div>
       <div class="blog__card-content">
-        <h3 class="blog__catagory">${category}</h3>
-        <p class="text--small u-margin-bottom-small">${date}</p>
+        <div class="blog__card-catagory">
+          <h3 class="blog__catagory">${category}</h3>
+          <p class="text--small u-margin-bottom-small">${date}</p>
+        </div>
         <div class="blog__title-sec">
           <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
-          <div class="lable-txt blog__card-text u-margin-bottom-medium">${excerpt}</div>
+          <div class="lable-txt blog__card-text">${excerpt}</div>
           <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
         </div>
       </div>

@@ -76,9 +76,19 @@
     text-decoration: none;
   }
 
-  &__card-link {
-    text-decoration: none;
+  &__card-catagory {
+    display: flex;
+    justify-content: space-between;
   }
+
+  &__card-text {
+    margin-bottom: $space-between;
+  }
+
+  // &__card-link {
+  //   text-decoration: none;
+  //   margin-top: $space-content * 2;
+  // }
 
   &__img-box {
     position: relative;

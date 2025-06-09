@@ -31,6 +31,10 @@
   width: 100%;
   max-width: 120rem;
   margin: 0 auto;
+
+  @include respond-down("break4") {
+    max-width: 100rem;
+  }
 }
 
 .glass {
