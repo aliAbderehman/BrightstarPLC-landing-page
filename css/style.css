@@ -20,16 +20,22 @@
   transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
 }
 
+.wavy {
+  will-change: transform, opacity;
+}
+
 html {
   font-size: 62.5%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 html,
 body {
   height: 100%;
-  position: relative;
   background-color: var(--color-background);
-  z-index: -200;
   color: var(--text-color);
 }
 
@@ -412,7 +418,7 @@ body {
 .blog__cards {
   display: flex;
   flex: 1;
-  min-width: 0;
+  min-width: 48rem;
   align-items: start;
   gap: 3.2rem;
   padding: 3rem 4rem;
@@ -547,11 +553,18 @@ body {
 }
 
 .services .card {
-  padding: 4rem;
+  flex-shrink: 0;
 }
 .services .card img {
   width: 18%;
   height: auto;
+}
+.services .card:last-child {
+  flex-shrink: 0;
+  background-color: var(--color-primary);
+  color: #fff;
+  max-width: 58rem;
+  box-shadow: none;
 }
 
 .trust__cards-box {
@@ -691,12 +704,7 @@ body {
   flex-direction: column;
   display: flex;
   justify-content: center;
-}
-.footer .path-container {
-  width: 100%;
-  top: 2rem;
-  margin: 0 auto;
-  /* Add some vertical space around the path */
+  position: relative;
 }
 .footer .svg-container {
   top: 8rem;
@@ -710,7 +718,7 @@ body {
 }
 .footer .separator {
   align-self: center;
-  background-color: var(--color-grey-light);
+  background-color: transparent;
 }
 .footer__container {
   display: flex;
@@ -782,7 +790,7 @@ body {
 .footer__socials svg {
   width: 2.8rem;
   height: 2.8rem;
-  fill: #0073a5;
+  fill: var(--color-primary);
   transition: all 0.3s;
 }
 .footer__socials svg:hover {
@@ -842,7 +850,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
   background: transparent;
   transform: translateZ(0);
   opacity: 0.9;
@@ -1019,7 +1026,10 @@ body {
   position: sticky;
   top: 2rem;
   margin: 0 auto;
-  /* Add some vertical space around the path */
+}
+.path-container--footer {
+  position: absolute;
+  top: 0;
 }
 
 .base-path {
@@ -1033,21 +1043,14 @@ body {
 }
 
 .fill-path {
-  stroke: #3498db;
+  stroke: var(--color-primary);
   stroke-width: 5;
   fill: none;
-  /* These will be set by JavaScript */
-  /* stroke-dasharray: 1000; */
-  /* stroke-dashoffset: 1000; */
 }
 
-.fill-path-footer {
-  stroke: #3498db;
-  stroke-width: 5;
-  fill: none;
-  /* These will be set by JavaScript */
-  /* stroke-dasharray: 1000; */
-  /* stroke-dashoffset: 1000; */
+.green-path {
+  stroke: yellow;
+  background-color: yellow;
 }
 
 .popup {
@@ -1083,7 +1086,7 @@ body {
   display: none;
 }
 
-.spinner {
+.spinner-btn {
   width: 16px;
   height: 16px;
   border: 2px solid #fff;
@@ -1156,7 +1159,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding: 2rem;
   text-align: center;
   pointer-events: none; /* Prevents interaction with text */
@@ -1371,164 +1374,130 @@ body {
   box-shadow: 0.5rem 0rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.day-night-container {
+.theme-toggle-container {
+  --size: 8rem;
+  --padding: 0.5rem;
+  --transition-duration: 0.8s;
+  --sun-color: #ffd700;
+  --moon-color: #e2e2e2;
+  --track-light: linear-gradient(145deg, #f0f0f0, #ffffff);
+  --track-dark: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  --dust-light: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 215, 0, 0.2) 0%,
+    transparent 50%
+  );
+  --dust-dark: radial-gradient(
+    circle at 70% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%
+  );
+  margin-right: 2rem;
   position: relative;
-  margin-right: 2.4rem;
+  width: var(--size);
+  height: calc(var(--size) / 2);
 }
 
-/* Hide default checkbox */
-.toggle-input {
-  display: none;
+.theme-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* Toggle label (the visible switch) */
-.toggle-label {
+.theme-toggle-label {
   position: relative;
-  display: block;
-  width: 6rem;
-  height: 3rem;
-  background: #ffd700; /* Day color */
-  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  transition: background 0.5s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
-  overflow: hidden;
 }
 
-/* Sun/Moon ball */
-.sun-moon {
+.celestial-body {
   position: absolute;
-  top: 50%;
-  left: 20%;
-  width: 2.4rem;
-  height: 2.4rem;
-  background: #fff;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  transition: transform 0.5s ease, background 0.5s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  width: calc(100% - var(--padding) * 0.01);
+  height: calc(100% - var(--padding) * 0.01);
+  z-index: 3;
+  transition: transform var(--transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Stars (hidden by default) */
-.stars {
-  top: 0;
-  left: 0;
+.celestial-svg {
   width: 100%;
   height: 100%;
-  background: transparent;
-  transition: background 0.5s ease;
 }
 
-/* Background (for gradient effects) */
-.background {
+.celestial-svg path {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: currentColor;
+  transform-origin: center;
+}
+
+.theme-toggle-container {
+  --size: 8rem;
+  --padding: 0.5rem;
+  --transition-duration: 0.8s;
+  --sun-color: #ffd700;
+  --moon-color: #e2e2e2;
+  --track-light: linear-gradient(145deg, #f0f0f0, #ffffff);
+  --track-dark: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  --dust-light: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 215, 0, 0.2) 0%,
+    transparent 50%
+  );
+  --dust-dark: radial-gradient(
+    circle at 70% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%
+  );
+  margin-right: 2rem;
+  position: relative;
+  width: var(--size);
+  height: calc(var(--size) / 2);
+}
+
+.theme-toggle-input {
   position: absolute;
-  top: 0;
-  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle-label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #87ceeb, #e0f7fa);
-  transition: background 0.5s ease;
-}
-
-/* Night mode styles */
-.toggle-input:checked + .toggle-label {
-  background: #1e1e1e; /* Night color */
-}
-
-.toggle-input:checked + .toggle-label .sun-moon {
-  transform: translate(2.4rem, -50%);
-  background: #f0f0f0;
-  box-shadow: 0 0 10px #fff;
-}
-
-.toggle-input:checked + .toggle-label .background {
-  background: linear-gradient(to bottom, #0f2027, #203a43);
-}
-
-.toggle-input:checked + .toggle-label .stars {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="80" cy="20" r="1" fill="white"/><circle cx="30" cy="60" r="1" fill="white"/><circle cx="70" cy="70" r="1" fill="white"/></svg>');
-  opacity: 0.8;
-}
-
-.day-night-container {
-  position: relative;
-  margin-right: 2.4rem;
-}
-
-/* Hide default checkbox */
-.toggle-input {
-  display: none;
-}
-
-/* Toggle label (the visible switch) */
-.toggle-label {
-  position: relative;
-  display: block;
-  width: 6rem;
-  height: 3rem;
-  background: #ffd700; /* Day color */
-  border-radius: 30px;
   cursor: pointer;
-  transition: background 0.5s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
-  overflow: hidden;
 }
 
-/* Sun/Moon ball */
-.sun-moon {
+.celestial-body {
   position: absolute;
-  top: 50%;
-  left: 20%;
-  width: 2.4rem;
-  height: 2.4rem;
-  background: #fff;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  transition: transform 0.5s ease, background 0.5s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  width: calc(100% - var(--padding) * 0.01);
+  height: calc(100% - var(--padding) * 0.01);
+  z-index: 3;
+  transition: transform var(--transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Stars (hidden by default) */
-.stars {
-  top: 0;
-  left: 0;
+.celestial-svg {
   width: 100%;
   height: 100%;
-  background: transparent;
-  transition: background 0.5s ease;
 }
 
-/* Background (for gradient effects) */
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #87ceeb, #e0f7fa);
-  transition: background 0.5s ease;
-}
-
-/* Night mode styles */
-.toggle-input:checked + .toggle-label {
-  background: #1e1e1e; /* Night color */
-}
-
-.toggle-input:checked + .toggle-label .sun-moon {
-  transform: translate(2.4rem, -50%);
-  background: #f0f0f0;
-  box-shadow: 0 0 10px #fff;
-}
-
-.toggle-input:checked + .toggle-label .background {
-  background: linear-gradient(to bottom, #0f2027, #203a43);
-}
-
-.toggle-input:checked + .toggle-label .stars {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="80" cy="20" r="1" fill="white"/><circle cx="30" cy="60" r="1" fill="white"/><circle cx="70" cy="70" r="1" fill="white"/></svg>');
-  opacity: 0.8;
+.celestial-svg path {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: currentColor;
+  transform-origin: center;
 }
 
 .featured-post__img-box img {
@@ -1580,7 +1549,6 @@ body {
   flex-wrap: wrap;
   align-content: start;
   align-items: start;
-  align-self: flex-end;
   justify-self: flex-end;
 }
 
@@ -1615,7 +1583,7 @@ body {
 
 main > .blog {
   flex-direction: column;
-  padding-top: 12rem;
+  padding-block: 12rem;
 }
 
 /* Each blog post card */
@@ -1623,21 +1591,18 @@ main > .blog {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
-  background: var(--color-background);
   border-radius: 14px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .blog-post:hover {
-  box-shadow: var(--shadow);
   transform: translateY(-4px);
 }
 
 .blog-post a {
   display: flex;
   gap: 1.5rem;
-  color: inherit;
   text-decoration: none;
   padding: 1.5rem 2rem;
   width: 100%;
@@ -1690,7 +1655,7 @@ main > .blog {
 /* Categories text */
 .blog-post-content .categories {
   font-weight: 600;
-  background-color: #ededed;
+  background-color: var(--color-grey-light);
   border-radius: 14px;
   width: fit-content;
   padding: 0.2rem 0.6rem;
@@ -1866,22 +1831,27 @@ main > .blog {
   padding-inline: 3.2rem;
 }
 
-.hero {
-  padding: 2rem;
-  max-width: 128rem;
+.section-hero {
+  overflow-x: hidden;
   height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.section-hero .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin: 0 auto;
 }
-.hero__buttons {
+.section-hero .hero__buttons {
   z-index: 30;
   display: flex;
   gap: 2rem;
   margin-top: 8rem;
 }
-.hero__img-box {
+.section-hero .hero__img-box {
   align-self: center; /* Or center */
   justify-self: end;
   width: 70%;
@@ -1893,7 +1863,7 @@ main > .blog {
   -webkit-backdrop-filter: blur(2px);
   background-color: rgba(11, 88, 147, 0.2274509804);
 }
-.hero__img-1 {
+.section-hero .hero__img-1 {
   display: block;
   width: auto;
   height: auto;
@@ -1935,7 +1905,9 @@ main > .blog {
 }
 
 .section-services {
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
   padding-top: 12rem;
   background-image: linear-gradient(to bottom, var(--color-background), rgba(54, 113, 234, 0.8), var(--color-background));
 }
@@ -1943,10 +1915,9 @@ main > .blog {
   padding-bottom: 12rem;
 }
 .section-services .services__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  column-gap: 2rem;
-  row-gap: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.4rem;
 }
 
 .section-stats {
@@ -1984,6 +1955,7 @@ main > .blog {
 .section-blog {
   padding-block: 12rem;
   padding-left: 3.2rem;
+  padding-bottom: 36rem;
   justify-content: start;
 }
 

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fetch posts with embedded categories and media
   fetch(
-    "http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
+    "http://localhost/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
   )
     .then((res) => res.json())
     .then((posts) => {
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .join(", ");
 
       const postEl = document.createElement("div");
-      postEl.className = "blog-post";
+      postEl.className = "blog-post glass";
       postEl.innerHTML = `
       <a href="/pages/blog-detail.html?slug=${post.slug}">
         <div class="blog-post__img-box">${

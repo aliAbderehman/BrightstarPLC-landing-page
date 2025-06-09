@@ -1,20 +1,13 @@
 .scroller {
   &__wrapper {
-    // padding-block: 1.4rem;
-    // background-color: $primary-color;
-    // background-color: #000080;
   }
   width: 100%;
-  // @include container-size;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
 
   &__inner {
-    // background-color: $primary-color;
-    // background-color: #0b8000;
-    // background-color: #dddddd;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -23,7 +16,6 @@
     justify-content: center;
 
     li {
-      // background-color: #2626a0;
       border-radius: 5px;
       display: flex;
       align-items: center;
@@ -35,12 +27,6 @@
         object-fit: contain;
         user-select: none;
       }
-
-      // svg {
-      //   width: 12rem;
-      //   height: 7rem;
-      //   fill: $color-white;
-      // }
     }
   }
 

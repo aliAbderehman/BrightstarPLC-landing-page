@@ -8,7 +8,7 @@
   // justify-content: center;
   align-content: start;
   align-items: start;
-  align-self: flex-end;
+  // align-self: flex-end;
   justify-self: flex-end;
 }
 
@@ -54,7 +54,7 @@
 
 main > .blog {
   flex-direction: column;
-  padding-top: $space-section;
+  padding-block: $space-section;
 }
 
 /* Each blog post card */
@@ -62,22 +62,23 @@ main > .blog {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
-  background: var(--color-background);
+  // background: var(--color-background);
   border-radius: 14px;
-  box-shadow: var(--shadow);
+  box-shadow: $shadow;
+
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   // overflow: hidden;
 }
 
 .blog-post:hover {
-  box-shadow: var(--shadow);
+  // box-shadow: var(--shadow);
   transform: translateY(-4px);
 }
 
 .blog-post a {
   display: flex;
   gap: 1.5rem;
-  color: inherit;
+  // color: var(--color-text);
   text-decoration: none;
   padding: 1.5rem 2rem;
   width: 100%;
@@ -132,7 +133,7 @@ main > .blog {
 /* Categories text */
 .blog-post-content .categories {
   font-weight: 600;
-  background-color: #ededed;
+  background-color: var(--color-grey-light);
   border-radius: 14px;
   width: fit-content;
   padding: 0.2rem 0.6rem;

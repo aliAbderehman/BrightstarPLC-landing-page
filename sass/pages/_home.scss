@@ -1,38 +1,45 @@
-.hero {
-  // Layout and structure
-  padding: 2rem;
-  max-width: 128rem;
+.section-hero {
+  overflow-x: hidden;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  position: relative;
 
-  &__buttons {
-    z-index: 30;
-    display: flex;
-    gap: 2rem;
-    margin-top: 8rem;
-  }
+  .hero {
+    // Layout and structure
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    // margin: 0 auto;
 
-  &__img-box {
-    align-self: center; /* Or center */
-    justify-self: end;
-    width: 70%;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    display: inline-block;
-    border: 1px solid var(--color-grey-light);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background-color: #0b58933a;
-  }
+    &__buttons {
+      z-index: 30;
+      display: flex;
+      gap: 2rem;
+      margin-top: 8rem;
+    }
 
-  &__img-1 {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 100%; /* optional */
+    &__img-box {
+      align-self: center; /* Or center */
+      justify-self: end;
+      width: 70%;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      display: inline-block;
+      border: 1px solid var(--color-grey-light);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      background-color: #0b58933a;
+    }
+
+    &__img-1 {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%; /* optional */
+    }
   }
 }
 
@@ -72,7 +79,9 @@
 }
 
 .section-services {
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
   padding-top: $space-section;
   background-image: linear-gradient(
     to bottom,
@@ -80,13 +89,18 @@
     rgba(#3671ea, 0.8),
     var(--color-background)
   );
+
   .services {
     padding-bottom: $space-section;
+    // overflow-x: hidden;
+
     &__cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-      column-gap: 2rem;
-      row-gap: 4rem;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2.4rem;
+      // grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      // column-gap: 2rem;
+      // row-gap: 4rem;
     }
   }
 }
@@ -128,5 +142,6 @@
   padding-block: $space-section;
   // display: flex;
   padding-left: $space-content;
+  padding-bottom: $space-section * 3;
   justify-content: start;
 }

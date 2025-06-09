@@ -10,17 +10,25 @@
     color var(--transition-duration) var(--transition-timing);
 }
 
+.wavy {
+  will-change: transform, opacity;
+}
+
 html {
   font-size: 62.5%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 html,
 body {
   height: 100%;
   // overflow: hidden; /* important so native scrollbar is hidden */
-  position: relative;
+  // position: relative;
   background-color: var(--color-background);
-  z-index: -200;
+
   color: var(--text-color);
 }
 
@@ -28,10 +36,6 @@ body {
   --transition-duration: 0.3s;
   --transition-timing: ease-in-out;
 }
-
-// * {
-
-// }
 
 #smooth-wrapper {
   height: 100vh;
@@ -41,3 +45,18 @@ body {
 #smooth-content {
   min-height: 100vh;
 }
+
+// const outRight = document.querySelectorAll(".out-right");
+// const outRightCont = document.querySelectorAll(".out-right-cont");
+
+// const outLeft = document.querySelectorAll(".out-left");
+// const outLeftCont = document.querySelectorAll(".out-left-cont");
+
+// const inRight = document.querySelectorAll(".in-right");
+// const inRightCont = document.querySelectorAll(".in-right-cont");
+
+// const inLeft = document.querySelectorAll(".in-left");
+// const inLeftCont = document.querySelectorAll(".in-left-cont");
+
+// const outFadeUp = document.querySelectorAll(".out-fade-up");
+// const inFadeUp = document.querySelectorAll(".in-fade-up");

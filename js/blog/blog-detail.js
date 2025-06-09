@@ -8,9 +8,7 @@ if (!slug) {
   throw new Error("No slug provided.");
 }
 
-fetch(
-  `http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`
-)
+fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
   .then((res) => res.json())
   .then((data) => {
     const post = data[0];
@@ -50,7 +48,7 @@ fetch(
 
     const refreshComments = (openReplyId = null) => {
       fetch(
-        `http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
+        `http://localhost/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
       )
         .then((res) => res.json())
         .then((comments) => {
@@ -141,7 +139,7 @@ fetch(
 
                   try {
                     const res = await fetch(
-                      "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+                      "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
                       {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -176,7 +174,7 @@ fetch(
     }
 
     fetch(
-      "http://localhost:8080/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
+      "http://localhost/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
     )
       .then((res) => res.json())
       .then((posts) => {
@@ -190,7 +188,7 @@ fetch(
         if (categoryIds.length > 0) {
           // Fetch category details
           fetch(
-            `http://localhost:8080/brightstar-cms/wp-json/wp/v2/categories?include=${categoryIds.join(
+            `http://localhost/brightstar-cms/wp-json/wp/v2/categories?include=${categoryIds.join(
               ","
             )}`
           )
@@ -278,7 +276,7 @@ fetch(
 
                 try {
                   const res = await fetch(
-                    "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+                    "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -364,7 +362,7 @@ fetch(
 
         try {
           const res = await fetch(
-            "http://localhost:8080/brightstar-cms/wp-json/wp/v2/comments",
+            "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -393,7 +391,7 @@ fetch(
       });
 
     setTimeout(() => {
-      window.lenis.update();
+      // window.lenis.update();
     }, 50);
 
     refreshComments();

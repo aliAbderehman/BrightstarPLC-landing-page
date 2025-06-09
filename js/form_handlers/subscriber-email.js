@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const email = document.getElementById("subscriber-email").value;
 
             fetch(
-              "http://localhost:8080/brightstar-cms/wp-json/custom/v1/subscribe",
+              "http://localhost/brightstar-cms/wp-json/custom/v1/subscribe",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

@@ -29,11 +29,20 @@
 .services {
   .card {
     // box-shadow: none;
-    padding: 4rem;
-
+    // padding: 4rem;
+    flex-shrink: 0;
+    // width: 42rem;
     img {
       width: 18%;
       height: auto;
+    }
+
+    &:last-child {
+      flex-shrink: 0;
+      background-color: var(--color-primary);
+      color: $color-white;
+      max-width: 58rem;
+      box-shadow: none;
     }
   }
 }

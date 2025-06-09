@@ -23,7 +23,7 @@ const featuredQuery = `
 const cardContainer = document.getElementById("cardContainer");
 
 // Replace with the full URL to your WordPress REST API
-const wordpressBaseURL = "http://localhost:8080/brightstar-cms/wp-json/wp/v2";
+const wordpressBaseURL = "http://localhost/brightstar-cms/wp-json/wp/v2";
 const featuredTagSlug = "featured";
 
 // First, get the ID of the "featured" tag
@@ -68,7 +68,7 @@ function renderCards(posts) {
     const category = post._embedded["wp:term"][0]?.[0]?.name || "General";
     const image =
       post._embedded["wp:featuredmedia"]?.[0]?.source_url ||
-      "./assets/images/img-featured.png"; // fallback
+      "/assets/images/img-featured.png"; // fallback
     const link = post.link; // full post URL from WordPress
 
     const rawDate = post.date;
@@ -83,21 +83,21 @@ function renderCards(posts) {
     card.classList.add("glass");
 
     card.innerHTML = `
-  <a href="/pages/blog-detail.html?slug=${post.slug}" >
-    <div class="blog__img-box">
-      <img src="${image}" alt="${title}" loading="lazy" />
-    </div>
-    <div class="blog__card-content">
-      <h3 class="blog__catagory">${category}</h3>
-      <p class="text--small u-margin-bottom-small">${date}</p>
-      <div class="blog__title-sec">
-        <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
-        <div class="lable-txt blog__card-text u-margin-bottom-medium">${excerpt}</div>
-        <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
+    <a href="/pages/blog-detail.html?slug=${post.slug}" >
+      <div class="blog__img-box">
+        <img src="${image}" alt="${title}" loading="lazy" />
       </div>
-    </div>
-  </a>
-`;
+      <div class="blog__card-content">
+        <h3 class="blog__catagory">${category}</h3>
+        <p class="text--small u-margin-bottom-small">${date}</p>
+        <div class="blog__title-sec">
+          <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
+          <div class="lable-txt blog__card-text u-margin-bottom-medium">${excerpt}</div>
+          <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
+        </div>
+      </div>
+    </a>
+  `;
 
     cardContainer.appendChild(card);
   });

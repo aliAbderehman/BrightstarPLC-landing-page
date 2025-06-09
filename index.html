@@ -37,6 +37,17 @@
       async
       defer
     ></script>
+
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <div class="smooth-wrapper">
@@ -98,57 +109,91 @@
 
             <!-- <button class="theme-toggle">Toggle</button> -->
 
-            <div class="day-night-container">
-              <input type="checkbox" id="toggle" class="toggle-input" />
-              <label for="toggle" class="toggle-label">
-                <div class="sun-moon"></div>
-                <div class="background"></div>
-                <div class="stars"></div>
+            <div class="theme-toggle-container">
+              <input
+                type="checkbox"
+                id="theme-toggle"
+                class="theme-toggle-input"
+                aria-label="Toggle dark/light mode"
+              />
+              <label for="theme-toggle" class="theme-toggle-label">
+                <div class="celestial-body">
+                  <svg
+                    class="celestial-svg"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <!-- Sun with core and rays -->
+                    <path
+                      class="sun-core"
+                      d="M50,65a15,15 0 1,0 0,-30a15,15 0 0,0 0,30z"
+                    />
+                    <path class="sun-ray ray-1" d="M50,15l0,10" />
+                    <path class="sun-ray ray-2" d="M85,50l-10,0" />
+                    <path class="sun-ray ray-3" d="M50,85l0,-10" />
+                    <path class="sun-ray ray-4" d="M15,50l10,0" />
+                    <path class="sun-ray ray-5" d="M72,28l-7,7" />
+                    <path class="sun-ray ray-6" d="M72,72l-7,-7" />
+                    <path class="sun-ray ray-7" d="M28,72l7,-7" />
+                    <path class="sun-ray ray-8" d="M28,28l7,7" />
+
+                    <!-- Moon with craters -->
+                    <path
+                      class="moon-body"
+                      d="M60 50C60 69 45 84 30 84C42 78 50 64 50 50C50 36 42 22 30 16C45 16 60 31 60 50Z"
+                      style="opacity: 0"
+                    />
+                  </svg>
+                </div>
+                <div class="toggle-track"></div>
+                <div class="cosmic-dust"></div>
               </label>
             </div>
             <a href="#" class="btn btn--secondary">contact us</a>
           </nav>
         </header>
         <main class="main">
-          <section class="hero">
-            <div id="tsparticles" class="hero__decor hero-bg">
-              <img
-                src="./assets/materials/hero-bg-material-01.svg"
-                alt=""
-                class="hero__decor-2"
-              />
-            </div>
-            <div class="hero__txt-box">
-              <h1 class="heading-primary">
-                Smart Tech Solutions for a Smarter Future
-              </h1>
-              <p class="heading-subtitle-1">
-                From cutting-edge surveillance to seamless IT infrastructure, we
-                help businesses thrive through reliable, scalable technology
-                solutions.
-              </p>
-              <div class="hero__buttons">
-                <div class="">
-                  <a href="#" class="btn btn--secondary"
-                    >Explore our services</a
-                  >
-                </div>
-                <div class="">
-                  <a href="#" class="btn btn--outlined">Free Consultation</a>
+          <section class="section-hero">
+            <div class="hero container">
+              <div id="tsparticles" class="hero__decor hero-bg">
+                <img
+                  src="./assets/materials/hero-bg-material-01.svg"
+                  alt=""
+                  class="hero__decor-2"
+                />
+              </div>
+              <div class="hero__txt-box">
+                <h1 class="heading-primary out-left">
+                  Smart Tech Solutions for a Smarter Future
+                </h1>
+                <p class="heading-subtitle-1 out-left">
+                  From cutting-edge surveillance to seamless IT infrastructure,
+                  we help businesses thrive through reliable, scalable
+                  technology solutions.
+                </p>
+                <div class="hero__buttons">
+                  <div class="out-left">
+                    <a href="#" class="btn btn--secondary"
+                      >Explore our services</a
+                    >
+                  </div>
+                  <div class="out-left">
+                    <a href="#" class="btn btn--outlined">Free Consultation</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="hero__img-box" data-speed="0.3">
-              <img
-                src="./assets/images/hero-img-02.webp"
-                alt=""
-                class="hero__img-1"
-              />
+              <div class="hero__img-box out-right-cont" data-speed="1.3">
+                <img
+                  src="./assets/images/hero-img-02.webp"
+                  alt=""
+                  class="hero__img-1 out-right"
+                />
+              </div>
             </div>
           </section>
           <section class="section-core-features">
             <div class="core-features container">
-              <div class="core-features__text">
+              <div class="core-features__text in-fade-up out-fade-up">
                 <p class="heading-secondary featured__card-title">
                   Your IT, Streamlined
                 </p>
@@ -157,7 +202,7 @@
                   simplified.
                 </p>
               </div>
-              <div class="card glass" data-speed="0.5">
+              <div class="card glass wavy">
                 <img
                   src="./assets/icons/featured/ic-enterprise.svg"
                   alt="equipments icon"
@@ -170,7 +215,7 @@
                   system integration handled by certified professionals.
                 </p>
               </div>
-              <div class="card glass" data-speed="1.8">
+              <div class="card glass wavy">
                 <img
                   src="./assets/icons/featured/ic-equipments.svg"
                   alt="equipments icon"
@@ -193,7 +238,6 @@
                   class="base-path"
                   d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
                   fill="none"
-                  stroke="#e0e0e0"
                   stroke-width="3"
                 />
 
@@ -202,26 +246,29 @@
                   class="fill-path"
                   d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
                   fill="none"
-                  stroke="#3498db"
                   stroke-width="3"
                 />
               </svg>
             </div>
             <div class="work">
-              <div class="visual visual-left visual-camera"></div>
+              <div
+                class="visual visual-left visual-camera in-left out-fade-up"
+              ></div>
               <div class="work__wrapper container">
                 <div class="work__content">
                   <h2
-                    class="heading-secondary featured-post__title u-margin-bottom-medium"
+                    class="heading-secondary featured-post__title u-margin-bottom-medium in-right out-fade-up"
                   >
                     Simplifying IT, One Solution at a Time
                   </h2>
-                  <p class="text--default">
+                  <p class="text--default in-fade-up out-fade-up">
                     We specialize in delivering high-performance hardware,
                     secure networking, surveillance systems, and full-scale tech
                     support — trusted by businesses across Ethiopia.
                   </p>
-                  <a href="#" class="btn btn--outlined u-margin-top-medium"
+                  <a
+                    href="#"
+                    class="btn btn--outlined u-margin-top-medium out-fade-up"
                     >About The Company <span>&rarr;</span></a
                   >
                 </div>
@@ -313,14 +360,14 @@
             </div>
           </section>
           <section class="section-services" id="services">
-            <div class="services container">
+            <div class="services">
               <h2
-                class="heading-secondary services__title u-margin-bottom-large"
+                class="heading-secondary services__title u-margin-bottom-large container"
               >
                 Our Solutions
               </h2>
               <div class="services__cards">
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-ship.svg"
                     alt="shipping icon"
@@ -335,7 +382,7 @@
                     delivery.
                   </p>
                 </div>
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-printer.svg"
                     alt="shipping icon"
@@ -347,7 +394,7 @@
                     growth.
                   </p>
                 </div>
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-camera.svg"
                     alt="shipping icon"
@@ -361,7 +408,7 @@
                     systems, installed and configured for full coverage.
                   </p>
                 </div>
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-server.svg"
                     alt="shipping icon"
@@ -373,7 +420,7 @@
                     systems with robust power and cooling solutions.
                   </p>
                 </div>
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-install.svg"
                     alt="shipping icon"
@@ -387,7 +434,7 @@
                     reliable aftercare for all your electronic and IT systems.
                   </p>
                 </div>
-                <div class="card glass">
+                <div class="card glass wavy">
                   <img
                     src="./assets/icons/services/ic-node.svg"
                     alt="shipping icon"
@@ -399,11 +446,21 @@
                     operations connected, secure, and always online.
                   </p>
                 </div>
+                <div class="card wavy">
+                  <h2 class="heading-tertiary text--white">
+                    Let’s Build Something Great
+                  </h2>
+                  <p class="lable-txt text--white">
+                    Ready to transform your business with our solutions?
+                  </p>
+
+                  <a href="#" class="btn btn--primary">Get in Touch</a>
+                </div>
               </div>
             </div>
           </section>
           <section class="section-stats container">
-            <div class="stats glass">
+            <div class="stats glass in-fade-up out-fade-up">
               <div class="stats__content">
                 <h2
                   class="heading-secondary count-up montserrat"
@@ -435,7 +492,7 @@
           </section>
           <section class="section-showcase">
             <div class="showcase container">
-              <div class="showcase__img showcase__1">
+              <div class="showcase__img showcase__1 in-fade-up out-fade-up">
                 <img
                   src="./assets/images/cyberspace-2784907.webp"
                   alt=""
@@ -443,7 +500,7 @@
                   loading="lazy"
                 />
               </div>
-              <div class="showcase__img showcase__2">
+              <div class="showcase__img showcase__2 in-fade-up out-fade-up">
                 <img
                   src="./assets/images/pexels-jakubzerdzicki-16423102.webp"
                   alt=""
@@ -451,7 +508,9 @@
                   loading="lazy"
                 />
               </div>
-              <div class="showcase__testimonial showcase__3">
+              <div
+                class="showcase__testimonial showcase__3 in-fade-up out-fade-up"
+              >
                 <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -483,7 +542,9 @@
                   </div>
                 </figure>
               </div>
-              <div class="showcase__testimonial showcase__4">
+              <div
+                class="showcase__testimonial showcase__4 in-fade-up out-fade-up"
+              >
                 <p class="heading-subtitle-2 text--white">Projects Delivered</p>
                 <p
                   class="heading-primary count-up text--white"
@@ -492,7 +553,7 @@
                   0
                 </p>
               </div>
-              <div class="showcase__img showcase__5">
+              <div class="showcase__img showcase__5 in-fade-up out-fade-up">
                 <img
                   src="./assets/images/pexels-divinetechygirl-1181354.webp"
                   alt=""
@@ -725,27 +786,27 @@
         </main>
 
         <footer class="footer footer-anim">
-          <div class="svg-container">
-            <svg viewBox="0 0 1920 245" class="path-container-footer">
-              <!-- Base path (static color) -->
-              <path
-                class="base-path"
-                d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
-                fill="none"
-                stroke="#e0e0e0"
-                stroke-width="3"
-              />
+          <svg
+            viewBox="0 0 1920 245"
+            class="path-container path-container--footer"
+          >
+            <!-- Base path (static color) -->
+            <path
+              class="base-path"
+              d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
+              fill="none"
+              stroke-width="3"
+            />
 
-              <!-- Animated fill path -->
-              <path
-                class="fill-path-footer"
-                d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
-                fill="none"
-                stroke="#3498db"
-                stroke-width="3"
-              />
-            </svg>
-          </div>
+            <!-- Animated fill path -->
+            <path
+              class="fill-path fill-path--footer"
+              d="M0,1.5H828.14s104.87,6.672,104.87,130.3,111.153,110.872,111.153,110.872H1920"
+              fill="none"
+              stroke-width="3"
+            />
+          </svg>
+
           <div class="footer__container container">
             <div class="footer__top">
               <div class="footer__txt-box">
@@ -884,6 +945,7 @@
             </div>
           </div>
         </footer>
+
         <div id="popup" class="popup hidden">
           <div class="popup__content">
             <p id="popup-message" class="text--default"></p>
@@ -895,17 +957,20 @@
       </div>
     </div>
 
+    <!-- lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
     <!-- GSAP Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- GSAP MorphSVG -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
 
     <!-- GSAP ScrollTrigger -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
     <!-- GSAP SplitText -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-
-    <!-- lenis -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
     <!-- tsparticles -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
@@ -926,7 +991,8 @@
     <script src="./js/animation/count-animation.js"></script>
     <script src="/js/animation/smooth-scroll.js"></script>
     <script src="/js/animation/scroll-indicator.js"></script>
-    <script src="/js/animation/animation.js"></script>
+    <script src="/js/animation/animation.js" defer></script>
+
     <script src="/js/active-link.js"></script>
 
     <!-- theme -->

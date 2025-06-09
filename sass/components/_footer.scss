@@ -5,17 +5,7 @@
   border-radius: 5rem 5rem 0 0;
   flex-direction: column;
   @include flex-center;
-
-  .path-container {
-    width: 100%;
-    //   max-width: 800px;
-    // position: sticky;
-    top: 2rem;
-    margin: 0 auto;
-
-    /* Add some vertical space around the path */
-    //   padding: 100px 0;
-  }
+  position: relative;
 
   .svg-container {
     top: 8rem;
@@ -32,7 +22,7 @@
 
   .separator {
     align-self: center;
-    background-color: var(--color-grey-light);
+    background-color: transparent;
   }
 
   &__container {
@@ -121,7 +111,7 @@
     svg {
       width: 2.8rem;
       height: 2.8rem;
-      fill: #0073a5;
+      fill: var(--color-primary);
       transition: all 0.3s;
 
       &:hover {
@@ -130,3 +120,7 @@
     }
   }
 }
+
+// .path-container-footer {
+//   background-color: antiquewhite;
+// }

@@ -26,7 +26,7 @@
   &__cards {
     display: flex;
     flex: 1;
-    min-width: 0;
+    min-width: 48rem;
     align-items: start;
     gap: $space-content;
     padding: 3rem 4rem;
@@ -57,7 +57,7 @@
     border-radius: 8px;
     text-decoration: none;
     overflow: hidden;
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    box-shadow: $shadow;
     scroll-snap-align: start;
     transition: transform 0.3s ease, border 0.3s ease;
 

@@ -1,210 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Morphing Theme Toggle</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <title>PrimeTech | IT Distribution</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    />
     <style>
-      :root {
-        --day-bg: #87ceeb;
-        --night-bg: #0f2027;
-        --day-toggle: #ffd700;
-        --night-toggle: #1e1e1e;
-      }
-
-      body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--day-bg);
-        transition: background 0.5s ease;
-      }
-
-      .toggle-container {
-        position: relative;
-        width: 120px;
-        height: 60px;
-      }
-
-      .toggle-input {
-        display: none;
-      }
-
-      .toggle-label {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: var(--day-toggle);
-        border-radius: 30px;
-        cursor: pointer;
-        transition: background 0.5s ease;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      /* RESET & BASE STYLES */
+      .rotating-text-container {
+        perspective: 1000px;
         overflow: hidden;
       }
 
-      /* Sun/Moon container */
-      .icon-container {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: white;
-        z-index: 2;
-      }
-
-      /* Sun (circle) */
-      .sun {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        background: #ffd700;
-        border-radius: 50%;
-        top: 10px;
-        left: 10px;
-      }
-
-      /* Moon (crescent shape) */
-      .moon {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        background: #f0f0f0;
-        border-radius: 50%;
-        top: 10px;
-        left: 10px;
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      .stars {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        transition: background 0.5s ease;
-      }
-
-      /* Dark mode styles */
-      [data-theme="dark"] body {
-        background: var(--night-bg);
-      }
-
-      [data-theme="dark"] .toggle-label {
-        background: var(--night-toggle);
-      }
-
-      [data-theme="dark"] .stars {
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="80" cy="20" r="1" fill="white"/><circle cx="30" cy="60" r="1" fill="white"/><circle cx="70" cy="70" r="1" fill="white"/></svg>');
-        opacity: 0.8;
+      .rotating-text {
+        transform-style: preserve-3d;
+        transform-origin: center;
+        transition: transform 0.5s ease-out;
       }
     </style>
   </head>
   <body>
-    <div class="visual-camera"></div>
-
-    <div class="toggle-container">
-      <input type="checkbox" id="themeToggle" class="toggle-input" />
-      <label for="themeToggle" class="toggle-label">
-        <div class="icon-container">
-          <div class="sun"></div>
-          <div class="moon"></div>
-        </div>
-        <div class="stars"></div>
-      </label>
+    <div class="rotating-text-container">
+      <div class="rotating-text">Your Text Here</div>
     </div>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Global IT Distribution Solutions</h1>
+        <p class="subtitle">
+          Servers, data centers, and enterprise hardware from leading brands
+          worldwide.
+        </p>
+        <button class="cta-button">Request Supplier Catalog</button>
+      </div>
+      <div class="hero-image">
+        <img src="https://i.imgur.com/KbQJxEa.png" alt="Server Rack" />
+      </div>
+    </section>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const themeToggle = document.querySelector(".toggle-input");
-        const visualElement = document.querySelector(".visual-camera");
-        const sun = document.querySelector(".sun");
-        const moon = document.querySelector(".moon");
-        const iconContainer = document.querySelector(".icon-container");
+      gsap.registerPlugin(ScrollTrigger);
 
-        // Initialize theme
-        const currentTheme = localStorage.getItem("theme") || "light";
-        document.documentElement.setAttribute("data-theme", currentTheme);
-
-        // Set initial toggle state
-        if (currentTheme === "dark") {
-          themeToggle.checked = true;
-          gsap.set(moon, { transform: "scale(1)", opacity: 1 });
-          gsap.set(sun, { transform: "scale(0)", opacity: 0 });
-          visualElement.style.backgroundImage =
-            "url('/assets/images/dark/img-main-01.png')";
-        } else {
-          themeToggle.checked = false;
-          visualElement.style.backgroundImage =
-            "url('/assets/images/light/img-main-01.png')";
-        }
-
-        // Toggle theme with morph animation
-        themeToggle.addEventListener("change", () => {
-          const theme = document.documentElement.getAttribute("data-theme");
-          let newTheme;
-
-          if (theme === "dark") {
-            newTheme = "light";
-            // Sun rises (moon -> sun)
-            gsap
-              .timeline()
-              .to(moon, {
-                duration: 0.3,
-                scale: 0,
-                opacity: 0,
-                ease: "power2.in",
-              })
-              .to(
-                sun,
-                { duration: 0.3, scale: 1, opacity: 1, ease: "power2.out" },
-                "<0.2"
-              );
-            visualElement.style.backgroundImage =
-              "url('/assets/images/light/img-main-01.png')";
-          } else {
-            newTheme = "dark";
-            // Moon appears (sun -> moon)
-            gsap
-              .timeline()
-              .to(sun, {
-                duration: 0.3,
-                scale: 0,
-                opacity: 0,
-                ease: "power2.in",
-              })
-              .to(
-                moon,
-                {
-                  duration: 0.3,
-                  scale: 1,
-                  opacity: 1,
-                  clipPath: "polygon(30% 0%, 100% 50%, 30% 100%, 0% 50%)", // Crescent shape
-                  ease: "power2.out",
-                },
-                "<0.2"
-              );
-            visualElement.style.backgroundImage =
-              "url('/assets/images/dark/img-main-01.png')";
-          }
-
-          // Move toggle container
-          gsap.to(iconContainer, {
-            x: theme === "dark" ? 0 : 60,
-            duration: 0.5,
-            ease: "power2.inOut",
-          });
-
-          document.documentElement.setAttribute("data-theme", newTheme);
-          localStorage.setItem("theme", newTheme);
-        });
+      gsap.to(".rotating-text", {
+        scrollTrigger: {
+          trigger: ".rotating-text-container",
+          start: "top center",
+          end: "bottom center",
+          scrub: true,
+        },
+        rotationX: 360,
+        ease: "none",
       });
     </script>
   </body>
