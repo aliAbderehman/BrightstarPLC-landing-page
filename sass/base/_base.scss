@@ -3,7 +3,7 @@
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 
   transition: background-color var(--transition-duration)
       var(--transition-timing),
@@ -29,25 +29,9 @@ html {
     font-size: 43.75%;
   }
 
-  // @include respond(lg) {
-  //   font-size: 56.25%;
-  // }
-
-  // @include respond(md) {
-  //   font-size: 50%;
-  // }
-
-  // @include respond(sm) {
-  //   font-size: 43.75%;
-  // }
-
-  // @include respond(xs) {
-  //   font-size: 37.5%;
-  // }
-
-  // @include respond(xl) {
-  //   font-size: 63%;
-  // }
+  @include respond-down(break4) {
+    font-size: 41.7%;
+  }
 }
 
 body {

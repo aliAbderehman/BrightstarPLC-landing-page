@@ -16,7 +16,7 @@
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
   transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
 }
 
@@ -40,6 +40,11 @@ html {
 @media (max-width: 62em) {
   html {
     font-size: 43.75%;
+  }
+}
+@media (max-width: 53.1em) {
+  html {
+    font-size: 41.7%;
   }
 }
 
@@ -218,7 +223,7 @@ body {
 }
 @media (max-width: 53.1em) {
   .container {
-    max-width: 100rem;
+    max-width: 96%;
   }
 }
 
@@ -594,7 +599,7 @@ body {
 .trust__cards-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100rem;
+  width: 100%;
   gap: 2rem;
 }
 .trust__card {
@@ -990,8 +995,6 @@ body {
 .header__nav-list a {
   text-decoration: none;
   color: var(--color-grey-dark-1);
-  font-size: 1.6rem;
-  font-weight: 500;
   transition: all 0.3s ease-in-out;
   position: relative;
   z-index: 10;
@@ -1026,9 +1029,9 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   border-radius: 5px;
   transition: all 0.3s ease;
   position: relative;
@@ -1936,25 +1939,21 @@ main > .blog {
   }
   .section-hero .hero__img-box {
     order: -1;
-    align-self: flex-end;
-    justify-self: center;
+    align-self: flex-start;
     max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .section-hero .hero__txt-box {
-    padding: 2.4rem;
+    padding-top: 2.4rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
 }
 
 .section-core-features {
   display: flex;
   justify-content: center;
-  padding-bottom: 12rem;
+  padding-bottom: 3.2rem;
 }
 .section-core-features .core-features {
   overflow: hidden;

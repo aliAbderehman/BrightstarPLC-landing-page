@@ -33,7 +33,11 @@
   margin: 0 auto;
 
   @include respond-down("break4") {
-    max-width: 100rem;
+    max-width: 96%;
+  }
+
+  @include respond-down("break") {
+    max-width: 68rem;
   }
 }
 

@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.to(container, {
     x: () => {
-      const scrollAmount = container.scrollWidth - window.innerWidth + 100;
+      const scrollAmount = container.scrollWidth - window.innerWidth + 50;
       return -scrollAmount;
     },
     scrollTrigger: {
@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 1,
       pin: true,
       anticipatePin: 1,
+      // pinSpacing: false,
       invalidateOnRefresh: true,
     },
   });
