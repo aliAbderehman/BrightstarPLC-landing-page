@@ -1926,25 +1926,28 @@ main > .blog {
 }
 @media (max-width: 53.1em) {
   .section-hero .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
     grid-template-columns: 1fr;
-    justify-items: center;
     padding-top: 24rem;
     padding-bottom: 12rem;
   }
   .section-hero .hero__img-box {
-    grid-row: 1/2;
+    order: -1;
+    align-self: flex-end;
     justify-self: center;
-    max-width: 50%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .section-hero .hero__txt-box {
     padding: 2.4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .section-hero .hero__txt-box h1,
-  .section-hero .hero p {
-    text-align: center;
   }
 }
 
