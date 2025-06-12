@@ -20,9 +20,119 @@
         transform-origin: center;
         transition: transform 0.5s ease-out;
       }
+      /* Base Styles */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        background: white;
+        z-index: 1000;
+      }
+
+      /* Desktop Nav (Visible on larger screens) */
+      .desktop-nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      /* Mobile Hamburger Button (Hidden on Desktop) */
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1100;
+      }
+
+      .hamburger-line {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: black;
+        margin: 5px 0;
+        transition: 0.3s;
+      }
+
+      /* Mobile Nav (Hidden by Default) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1050;
+      }
+
+      /* Active State (When Menu is Open) */
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      /* Hamburger Animation (When Menu is Open) */
+      .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* Media Query for Mobile */
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+
+        .hamburger {
+          display: block;
+        }
+      }
     </style>
   </head>
   <body>
+    <header>
+      <!-- Logo -->
+      <a href="#" class="logo">Your Logo</a>
+
+      <!-- Desktop Navigation (Hidden on Mobile) -->
+      <nav class="desktop-nav">
+        <a href="#section1">Home</a>
+        <a href="#section2">About</a>
+        <a href="#section3">Services</a>
+        <a href="#section4">Contact</a>
+      </nav>
+
+      <!-- Mobile Hamburger Button (Hidden on Desktop) -->
+      <button class="hamburger" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- Mobile Menu (Fullscreen Overlay) -->
+      <nav class="mobile-nav">
+        <a href="#section1">Home</a>
+        <a href="#section2">About</a>
+        <a href="#section3">Services</a>
+        <a href="#section4">Contact</a>
+      </nav>
+    </header>
+
     <div class="rotating-text-container">
       <div class="rotating-text">Your Text Here</div>
     </div>
@@ -52,6 +162,23 @@
         },
         rotationX: 360,
         ease: "none",
+      });
+
+      // Mobile Menu Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const mobileNav = document.querySelector(".mobile-nav");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileNav.classList.toggle("active");
+      });
+
+      // Close menu when clicking a link (optional)
+      mobileNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          mobileNav.classList.remove("active");
+        });
       });
     </script>
   </body>

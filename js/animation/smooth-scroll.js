@@ -1,7 +1,10 @@
-// lenis.js
 let lenis;
 
 function initLenis() {
+  // ✅ Skip Lenis on mobile
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) return;
+
   // Destroy existing instance if any
   if (lenis) lenis.destroy();
 
@@ -48,10 +51,7 @@ window.refreshLenis = function () {
   }
 };
 
-////////////////////////////////////////////////////
-// SMOOTH SCROLL EFFECT                       //
-///////////////////////////////////////////////////
-
+// SMOOTH SCROLL EFFECT
 const allLinks = document.querySelectorAll(".nav-link");
 
 allLinks.forEach((link) => {
@@ -63,30 +63,26 @@ allLinks.forEach((link) => {
       e.preventDefault();
 
       const sectionEl = document.querySelector(href);
-      if (sectionEl) {
+      if (sectionEl && window.lenis) {
         // Force Lenis to scroll, even if the hash doesn't change
         lenis.scrollTo(sectionEl, {
-          offset: 0, // or any custom offset
-          immediate: false, // allow smooth animation
+          offset: 0,
+          immediate: false,
         });
 
-        // Replace the current hash so re-clicks work
-        history.replaceState(null, null, " "); // remove current hash
-        history.pushState(null, null, href); // push the same hash again
+        // Replace the current hash
+        history.replaceState(null, null, " ");
+        history.pushState(null, null, href);
       }
     }
 
-    // Special case for top
     if (href === "#") {
       e.preventDefault();
-      lenis.scrollTo(0);
+      if (window.lenis) lenis.scrollTo(0);
     }
 
-    // Handle mobile nav toggle if needed
     if (link.classList.contains("nav-link")) {
       navEl.classList.toggle("nav-open");
     }
   });
 });
-
-////////////////////////////////////////////

@@ -38,7 +38,9 @@
     gap: $space-between;
     align-items: start;
 
-    .logo {
+    svg {
+      width: 24rem; /* adjust as needed */
+      height: auto; /* maintain aspect ratio */
       fill: var(--color-text);
     }
   }

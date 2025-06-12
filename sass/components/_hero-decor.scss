@@ -8,6 +8,7 @@
   background: transparent;
   transform: translateZ(0);
   opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 #tsparticles-trust {
@@ -18,6 +19,7 @@
   height: 100%;
   z-index: -1000;
   opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 .hero__decor {
   position: relative;
