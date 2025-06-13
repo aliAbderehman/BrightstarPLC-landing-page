@@ -3,6 +3,7 @@
   border-radius: 1.6rem;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
   padding: 2rem;
+  width: 100%;
   max-width: 35rem;
   display: grid;
   flex-direction: column;
@@ -24,10 +25,21 @@
     background-color: var(--color-card-hover);
     transform: translateY(-5px) scale(1.02);
   }
+
+  @include respond-down("break5") {
+    max-width: 100%;
+
+    img {
+      width: 8%;
+      height: auto;
+    }
+  }
 }
 
 .services {
   .card {
+    width: 100%;
+    max-width: 35rem;
     // box-shadow: none;
     // padding: 4rem;
     flex-shrink: 0;
@@ -50,15 +62,19 @@
 .trust {
   &__cards-box {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: max-content max-content;
     width: 100%;
+    align-items: start;
     gap: 2rem;
-    // background-color: aqua;
+    overflow: hidden;
+
+    @include respond-down("break5") {
+      gap: 1rem;
+    }
   }
 
   &__card {
     display: flex;
-    width: 38rem;
     align-items: center;
     justify-content: start;
     text-align: center;

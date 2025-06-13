@@ -52,10 +52,9 @@
   }
 
   &--secondary {
-    // outline: solid 2px $secondary-color;
     background-color: var(--color-primary);
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-    // color: $color-black;
+    outline: 2px solid var(--color-primary);
     transition: all 0.3s ease-in-out;
     color: var(--color-background);
 

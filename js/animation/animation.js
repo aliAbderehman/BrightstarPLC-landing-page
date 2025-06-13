@@ -101,33 +101,67 @@ document.addEventListener("DOMContentLoaded", () => {
   // //////////////////////////////////////
   // PINNED HORIZONTAL SCROLL CARDS
   ///////////////////////////////////////////
-  const container = document.querySelector(".services__cards");
-  const section = document.querySelector(".section-services");
+  // const container = document.querySelector(".services__cards");
+  // const section = document.querySelector(".section-services");
 
-  gsap.set(container, {
-    x: "15%", // Optional starting offset
-  });
+  // gsap.set(container, {
+  //   x: "15%", // Optional starting offset
+  // });
 
-  gsap.to(container, {
-    x: () => {
-      const scrollAmount = container.scrollWidth - window.innerWidth + 50;
-      return -scrollAmount;
-    },
-    scrollTrigger: {
-      trigger: section,
-      start: "top top",
-      end: () => {
-        const scrollAmount = container.scrollWidth - window.innerWidth;
-        return "+=" + scrollAmount;
-      },
+  // gsap.to(container, {
+  //   x: () => {
+  //     const scrollAmount = container.scrollWidth - window.innerWidth + 50;
+  //     return -scrollAmount;
+  //   },
+  //   scrollTrigger: {
+  //     trigger: section,
+  //     start: "top top",
+  //     end: () => {
+  //       const scrollAmount = container.scrollWidth - window.innerWidth;
+  //       return "+=" + scrollAmount;
+  //     },
 
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-      // pinSpacing: false,
-      invalidateOnRefresh: true,
-    },
-  });
+  //     scrub: 1,
+  //     pin: true,
+  //     anticipatePin: 1,
+  //     // pinSpacing: false,
+  //     invalidateOnRefresh: true,
+  //   },
+  // });
+
+  ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
+  // PINNED HORIZONTAL SCROLL CARDS
+  // PINNED HORIZONTAL SCROLL CARDS
+  // const container = document.querySelector(".services__cards");
+  // const section = document.querySelector(".section-services");
+
+  // gsap.set(container, {
+  //   x: "15%",
+  // });
+
+  // gsap.to(container, {
+  //   x: () => {
+  //     const scrollAmount = container.scrollWidth - window.innerWidth + 50;
+  //     return -scrollAmount;
+  //   },
+  //   scrollTrigger: {
+  //     trigger: section,
+  //     start: "top top",
+  //     end: () => {
+  //       const scrollAmount = container.scrollWidth - window.innerWidth;
+  //       return "+=" + scrollAmount;
+  //     },
+  //     scrub: 1,
+  //     pin: true,
+  //     anticipatePin: 1,
+  //     invalidateOnRefresh: true,
+  //   },
+  // });
+  ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
 
   /////////////////////////
   // WAVY ANIMATION

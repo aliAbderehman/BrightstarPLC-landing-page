@@ -1,100 +1,152 @@
-// Store particle instances for easy access
-const particleInstances = {};
+tsParticles.load("tsparticles", {
+  fullScreen: { enable: false },
+  // background: { color: "#09101e" },
+  particles: {
+    fps_limit: 60,
 
-function initParticles(elementId, options = {}) {
-  // First destroy existing instance if any
-  if (particleInstances[elementId]) {
-    particleInstances[elementId].destroy();
-  }
-
-  const isMobile = window.innerWidth < 768;
-
-  const config = {
-    fullScreen: { enable: false },
-    particles: {
-      number: {
-        value: isMobile ? 30 : 80,
-        density: { enable: false },
-      },
-      color: { value: options.particleColor || "#058FCC" },
-      shape: { type: "circle" },
-      opacity: { value: 0.7, random: true },
-      size: { value: isMobile ? 2.5 : 4, random: true },
-      move: {
+    number: {
+      value: 100,
+      density: {
         enable: true,
-        speed: isMobile ? 0.3 : 0.7,
-        outModes: "bounce",
-      },
-      links: {
-        enable: true,
-        distance: isMobile ? 80 : 130,
-        color: options.linkColor || "#0FA8EC",
-        opacity: 0.4,
-        width: 0.8,
+        area: 1000, // tweak this value for balance
       },
     },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: true,
-          mode: "grab",
-          distance: isMobile ? 100 : 150,
-        },
+    color: { value: "#058FCC" },
+    shape: { type: "circle" },
+    opacity: {
+      value: 0.8,
+      anim: { enable: false },
+    },
+    size: {
+      value: 4,
+      random: true,
+      anim: { enable: false },
+    },
+    move: {
+      enable: true,
+
+      speed: 0.8,
+      direction: "none",
+      outModes: { default: "bounce" },
+    },
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#0FA8EC",
+      opacity: 0.5,
+      width: 0.5,
+    },
+  },
+
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "grab",
+        parallax: { enable: false },
+        // parallax: { enable: true, force: 60, smooth: 10 },
       },
-      modes: {
-        grab: {
-          distance: isMobile ? 100 : 150,
-          line_linked: { opacity: 0.8 },
+      resize: true,
+    },
+
+    // modes: {
+    //   slow: {
+    //     factor: 0.1,
+    //     radius: 150,
+    //   },
+    // },
+
+    modes: {
+      grab: {
+        distance: 150, // You can adjust this for more extended interaction
+        line_linked: {
+          width: 1,
+          opacity: 0.8, // Increase opacity when hovering
         },
       },
     },
-    detectRetina: true,
-  };
-
-  // Load and store the instance
-  tsParticles.load(elementId, config).then((instance) => {
-    particleInstances[elementId] = instance;
-  });
-}
-
-// Initialize both particle systems
-initParticles("tsparticles", {
-  particleColor: "#058FCC",
-  linkColor: "#0FA8EC",
+  },
+  retina_detect: true,
+  smooth: true,
 });
 
-initParticles("tsparticles-trust", {
-  particleColor: "#3C8DAD",
-  linkColor: "#86B7C8",
-});
+// let resizeTimeout;
+// window.addEventListener("resize", () => {
+//   clearTimeout(resizeTimeout);
+//   resizeTimeout = setTimeout(() => {
+//     tsParticles.domItem(0).refresh();
+//   }, 250);
+// });
 
-// Smart resize handler with debouncing
-let resizeTimer;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    const isNowMobile = window.innerWidth < 768;
+// <!-- background: linear-gradient(to right, #061328, #14282f, #183440); -->
 
-    // Only reinitialize if crossing mobile/desktop threshold
-    const wasMobile =
-      Object.values(particleInstances)[0]?.options?.particles?.number?.value <=
-      40;
+tsParticles.load("tsparticles-trust", {
+  fullScreen: { enable: false },
+  // background: { color: "#09101e" },
+  particles: {
+    fps_limit: 60,
+    number: {
+      value: 100,
+      density: {
+        enable: true,
+        area: 1000, // tweak this value for balance
+      },
+    },
+    color: { value: "#3C8DADFF" },
+    shape: { type: "circle" },
+    opacity: {
+      value: 0.8,
+      anim: { enable: false },
+    },
+    size: {
+      value: 4,
+      random: true,
+      anim: { enable: false },
+    },
+    move: {
+      enable: true,
 
-    if (isNowMobile !== wasMobile) {
-      initParticles("tsparticles", {
-        particleColor: "#058FCC",
-        linkColor: "#0FA8EC",
-      });
+      speed: 0.8,
+      direction: "none",
+      outModes: { default: "bounce" },
+    },
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#86B7C8FF",
+      opacity: 0.5,
+      width: 0.5,
+    },
+  },
 
-      initParticles("tsparticles-trust", {
-        particleColor: "#3C8DAD",
-        linkColor: "#86B7C8",
-      });
-    } else {
-      // Just refresh existing instances
-      Object.values(particleInstances).forEach((instance) =>
-        instance.refresh()
-      );
-    }
-  }, 300); // 300ms debounce time
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "grab",
+        parallax: { enable: false },
+        // parallax: { enable: true, force: 60, smooth: 10 },
+      },
+      resize: true,
+    },
+
+    // modes: {
+    //   slow: {
+    //     factor: 0.1,
+    //     radius: 150,
+    //   },
+    // },
+
+    modes: {
+      grab: {
+        distance: 150, // You can adjust this for more extended interaction
+        line_linked: {
+          width: 1,
+          opacity: 0.8, // Increase opacity when hovering
+        },
+      },
+    },
+  },
+  retina_detect: true,
+  smooth: true,
 });

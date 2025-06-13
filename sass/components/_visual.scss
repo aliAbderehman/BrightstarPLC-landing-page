@@ -51,9 +51,16 @@
   &-camera {
     background-image: url(../../assets/images/dark/img-main-01.png);
     left: 0;
+    z-index: inherit;
   }
 
-  &-device {
-    background-image: url(../../assets/images/Mask\ Group\ 20.png);
+  @include respond-down("break5") {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-bottom: 30%; // for aspect ratio if needed
+    background-size: contain;
+    margin-bottom: $space-content;
+    // background-position: center;
   }
 }

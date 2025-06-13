@@ -24,7 +24,8 @@
     }
 
     &__buttons {
-      z-index: 30;
+      width: 100%;
+      // background-color: green;
       display: flex;
       gap: 2rem;
       margin-top: 8rem;
@@ -57,7 +58,7 @@
       align-items: start;
       justify-content: start;
       grid-template-columns: 1fr;
-      padding-top: $space-section;
+      // padding-top: $space-content;
       padding-bottom: $space-section;
 
       &__img-box {
@@ -71,6 +72,24 @@
         display: flex;
         flex-direction: column;
         align-items: start;
+
+        .heading-primary {
+          font-size: 5rem;
+        }
+      }
+    }
+
+    @include respond-down("break5") {
+      &__buttons {
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+          text-align: center;
+          font-size: 2.6rem;
+
+          // flex: 1 1 0;
+        }
       }
     }
   }
@@ -81,6 +100,7 @@
   // background-color: green;
   @include flex-center;
   padding-bottom: $space-content;
+
   .core-features {
     overflow: hidden;
     padding: $space-between;
@@ -93,6 +113,15 @@
     &__text {
       align-self: flex-end;
     }
+
+    @include respond-down("break5") {
+      top: 0;
+      flex-direction: column;
+
+      &__text {
+        align-self: flex-start;
+      }
+    }
   }
 }
 
@@ -103,8 +132,13 @@
 .work {
   display: flex;
   padding-top: $space-section;
-  padding-inline: $space-between;
   position: relative;
+  height: 100%;
+
+  &__wrapper {
+    padding-inline: $space-between;
+  }
+
   &__content {
     overflow-x: hidden;
     // overflow-y: auto;
@@ -116,9 +150,14 @@
     display: flex;
     align-items: start;
     flex-direction: column;
+  }
 
-    h2 {
-      position: relative;
+  @include respond-down("break5") {
+    flex-direction: column;
+    // align-items: start;
+    &__content {
+      width: 100%;
+      left: 0;
     }
   }
 }
@@ -147,15 +186,16 @@
 
   .services {
     padding-bottom: $space-section;
+    width: 100%;
     // overflow-x: hidden;
 
     &__cards {
       display: flex;
-      flex-wrap: nowrap;
-      gap: 2.4rem;
-      // grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-      // column-gap: 2rem;
-      // row-gap: 4rem;
+      gap: 4rem;
+      padding-left: 2rem; /* Add some initial padding */
+      padding-right: 2rem; /* Add some ending padding */
+      will-change: transform;
+      margin-left: 0; /* Remove any default margins */
     }
   }
 }
@@ -177,13 +217,27 @@
   .trust {
     display: flex;
     flex-direction: column;
+    z-index: 100;
 
     &__title {
       width: 50%;
+      z-index: inherit;
+    }
+
+    &__cards-box {
+      z-index: inherit;
     }
 
     &__btn {
+      z-index: inherit;
       align-self: center;
+    }
+
+    @include respond-down("break4") {
+      &__title {
+        width: 100%;
+        z-index: inherit;
+      }
     }
   }
 }

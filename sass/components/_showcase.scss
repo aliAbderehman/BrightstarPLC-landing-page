@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: $space-between;
   align-items: stretch;
+  overflow: hidden;
 
   &__img {
     width: 100%;

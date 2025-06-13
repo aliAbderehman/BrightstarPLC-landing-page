@@ -189,62 +189,47 @@
             <div class="mob-navigation__background">&nbsp;</div>
 
             <nav class="mob-navigation__nav">
-              <div class="theme-toggle-container">
-                <input
-                  type="checkbox"
-                  id="theme-toggle"
-                  class="theme-toggle-input"
-                  aria-label="Toggle dark/light mode"
-                />
-                <label for="theme-toggle" class="theme-toggle-label">
-                  <div class="celestial-body">
-                    <svg
-                      class="celestial-svg"
-                      viewBox="0 0 100 100"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <!-- Sun with core and rays -->
-                      <path
-                        class="sun-core"
-                        d="M50,65a15,15 0 1,0 0,-30a15,15 0 0,0 0,30z"
-                      />
-                      <path class="sun-ray ray-1" d="M50,15l0,10" />
-                      <path class="sun-ray ray-2" d="M85,50l-10,0" />
-                      <path class="sun-ray ray-3" d="M50,85l0,-10" />
-                      <path class="sun-ray ray-4" d="M15,50l10,0" />
-                      <path class="sun-ray ray-5" d="M72,28l-7,7" />
-                      <path class="sun-ray ray-6" d="M72,72l-7,-7" />
-                      <path class="sun-ray ray-7" d="M28,72l7,-7" />
-                      <path class="sun-ray ray-8" d="M28,28l7,7" />
-
-                      <!-- Moon with craters -->
-                      <path
-                        class="moon-body"
-                        d="M60 50C60 69 45 84 30 84C42 78 50 64 50 50C50 36 42 22 30 16C45 16 60 31 60 50Z"
-                        style="opacity: 0"
-                      />
-                    </svg>
-                  </div>
-                  <div class="toggle-track"></div>
-                  <div class="cosmic-dust"></div>
-                </label>
-              </div>
               <ul class="mob-navigation__list">
                 <li class="mob-navigation__item">
                   <a href="index.html" class="mob-navigation__link">Home</a>
                 </li>
+
                 <li class="mob-navigation__item">
                   <a href="#services" class="mob-navigation__link">Services</a>
                 </li>
+
                 <li class="mob-navigation__item">
                   <a href="/pages/about.html" class="mob-navigation__link"
                     >About Us</a
                   >
                 </li>
+
                 <li class="mob-navigation__item">
                   <a href="/pages/blogs.html" class="mob-navigation__link"
                     >Blog</a
                   >
+                </li>
+
+                <li class="mob-navigation__item">
+                  <a href="#" class="btn btn--secondary">contact us</a>
+                </li>
+
+                <li class="mob-navigation__item">
+                  <button class="theme-toggle-btn" aria-label="Toggle theme">
+                    <svg
+                      class="celestial-body"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        class="sun-core"
+                        d="M16 3a13 13 0 110 26 13 13 0 010-26z"
+                        fill="currentColor"
+                      />
+                      <!-- Optionally add sun rays + moon craters -->
+                    </svg>
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -347,6 +332,7 @@
               </div>
             </div>
           </section>
+
           <section class="section-work">
             <div class="svg-container">
               <svg viewBox="0 0 1920 245" class="path-container">
@@ -371,6 +357,7 @@
               <div
                 class="visual visual-left visual-camera in-left out-fade-up"
               ></div>
+
               <div class="work__wrapper container">
                 <div class="work__content">
                   <h2
@@ -399,77 +386,97 @@
                 <div class="scroller">
                   <ul class="scroller__inner">
                     <li>
-                      <img
-                        src="./assets/brands/dell.png"
-                        alt="dell logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/dell.png"
+                          alt="dell logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/fujitsu.png"
-                        alt="fujitsu logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/fujitsu.png"
+                          alt="fujitsu logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <!-- <li>
                         <img src="./assets/brands/cisco.png" alt="cisco logo" />
                       </li> -->
                     <li>
-                      <img
-                        src="./assets/brands/fargo.png"
-                        alt="fargo logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/fargo.png"
+                          alt="fargo logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/hikvision.png"
-                        alt="hikvision logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/hikvision.png"
+                          alt="hikvision logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/hp.png"
-                        alt="hp logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/hp.png"
+                          alt="hp logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/kaspersky.png"
-                        alt="kaspersky logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/kaspersky.png"
+                          alt="kaspersky logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/microsoft.png"
-                        alt="microsoft logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/microsoft.png"
+                          alt="microsoft logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/lg.png"
-                        alt="lg logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/lg.png"
+                          alt="lg logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/samsung.png"
-                        alt="samsung logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/samsung.png"
+                          alt="samsung logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                     <li>
-                      <img
-                        src="./assets/brands/tp-link.png"
-                        alt="tp-link logo"
-                        loading="lazy"
-                      />
+                      <div class="logo-box">
+                        <img
+                          src="./assets/brands/tp-link.png"
+                          alt="tp-link logo"
+                          loading="lazy"
+                        />
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -1094,10 +1101,10 @@
     <!-- tsparticles -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
-    <script src="./js/horizontal-scroll.js"></script>
-    <script src="./js/animation/hero-animation.js"></script>
-    <script src="./js/scroll-cards.js"></script>
-    <script src="./js/hide-on-scroll.js"></script>
+    <script src="/js/horizontal-scroll.js"></script>
+    <script src="/js/animation/hero-animation.js"></script>
+    <script src="/js/scroll-cards.js"></script>
+    <script src="/js/hide-on-scroll.js"></script>
 
     <!-- server fetched -->
     <script src="./js/blog/featured-blogs.js"></script>
