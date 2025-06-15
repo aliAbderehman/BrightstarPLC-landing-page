@@ -1,16 +1,18 @@
 let lastScroll = 0;
 const navbar = document.getElementById("navbar");
-const navbarHeight = navbar.offsetHeight;
+const mobNav = document.querySelector(".mob-navigation");
+const navbarHeight = navbar ? navbar.offsetHeight : 0;
+const mobNavHeight = mobNav ? mobNav.offsetHeight : 0;
 const header = document.querySelector(".header");
 let isMouseInHeader = false;
 
-// 1. Scroll Behavior (Original Working Version)
+// 1. Scroll Behavior
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
 
   // At top of page - always show
   if (currentScroll <= 10) {
-    showNavbar();
+    showAllNavs();
     return;
   }
 
@@ -18,58 +20,87 @@ window.addEventListener("scroll", () => {
   if (!isMouseInHeader) {
     // Scrolling DOWN - hide
     if (currentScroll > lastScroll && currentScroll > 100) {
-      hideNavbar();
+      hideAllNavs();
     }
     // Scrolling UP - show
     else if (currentScroll < lastScroll) {
-      showNavbar();
+      showAllNavs();
     }
   }
 
   lastScroll = currentScroll;
 });
 
-// 2. Mouse Detection (Fixed Version)
-function showNavbar() {
-  navbar.style.top = "0";
+// 2. Navigation Control Functions
+function showAllNavs() {
+  if (navbar) navbar.style.top = "0";
+  if (mobNav) mobNav.style.bottom = "0";
 }
 
-function hideNavbar() {
-  navbar.style.top = `-${navbarHeight}px`;
+function hideAllNavs() {
+  if (navbar) navbar.style.top = `-${navbarHeight}px`;
+  if (mobNav) mobNav.style.bottom = `-${mobNavHeight}px`;
 }
 
-// Expanded header area detection
-header.addEventListener("mouseenter", () => {
-  isMouseInHeader = true;
-  showNavbar();
-});
+// 3. Mouse/Touch Detection
+function setupHeaderHover() {
+  if (!header) return;
 
-header.addEventListener("mouseleave", () => {
-  isMouseInHeader = false;
-  // Only hide if scrolling down
-  if (window.pageYOffset > lastScroll && window.pageYOffset > 100) {
-    hideNavbar();
-  }
-});
+  header.addEventListener("mouseenter", () => {
+    isMouseInHeader = true;
+    showAllNavs();
+  });
 
-// 3. Touch Support
-header.addEventListener("touchstart", () => {
-  isMouseInHeader = true;
-  showNavbar();
-});
-
-// Hide only after scrolling down on touch devices
-window.addEventListener(
-  "scroll",
-  () => {
-    if (
-      isMouseInHeader &&
-      window.pageYOffset > lastScroll &&
-      window.pageYOffset > 100
-    ) {
-      isMouseInHeader = false;
-      hideNavbar();
+  header.addEventListener("mouseleave", () => {
+    isMouseInHeader = false;
+    if (window.pageYOffset > lastScroll && window.pageYOffset > 100) {
+      hideAllNavs();
     }
+  });
+
+  // Touch support
+  header.addEventListener(
+    "touchstart",
+    () => {
+      isMouseInHeader = true;
+      showAllNavs();
+    },
+    { passive: true }
+  );
+}
+
+// 4. Mobile Menu Toggle Handling
+function handleMobileMenu() {
+  const mobileToggles = document.querySelectorAll("[data-mobile-toggle]");
+
+  mobileToggles.forEach((toggle) => {
+    toggle.addEventListener(
+      "click",
+      () => {
+        // When opening mobile menu, ensure it's visible
+        if (mobNav) {
+          const isOpen =
+            mobNav.style.bottom === "0px" || mobNav.classList.contains("open");
+          if (!isOpen) {
+            showAllNavs();
+          }
+        }
+      },
+      { passive: true }
+    );
+  });
+}
+
+// Initialize everything
+setupHeaderHover();
+handleMobileMenu();
+
+// 5. Responsive Adjustment
+window.addEventListener(
+  "resize",
+  () => {
+    // Show navs when resizing to prevent them being stuck hidden
+    showAllNavs();
   },
   { passive: true }
 );
