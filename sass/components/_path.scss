@@ -20,6 +20,10 @@
 
 .svg-container {
   height: 50vh;
+
+  @include respond-down("break5") {
+    height: 10vh;
+  }
 }
 
 .fill-path {

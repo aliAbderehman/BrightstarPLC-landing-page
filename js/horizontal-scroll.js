@@ -92,10 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     end: "max",
     onUpdate: (self) => {
       const scrollVel = self.getVelocity();
-      velocity = scrollVel * 0.005;
-
-      if (velocity > 0.5) direction = 1; // scroll down = right
-      else if (velocity < -0.5) direction = -1; // scroll up = left
+      velocity = -scrollVel * 0.005; // flip scroll direction to match expected feel
     },
   });
 
@@ -108,9 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   gsap.ticker.add(() => {
-    currentX += velocity;
+    currentX += velocity + baseSpeed * direction;
     velocity *= decay;
-    currentX += baseSpeed * direction;
+
+    // Update direction during inertia
+    if (Math.abs(velocity) > 0.01) {
+      if (velocity > 0) direction = 1; // moving right
+      else if (velocity < 0) direction = -1; // moving left
+    }
 
     if (currentX <= -totalWidth) currentX += totalWidth;
     else if (currentX >= 0) currentX -= totalWidth;

@@ -57,6 +57,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-padding-top: 8rem;
+}
+
 html,
 body {
   background-color: var(--color-background);
@@ -606,11 +610,34 @@ body {
   height: auto;
 }
 .services .card:last-child {
-  flex-shrink: 0;
   background-color: var(--color-primary);
   color: #fff;
   max-width: 58rem;
   box-shadow: none;
+}
+@media (max-width: 43.75em) {
+  .services .card {
+    max-width: 100%;
+  }
+  .services .card img {
+    width: 8%;
+    height: auto;
+  }
+  .services .card:last-child {
+    max-width: 100%;
+    height: 35rem;
+  }
+  .services .card:last-child h2 {
+    font-size: 4rem;
+  }
+  .services .card:last-child p {
+    font-size: 3rem;
+  }
+  .services .card:last-child .btn {
+    width: 100%;
+    text-align: center;
+    font-size: 2.6rem;
+  }
 }
 
 .trust__cards-box {
@@ -715,6 +742,16 @@ body {
 .contacts__card img {
   width: 3rem;
   height: auto;
+}
+@media (max-width: 53.1em) {
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+  }
+  .contacts__text-box {
+    order: -1;
+  }
 }
 
 .workflow__chart ul {
@@ -1234,6 +1271,11 @@ body {
 
 .svg-container {
   height: 50vh;
+}
+@media (max-width: 43.75em) {
+  .svg-container {
+    height: 10vh;
+  }
 }
 
 .fill-path {
@@ -2137,6 +2179,9 @@ main > .blog {
   }
 }
 @media (max-width: 43.75em) {
+  .section-hero .hero__txt-box .heading-primary {
+    font-size: 4.6rem;
+  }
   .section-hero .hero__buttons {
     flex-direction: column;
   }
@@ -2212,14 +2257,19 @@ main > .blog {
 .section-services {
   width: 100vw;
   display: flex;
+  position: relative;
   justify-content: center;
-  overflow: hidden;
   padding-top: 12rem;
   background-image: linear-gradient(to bottom, var(--color-background), rgba(54, 113, 234, 0.8), var(--color-background));
 }
 .section-services .services {
-  padding-bottom: 12rem;
   width: 100%;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+.section-services .services__title {
+  z-index: 2;
+  position: relative;
 }
 .section-services .services__cards {
   display: flex;
@@ -2229,11 +2279,32 @@ main > .blog {
   will-change: transform;
   margin-left: 0; /* Remove any default margins */
 }
+@media (max-width: 43.75em) {
+  .section-services .services {
+    width: 96%;
+  }
+  .section-services .services__cards {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.4rem;
+    /* Remove any height restrictions */
+    height: auto !important;
+    /* Ensure transform works properly */
+    will-change: transform;
+  }
+  .section-services .services__title {
+    position: absolute;
+    top: 6%;
+    left: 2.4rem;
+    margin-bottom: 0;
+  }
+}
 
 .section-stats {
   padding-block: 12rem;
   display: flex;
   justify-content: center;
+  padding-inline: 2.4rem;
 }
 
 .section-showcase {
@@ -2271,6 +2342,7 @@ main > .blog {
 
 .section-contacts {
   margin-block: 12rem;
+  padding: 2.4rem;
   position: relative;
 }
 

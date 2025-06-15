@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Navigation Highlight Setup
+  // ===== CORE NAVIGATION =====
   const navLinks = document.querySelectorAll(".nav-link");
   const activeIndicator = document.querySelector(".active-indicator");
   let activeLink = document.querySelector('.nav-link[href="index.html"]');
+  const breakpointMobile = 700;
 
-  // Update indicator position and size
+  // Update indicator position
   function updateActiveIndicator(activeElement, animate = true) {
     if (!activeElement) return;
 
@@ -23,196 +24,212 @@ document.addEventListener("DOMContentLoaded", function () {
     activeIndicator.style.top = `${linkRect.top - navRect.top}px`;
   }
 
-  // Handle window resize
-  function handleResize() {
-    if (activeLink) {
-      updateActiveIndicator(activeLink, false); // No animation during resize
-    }
-  }
-
-  // Set up resize observer
-  const resizeObserver = new ResizeObserver(handleResize);
-  resizeObserver.observe(document.body);
-
-  // Only proceed if on homepage
-  if (
-    window.location.pathname === "/" ||
-    window.location.pathname.endsWith("index.html")
-  ) {
+  // ===== SERVICES SECTION SCROLL =====
+  function setupServicesScroll() {
     const servicesSection = document.getElementById("services");
+    if (!servicesSection) return;
 
-    if (servicesSection) {
-      const container = servicesSection.querySelector(".services__cards");
+    const container = servicesSection.querySelector(".services__cards");
+    let wasMobile = window.innerWidth <= breakpointMobile;
 
-      // Horizontal scroll setup
-      gsap.set(container, { x: "15%" });
+    function initScroll() {
+      const isMobile = window.innerWidth <= breakpointMobile;
 
-      const scrollTween = gsap.to(container, {
-        x: () => -(container.scrollWidth - window.innerWidth + 50),
-        ease: "none",
-        scrollTrigger: {
-          trigger: servicesSection,
-          start: "top top",
-          end: () => "+=" + (container.scrollWidth - window.innerWidth),
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true, // This is key for recalculating values on resize
+      // Clear previous triggers
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === servicesSection) t.kill();
+      });
 
-          // Navigation highlighting
-          onEnter: () => {
-            const link = document.querySelector('.nav-link[href="#services"]');
-            if (link) {
-              activeLink = link;
-              updateActiveIndicator(link, true);
-            }
-          },
-          onUpdate: (self) => {
-            if (self.progress > 0 && self.progress < 1) {
-              const link = document.querySelector(
-                '.nav-link[href="#services"]'
-              );
-              if (link) {
-                activeLink = link;
-                updateActiveIndicator(link, true);
+      if (!isMobile) {
+        // Desktop horizontal scroll
+        gsap.set(container, { x: "15%" });
+
+        gsap.to(container, {
+          x: () => -(container.scrollWidth - window.innerWidth + 50),
+          ease: "none",
+          scrollTrigger: {
+            trigger: servicesSection,
+            start: "top top",
+            end: () => "+=" + (container.scrollWidth - window.innerWidth),
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onEnter: () => highlightLink("#services"),
+            onUpdate: (self) => {
+              if (self.progress > 0 && self.progress < 1) {
+                highlightLink("#services");
               }
-            }
+            },
+            onLeave: () => highlightLink("index.html"),
+            onEnterBack: () => highlightLink("#services"),
+            onLeaveBack: () => highlightLink("index.html"),
           },
-          onLeave: () => {
-            const homeLink = document.querySelector(
-              '.nav-link[href="index.html"]'
-            );
-            if (homeLink) {
-              activeLink = homeLink;
-              updateActiveIndicator(homeLink, true);
-            }
-          },
-          onEnterBack: () => {
-            const link = document.querySelector('.nav-link[href="#services"]');
-            if (link) {
-              activeLink = link;
-              updateActiveIndicator(link, true);
-            }
-          },
-          onLeaveBack: () => {
-            const homeLink = document.querySelector(
-              '.nav-link[href="index.html"]'
-            );
-            if (homeLink) {
-              activeLink = homeLink;
-              updateActiveIndicator(homeLink, true);
-            }
-          },
-        },
-      });
+        });
+      } else {
+        // Mobile vertical scroll
+        // Mobile vertical scroll
+        const container = servicesSection.querySelector(".services__cards");
+        const cards = container.querySelectorAll(".card");
+        const lastCard = cards[cards.length - 1];
+        const sectionTitle = servicesSection.querySelector(".services__title");
 
-      // Refresh on resize
-      window.addEventListener("resize", () => {
-        ScrollTrigger.refresh(); // This will re-run the calculations for all ScrollTriggers
-        handleResize(); // Also update indicator position
-      });
+        // 1. Calculate when last card hits top of viewport
+        const scrollToLastCard =
+          lastCard.offsetTop + lastCard.offsetHeight - window.innerHeight;
+
+        // 2. Add 25% viewport height as buffer
+        const buffer = window.innerHeight * 0.25;
+        const totalScrollDistance = Math.max(0, scrollToLastCard + buffer);
+
+        // 3. Reset transforms and kill old triggers
+        gsap.set(container, { y: 0, clearProps: "all" });
+        ScrollTrigger.getAll().forEach(
+          (t) => t.trigger === servicesSection && t.kill()
+        );
+
+        // 4. Create the pinning animation
+        gsap.to(container, {
+          y: -totalScrollDistance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: servicesSection,
+            start: "top top",
+            end: `+=${totalScrollDistance}`,
+            scrub: true,
+            pin: true,
+            pinSpacing: false, // Critical for your layout
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onEnter: () => highlightLink("#services"),
+            onLeave: () => highlightLink("index.html"),
+            onEnterBack: () => highlightLink("#services"),
+            onLeaveBack: () => highlightLink("index.html"),
+            markers: false, // Enable to debug
+          },
+        });
+
+        // 5. Ensure proper stacking context
+        servicesSection.style.zIndex = "10";
+        servicesSection.style.position = "relative";
+      }
     }
 
-    // Set up basic section highlighting for other sections
-    document.querySelectorAll("section[id]").forEach((section) => {
-      if (section.id === "services") return;
+    initScroll();
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => {
-          const link = document.querySelector(
-            `.nav-link[href="#${section.id}"]`
-          );
-          if (link) updateActiveIndicator(link, true);
-        },
-        onEnterBack: () => {
-          const link = document.querySelector(
-            `.nav-link[href="#${section.id}"]`
-          );
-          if (link) updateActiveIndicator(link, true);
-        },
-      });
-    });
-
-    // Home link activation when at top of page
-    ScrollTrigger.create({
-      start: "top top",
-      end: "top+=100 top",
-      onEnter: () => {
-        const homeLink = document.querySelector('.nav-link[href="index.html"]');
-        if (homeLink) updateActiveIndicator(homeLink, true);
-      },
-      onLeaveBack: () => {
-        const homeLink = document.querySelector('.nav-link[href="index.html"]');
-        if (homeLink) updateActiveIndicator(homeLink, true);
-      },
+    // Handle responsive changes
+    window.addEventListener("resize", function () {
+      const isNowMobile = window.innerWidth <= breakpointMobile;
+      if (isNowMobile !== wasMobile) {
+        wasMobile = isNowMobile;
+        initScroll();
+      }
+      ScrollTrigger.refresh();
     });
   }
 
-  // Handle link clicks
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const targetUrl = this.getAttribute("href");
-      const targetHash = this.hash;
-      const currentPage =
-        window.location.pathname.split("/").pop() || "index.html";
-      const isSamePage = targetUrl.split("#")[0] === currentPage.split("#")[0];
-      const isHomepageLink =
-        targetUrl.split("#")[0] === "index.html" ||
-        targetUrl.split("#")[0] === "/";
+  // ===== CROSS-PAGE HIGHLIGHTING =====
+  function highlightLink(target) {
+    const link = document.querySelector(`.nav-link[href="${target}"], 
+                                       .nav-link[href*="${
+                                         target.split("#")[0]
+                                       }"]`);
+    if (link) {
+      activeLink = link;
+      updateActiveIndicator(link, true);
+    }
+  }
 
-      if (!isSamePage && targetHash && isHomepageLink) {
-        e.preventDefault();
-        updateActiveIndicator(this, true);
-        sessionStorage.setItem("pendingScroll", targetHash);
-        window.location.href = targetUrl.split("#")[0];
-        return;
-      }
+  // ===== CLICK HANDLERS =====
+  function setupClickHandlers() {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const targetUrl = this.getAttribute("href");
+        const isHomepageLink =
+          targetUrl.includes("index.html") || targetUrl === "/";
+        const isSamePage =
+          window.location.pathname.split("/").pop() === targetUrl.split("#")[0];
 
-      if (!isSamePage) {
-        e.preventDefault();
-        updateActiveIndicator(this, true);
-        setTimeout(() => {
-          window.location.href = targetUrl;
-        }, 300);
-        return;
-      }
+        if (!isSamePage && targetUrl.includes("#") && isHomepageLink) {
+          e.preventDefault();
+          updateActiveIndicator(this, true);
+          sessionStorage.setItem("pendingScroll", targetUrl.split("#")[1]);
+          window.location.href = targetUrl.split("#")[0];
+          return;
+        }
 
-      if (targetHash) {
-        e.preventDefault();
-        updateActiveIndicator(this, true);
-        smoothScrollTo(targetHash);
-      }
+        if (!isSamePage) {
+          e.preventDefault();
+          updateActiveIndicator(this, true);
+          setTimeout(() => (window.location.href = targetUrl), 300);
+          return;
+        }
+
+        if (this.hash) {
+          e.preventDefault();
+          updateActiveIndicator(this, true);
+          smoothScrollTo(this.hash);
+        }
+      });
     });
-  });
+  }
 
   function smoothScrollTo(hash) {
     const target = document.querySelector(hash);
     if (target) {
-      const targetPosition = target.offsetTop - 20;
       window.scrollTo({
-        top: targetPosition,
+        top: target.offsetTop - 20,
         behavior: "smooth",
       });
-      setTimeout(() => {
-        const newActiveLink = document.querySelector(
-          `.nav-link[href="${hash}"]`
-        );
-        if (newActiveLink) {
-          activeLink = newActiveLink;
-          updateActiveIndicator(activeLink, true);
-        }
-      }, 500);
+      setTimeout(() => highlightLink(hash), 500);
     }
   }
-});
 
-// /////////////////
-// [].forEach.call(document.querySelectorAll("*"), function (el) {
-//   if (el.offsetWidth > document.documentElement.clientWidth) {
-//     el.style.outline = "2px solid red";
-//     console.log("Overflowing element:", el);
-//   }
-// });
+  // ===== INITIALIZATION =====
+  function initNavigation() {
+    setupClickHandlers();
+
+    // Handle pending scroll from other pages
+    const pendingScroll = sessionStorage.getItem("pendingScroll");
+    if (pendingScroll) {
+      smoothScrollTo(`#${pendingScroll}`);
+      sessionStorage.removeItem("pendingScroll");
+    }
+
+    // Homepage setup
+    if (window.location.pathname.match(/(\/|index\.html)$/)) {
+      setupServicesScroll();
+
+      // Other sections
+      document.querySelectorAll("section[id]").forEach((section) => {
+        if (section.id === "services") return;
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top center",
+          end: "bottom center",
+          onEnter: () => highlightLink(`#${section.id}`),
+          onEnterBack: () => highlightLink(`#${section.id}`),
+        });
+      });
+
+      // Home link at top
+      ScrollTrigger.create({
+        start: "top top",
+        end: "top+=100 top",
+        onEnter: () => highlightLink("index.html"),
+        onLeaveBack: () => highlightLink("index.html"),
+      });
+    } else {
+      // Highlight current page for non-homepage
+      const currentPage = window.location.pathname.split("/").pop();
+      highlightLink(currentPage);
+    }
+  }
+
+  // Start everything
+  initNavigation();
+  new ResizeObserver(() => updateActiveIndicator(activeLink, false)).observe(
+    document.body
+  );
+});

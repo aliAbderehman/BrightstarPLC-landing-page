@@ -80,6 +80,11 @@
     }
 
     @include respond-down("break5") {
+      &__txt-box {
+        .heading-primary {
+          font-size: 4.6rem;
+        }
+      }
       &__buttons {
         flex-direction: column;
 
@@ -174,8 +179,10 @@
   width: 100vw;
   // min-height: 100vh;
   display: flex;
+
+  position: relative;
   justify-content: center;
-  overflow: hidden;
+
   padding-top: $space-section;
   background-image: linear-gradient(
     to bottom,
@@ -185,9 +192,20 @@
   );
 
   .services {
-    padding-bottom: $space-section;
+    // padding-bottom: $space-section;
     width: 100%;
     // overflow-x: hidden;
+    // height: 100vh;
+
+    overflow: hidden;
+    // background-color: yellow;
+    margin-top: 5rem;
+
+    &__title {
+      z-index: 2;
+
+      position: relative;
+    }
 
     &__cards {
       display: flex;
@@ -196,6 +214,31 @@
       padding-right: 2rem; /* Add some ending padding */
       will-change: transform;
       margin-left: 0; /* Remove any default margins */
+
+      // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+      // mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+    }
+
+    @include respond-down("break5") {
+      width: 96%;
+
+      &__cards {
+        flex-direction: column;
+        gap: 2rem;
+        padding: $space-between;
+        /* Remove any height restrictions */
+        height: auto !important;
+        /* Ensure transform works properly */
+        will-change: transform;
+      }
+
+      &__title {
+        // margin-top: $space-content * 3;
+        position: absolute;
+        top: 6%;
+        left: $space-between;
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -203,6 +246,7 @@
 .section-stats {
   padding-block: $space-section;
   @include flex-center;
+  padding-inline: $space-between;
 }
 
 .section-showcase {
@@ -244,6 +288,7 @@
 
 .section-contacts {
   margin-block: $space-section;
+  padding: $space-between;
   position: relative;
 }
 

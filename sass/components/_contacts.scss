@@ -1,7 +1,7 @@
 .contacts {
   display: grid;
   grid-template-columns: 1fr 0.7fr;
-  gap: 12rem;
+  gap: $space-section;
   position: relative;
   overflow: hidden;
 
@@ -45,5 +45,16 @@
   &__card img {
     width: 3rem;
     height: auto;
+  }
+
+  @include respond-down("break4") {
+    // grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+
+    &__text-box {
+      order: -1;
+    }
   }
 }
