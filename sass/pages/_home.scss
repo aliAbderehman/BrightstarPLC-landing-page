@@ -1,5 +1,4 @@
 .section-hero {
-  overflow: hidden;
   min-height: 100vh;
   width: 100vw;
   display: flex;
@@ -14,6 +13,7 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
+    z-index: 20;
 
     &__txt-box {
       h1 {
@@ -25,7 +25,6 @@
 
     &__buttons {
       width: 100%;
-      // background-color: green;
       display: flex;
       gap: 2rem;
       margin-top: 8rem;
@@ -58,8 +57,6 @@
       align-items: start;
       justify-content: start;
       grid-template-columns: 1fr;
-      // padding-top: $space-content;
-      padding-bottom: $space-section;
 
       &__img-box {
         order: -1;
@@ -184,6 +181,7 @@
   justify-content: center;
 
   padding-top: $space-section;
+
   background-image: linear-gradient(
     to bottom,
     var(--color-background),
@@ -194,12 +192,9 @@
   .services {
     // padding-bottom: $space-section;
     width: 100%;
-    // overflow-x: hidden;
-    // height: 100vh;
-
     overflow: hidden;
     // background-color: yellow;
-    margin-top: 5rem;
+    padding-bottom: $space-content;
 
     &__title {
       z-index: 2;
@@ -214,13 +209,14 @@
       padding-right: 2rem; /* Add some ending padding */
       will-change: transform;
       margin-left: 0; /* Remove any default margins */
-
+      padding-block: $space-content;
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
     }
 
     @include respond-down("break5") {
       width: 96%;
+      margin-top: 5rem;
 
       &__cards {
         flex-direction: column;

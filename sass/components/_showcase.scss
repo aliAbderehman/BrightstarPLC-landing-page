@@ -3,7 +3,8 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: $space-between;
   align-items: stretch;
-  overflow: hidden;
+  // overflow: hidden;
+  padding: $space-between;
 
   &__img {
     width: 100%;
@@ -67,5 +68,26 @@
     grid-column: 2/4;
     grid-row: 2/4;
     height: 35rem;
+  }
+
+  @include respond-down("break5") {
+    &__1 {
+      grid-column: 2/4;
+    }
+    &__2 {
+      grid-row: 2/3;
+    }
+
+    &__3 {
+      grid-column: 1/4;
+    }
+
+    &__4 {
+      grid-row: 1/2;
+    }
+    &__5 {
+      grid-column: 1/4;
+      grid-row: 3/4;
+    }
   }
 }

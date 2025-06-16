@@ -5,4 +5,6 @@ navToggle.addEventListener("click", () => {
   const expanded = navToggle.getAttribute("aria-expanded") === "true";
   navToggle.setAttribute("aria-expanded", !expanded);
   mobNav.classList.toggle("open");
+
+  console.log("hey it's clicked");
 });
