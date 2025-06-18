@@ -29,18 +29,18 @@
   }
 }
 
-.abouts {
-  &__features {
-    display: flex;
-    justify-content: space-between;
-  }
+// .abouts {
+//   &__features {
+//     display: flex;
+//     justify-content: space-between;
+//   }
 
-  &__feature {
-    display: flex;
-    gap: $space-between;
-  }
+//   &__feature {
+//     display: flex;
+//     gap: $space-between;
+//   }
 
-  &__highlights {
-    padding-top: $space-section;
-  }
-}
+//   &__highlights {
+//     padding-top: $space-section;
+//   }
+// }

@@ -6,11 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
   initPathAnimations();
   initScrollAnimations();
   initElementAnimations();
+  initMistScrollAnimations();
 });
 
+// Custom event listener
 document.addEventListener("blogsReady", initFooterPath);
 
-window.addEventListener("resize", () => ScrollTrigger.refresh());
+// Throttle ScrollTrigger.refresh on resize
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => ScrollTrigger.refresh(), 200);
+});
 
 // Animation functions
 function initSplitText() {
@@ -45,6 +52,8 @@ function animatePath(selector, trigger, start, end) {
       start,
       end,
       scrub: 1,
+      invalidateOnRefresh: true, // refresh on resize to recalc lengths
+      anticipatePin: 1, // smoother scrubbing
     },
   });
 }
@@ -56,6 +65,7 @@ function initScrollAnimations() {
       x: 700,
       start: "50% 40%",
       end: (el) => `+=${el.offsetWidth}`,
+      scrub: 1,
     },
     {
       selector: ".out-right-cont",
@@ -70,6 +80,7 @@ function initScrollAnimations() {
       from: true,
       start: "top bottom",
       end: "center 60%",
+      scrub: 1,
     },
     {
       selector: ".out-left",
@@ -77,6 +88,7 @@ function initScrollAnimations() {
       opacity: 0,
       start: "bottom 20%",
       end: "bottom top",
+      scrub: 1,
     },
     {
       selector: ".in-left",
@@ -84,6 +96,7 @@ function initScrollAnimations() {
       from: true,
       start: "top bottom",
       end: "bottom center",
+      scrub: 1,
     },
     {
       selector: ".out-fade-up",
@@ -91,6 +104,7 @@ function initScrollAnimations() {
       opacity: 0,
       start: "center top",
       end: "center top",
+      scrub: 1,
     },
     {
       selector: ".in-fade-up",
@@ -99,6 +113,7 @@ function initScrollAnimations() {
       from: true,
       start: "top bottom",
       end: "top center",
+      scrub: 1,
     },
     {
       selector: ".out-left-cont",
@@ -106,33 +121,32 @@ function initScrollAnimations() {
       rotation: -30,
       start: "center 40%",
       end: "bottom 10%",
+      scrub: 1,
     },
   ];
 
-  animations.forEach((anim) => {
-    const elements = document.querySelectorAll(anim.selector);
+  animations.forEach(({ selector, from, start, end, scrub = 1, ...props }) => {
+    const elements = document.querySelectorAll(selector);
     if (!elements.length) return;
 
     elements.forEach((el) => {
+      const endValue = typeof end === "function" ? end(el) : end;
+
       const config = {
-        ...anim,
+        ...props,
         scrollTrigger: {
           trigger: el,
-          start: anim.start,
-          end: typeof anim.end === "function" ? anim.end(el) : anim.end,
-          scrub: anim.scrub || 1,
+          start,
+          end: endValue,
+          scrub,
           toggleActions: "play none none none",
-          once: anim.from,
+          once: from,
         },
+        ease: "power1.out",
+        willChange: "transform, opacity",
       };
 
-      delete config.selector;
-      delete config.start;
-      delete config.end;
-      delete config.from;
-      delete config.scrub;
-
-      if (anim.from) {
+      if (from) {
         gsap.from(el, config);
       } else {
         gsap.to(el, config);
@@ -143,19 +157,54 @@ function initScrollAnimations() {
 
 function initElementAnimations() {
   const elements = [
-    { selector: "#tsparticles", opacity: 0, scale: 1.3, duration: 3 },
+    // { selector: "#tsparticles", opacity: 0, scale: 1.3, duration: 3 },
     { selector: ".hero__img-1", opacity: 0, scale: 1.3, duration: 1 },
     { selector: ".hero__decor-2", opacity: 0, scale: 1.6, duration: 2 },
   ];
 
-  elements.forEach((el) => {
-    const element = document.querySelector(el.selector);
+  elements.forEach(({ selector, opacity, scale, duration }) => {
+    const element = document.querySelector(selector);
     if (element) {
       gsap.from(element, {
-        opacity: el.opacity,
-        scale: el.scale,
-        duration: el.duration,
+        opacity,
+        scale,
+        duration,
+        ease: "power2.out",
+        willChange: "transform, opacity",
       });
     }
+  });
+}
+
+function initMistScrollAnimations() {
+  const elements = document.querySelectorAll(".mist-reveal");
+  if (!elements.length) return;
+
+  elements.forEach((el) => {
+    gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        filter: "blur(10px)",
+        y: 100,
+        scale: 0.95,
+        willChange: "opacity, filter, transform",
+      },
+      {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 100%",
+          end: "top 80%",
+          scrub: 0.5,
+          toggleActions: "play none none none",
+        },
+      }
+    );
   });
 }

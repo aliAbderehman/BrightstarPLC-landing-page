@@ -8,7 +8,7 @@
   &__navbar {
     width: 100vw;
     position: fixed;
-    padding: 1rem;
+    padding: 1rem $space-between;
     top: 0;
     left: 0;
     -webkit-backdrop-filter: blur(8px);
@@ -20,11 +20,17 @@
     align-items: center;
     z-index: 2000;
     // overflow: hidden;
-
+    // background-color: green;
     @include respond-down("break4") {
       display: flex;
+      // justify-content: space-between;
     }
   }
+
+  // &__cta {
+  //   height: 50%;
+  //   width: auto;
+  // }
 
   &__button {
     background: none;
@@ -36,6 +42,21 @@
 
     font-size: 0;
     line-height: 0;
+  }
+
+  &__cta {
+    transform: rotateY(180deg);
+    // justify-self: stretch;
+    // align-self: flex-end;
+    // width: 100%;
+    margin-left: auto;
+
+    & svg {
+      width: 4.8rem;
+
+      fill: var(--color-primary);
+      stroke: none;
+    }
   }
 
   &__logo svg {

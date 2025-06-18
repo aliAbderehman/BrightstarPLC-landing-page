@@ -38,6 +38,16 @@ body {
   overflow-x: hidden;
 }
 
+.mist-reveal {
+  /* To avoid weird jumps, set transform origin */
+  transform-origin: center bottom;
+  /* Ensure hardware acceleration */
+  backface-visibility: hidden;
+  /* Optional: add some transition for other interactions */
+  transition: box-shadow 0.3s ease;
+  // overflow: hidden;
+}
+
 .header {
   width: 100vw;
   overflow-x: hidden;

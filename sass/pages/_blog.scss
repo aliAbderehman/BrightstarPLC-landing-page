@@ -82,6 +82,10 @@ main > .blog {
   text-decoration: none;
   padding: 1.5rem 2rem;
   width: 100%;
+
+  @include respond-down("break5") {
+    flex-direction: column;
+  }
 }
 
 /* Featured image */
