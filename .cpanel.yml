@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOY_DIR=/home/brightrf/public_html
+    - export DEPLOYPATH=/home/brightrf/public_html
     - rsync -av --exclude='.git' ./ $DEPLOY_DIR/
