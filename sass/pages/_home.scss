@@ -175,13 +175,11 @@
 
 .section-services {
   width: 100vw;
-  // min-height: 100vh;
   display: flex;
-
   position: relative;
   justify-content: center;
-
   margin-top: $space-section;
+  // background-color: blue;
 
   background-image: linear-gradient(
     to bottom,
@@ -191,30 +189,38 @@
   );
 
   .services {
-    // padding-bottom: $space-section;
-    width: 100%;
-    overflow: hidden;
     // background-color: yellow;
+    width: 100%;
+    // overflow: hidden;
     padding-bottom: $space-content;
 
     &__title {
       z-index: 2;
-      // background-color: yellow;
-
       position: relative;
     }
 
     &__cards {
-      background-color: green;
+      // background-color: green;
       display: flex;
       gap: 4rem;
-      padding-left: 2rem; /* Add some initial padding */
-      padding-right: 2rem; /* Add some ending padding */
+      padding-left: 2rem;
+      padding-right: 2rem;
       will-change: transform;
-      margin-left: 0; /* Remove any default margins */
+      margin-left: 0;
       padding-block: $space-content;
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+    }
+
+    &__scroll-wrapper {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+      /* background-color: cornsilk; */
+      // padding: 4rem;
+      /* height: 100vh; */
+      height: fit-content;
+      overflow: hidden;
+      /* position: relative; */
     }
 
     @include respond-down("break5") {
@@ -225,17 +231,12 @@
         flex-direction: column;
         gap: 2rem;
         padding: $space-between;
-        /* Remove any height restrictions */
-        // height: auto !important;
-        /* Ensure transform works properly */
+
         will-change: transform;
       }
 
       &__title {
-        // margin-top: $space-content * 3;
-        // position: absolute;
-        top: 0;
-        // left: $space-between;
+        // top: -2rem;
         margin-bottom: 0;
       }
     }

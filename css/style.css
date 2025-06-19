@@ -635,9 +635,6 @@ body {
   .services .card:last-child h2 {
     font-size: 4rem;
   }
-  .services .card:last-child p {
-    font-size: 3rem;
-  }
   .services .card:last-child .btn {
     width: 100%;
     text-align: center;
@@ -2467,7 +2464,6 @@ main > .blog {
 }
 .section-services .services {
   width: 100%;
-  overflow: hidden;
   padding-bottom: 3.2rem;
 }
 .section-services .services__title {
@@ -2475,14 +2471,22 @@ main > .blog {
   position: relative;
 }
 .section-services .services__cards {
-  background-color: green;
   display: flex;
   gap: 4rem;
-  padding-left: 2rem; /* Add some initial padding */
-  padding-right: 2rem; /* Add some ending padding */
+  padding-left: 2rem;
+  padding-right: 2rem;
   will-change: transform;
-  margin-left: 0; /* Remove any default margins */
+  margin-left: 0;
   padding-block: 3.2rem;
+}
+.section-services .services__scroll-wrapper {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+  /* background-color: cornsilk; */
+  /* height: 100vh; */
+  height: fit-content;
+  overflow: hidden;
+  /* position: relative; */
 }
 @media (max-width: 43.75em) {
   .section-services .services {
@@ -2492,12 +2496,9 @@ main > .blog {
     flex-direction: column;
     gap: 2rem;
     padding: 2.4rem;
-    /* Remove any height restrictions */
-    /* Ensure transform works properly */
     will-change: transform;
   }
   .section-services .services__title {
-    top: 0;
     margin-bottom: 0;
   }
 }

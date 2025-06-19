@@ -67,54 +67,35 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         });
       } else {
-        // Mobile vertical scroll
-        // Mobile vertical scroll
+        // gsap.registerPlugin(ScrollTrigger);
+
         const container = servicesSection.querySelector(".services__cards");
-        const cards = container.querySelectorAll(".card");
-        const lastCard = cards[cards.length - 1];
-        const sectionTitle = servicesSection.querySelector(".services__title");
 
-        // 1. Calculate when last card hits top of viewport
-        const scrollToLastCard =
-          lastCard.offsetTop + lastCard.offsetHeight - window.innerHeight;
+        const sectionServices = document.querySelector(".section-services");
+        // const scrollWrapper = document.querySelector(
+        //   ".services__scroll-wrapper"
+        // );
 
-        // 2. Add 25% viewport height as buffer
-        const buffer = window.innerHeight * 0.25;
-        const totalScrollDistance = Math.max(0, scrollToLastCard + buffer);
-
-        // 3. Reset transforms and kill old triggers
-        gsap.set(container, { y: 0, clearProps: "all" });
-        ScrollTrigger.getAll().forEach(
-          (t) => t.trigger === servicesSection && t.kill()
-        );
-
-        // ////////////////
-        // cards.classList.add("mist-reveal");
-
-        // 4. Create the pinning animation
         gsap.to(container, {
-          y: -totalScrollDistance,
+          yPercent: -100,
           ease: "none",
           scrollTrigger: {
-            trigger: servicesSection,
-            start: "-12% top",
-            end: `+=${totalScrollDistance}`,
+            trigger: sectionServices,
+            start: "top 60px",
+            end: () => "+=" + container.offsetHeight,
             scrub: true,
-            pin: true,
+            pin: sectionServices,
             pinSpacing: false, // Critical for your layout
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            onEnter: () => highlightLink("#services"),
-            onLeave: () => highlightLink("index.html"),
-            onEnterBack: () => highlightLink("#services"),
-            onLeaveBack: () => highlightLink("index.html"),
-            markers: true, // Enable to debug
+
+            // markers: true, // Enable to debug
           },
         });
 
         // 5. Ensure proper stacking context
-        servicesSection.style.zIndex = "10";
-        servicesSection.style.position = "relative";
+        // servicesSection.style.zIndex = "10";
+        // servicesSection.style.position = "relative";
       }
     }
 
