@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ease: "none",
           scrollTrigger: {
             trigger: servicesSection,
-            start: "top top",
+            start: "-20% top",
             end: () => "+=" + (container.scrollWidth - window.innerWidth),
             scrub: 1,
             pin: true,
@@ -88,13 +88,16 @@ document.addEventListener("DOMContentLoaded", function () {
           (t) => t.trigger === servicesSection && t.kill()
         );
 
+        // ////////////////
+        // cards.classList.add("mist-reveal");
+
         // 4. Create the pinning animation
         gsap.to(container, {
           y: -totalScrollDistance,
           ease: "none",
           scrollTrigger: {
             trigger: servicesSection,
-            start: "top top",
+            start: "-12% top",
             end: `+=${totalScrollDistance}`,
             scrub: true,
             pin: true,
@@ -105,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             onLeave: () => highlightLink("index.html"),
             onEnterBack: () => highlightLink("#services"),
             onLeaveBack: () => highlightLink("index.html"),
-            markers: false, // Enable to debug
+            markers: true, // Enable to debug
           },
         });
 

@@ -181,7 +181,7 @@
   position: relative;
   justify-content: center;
 
-  padding-top: $space-section;
+  margin-top: $space-section;
 
   background-image: linear-gradient(
     to bottom,
@@ -199,11 +199,13 @@
 
     &__title {
       z-index: 2;
+      // background-color: yellow;
 
       position: relative;
     }
 
     &__cards {
+      background-color: green;
       display: flex;
       gap: 4rem;
       padding-left: 2rem; /* Add some initial padding */
@@ -217,23 +219,23 @@
 
     @include respond-down("break5") {
       width: 96%;
-      margin-top: 5rem;
+      // margin-top: 5rem;
 
       &__cards {
         flex-direction: column;
         gap: 2rem;
         padding: $space-between;
         /* Remove any height restrictions */
-        height: auto !important;
+        // height: auto !important;
         /* Ensure transform works properly */
         will-change: transform;
       }
 
       &__title {
         // margin-top: $space-content * 3;
-        position: absolute;
-        top: 6%;
-        left: $space-between;
+        // position: absolute;
+        top: 0;
+        // left: $space-between;
         margin-bottom: 0;
       }
     }

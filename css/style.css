@@ -2462,7 +2462,7 @@ main > .blog {
   display: flex;
   position: relative;
   justify-content: center;
-  padding-top: 12rem;
+  margin-top: 12rem;
   background-image: linear-gradient(to bottom, var(--color-background), rgba(54, 113, 234, 0.8), var(--color-background));
 }
 .section-services .services {
@@ -2475,6 +2475,7 @@ main > .blog {
   position: relative;
 }
 .section-services .services__cards {
+  background-color: green;
   display: flex;
   gap: 4rem;
   padding-left: 2rem; /* Add some initial padding */
@@ -2486,21 +2487,17 @@ main > .blog {
 @media (max-width: 43.75em) {
   .section-services .services {
     width: 96%;
-    margin-top: 5rem;
   }
   .section-services .services__cards {
     flex-direction: column;
     gap: 2rem;
     padding: 2.4rem;
     /* Remove any height restrictions */
-    height: auto !important;
     /* Ensure transform works properly */
     will-change: transform;
   }
   .section-services .services__title {
-    position: absolute;
-    top: 6%;
-    left: 2.4rem;
+    top: 0;
     margin-bottom: 0;
   }
 }
