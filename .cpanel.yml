@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/brightrf/public_html/
-    - /bin/cp -R images $DEPLOYPATH
+    - rsync -av --exclude='.git' ./ $DEPLOYPATH/
