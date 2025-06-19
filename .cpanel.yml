@@ -1,5 +1,12 @@
+# ---
+# deployment:
+#   tasks:
+#     - export DEPLOYPATH=/home/brightrf/public_html/
+#     - rsync -av --exclude='.git' ./ $DEPLOYPATH/
+
 ---
 deployment:
   tasks:
     - export DEPLOYPATH=/home/brightrf/public_html/
-    - rsync -av --exclude='.git' ./ $DEPLOYPATH/
+    - /bin/cp index.html $DEPLOYPATH
+    # - /bin/cp style.css $DEPLOYPATH
