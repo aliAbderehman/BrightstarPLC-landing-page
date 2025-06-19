@@ -5,8 +5,7 @@
 #     - rsync -av --exclude='.git' ./ $DEPLOYPATH/
 
 ---
----
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/brightrf/public_html/
-    - rsync -a --exclude='.git' ./ $DEPLOYPATH/
+    - export DEPLOYPATH=/home/brightrf/public-html/
+    - /bin/cp -R * $DEPLOYPATH
