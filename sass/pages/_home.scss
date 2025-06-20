@@ -1,3 +1,8 @@
+.mist-reveal {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
 .section-hero {
   min-height: 100vh;
   width: 100vw;
@@ -178,15 +183,15 @@
   position: relative;
   justify-content: center;
   margin-top: $space-section;
-  background-color: rgb(193, 103, 130);
+  // background-color: rgb(193, 103, 130);
   will-change: transform;
 
-  // background-image: linear-gradient(
-  //   to bottom,
-  //   var(--color-background),
-  //   rgba(#3671ea, 0.8),
-  //   var(--color-background)
-  // );
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-background),
+    rgba(#3671ea, 0.8),
+    var(--color-background)
+  );
 
   .services {
     // background-color: yellow;
@@ -208,9 +213,12 @@
       will-change: transform;
       margin-left: 0;
       padding-block: $space-content;
-      will-change: transform;
+      will-change: transform; /* Hint for browser optimization */
+      backface-visibility: hidden; /* Prevent flickering */
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+
+      padding-bottom: 1px;
     }
 
     &__scroll-wrapper {
@@ -218,7 +226,7 @@
       // mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       position: relative;
       overflow: hidden;
-      height: 100vh;
+      // height: 100vh;
     }
 
     @include respond-down("break5") {

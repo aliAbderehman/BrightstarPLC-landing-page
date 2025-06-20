@@ -22,17 +22,17 @@
 }
 .hero__decor {
   overflow: hidden;
-  // &-1 {
-  //   position: absolute;
-  //   top: -6.5rem;
-  //   height: 120%;
-  // }
+  &-1 {
+    position: absolute;
+    top: -6.5rem;
+    height: 120%;
+  }
 
-  // &-2 {
-  //   position: absolute;
-  //   opacity: 0.8;
-  //   top: 0;
-  //   right: 0;
-  //   width: 100%;
-  // }
+  &-2 {
+    position: absolute;
+    opacity: 0.8;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
 }

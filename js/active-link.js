@@ -67,66 +67,51 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         });
       } else {
+        document.querySelectorAll(".card").forEach((card) => {
+          card.classList.add("mist-reveal");
+        });
         // gsap.registerPlugin(ScrollTrigger);
-
-        // First, set up proper normalization with options
-        ScrollTrigger.normalizeScroll({
-          type: "touch,wheel", // Only normalize these events
-          allowNestedScroll: true, // Better for container scrolling
-          momentum: 0.8, // Adjust scroll momentum
-        });
-
-        const container = document.querySelector(".services__cards");
-        const section = document.querySelector(".section-services");
-
-        // Force layout calculation before animation setup
-        section.offsetHeight;
-
-        // Calculate distances once initially
-        const scrollDistance = container.scrollHeight - window.innerHeight;
-
-        // Create the animation
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top", // More reliable than 10%
-            end: `+=${scrollDistance}`,
-            scrub: 0.5, // Smoother than true (which equals 1)
-            pin: true,
-            pinType: "transform", // Better performance
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            markers: false, // Disable in production
-            onEnter: () => {
-              // Small nudge to prevent top-of-page lock
-              if (window.scrollY <= 1) {
-                window.scrollTo(0, 1);
-              }
-            },
-          },
-        });
-
-        // Animate the container
-        tl.to(container, {
-          y: () => -scrollDistance,
-          ease: "none",
-        });
-
-        // Add resize handler with debounce
-        let resizeTimeout;
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            ScrollTrigger.refresh();
-          }, 100);
-        });
-
+        // ScrollTrigger.normalizeScroll(true);
+        // const container = document.querySelector(".services__cards");
+        // const section = document.querySelector(".section-services");
+        // // Make sure layout is calculated
+        // section.offsetHeight;
+        // function getScrollDistance() {
+        //   return container.scrollHeight - section.clientHeight;
+        // }
+        // const tl = gsap.timeline({
+        //   scrollTrigger: {
+        //     trigger: section,
+        //     start: "top top",
+        //     end: () => `+=${getScrollDistance()}`,
+        //     scrub: 0.5,
+        //     pin: true,
+        //     pinType: "transform",
+        //     anticipatePin: 1,
+        //     invalidateOnRefresh: true,
+        //     markers: false,
+        //     onEnter: () => {
+        //       if (window.scrollY <= 1) window.scrollTo(0, 1);
+        //     },
+        //   },
+        // });
+        // tl.to(container, {
+        //   y: () => -getScrollDistance(),
+        //   ease: "none",
+        // });
+        // // Responsive adjustment
+        // let resizeTimeout;
+        // window.addEventListener("resize", () => {
+        //   clearTimeout(resizeTimeout);
+        //   resizeTimeout = setTimeout(() => {
+        //     ScrollTrigger.refresh();
+        //   }, 100);
+        // });
         // ScrollTrigger.normalizeScroll(true); // Apply globally first
         // const container = document.querySelector(".services__cards");
         // const scrollWrapper = document.querySelector(
         //   ".services__scroll-wrapper"
         // );
-
         // gsap.to(container, {
         //   y: () => -(container.scrollHeight - window.innerHeight),
         //   ease: "none",
@@ -143,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
         //     // normalizeScroll: true,
         //   },
         // });
-
         // 5. Ensure proper stacking context
         // servicesSection.style.zIndex = "10";
         // servicesSection.style.position = "relative";

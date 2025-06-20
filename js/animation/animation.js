@@ -1,210 +1,201 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   gsap.registerPlugin(ScrollTrigger, SplitText);
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 
-//   // Initialize animations
-//   initSplitText();
-//   initPathAnimations();
-//   initScrollAnimations();
-//   initElementAnimations();
-//   initMistScrollAnimations();
-// });
+  initSplitText();
+  initPathAnimations();
+  initScrollAnimations();
+  initElementAnimations();
+  initMistScrollAnimations();
+});
 
-// // Custom event listener
-// document.addEventListener("blogsReady", initFooterPath);
+document.addEventListener("blogsReady", initFooterPath);
 
-// // Throttle ScrollTrigger.refresh on resize
-// let resizeTimeout;
-// window.addEventListener("resize", () => {
-//   clearTimeout(resizeTimeout);
-//   resizeTimeout = setTimeout(() => ScrollTrigger.refresh(), 200);
-// });
+// Debounced refresh on resize
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => ScrollTrigger.refresh(), 200);
+});
 
-// // Animation functions
-// function initSplitText() {
-//   SplitText.create(".heading-primary", {
-//     type: "lines",
-//     linesClass: "line",
-//     aria: true,
-//   });
-// }
+// -------------------------
+// SplitText
+function initSplitText() {
+  SplitText.create(".heading-primary", {
+    type: "lines",
+    linesClass: "line",
+    aria: true,
+  });
+}
 
-// function initPathAnimations() {
-//   animatePath(".fill-path", ".path-container", "top 90%", "top 20%");
-// }
+// -------------------------
+// Path Animations
+function animatePath(selector, trigger, start, end) {
+  const path = document.querySelector(selector);
+  if (!path) return;
 
-// function initFooterPath() {
-//   animatePath(".fill-path--footer", null, "-20% 100%", "top 30%");
-// }
+  const length = path.getTotalLength();
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
 
-// function animatePath(selector, trigger, start, end) {
-//   const path = document.querySelector(selector);
-//   if (!path) return;
+  gsap.to(path, {
+    strokeDashoffset: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: trigger || path,
+      start,
+      end,
+      scrub: 1,
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+    },
+  });
+}
 
-//   const pathLength = path.getTotalLength();
-//   path.style.strokeDasharray = pathLength;
-//   path.style.strokeDashoffset = pathLength;
+function initPathAnimations() {
+  animatePath(".fill-path", ".path-container", "top 90%", "top 20%");
+}
 
-//   gsap.to(path, {
-//     strokeDashoffset: 0,
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: trigger || path,
-//       start,
-//       end,
-//       scrub: 1,
-//       invalidateOnRefresh: true, // refresh on resize to recalc lengths
-//       anticipatePin: 1, // smoother scrubbing
-//     },
-//   });
-// }
+function initFooterPath() {
+  animatePath(".fill-path--footer", null, "-20% 100%", "top 30%");
+}
 
-// function initScrollAnimations() {
-//   const animations = [
-//     {
-//       selector: ".out-right",
-//       x: 700,
-//       start: "50% 40%",
-//       end: (el) => `+=${el.offsetWidth}`,
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".out-right-cont",
-//       x: 700,
-//       start: "center 40%",
-//       end: "bottom 10%",
-//       scrub: 2,
-//     },
-//     {
-//       selector: ".in-right",
-//       x: (el) => `+=${el.offsetWidth}`,
-//       from: true,
-//       start: "top bottom",
-//       end: "center 60%",
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".out-left",
-//       x: (el) => `+=${el.offsetWidth * -1}`,
-//       opacity: 0,
-//       start: "bottom 20%",
-//       end: "bottom top",
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".in-left",
-//       x: (el) => `+=${el.offsetWidth * -1}`,
-//       from: true,
-//       start: "top bottom",
-//       end: "bottom center",
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".out-fade-up",
-//       y: -50,
-//       opacity: 0,
-//       start: "center top",
-//       end: "center top",
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".in-fade-up",
-//       y: 50,
-//       opacity: 0,
-//       from: true,
-//       start: "top bottom",
-//       end: "top center",
-//       scrub: 1,
-//     },
-//     {
-//       selector: ".out-left-cont",
-//       x: -700,
-//       rotation: -30,
-//       start: "center 40%",
-//       end: "bottom 10%",
-//       scrub: 1,
-//     },
-//   ];
+// -------------------------
+// Scroll-triggered movements
+function initScrollAnimations() {
+  const animations = [
+    {
+      selector: ".out-right",
+      x: 700,
+      start: "50% 40%",
+      end: (el) => `+=${el.offsetWidth}`,
+      scrub: 1,
+    },
+    {
+      selector: ".out-right-cont",
+      x: 700,
+      start: "center 40%",
+      end: "bottom 10%",
+      scrub: 1,
+    },
+    {
+      selector: ".in-right",
+      x: (el) => `+=${el.offsetWidth}`,
+      from: true,
+      start: "top bottom",
+      end: "center 60%",
+    },
+    {
+      selector: ".out-left",
+      x: (el) => `+=${el.offsetWidth * -1}`,
+      opacity: 0,
+      start: "bottom 20%",
+      end: "bottom top",
+      scrub: 1,
+    },
+    {
+      selector: ".in-left",
+      x: (el) => `+=${el.offsetWidth * -1}`,
+      from: true,
+      start: "top bottom",
+      end: "bottom center",
+    },
+    {
+      selector: ".out-fade-up",
+      y: -50,
+      opacity: 0,
+      start: "center top",
+      end: "center top",
+    },
+    {
+      selector: ".in-fade-up",
+      y: 50,
+      opacity: 0,
+      from: true,
+      start: "top bottom",
+      end: "top center",
+    },
+    {
+      selector: ".out-left-cont",
+      x: -700,
+      rotation: -30,
+      start: "center 40%",
+      end: "bottom 10%",
+      scrub: 1,
+    },
+  ];
 
-//   animations.forEach(({ selector, from, start, end, scrub = 1, ...props }) => {
-//     const elements = document.querySelectorAll(selector);
-//     if (!elements.length) return;
+  animations.forEach(
+    ({ selector, from, start, end, scrub = false, ...props }) => {
+      const elements = document.querySelectorAll(selector);
+      if (!elements.length) return;
 
-//     elements.forEach((el) => {
-//       const endValue = typeof end === "function" ? end(el) : end;
+      elements.forEach((el) => {
+        const config = {
+          ...props,
+          scrollTrigger: {
+            trigger: el,
+            start,
+            end: typeof end === "function" ? end(el) : end,
+            scrub,
+            toggleActions: "play none none none",
+            once: from,
+          },
+          ease: "power1.out",
+          willChange: "transform, opacity",
+        };
 
-//       const config = {
-//         ...props,
-//         scrollTrigger: {
-//           trigger: el,
-//           start,
-//           end: endValue,
-//           scrub,
-//           toggleActions: "play none none none",
-//           once: from,
-//         },
-//         ease: "power1.out",
-//         willChange: "transform, opacity",
-//       };
+        from ? gsap.from(el, config) : gsap.to(el, config);
+      });
+    }
+  );
+}
 
-//       if (from) {
-//         gsap.from(el, config);
-//       } else {
-//         gsap.to(el, config);
-//       }
-//     });
-//   });
-// }
+// -------------------------
+// Static entrance elements
+function initElementAnimations() {
+  const elements = [
+    { selector: ".hero__img-1", opacity: 0, scale: 1.3, duration: 1 },
+    { selector: ".hero__decor-2", opacity: 0, scale: 1.6, duration: 2 },
+  ];
 
-// function initElementAnimations() {
-//   const elements = [
-//     // { selector: "#tsparticles", opacity: 0, scale: 1.3, duration: 3 },
-//     { selector: ".hero__img-1", opacity: 0, scale: 1.3, duration: 1 },
-//     { selector: ".hero__decor-2", opacity: 0, scale: 1.6, duration: 2 },
-//   ];
+  elements.forEach(({ selector, opacity, scale, duration }) => {
+    const el = document.querySelector(selector);
+    if (el) {
+      gsap.from(el, {
+        opacity,
+        scale,
+        duration,
+        ease: "power2.out",
+        willChange: "transform, opacity",
+      });
+    }
+  });
+}
 
-//   elements.forEach(({ selector, opacity, scale, duration }) => {
-//     const element = document.querySelector(selector);
-//     if (element) {
-//       gsap.from(element, {
-//         opacity,
-//         scale,
-//         duration,
-//         ease: "power2.out",
-//         willChange: "transform, opacity",
-//       });
-//     }
-//   });
-// }
+// -------------------------
+// Mist reveal (optimized)
+function initMistScrollAnimations() {
+  ScrollTrigger.batch(".mist-reveal", {
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    },
+    start: "top 90%",
+    once: true,
+  });
 
-// function initMistScrollAnimations() {
-//   const elements = document.querySelectorAll(".mist-reveal");
-//   if (!elements.length) return;
-
-//   elements.forEach((el) => {
-//     gsap.fromTo(
-//       el,
-//       {
-//         opacity: 0,
-//         filter: "blur(10px)",
-//         y: 100,
-//         scale: 0.95,
-//         willChange: "opacity, filter, transform",
-//       },
-//       {
-//         opacity: 1,
-//         filter: "blur(0px)",
-//         y: 0,
-//         scale: 1,
-//         duration: 1.2,
-//         ease: "power2.out",
-//         scrollTrigger: {
-//           trigger: el,
-//           start: "top 100%",
-//           end: "top 80%",
-//           scrub: 0.5,
-//           toggleActions: "play none none none",
-//         },
-//       }
-//     );
-//   });
-// }
+  // Initial styles (CSS fallback also recommended)
+  document.querySelectorAll(".mist-reveal").forEach((el) => {
+    gsap.set(el, {
+      opacity: 0,
+      y: 40,
+      willChange: "opacity, transform",
+    });
+  });
+}
