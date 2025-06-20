@@ -5,113 +5,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smooth Scroll</title>
     <style>
-      body {
+      * {
         margin: 0;
-        font-family: sans-serif;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      .other-section,
-      .other-section-2 {
-        height: 100vh;
-        background-color: bisque;
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        overflow-x: hidden;
       }
 
-      .other-section-2 {
-        background-color: rgb(199, 255, 150);
-      }
-
-      .services {
-        background-color: burlywood;
+      .section-services {
         position: relative;
-      }
-
-      .services-container {
-        height: 100vh;
-        width: 100%;
-        position: relative;
+        background: #fff;
+        padding: 40px 0;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 2rem;
       }
 
-      .title {
-        font-size: 2rem;
-        position: sticky;
-        top: 2rem;
+      .services__content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      .services__title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 40px;
+        position: relative;
         z-index: 10;
-        background-color: burlywood;
+        will-change: transform;
       }
 
-      .scroll-wrapper {
-        margin-top: 3rem;
-        height: 100%;
-        overflow: hidden;
-        width: 100%;
+      .services__scroll-wrapper {
         position: relative;
+        height: 100vh;
+        will-change: transform;
       }
 
-      .cards-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
+      .services__cards {
+        position: relative;
+        width: 100%;
+        height: 100%;
         will-change: transform;
       }
 
       .card {
-        height: 200px;
-        width: 200px;
-        background-color: aqua;
-        margin: 0 auto;
+        background: #f8f8f8;
+        border-radius: 12px;
+        padding: 30px;
+        min-height: 60vh;
+        max-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        will-change: transform;
+        border: 1px solid #e0e0e0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .card.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Performance optimizations */
+      .card {
+        backface-visibility: hidden;
+        perspective: 1000px;
+        transition: none; /* GSAP will handle all animations */
+      }
+
+      /* Mobile-specific optimizations */
+      @media (max-width: 768px) {
+        .card {
+          min-height: 50vh;
+          padding: 20px;
+        }
+
+        .services__scroll-wrapper {
+          height: 80vh;
+        }
       }
     </style>
   </head>
   <body>
-    <section class="other-section"></section>
+    <section class="section-services">
+      <div class="services__content">
+        <h2 class="services__title">Our Solutions</h2>
 
-    <section class="services">
-      <div class="services-container">
-        <h2 class="title">Our Solutions</h2>
-        <div class="scroll-wrapper">
-          <div class="cards-container">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+        <div class="services__scroll-wrapper">
+          <div class="services__cards">
+            <div class="card">Service 1</div>
+            <div class="card">Service 2</div>
+            <div class="card">Service 3</div>
+            <div class="card">Service 4</div>
+            <div class="card">Service 5</div>
+            <div class="card">Service 6</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="other-section-2"></section>
+    <div
+      style="
+        height: 100vh;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      Content after the services section
+    </div>
 
-    <!-- GSAP Core -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <!-- GSAP ScrollTrigger -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 
     <script>
-      gsap.registerPlugin(ScrollTrigger);
+      document.addEventListener("DOMContentLoaded", () => {
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
 
-      const container = document.querySelector(".cards-container");
-      const services = document.querySelector(".services");
+        // Select elements
+        const section = document.querySelector(".section-services");
+        const scrollWrapper = document.querySelector(
+          ".services__scroll-wrapper"
+        );
+        const cards = gsap.utils.toArray(".card");
+        const title = document.querySelector(".services__title");
 
-      gsap.to(container, {
-        y: () => -(container.scrollHeight - window.innerHeight),
-        ease: "none",
-        scrollTrigger: {
-          trigger: services,
-          start: "top top",
-          end: () => "+=" + (container.scrollHeight - window.innerHeight),
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          markers: true,
-        },
+        // Set initial state - only first card visible
+        gsap.set(cards[0], { opacity: 1, y: 0 });
+
+        // Calculate total animation duration based on card count
+        const totalDuration = cards.length;
+
+        // Create master timeline
+        const master = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${window.innerHeight * totalDuration}`,
+            scrub: 0.8,
+            pin: scrollWrapper,
+            pinType: "transform",
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            markers: false,
+            onUpdate: (self) => {
+              // Gradually move title up as user scrolls
+              const titleProgress = Math.min(1, self.progress * 1.5);
+              gsap.set(title, { y: -titleProgress * 100 });
+            },
+          },
+        });
+
+        // Create card transitions
+        cards.forEach((card, index) => {
+          const isLastCard = index === cards.length - 1;
+
+          // Show current card for its full duration
+          master.to(
+            card,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            index
+          );
+
+          // Only hide if there's a next card
+          if (!isLastCard) {
+            master.to(
+              card,
+              {
+                opacity: 0,
+                y: -40,
+                duration: 0.5,
+                ease: "power2.in",
+                immediateRender: false,
+              },
+              index + 0.5
+            );
+          }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 200);
+        });
       });
     </script>
   </body>

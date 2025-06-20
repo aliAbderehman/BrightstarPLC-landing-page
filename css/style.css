@@ -2460,7 +2460,7 @@ main > .blog {
   position: relative;
   justify-content: center;
   margin-top: 12rem;
-  background-color: blue;
+  background-color: rgb(103, 193, 179);
   will-change: transform;
 }
 .section-services .services {
@@ -2482,8 +2482,6 @@ main > .blog {
   will-change: transform;
 }
 .section-services .services__scroll-wrapper {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
   position: relative;
   overflow: hidden;
   height: 100vh;

@@ -179,7 +179,7 @@
   position: relative;
   justify-content: center;
   margin-top: $space-section;
-  background-color: blue;
+  background-color: rgb(103, 193, 179);
   will-change: transform;
 
   // background-image: linear-gradient(
@@ -215,8 +215,8 @@
     }
 
     &__scroll-wrapper {
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+      // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
+      // mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       position: relative;
       overflow: hidden;
       height: 100vh;
