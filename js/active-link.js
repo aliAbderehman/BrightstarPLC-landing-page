@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // markers: true, // Enable to debug
           },
+          force3D: true,
         });
 
         // 5. Ensure proper stacking context
