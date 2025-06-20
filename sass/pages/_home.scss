@@ -179,14 +179,15 @@
   position: relative;
   justify-content: center;
   margin-top: $space-section;
-  // background-color: blue;
+  background-color: blue;
+  will-change: transform;
 
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-background),
-    rgba(#3671ea, 0.8),
-    var(--color-background)
-  );
+  // background-image: linear-gradient(
+  //   to bottom,
+  //   var(--color-background),
+  //   rgba(#3671ea, 0.8),
+  //   var(--color-background)
+  // );
 
   .services {
     // background-color: yellow;
@@ -200,7 +201,7 @@
     }
 
     &__cards {
-      // background-color: green;
+      background-color: green;
       display: flex;
       gap: 4rem;
       padding-left: 2rem;
@@ -208,6 +209,7 @@
       will-change: transform;
       margin-left: 0;
       padding-block: $space-content;
+      will-change: transform;
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
     }
@@ -226,7 +228,7 @@
     @include respond-down("break5") {
       width: 96%;
       // margin-top: 5rem;
-
+      height: 100vh;
       &__cards {
         flex-direction: column;
         gap: 2rem;

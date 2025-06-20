@@ -69,29 +69,24 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         // gsap.registerPlugin(ScrollTrigger);
 
-        const container = servicesSection.querySelector(".services__cards");
+        const container = document.querySelector(".services__cards");
+        const section = document.querySelector(".section-services");
 
-        const sectionServices = document.querySelector(".section-services");
-        // const scrollWrapper = document.querySelector(
-        //   ".services__scroll-wrapper"
-        // );
+        section.offsetHeight;
 
         gsap.to(container, {
           y: () => -(container.scrollHeight - window.innerHeight),
           ease: "none",
           scrollTrigger: {
-            trigger: sectionServices,
+            trigger: section,
             start: "top 20%",
             end: () => "+=" + (container.scrollHeight - window.innerHeight),
             scrub: true,
             pin: true,
-            // pinSpacing: false, // Critical for your layout
             anticipatePin: 1,
             invalidateOnRefresh: true,
-
-            markers: true, // Enable to debug
+            markers: true,
           },
-          // force3D: true,
         });
 
         // 5. Ensure proper stacking context
