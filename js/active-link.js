@@ -68,28 +68,49 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         // gsap.registerPlugin(ScrollTrigger);
-        ScrollTrigger.normalizeScroll(true); // Apply globally first
+        ScrollTrigger.normalizeScroll(true);
         const container = document.querySelector(".services__cards");
-        const scrollWrapper = document.querySelector(
-          ".services__scroll-wrapper"
-        );
+        const section = document.querySelector(".section-services");
+
+        section.offsetHeight;
 
         gsap.to(container, {
           y: () => -(container.scrollHeight - window.innerHeight),
           ease: "none",
           scrollTrigger: {
-            trigger: scrollWrapper,
+            trigger: section,
             start: "top 10%",
             end: () => "+=" + (container.scrollHeight - window.innerHeight),
             scrub: true,
             pin: true,
-            pinType: "transform",
             anticipatePin: 1,
             invalidateOnRefresh: true,
             markers: true,
-            // normalizeScroll: true,
           },
         });
+
+        // ScrollTrigger.normalizeScroll(true); // Apply globally first
+        // const container = document.querySelector(".services__cards");
+        // const scrollWrapper = document.querySelector(
+        //   ".services__scroll-wrapper"
+        // );
+
+        // gsap.to(container, {
+        //   y: () => -(container.scrollHeight - window.innerHeight),
+        //   ease: "none",
+        //   scrollTrigger: {
+        //     trigger: scrollWrapper,
+        //     start: "top 10%",
+        //     end: () => "+=" + (container.scrollHeight - window.innerHeight),
+        //     scrub: true,
+        //     pin: true,
+        //     pinType: "transform",
+        //     anticipatePin: 1,
+        //     invalidateOnRefresh: true,
+        //     markers: true,
+        //     // normalizeScroll: true,
+        //   },
+        // });
 
         // 5. Ensure proper stacking context
         // servicesSection.style.zIndex = "10";
