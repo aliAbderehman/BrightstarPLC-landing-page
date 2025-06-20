@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             trigger: scrollWrapper,
             start: "top 10%",
             end: () => "+=" + (container.scrollHeight - window.innerHeight),
-            scrub: 0.5,
+            scrub: true,
             pin: true,
             pinType: "transform",
             anticipatePin: 1,
