@@ -2459,7 +2459,7 @@ main > .blog {
   position: relative;
   justify-content: center;
   margin-top: 12rem;
-  background-color: rgb(103, 193, 179);
+  background-color: rgb(187, 103, 193);
   will-change: transform;
 }
 .section-services .services {
