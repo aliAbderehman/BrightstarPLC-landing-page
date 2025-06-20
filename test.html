@@ -3,59 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Smooth Scroll</title>
     <style>
-      .other-section {
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .other-section,
+      .other-section-2 {
         height: 100vh;
         background-color: bisque;
       }
+
       .other-section-2 {
-        height: 250vh;
         background-color: rgb(199, 255, 150);
       }
 
       .services {
-        /* background-color: burlywood; */
-        overflow: hidden;
+        background-color: burlywood;
+        position: relative;
       }
+
       .services-container {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
       }
+
+      .title {
+        font-size: 2rem;
+        position: sticky;
+        top: 2rem;
+        z-index: 10;
+        background-color: burlywood;
+      }
+
+      .scroll-wrapper {
+        margin-top: 3rem;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+      }
+
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        will-change: transform;
+      }
+
       .card {
         height: 200px;
         width: 200px;
         background-color: aqua;
-
-        margin-bottom: 2rem;
-      }
-      .cards-container {
-        background-color: cadetblue;
-        padding: 2rem;
-      }
-
-      .title {
-        z-index: 6;
-      }
-
-      .scroll-wrapper {
-        /* background-color: cornsilk; */
-        padding: 4rem;
-        /* height: 100vh; */
-        height: fit-content;
-        overflow: hidden;
-        /* position: relative; */
+        margin: 0 auto;
       }
     </style>
   </head>
   <body>
     <section class="other-section"></section>
+
     <section class="services">
       <div class="services-container">
         <h2 class="title">Our Solutions</h2>
-
         <div class="scroll-wrapper">
           <div class="cards-container">
             <div class="card"></div>
@@ -67,7 +85,9 @@
         </div>
       </div>
     </section>
+
     <section class="other-section-2"></section>
+
     <!-- GSAP Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <!-- GSAP ScrollTrigger -->
@@ -77,28 +97,20 @@
       gsap.registerPlugin(ScrollTrigger);
 
       const container = document.querySelector(".cards-container");
-      const sectionServices = document.querySelector(".services");
-      const scrollWrapper = document.querySelector(".scroll-wrapper");
-
-      // const scrollHeight =
-      //   container.getBoundingClientRect().height - window.innerHeight;
-      const scrollDistance = sectionServices.offsetHeight - window.innerHeight;
-      const wrapperDistance = scrollWrapper.offsetHeight - window.innerHeight;
+      const services = document.querySelector(".services");
 
       gsap.to(container, {
-        yPercent: -100,
+        y: () => -(container.scrollHeight - window.innerHeight),
         ease: "none",
         scrollTrigger: {
-          trigger: sectionServices,
+          trigger: services,
           start: "top top",
-          end: () => "+=" + container.offsetHeight,
+          end: () => "+=" + (container.scrollHeight - window.innerHeight),
           scrub: true,
-          pin: sectionServices,
-          pinSpacing: false, // Critical for your layout
+          pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-
-          markers: true, // Enable to debug
+          markers: true,
         },
       });
     </script>

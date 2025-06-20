@@ -77,21 +77,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // );
 
         gsap.to(container, {
-          yPercent: -100,
+          y: () => -(container.scrollHeight - window.innerHeight),
           ease: "none",
           scrollTrigger: {
             trigger: sectionServices,
-            start: "top 60px",
-            end: () => "+=" + container.offsetHeight,
+            start: "top 20%",
+            end: () => "+=" + (container.scrollHeight - window.innerHeight),
             scrub: true,
-            pin: sectionServices,
-            pinSpacing: false, // Critical for your layout
+            pin: true,
+            // pinSpacing: false, // Critical for your layout
             anticipatePin: 1,
             invalidateOnRefresh: true,
 
-            // markers: true, // Enable to debug
+            markers: true, // Enable to debug
           },
-          force3D: true,
+          // force3D: true,
         });
 
         // 5. Ensure proper stacking context
