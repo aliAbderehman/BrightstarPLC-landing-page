@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ease: "none",
           scrollTrigger: {
             trigger: section,
-            start: "top 20%",
+            start: "top top",
             end: () => "+=" + (container.scrollHeight - window.innerHeight),
             scrub: true,
             pin: true,
