@@ -69,42 +69,56 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         // gsap.registerPlugin(ScrollTrigger);
 
-        if (ScrollTrigger.isTouch === 1) {
-          // touch-only device
-          // ScrollTrigger.normalizeScroll(true);
+        // First, set up proper normalization with options
+        ScrollTrigger.normalizeScroll({
+          type: "touch,wheel", // Only normalize these events
+          allowNestedScroll: true, // Better for container scrolling
+          momentum: 0.8, // Adjust scroll momentum
+        });
 
-          ScrollTrigger.normalizeScroll({
-            type: "touch,wheel", // Only normalize these events
-            allowNestedScroll: true, // Better for nested scrollables
-            momentum: 0.3, // Adjust momentum factor
-          });
-
-          // Add this to help with top-of-page detection
-          ScrollTrigger.addEventListener("scrollStart", () => {
-            if (window.scrollY === 0) {
-              window.scrollTo(0, 1); // Tiny nudge to prevent lock
-              window.scrollTo(0, 0);
-            }
-          });
-        }
         const container = document.querySelector(".services__cards");
         const section = document.querySelector(".section-services");
 
+        // Force layout calculation before animation setup
         section.offsetHeight;
 
-        gsap.to(container, {
-          y: () => -(container.scrollHeight - window.innerHeight),
-          ease: "none",
+        // Calculate distances once initially
+        const scrollDistance = container.scrollHeight - window.innerHeight;
+
+        // Create the animation
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
-            start: "top 10%",
-            end: () => "+=" + (container.scrollHeight - window.innerHeight),
-            scrub: true,
+            start: "top top", // More reliable than 10%
+            end: `+=${scrollDistance}`,
+            scrub: 0.5, // Smoother than true (which equals 1)
             pin: true,
+            pinType: "transform", // Better performance
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            markers: true,
+            markers: false, // Disable in production
+            onEnter: () => {
+              // Small nudge to prevent top-of-page lock
+              if (window.scrollY <= 1) {
+                window.scrollTo(0, 1);
+              }
+            },
           },
+        });
+
+        // Animate the container
+        tl.to(container, {
+          y: () => -scrollDistance,
+          ease: "none",
+        });
+
+        // Add resize handler with debounce
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 100);
         });
 
         // ScrollTrigger.normalizeScroll(true); // Apply globally first
