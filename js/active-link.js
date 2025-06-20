@@ -70,15 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // gsap.registerPlugin(ScrollTrigger);
 
         const container = document.querySelector(".services__cards");
-        const section = document.querySelector(".section-services");
-
-        section.offsetHeight;
+        const scrollWrapper = document.querySelector(
+          ".services__scroll-wrapper"
+        );
 
         gsap.to(container, {
           y: () => -(container.scrollHeight - window.innerHeight),
           ease: "none",
           scrollTrigger: {
-            trigger: section,
+            trigger: scrollWrapper,
             start: "top top",
             end: () => "+=" + (container.scrollHeight - window.innerHeight),
             scrub: 0.5,

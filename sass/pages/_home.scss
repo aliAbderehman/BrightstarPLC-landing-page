@@ -201,7 +201,7 @@
     }
 
     &__cards {
-      background-color: green;
+      // background-color: green;
       display: flex;
       gap: 4rem;
       padding-left: 2rem;
@@ -217,18 +217,14 @@
     &__scroll-wrapper {
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
-      /* background-color: cornsilk; */
-      // padding: 4rem;
-      /* height: 100vh; */
-      height: fit-content;
+      position: relative;
       overflow: hidden;
-      /* position: relative; */
+      height: 100vh;
     }
 
     @include respond-down("break5") {
       width: 96%;
-      // margin-top: 5rem;
-      height: 100vh;
+
       &__cards {
         flex-direction: column;
         gap: 2rem;
@@ -238,7 +234,6 @@
       }
 
       &__title {
-        // top: -2rem;
         margin-bottom: 0;
       }
     }

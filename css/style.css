@@ -2472,7 +2472,6 @@ main > .blog {
   position: relative;
 }
 .section-services .services__cards {
-  background-color: green;
   display: flex;
   gap: 4rem;
   padding-left: 2rem;
@@ -2485,16 +2484,13 @@ main > .blog {
 .section-services .services__scroll-wrapper {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
-  /* background-color: cornsilk; */
-  /* height: 100vh; */
-  height: fit-content;
+  position: relative;
   overflow: hidden;
-  /* position: relative; */
+  height: 100vh;
 }
 @media (max-width: 43.75em) {
   .section-services .services {
     width: 96%;
-    height: 100vh;
   }
   .section-services .services__cards {
     flex-direction: column;
