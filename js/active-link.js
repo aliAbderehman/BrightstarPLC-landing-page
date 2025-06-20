@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         // gsap.registerPlugin(ScrollTrigger);
-
+        ScrollTrigger.normalizeScroll(true); // Apply globally first
         const container = document.querySelector(".services__cards");
         const scrollWrapper = document.querySelector(
           ".services__scroll-wrapper"
