@@ -2325,7 +2325,6 @@ main > .blog {
   align-items: center;
   justify-content: center;
   justify-items: center;
-  z-index: 20;
 }
 .section-hero .hero__txt-box h1 {
   text-transform: uppercase;
