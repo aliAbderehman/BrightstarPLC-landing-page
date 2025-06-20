@@ -106,10 +106,8 @@
       inset: 0;
 
       background-color: rgba(69, 216, 243, 0.3); // Glassy tint
-      z-index: -5;
+      z-index: -1;
     }
-
-    z-index: 1;
 
     &:hover {
       outline: 2px solid $secondary-color;

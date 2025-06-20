@@ -68,7 +68,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         // gsap.registerPlugin(ScrollTrigger);
-        ScrollTrigger.normalizeScroll(true);
+
+        if (ScrollTrigger.isTouch === 1) {
+          // touch-only device
+          // ScrollTrigger.normalizeScroll(true);
+
+          ScrollTrigger.normalizeScroll({
+            type: "touch,wheel", // Only normalize these events
+            allowNestedScroll: true, // Better for nested scrollables
+            momentum: 0.3, // Adjust momentum factor
+          });
+
+          // Add this to help with top-of-page detection
+          ScrollTrigger.addEventListener("scrollStart", () => {
+            if (window.scrollY === 0) {
+              window.scrollTo(0, 1); // Tiny nudge to prevent lock
+              window.scrollTo(0, 0);
+            }
+          });
+        }
         const container = document.querySelector(".services__cards");
         const section = document.querySelector(".section-services");
 

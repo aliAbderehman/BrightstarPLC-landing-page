@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background: transparent;
-  transform: translateZ(0);
+  // transform: translateZ(0);
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -16,27 +16,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // z-index: 5;
 
   opacity: 0.4;
   transition: opacity 0.3s ease;
 }
 .hero__decor {
-  position: relative;
   overflow: hidden;
-  &-1 {
-    position: absolute;
-    top: -6.5rem;
-    height: 120%;
-    // z-index: -5;
-  }
+  // &-1 {
+  //   position: absolute;
+  //   top: -6.5rem;
+  //   height: 120%;
+  // }
 
-  &-2 {
-    position: absolute;
-    opacity: 0.8;
-    top: 0;
-    right: 0;
-    width: 100%;
-    // z-index: -5;
-  }
+  // &-2 {
+  //   position: absolute;
+  //   opacity: 0.8;
+  //   top: 0;
+  //   right: 0;
+  //   width: 100%;
+  // }
 }

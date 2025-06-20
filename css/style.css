@@ -324,7 +324,6 @@ body {
   filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.5));
   overflow: hidden;
   transition: all 0.3s;
-  z-index: 1;
 }
 .btn--outlined::after {
   content: "";
@@ -337,7 +336,7 @@ body {
   transition: all 0.3s;
   inset: 0;
   background-color: rgba(69, 216, 243, 0.3);
-  z-index: -5;
+  z-index: -1;
 }
 .btn--outlined:hover {
   outline: 2px solid #00f2ff;
@@ -949,7 +948,6 @@ body {
   width: 100%;
   height: 100%;
   background: transparent;
-  transform: translateZ(0);
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -965,20 +963,7 @@ body {
 }
 
 .hero__decor {
-  position: relative;
   overflow: hidden;
-}
-.hero__decor-1 {
-  position: absolute;
-  top: -6.5rem;
-  height: 120%;
-}
-.hero__decor-2 {
-  position: absolute;
-  opacity: 0.8;
-  top: 0;
-  right: 0;
-  width: 100%;
 }
 
 .featured-post__highlights-box {
@@ -2325,6 +2310,7 @@ main > .blog {
   align-items: center;
   justify-content: center;
   justify-items: center;
+  z-index: 1;
 }
 .section-hero .hero__txt-box h1 {
   text-transform: uppercase;
