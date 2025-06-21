@@ -8,7 +8,9 @@ if (!slug) {
   throw new Error("No slug provided.");
 }
 
-fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
+fetch(
+  `https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`
+)
   .then((res) => res.json())
   .then((data) => {
     const post = data[0];
@@ -48,7 +50,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
 
     const refreshComments = (openReplyId = null) => {
       fetch(
-        `http://localhost/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
+        `https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/comments?post=${postId}`
       )
         .then((res) => res.json())
         .then((comments) => {
@@ -139,7 +141,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
 
                   try {
                     const res = await fetch(
-                      "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
+                      "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/comments",
                       {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -174,7 +176,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
     }
 
     fetch(
-      "http://localhost/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
+      "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
     )
       .then((res) => res.json())
       .then((posts) => {
@@ -188,7 +190,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
         if (categoryIds.length > 0) {
           // Fetch category details
           fetch(
-            `http://localhost/brightstar-cms/wp-json/wp/v2/categories?include=${categoryIds.join(
+            `https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/categories?include=${categoryIds.join(
               ","
             )}`
           )
@@ -276,7 +278,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
 
                 try {
                   const res = await fetch(
-                    "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
+                    "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/comments",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -362,7 +364,7 @@ fetch(`http://localhost/brightstar-cms/wp-json/wp/v2/posts?slug=${slug}&_embed`)
 
         try {
           const res = await fetch(
-            "http://localhost/brightstar-cms/wp-json/wp/v2/comments",
+            "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/comments",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fetch posts with embedded categories and media
   fetch(
-    "http://localhost/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
+    "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2/posts?_embed&per_page=100"
   )
     .then((res) => res.json())
     .then((posts) => {

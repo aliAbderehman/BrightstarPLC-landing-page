@@ -41,16 +41,19 @@ form.addEventListener("submit", function (e) {
       })
       .then(function (token) {
         // Now send the form data including the token to your backend:
-        fetch("http://localhost/brightstar-cms/wp-json/custom/v1/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-            recaptcha: token, // send token to backend for verification
-          }),
-        })
+        fetch(
+          "https://brightstarplc.com/brightstar-cms/wp-json/custom/v1/contact",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              email,
+              message,
+              recaptcha: token, // send token to backend for verification
+            }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {

@@ -23,7 +23,8 @@ const featuredQuery = `
 const cardContainer = document.getElementById("cardContainer");
 
 // Replace with the full URL to your WordPress REST API
-const wordpressBaseURL = "http://localhost/brightstar-cms/wp-json/wp/v2";
+const wordpressBaseURL =
+  "https://brightstarplc.com/brightstar-cms/wp-json/wp/v2";
 const featuredTagSlug = "featured";
 
 // First, get the ID of the "featured" tag
