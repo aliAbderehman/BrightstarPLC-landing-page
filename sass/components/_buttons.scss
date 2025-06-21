@@ -109,12 +109,14 @@
       z-index: -1;
     }
 
-    &:hover {
+    &:hover,
+    &:active {
       outline: 2px solid $secondary-color;
       box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
     }
 
-    &:hover::after {
+    &:hover::after,
+    &:active::after {
       // Stronger glass on hover
       transform: translateX(0%);
     }

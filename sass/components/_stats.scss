@@ -1,7 +1,7 @@
 .stats {
   display: flex;
   justify-content: space-around;
-  width: 1280px;
+  width: 100%;
 
   padding: 4rem 2rem;
   align-items: center;
@@ -17,5 +17,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .heading-secondary {
+      text-align: center;
+    }
+
+    .lable-txt {
+      text-align: center;
+    }
+  }
+
+  @include respond-down("break5") {
+    &__content {
+      text-align: center;
+    }
   }
 }

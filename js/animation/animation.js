@@ -19,13 +19,13 @@ window.addEventListener("resize", () => {
 
 // -------------------------
 // SplitText
-function initSplitText() {
-  SplitText.create(".heading-primary", {
-    type: "lines",
-    linesClass: "line",
-    aria: true,
-  });
-}
+// function initSplitText() {
+//   SplitText.create(".heading-primary", {
+//     type: "lines",
+//     linesClass: "line",
+//     aria: true,
+//   });
+// }
 
 // -------------------------
 // Path Animations
