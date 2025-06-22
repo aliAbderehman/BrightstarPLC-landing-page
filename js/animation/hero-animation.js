@@ -8,7 +8,7 @@ const heroParticles = {
   smooth: true,
   particles: {
     number: {
-      value: isMobile ? 40 : 100,
+      value: isMobile ? 35 : 100, // reduce number on mobile
       density: {
         enable: true,
         area: 1000,
@@ -25,22 +25,22 @@ const heroParticles = {
     },
     move: {
       enable: true,
-      speed: isMobile ? 0.4 : 0.8,
+      speed: isMobile ? 0.3 : 0.8,
       direction: "none",
       outModes: { default: "bounce" },
     },
     links: {
-      enable: !isMobile, // Disable on mobile for performance
-      distance: 150,
+      enable: true, // ✅ keep it on
+      distance: isMobile ? 100 : 150,
       color: "#0FA8EC",
-      opacity: 0.5,
+      opacity: isMobile ? 0.3 : 0.5,
       width: 0.5,
     },
   },
   interactivity: {
     events: {
       onHover: {
-        enable: !isMobile, // Disable grab mode on mobile
+        enable: false, // 💡 keep this off on mobile
         mode: "grab",
       },
       resize: true,
@@ -65,7 +65,7 @@ const trustParticles = {
   smooth: true,
   particles: {
     number: {
-      value: isMobile ? 40 : 100,
+      value: isMobile ? 35 : 100,
       density: {
         enable: true,
         area: 1000,
@@ -82,22 +82,22 @@ const trustParticles = {
     },
     move: {
       enable: true,
-      speed: isMobile ? 0.4 : 0.8,
+      speed: isMobile ? 0.3 : 0.8,
       direction: "none",
       outModes: { default: "bounce" },
     },
     links: {
-      enable: !isMobile,
-      distance: 150,
+      enable: true,
+      distance: isMobile ? 100 : 150,
       color: "#86B7C8FF",
-      opacity: 0.5,
+      opacity: isMobile ? 0.3 : 0.5,
       width: 0.5,
     },
   },
   interactivity: {
     events: {
       onHover: {
-        enable: !isMobile,
+        enable: false,
         mode: "grab",
       },
       resize: true,
@@ -114,6 +114,6 @@ const trustParticles = {
   },
 };
 
-// === Load Both Particle Systems ===
+// === Load Particles ===
 tsParticles.load("tsparticles", heroParticles);
 tsParticles.load("tsparticles-trust", trustParticles);
