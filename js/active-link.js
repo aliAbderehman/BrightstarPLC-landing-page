@@ -70,6 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".card").forEach((card) => {
           card.classList.add("mist-reveal");
         });
+
+        ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === servicesSection) t.kill();
+      });
         // gsap.registerPlugin(ScrollTrigger);
         // ScrollTrigger.normalizeScroll(true);
         // const container = document.querySelector(".services__cards");
