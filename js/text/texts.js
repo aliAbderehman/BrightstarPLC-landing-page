@@ -3,7 +3,7 @@ document.addEventListener("blogsReady", function () {
   const textEl = document.querySelectorAll(".blog__card-text");
 
   const titleMaxLength = 40;
-  const textMaxLength = 160;
+  const textMaxLength = 120;
 
   titleEl.forEach((text) => {
     if (text.textContent.length > titleMaxLength) {

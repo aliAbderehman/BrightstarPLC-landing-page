@@ -1,14 +1,11 @@
 .blog {
   display: grid;
   grid-template-columns: auto 1fr;
-  // overflow: hidden;
-  gap: 2rem;
+  gap: $space-between;
   justify-content: start;
 
   &__navigation {
-    // background-color: #4f84b9;
-    gap: 2rem;
-
+    gap: $space-between;
     display: flex;
     align-items: end;
     justify-content: center;
@@ -18,21 +15,28 @@
 
   &__title {
     // background-color: #9d66a9;
+    grid-column: 1/3;
     grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    .btn {
+      align-self: flex-end;
+    }
   }
 
   &__nav {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    width: 35rem;
-
-    padding: 2rem;
+    // width: 20rem;
+    padding-inline: $space-content * 2;
   }
 
   &__cards {
-    // background-color: #4fb4b9;
-    grid-row: 1/3;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%);
+    mask-image: linear-gradient(to right, transparent 0%, black 6%);
+    grid-column: 2/3;
+    grid-row: 2/3;
 
     display: flex;
     flex: 1;
@@ -40,10 +44,7 @@
     align-items: start;
     gap: $space-content;
     padding: 3rem 4rem;
-    // background-color: rgb(217, 236, 240);
     border-radius: 14px;
-    // height: 52rem;
-
     overflow-x: auto; /* enable horizontal scroll */
     overflow-y: hidden;
 
@@ -53,26 +54,33 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 2rem;
+    // background-color: #0066cc;
 
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
-  @include respond-down("break5") {
+  @include respond-down("break4") {
     grid-template-columns: 1fr;
     gap: $space-between;
+    // background-color: #4f7296;
 
     &__cards {
       grid-row: auto;
+      grid-column: auto;
       min-width: 35rem;
+    }
+
+    &__title {
+      grid-column: auto;
+      grid-row: auto;
     }
   }
 
   &__card {
     flex: 0 0 auto;
-    width: 44rem;
-    // height: 50rem;\
+    width: 40rem;
     border: transparent solid 2px;
     border-radius: 8px;
     text-decoration: none;
@@ -89,10 +97,16 @@
       transform: translateY(-3px);
       border: var(--color-primary) solid 2px;
     }
+
+    padding-bottom: $space-between;
+
+    &:first-child {
+      margin-left: $space-section;
+    }
   }
 
   &__card-content {
-    padding: 2rem;
+    padding-inline: 2rem;
     text-decoration: none;
   }
 
@@ -105,17 +119,12 @@
     margin-bottom: $space-between;
   }
 
-  // &__card-link {
-  //   text-decoration: none;
-  //   margin-top: $space-content * 2;
-  // }
-
   &__img-box {
     position: relative;
     overflow: hidden;
     display: inline-block;
     width: 100%;
-    height: 23rem;
+    height: 16rem;
 
     &::after {
       content: "";
@@ -146,6 +155,14 @@
 }
 
 .blog__nav {
+}
+
+.scroll-spacer {
+  flex: 0 0 8rem; // or whatever spacing you want before first card
+  scroll-snap-align: start;
+  width: 2rem;
+  pointer-events: none;
+  background-color: green;
 }
 
 .comment {

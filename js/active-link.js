@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ease: "none",
           scrollTrigger: {
             trigger: servicesSection,
-            start: "-20% top",
+            start: "center center",
             end: () => "+=" + (container.scrollWidth - window.innerWidth),
             scrub: 1,
             pin: true,
@@ -72,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         ScrollTrigger.getAll().forEach((t) => {
-        if (t.trigger === servicesSection) t.kill();
-      });
+          if (t.trigger === servicesSection) t.kill();
+        });
         // gsap.registerPlugin(ScrollTrigger);
         // ScrollTrigger.normalizeScroll(true);
         // const container = document.querySelector(".services__cards");

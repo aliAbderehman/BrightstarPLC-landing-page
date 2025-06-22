@@ -62,15 +62,19 @@ async function fetchFeaturedPosts() {
 function renderCards(posts) {
   cardContainer.innerHTML = ""; // Clear existing cards
 
+  // ✅ Add scroll spacer element
+  const spacer = document.createElement("div");
+  spacer.classList.add("scroll-spacer");
+  cardContainer.appendChild(spacer);
+
   posts.forEach((post) => {
     const title = post.title.rendered;
-
     const excerpt = post.excerpt.rendered;
     const category = post._embedded["wp:term"][0]?.[0]?.name || "General";
     const image =
       post._embedded["wp:featuredmedia"]?.[0]?.source_url ||
-      "/assets/images/img-featured.png"; // fallback
-    const link = post.link; // full post URL from WordPress
+      "/assets/images/img-featured.png";
+    const link = post.link;
 
     const rawDate = post.date;
     const date = new Date(rawDate).toLocaleDateString("en-US", {
@@ -84,28 +88,27 @@ function renderCards(posts) {
     card.classList.add("glass");
 
     card.innerHTML = `
-    <a href="/pages/blog-detail.html?slug=${post.slug}" >
-      <div class="blog__img-box">
-        <img src="${image}" alt="${title}" loading="lazy" />
-      </div>
-      <div class="blog__card-content">
-        <div class="blog__card-catagory">
-          <h3 class="blog__catagory">${category}</h3>
-          <p class="text--small u-margin-bottom-small">${date}</p>
+      <a href="/pages/blog-detail.html?slug=${post.slug}">
+        <div class="blog__img-box">
+          <img src="${image}" alt="${title}" loading="lazy" />
         </div>
-        <div class="blog__title-sec">
-          <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
-          <div class="lable-txt blog__card-text">${excerpt}</div>
-          <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
+        <div class="blog__card-content">
+          <div class="blog__card-catagory">
+            <h3 class="blog__catagory">${category}</h3>
+            <p class="text--small ">${date}</p>
+          </div>
+          <div class="blog__title-sec">
+            <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
+            <div class="lable-txt blog__card-text">${excerpt}</div>
+            <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
+          </div>
         </div>
-      </div>
-    </a>
-  `;
+      </a>
+    `;
 
     cardContainer.appendChild(card);
   });
 
-  // ✅ Notify GSAP or other scripts that posts are now in the DOM
   document.dispatchEvent(new Event("blogsReady"));
 }
 

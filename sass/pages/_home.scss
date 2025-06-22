@@ -84,16 +84,22 @@
     @include respond-down("break5") {
       &__txt-box {
         .heading-primary {
-          font-size: 4.6rem;
+          font-size: 4rem;
+        }
+
+        .heading-subtitle-1 {
+          line-height: 1.2;
         }
       }
       &__buttons {
         flex-direction: column;
+        margin-top: $space-between;
 
         .btn {
           width: 100%;
           text-align: center;
-          font-size: 2.6rem;
+          font-size: 2rem;
+          padding: 1rem;
 
           // flex: 1 1 0;
         }
@@ -225,6 +231,7 @@
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       position: relative;
+      padding-block: $space-content;
       overflow: hidden;
       // height: 100vh;
     }
@@ -297,11 +304,18 @@
 }
 
 .section-blog {
+  // background-color: #ddd;
+
   padding-block: $space-section;
 
   display: flex;
 
-  padding-left: $space-content;
-  padding-bottom: $space-section * 3;
+  // padding-left: $space-content;
+  padding-bottom: $space-section * 2;
   justify-content: center;
 }
+
+// .blog {
+//   &__title {
+//   }
+// }
