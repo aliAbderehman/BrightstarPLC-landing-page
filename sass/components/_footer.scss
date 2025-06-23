@@ -99,10 +99,8 @@
     justify-content: center;
     margin-top: 1rem;
 
-    a {
-      background-color: var();
-      // padding: $space-between;
-      color: var(--color-text);
+    .social-icon {
+      // color: var(--color-text);
       transition: all 0.3s;
 
       &:hover {
@@ -119,6 +117,24 @@
       &:hover {
         fill: var(--color-secondary);
       }
+    }
+  }
+
+  @include respond-down("break5") {
+    &__top {
+      flex-direction: column;
+      gap: $space-between;
+      align-items: start;
+    }
+
+    &__txt-box {
+      width: 100%;
+      gap: $space-between / 2;
+    }
+
+    .social-icon svg {
+      width: 4rem;
+      height: 4rem;
     }
   }
 }

@@ -431,6 +431,17 @@ body {
   color: var(--color-secondary);
   text-decoration: underline;
 }
+.btn--subscription {
+  color: #fff;
+  background-color: #0073a5;
+  box-shadow: 0 4px 6px #313131;
+  transition: all 0.3s;
+}
+.btn--subscription:hover {
+  background-color: #006089;
+  transform: scale(1.05);
+  box-shadow: 0 4px 4px #313131;
+}
 
 .blog {
   display: grid;
@@ -924,12 +935,10 @@ body {
   justify-content: center;
   margin-top: 1rem;
 }
-.footer__socials a {
-  background-color: var();
-  color: var(--color-text);
+.footer__socials .social-icon {
   transition: all 0.3s;
 }
-.footer__socials a:hover {
+.footer__socials .social-icon:hover {
   color: var(--color-secondary);
 }
 .footer__socials svg {
@@ -940,6 +949,21 @@ body {
 }
 .footer__socials svg:hover {
   fill: var(--color-secondary);
+}
+@media (max-width: 48em) {
+  .footer__top {
+    flex-direction: column;
+    gap: 2.4rem;
+    align-items: start;
+  }
+  .footer__txt-box {
+    width: 100%;
+    gap: 1.2rem;
+  }
+  .footer .social-icon svg {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 .form__group:not(:last-child) {
@@ -959,13 +983,13 @@ body {
   border-bottom: 3px solid transparent;
   border-radius: 10px;
   width: 100%;
+  height: 100%;
   display: block;
   transition: border-bottom-color 0.3s;
   resize: vertical;
 }
 .form__input:focus {
   outline: none;
-  border: none;
   border-bottom: 3px solid var(--color-primary);
   box-shadow: var(--shadow) inset;
 }
@@ -1649,8 +1673,9 @@ body {
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 2px;
+  width: 100%;
 }
 .subscribe .form__group {
   background-color: transparent;
@@ -1667,7 +1692,6 @@ body {
   border-radius: 4px;
   background-color: transparent;
   outline: none;
-  border: none;
   padding: 10px;
   color: var(--color-grey-dark-2);
 }
@@ -1692,6 +1716,44 @@ body {
   color: #fff;
   background-color: #0073a5;
   box-shadow: 0.5rem 0rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.subscription {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+.subscription__title {
+  width: 60%;
+}
+.subscription__form-box {
+  margin-left: auto;
+  width: 40%;
+}
+.subscription__form {
+  background-color: var(--color-grey-light);
+  flex: 1;
+  display: flex;
+  border-radius: 8px;
+  padding: 4px;
+  width: 100%;
+}
+.subscription__form .form__group {
+  margin: 0;
+  flex: 1;
+}
+@media (max-width: 48em) {
+  .subscription {
+    gap: 2.4rem;
+  }
+  .subscription__title {
+    width: 100%;
+  }
+  .subscription__form-box {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 .ui-switch {
@@ -2022,7 +2084,7 @@ body {
   }
   .abouts__heading {
     width: 100%;
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .abouts__stats-box {
     display: grid;
@@ -2627,6 +2689,11 @@ main > .blog {
   display: flex;
   padding-bottom: 24rem;
   justify-content: center;
+}
+
+.section-subscription {
+  padding-bottom: 12rem;
+  padding-inline: 2.4rem;
 }
 
 [data-theme=light],

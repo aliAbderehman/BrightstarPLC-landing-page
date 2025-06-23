@@ -1,12 +1,11 @@
 .subscribe {
   background-color: var(--color-grey-light);
-  //   padding: 2rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 2px;
-  //   width: 130%;
+  width: 100%;
 
   .form__group {
     background-color: transparent;
@@ -18,6 +17,10 @@
     color: var(--color-text);
   }
 
+  &:has(&__input:focus) {
+    // background-color: var(--color-grey-dark);
+  }
+
   &__input {
     flex: 2;
     width: 100%;
@@ -25,7 +28,7 @@
     border-radius: 4px;
     background-color: transparent;
     outline: none;
-    border: none;
+    // border: none;
     padding: 10px;
     color: var(--color-grey-dark-2);
 

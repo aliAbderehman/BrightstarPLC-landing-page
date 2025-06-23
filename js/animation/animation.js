@@ -52,11 +52,11 @@ function animatePath(selector, trigger, start, end) {
 }
 
 function initPathAnimations() {
-  animatePath(".fill-path", ".path-container", "top 90%", "top 20%");
+  animatePath(".fill-path", ".path-container", "top 80%", "top 20%");
 }
 
 function initFooterPath() {
-  animatePath(".fill-path--footer", null, "-20% 100%", "top 30%");
+  animatePath(".fill-path--footer", null, "top 90%", "top 30%");
 }
 
 // -------------------------

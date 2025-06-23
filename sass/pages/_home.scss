@@ -315,6 +315,11 @@
   justify-content: center;
 }
 
+.section-subscription {
+  padding-bottom: $space-section;
+  padding-inline: $space-between;
+}
+
 // .blog {
 //   &__title {
 //   }
