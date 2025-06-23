@@ -84,22 +84,22 @@ function renderCards(posts) {
     });
 
     const card = document.createElement("div");
-    card.classList.add("blog__card");
+    card.classList.add("featured-blog__card");
     card.classList.add("glass");
 
     card.innerHTML = `
       <a href="/pages/blog-detail.html?slug=${post.slug}">
-        <div class="blog__img-box">
+        <div class="featured-blog__img-box">
           <img src="${image}" alt="${title}" loading="lazy" />
         </div>
-        <div class="blog__card-content">
-          <div class="blog__card-catagory">
-            <h3 class="blog__catagory">${category}</h3>
+        <div class="featured-blog__card-content">
+          <div class="featured-blog__card-catagory">
+            <h3 class="featured-blog__catagory">${category}</h3>
             <p class="text--small ">${date}</p>
           </div>
-          <div class="blog__title-sec">
-            <h3 class="heading-tertiary blog__card-title u-margin-bottom-small">${title}</h3>
-            <div class="lable-txt blog__card-text">${excerpt}</div>
+          <div class="featured-blog__title-sec">
+            <h3 class="heading-tertiary featured-blog__card-title u-margin-bottom-small">${title}</h3>
+            <div class="lable-txt featured-blog__card-text">${excerpt}</div>
             <a href="/pages/blog-detail.html?slug=${post.slug}" class="btn btn--read-more">Read More &rarr;</a>
           </div>
         </div>

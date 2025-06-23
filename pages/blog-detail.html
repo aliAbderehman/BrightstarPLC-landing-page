@@ -70,15 +70,12 @@
         <div class="nav-container">
           <ul class="header__nav-list nav-links">
             <li>
-              <a href="/index.html" class="nav-link page-btn" data-page="home"
+              <a href="index.html" class="nav-link page-btn" data-page="home"
                 >Home</a
               >
             </li>
             <li>
-              <a
-                href="/#services"
-                class="nav-link page-btn"
-                data-page="services"
+              <a href="#services" class="nav-link page-btn" data-page="services"
                 >Services</a
               >
             </li>
@@ -218,22 +215,22 @@
 
     <main>
       <section class="section-blog-detail">
-        <div class="blog-img" id="blogPostImg"></div>
-
-        <div class="content-grid container">
-          <div class="blog-detail" id="blogPostContainer"></div>
-
-          <div class="blog__cards featured">
-            <h3 class="heading-tertiary">Featured</h3>
-            <div id="loadingSpinner" class="spinner" style="display: none">
-              <div class="spinner-icon"></div>
+        <div class="blog-detail container">
+          <div class="blog-detail__img" id="blogPostImg"></div>
+          <div class="blog-detail__content">
+            <div class="blog-detail__detail" id="blogPostContainer"></div>
+            <div class="blog-detail__cards featured">
+              <h3 class="heading-tertiary">Featured</h3>
+              <div id="loadingSpinner" class="spinner" style="display: none">
+                <div class="spinner-icon"></div>
+              </div>
+              <div
+                class="featured-cards scroll-container"
+                id="cardContainer"
+              ></div>
             </div>
-            <div
-              class="featured-cards scroll-container"
-              id="cardContainer"
-            ></div>
+            <!-- cards go here -->
           </div>
-          <!-- cards go here -->
         </div>
       </section>
 

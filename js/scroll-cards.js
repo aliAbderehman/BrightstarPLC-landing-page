@@ -38,7 +38,7 @@ function setupScroll() {
   const container = document.getElementById("cardContainer");
 
   // Wait until at least one card is available
-  const sampleCard = container.querySelector(".blog__card");
+  const sampleCard = container.querySelector(".featured-blog__card");
 
   if (!sampleCard) {
     console.warn("No cards found to calculate scroll width.");

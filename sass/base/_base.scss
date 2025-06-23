@@ -48,6 +48,10 @@ body {
   // overflow: hidden;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .header {
   width: 100vw;
   overflow-x: hidden;

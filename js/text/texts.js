@@ -1,6 +1,6 @@
 document.addEventListener("blogsReady", function () {
-  const titleEl = document.querySelectorAll(".blog__card-title");
-  const textEl = document.querySelectorAll(".blog__card-text");
+  const titleEl = document.querySelectorAll(".featured-blog__card-title");
+  const textEl = document.querySelectorAll(".featured-blog__card-text");
 
   const titleMaxLength = 40;
   const textMaxLength = 120;

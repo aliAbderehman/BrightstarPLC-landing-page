@@ -1,4 +1,4 @@
-.blog {
+.featured-blog {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: $space-between;
@@ -154,7 +154,7 @@
   }
 }
 
-.blog__nav {
+.featured-blog__nav {
 }
 
 .scroll-spacer {
@@ -162,7 +162,7 @@
   scroll-snap-align: start;
   width: 2rem;
   pointer-events: none;
-  background-color: green;
+  // background-color: green;
 }
 
 .comment {

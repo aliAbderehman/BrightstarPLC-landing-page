@@ -23,7 +23,7 @@ function getParticleConfig(color, linkColor) {
       },
       move: {
         enable: true,
-        speed: isMobile ? 0.5 : 0,
+        speed: isMobile ? 0.5 : 0.4,
         direction: "none",
         outModes: { default: "bounce" },
       },

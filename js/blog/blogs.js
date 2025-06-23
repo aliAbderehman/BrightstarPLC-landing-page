@@ -109,19 +109,19 @@ document.addEventListener("DOMContentLoaded", function () {
         .join(", ");
 
       const postEl = document.createElement("div");
-      postEl.className = "blog-post glass";
+      postEl.className = "blog__post glass";
       postEl.innerHTML = `
       <a href="/pages/blog-detail.html?slug=${post.slug}">
-        <div class="blog-post__img-box">${
+        <div class="blog__img-box">${
           image
             ? `<img src="${image}" alt="${post.title.rendered}"/>`
             : "../assets/images/img-featured.png"
         }</div>
-        <div class="blog-post-content">
+        <div class="blog__content">
           <h2 class="heading-tertiary u-margin-bottom-small">${highlightedTitle}</h2>
           <div class="categories lable-txt">${highlightedCategories}</div>
           <div class="post-date" >${formattedDate}</div>
-          <div class="blog-excerpt">${post.excerpt.rendered}</div>
+          <div class="blog__excerpt">${post.excerpt.rendered}</div>
         </div>
       </a>
     `;
