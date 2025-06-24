@@ -155,7 +155,7 @@ function initScrollAnimations() {
 function initElementAnimations() {
   const elements = [
     { selector: ".hero__img-1", opacity: 0, scale: 1.3, duration: 1 },
-    { selector: ".hero__decor-2", opacity: 0, scale: 1.6, duration: 2 },
+    // { selector: ".hero__decor-2", opacity: 0, scale: 1.6, duration: 2 },
   ];
 
   elements.forEach(({ selector, opacity, scale, duration }) => {
