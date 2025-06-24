@@ -76,6 +76,10 @@
       grid-column: auto;
       grid-row: auto;
     }
+
+    .scroll-spacer {
+      display: none;
+    }
   }
 
   &__card {

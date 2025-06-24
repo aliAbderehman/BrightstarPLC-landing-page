@@ -513,6 +513,9 @@ body {
     grid-column: auto;
     grid-row: auto;
   }
+  .featured-blog .scroll-spacer {
+    display: none;
+  }
 }
 .featured-blog__card {
   flex: 0 0 auto;
