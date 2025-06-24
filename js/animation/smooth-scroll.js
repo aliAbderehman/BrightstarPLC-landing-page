@@ -82,7 +82,7 @@ allLinks.forEach((link) => {
     }
 
     if (link.classList.contains("nav-link")) {
-      navEl.classList.toggle("nav-open");
+      // navEl.classList.toggle("nav-open");
     }
   });
 });
