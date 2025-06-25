@@ -518,6 +518,7 @@ body {
   }
 }
 .featured-blog__card {
+  padding: 1.2rem 1.6rem;
   flex: 0 0 auto;
   width: 40rem;
   border: transparent solid 2px;
@@ -2183,6 +2184,7 @@ body {
   padding-block: 12rem;
 }
 .blog__post {
+  padding: 1.2rem 1.6rem;
   width: 100%;
   overflow: hidden;
   border-radius: 14px;
