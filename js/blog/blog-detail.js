@@ -16,6 +16,38 @@ fetch(
     const post = data[0];
     const postId = post.id;
 
+    document.title = `${post.title.rendered} | Brightstar PLC`;
+
+    // Create meta description
+    const metaDescription = document.createElement("meta");
+    metaDescription.name = "description";
+    metaDescription.content = post.excerpt.rendered
+      .replace(/<[^>]+>/g, "")
+      .substring(0, 155);
+    document.head.appendChild(metaDescription);
+
+    // Optional: Add Open Graph tags for social sharing
+    const ogTitle = document.createElement("meta");
+    ogTitle.setAttribute("property", "og:title");
+    ogTitle.setAttribute("content", post.title.rendered);
+    document.head.appendChild(ogTitle);
+
+    const ogDescription = document.createElement("meta");
+    ogDescription.setAttribute("property", "og:description");
+    ogDescription.setAttribute(
+      "content",
+      post.excerpt.rendered.replace(/<[^>]+>/g, "").substring(0, 155)
+    );
+    document.head.appendChild(ogDescription);
+
+    const ogImage = document.createElement("meta");
+    ogImage.setAttribute("property", "og:image");
+    ogImage.setAttribute(
+      "content",
+      post._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
+    );
+    document.head.appendChild(ogImage);
+
     // Function to refresh comments
 
     /////////////////////////////////////////////////
