@@ -5,6 +5,7 @@
 }
 
 .blog-detail {
+  // background-color: #774979;
   padding-top: $space-section;
   overflow: hidden;
 
@@ -30,7 +31,8 @@
 
   &__content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    // background-color: #497972;
     width: 100%;
     // overflow: hidden;
     gap: 2rem;
