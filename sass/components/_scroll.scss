@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 // .scroller {
 //   &__wrapper {
 //   }
@@ -119,7 +121,7 @@
 .scroller__inner {
   display: flex;
   align-items: center;
-  gap: $space-between; /* your desired gap */
+  gap: variables.$space-between; /* your desired gap */
 }
 
 .scroller__inner li {
@@ -136,10 +138,10 @@
   // background-color: green;
 
   &:last-child {
-    padding-right: $space-between;
+    padding-right: variables.$space-between;
   }
   &:first-child {
-    padding-left: $space-between;
+    padding-left: variables.$space-between;
   }
 }
 

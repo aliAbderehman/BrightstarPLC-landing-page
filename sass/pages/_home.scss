@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .mist-reveal {
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
@@ -10,7 +13,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-inline: $space-between;
+  padding-inline: variables.$space-between;
   overflow: hidden;
 
   .hero {
@@ -56,7 +59,7 @@
       justify-self: end;
     }
 
-    @include respond-down("break4") {
+    @include mixins.respond-down("break4") {
       display: flex;
       flex-direction: column;
       align-items: start;
@@ -70,7 +73,7 @@
       }
 
       &__txt-box {
-        padding-top: $space-between;
+        padding-top: variables.$space-between;
         display: flex;
         flex-direction: column;
         align-items: start;
@@ -81,7 +84,7 @@
       }
     }
 
-    @include respond-down("break5") {
+    @include mixins.respond-down("break5") {
       &__txt-box {
         .heading-primary {
           font-size: 4rem;
@@ -93,7 +96,7 @@
       }
       &__buttons {
         flex-direction: column;
-        margin-top: $space-between;
+        margin-top: variables.$space-between;
 
         .btn {
           width: 100%;
@@ -111,23 +114,23 @@
 .section-core-features {
   // overflow-x: hidden;
   // background-color: green;
-  @include flex-center;
-  padding-bottom: $space-content;
+  @include mixins.flex-center;
+  padding-bottom: variables.$space-content;
 
   .core-features {
     overflow: hidden;
-    padding: $space-between;
+    padding: variables.$space-between;
     display: flex;
     position: relative;
     top: -6rem;
-    gap: $space-between;
+    gap: variables.$space-between;
     // align-items: end;
 
     &__text {
       align-self: flex-end;
     }
 
-    @include respond-down("break5") {
+    @include mixins.respond-down("break5") {
       top: 0;
       flex-direction: column;
 
@@ -144,12 +147,12 @@
 
 .work {
   display: flex;
-  padding-top: $space-section;
+  padding-top: variables.$space-section;
   position: relative;
   height: 100%;
 
   &__wrapper {
-    padding-inline: $space-between;
+    padding-inline: variables.$space-between;
   }
 
   &__content {
@@ -157,15 +160,15 @@
     // overflow-y: auto;
     width: 50%;
     position: relative;
-    padding-block: $space-between;
-    padding-left: $space-between;
+    padding-block: variables.$space-between;
+    padding-left: variables.$space-between;
     left: 50%;
     display: flex;
     align-items: start;
     flex-direction: column;
   }
 
-  @include respond-down("break5") {
+  @include mixins.respond-down("break5") {
     flex-direction: column;
     // align-items: start;
     &__content {
@@ -176,7 +179,7 @@
 }
 
 .section-brands {
-  padding-top: $space-section;
+  padding-top: variables.$space-section;
   overflow-y: hidden;
   // display: flex;
   // justify-content: center;
@@ -188,7 +191,7 @@
   display: flex;
   position: relative;
   justify-content: center;
-  margin-top: $space-section;
+  margin-top: variables.$space-section;
   // background-color: rgb(193, 103, 130);
   will-change: transform;
 
@@ -203,7 +206,7 @@
     // background-color: yellow;
     width: 100%;
     // overflow: hidden;
-    padding-bottom: $space-content;
+    padding-bottom: variables.$space-content;
 
     &__title {
       z-index: 2;
@@ -218,7 +221,7 @@
       padding-right: 2rem;
       will-change: transform;
       margin-left: 0;
-      padding-block: $space-content;
+      padding-block: variables.$space-content;
       will-change: transform; /* Hint for browser optimization */
       backface-visibility: hidden; /* Prevent flickering */
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
@@ -231,18 +234,18 @@
       // -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       // mask-image: linear-gradient(to bottom, transparent 0%, black 6%);
       position: relative;
-      padding-block: $space-content;
+      padding-block: variables.$space-content;
       overflow: hidden;
       // height: 100vh;
     }
 
-    @include respond-down("break5") {
+    @include mixins.respond-down("break5") {
       width: 96%;
 
       &__cards {
         flex-direction: column;
         gap: 2rem;
-        padding: $space-between;
+        padding: variables.$space-between;
 
         will-change: transform;
       }
@@ -255,18 +258,18 @@
 }
 
 .section-stats {
-  padding-block: $space-section;
-  @include flex-center;
-  padding-inline: $space-between;
+  padding-block: variables.$space-section;
+  @include mixins.flex-center;
+  padding-inline: variables.$space-between;
 }
 
 .section-showcase {
-  @include flex-center;
-  padding-block: $space-section;
+  @include mixins.flex-center;
+  padding-block: variables.$space-section;
 }
 
 .section-trust {
-  padding-block: $space-section;
+  padding-block: variables.$space-section;
   position: relative;
 
   .trust {
@@ -288,7 +291,7 @@
       align-self: center;
     }
 
-    @include respond-down("break4") {
+    @include mixins.respond-down("break4") {
       &__title {
         width: 100%;
         z-index: inherit;
@@ -298,26 +301,26 @@
 }
 
 .section-contacts {
-  margin-block: $space-section;
-  padding: $space-between;
+  margin-block: variables.$space-section;
+  padding: variables.$space-between;
   position: relative;
 }
 
 .section-featured-blog {
   // background-color: #ddd;
 
-  padding-block: $space-section;
+  padding-block: variables.$space-section;
 
   display: flex;
 
   // padding-left: $space-content;
-  padding-bottom: $space-section * 2;
+  padding-bottom: variables.$space-section * 2;
   justify-content: center;
 }
 
 .section-subscription {
-  padding-bottom: $space-section;
-  padding-inline: $space-between;
+  padding-bottom: variables.$space-section;
+  padding-inline: variables.$space-between;
 }
 
 // .blog {

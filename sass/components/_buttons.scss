@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .btn {
   &,
   &:link,
@@ -53,7 +55,7 @@
 
   &--secondary {
     background-color: var(--color-primary);
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    box-shadow: 0 1rem 2rem rgba(variables.$color-black, 0.2);
     outline: 2px solid var(--color-primary);
     transition: all 0.3s ease-in-out;
     color: var(--color-background);
@@ -74,7 +76,7 @@
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      box-shadow: 0 1rem 2rem rgba(variables.$color-black, 0.2);
       background-color: var(--color-primary);
 
       &::after {
@@ -88,8 +90,8 @@
     position: relative;
     background-color: transparent;
     color: var(--color-primary-dark);
-    outline: 2px solid $color-grey-dark-1;
-    filter: drop-shadow(0 0.5rem 1rem rgba($color-black, 0.5));
+    outline: 2px solid variables.$color-grey-dark-1;
+    filter: drop-shadow(0 0.5rem 1rem rgba(variables.$color-black, 0.5));
     overflow: hidden; // ⬅️ Needed to keep pseudo-element inside
     transition: all 0.3s;
 
@@ -111,8 +113,8 @@
 
     &:hover,
     &:active {
-      outline: 2px solid $secondary-color;
-      box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
+      outline: 2px solid variables.$secondary-color;
+      box-shadow: 0 0.5rem 2rem rgba(variables.$color-black, 0.2);
     }
 
     &:hover::after,
@@ -123,7 +125,7 @@
   }
 
   &--text {
-    font-size: $default-font-size;
+    font-size: variables.$default-font-size;
     color: var(--color-primary);
     display: inline-block;
     text-decoration: none;
@@ -161,12 +163,12 @@
     &:hover {
       border-radius: 6px !important;
 
-      color: $color-white;
-      box-shadow: 0 1.5rem 2rem rgba($color: $color-black, $alpha: 0.15);
+      color: variables.$color-white;
+      box-shadow: 0 1.5rem 2rem rgba($color: variables.$color-black, $alpha: 0.15);
     }
 
     &:active {
-      box-shadow: 0 0.5rem 1rem rgba($color: $color-black, $alpha: 0.15);
+      box-shadow: 0 0.5rem 1rem rgba($color: variables.$color-black, $alpha: 0.15);
       transform: translateY(0);
     }
   }
@@ -229,7 +231,7 @@
 
   &--subscription {
     // padding: 2.6rem;
-    color: $color-white;
+    color: variables.$color-white;
     background-color: #0073a5;
     box-shadow: 0 4px 6px #313131;
 

@@ -1,7 +1,10 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .contacts {
   display: grid;
   grid-template-columns: 1fr 0.7fr;
-  gap: $space-section;
+  gap: variables.$space-section;
   position: relative;
   overflow: hidden;
 
@@ -9,7 +12,7 @@
   -webkit-backdrop-filter: blur(10px);
   // background-color: rgba(231, 231, 231, 0.4);
   // border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0rem 1rem 3rem rgba($color: $color-black, $alpha: 0.2);
+  box-shadow: 0rem 1rem 3rem rgba($color: variables.$color-black, $alpha: 0.2);
   transition: top 0.3s ease;
   padding: 8rem 6rem 6rem;
   border-radius: 0 0 22px 22px;
@@ -25,10 +28,10 @@
   }
 
   &__text-box {
-    padding-block: $space-content * 2 0;
+    padding-block: variables.$space-content * 2 0;
     display: flex;
     flex-direction: column;
-    gap: $space-between;
+    gap: variables.$space-between;
   }
 
   &__card {
@@ -40,7 +43,7 @@
 
     p {
       font-size: 2.4rem;
-      margin-left: $space-between;
+      margin-left: variables.$space-between;
     }
 
     svg {
@@ -63,7 +66,7 @@
     height: auto;
   }
 
-  @include respond-down("break4") {
+  @include mixins.respond-down("break4") {
     // grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;

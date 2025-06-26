@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "breakpoints";
+
 @mixin container-size {
   padding: 0 2rem 0 2rem;
   max-width: 128rem;
@@ -48,8 +51,8 @@
 // }
 
 @mixin respond-down($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media (max-width: map.get(breakpoints.$breakpoints, $breakpoint)) {
       @content;
     }
   } @else {

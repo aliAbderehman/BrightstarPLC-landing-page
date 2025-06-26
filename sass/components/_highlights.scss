@@ -1,10 +1,12 @@
+@use "../abstracts/variables";
+
 .featured-post {
   &__highlights-box {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
     column-gap: 2rem;
-    row-gap: $space-between;
+    row-gap: variables.$space-between;
     margin-top: 4rem;
   }
 

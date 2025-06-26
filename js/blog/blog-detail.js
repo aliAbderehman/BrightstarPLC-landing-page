@@ -356,7 +356,7 @@ fetch(
       <article class="blog-detail__article">
         
         
-        <div class="blog-detail__content text--default">${post.content.rendered}</div>
+        <div class="blog-detail__post text--default">${post.content.rendered}</div>
       </article>
 
       <section class="comment-form-box  u-margin-top-large">

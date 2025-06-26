@@ -1,3 +1,5 @@
+@use "../abstracts/mixins";
+
 *,
 *::before,
 *::after {
@@ -17,19 +19,19 @@
 html {
   font-size: 62.5%;
 
-  @include respond-down(break1) {
+  @include mixins.respond-down(break1) {
     font-size: 56.25%;
   }
 
-  @include respond-down(break2) {
+  @include mixins.respond-down(break2) {
     font-size: 50%;
   }
 
-  @include respond-down(break3) {
+  @include mixins.respond-down(break3) {
     font-size: 46.875%;
   }
 
-  @include respond-down(break4) {
+  @include mixins.respond-down(break4) {
     font-size: 46.875%;
   }
 }

@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .subscription {
   display: flex;
   flex-direction: column;
@@ -34,8 +37,8 @@
     // font-size: 2rem;
   }
 
-  @include respond-down("break5") {
-    gap: $space-between;
+  @include mixins.respond-down("break5") {
+    gap: variables.$space-between;
     &__title {
       width: 100%;
     }

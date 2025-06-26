@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 /* --- Blog Filters Container --- */
 #blog-filters {
   margin: 2rem auto 0;
@@ -38,21 +41,21 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: $space-title;
-  padding: $space-content;
+  gap: variables.$space-title;
+  padding: variables.$space-content;
 }
 
 .blog {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-block: $space-section;
+  padding-block: variables.$space-section;
 
   &__post {
     width: 100%;
     overflow: hidden;
     border-radius: 14px;
-    box-shadow: $shadow;
+    box-shadow: variables.$shadow;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -71,7 +74,7 @@
     overflow: hidden;
     height: 36rem;
 
-    @include respond-down("break5") {
+    @include mixins.respond-down("break5") {
       flex-direction: column;
       height: 56rem;
     }
@@ -92,7 +95,7 @@
       top: 0;
       left: 0;
       border-radius: 8px;
-      background-color: rgba($color: $primary-color, $alpha: 0.3);
+      background-color: rgba($color: variables.$primary-color, $alpha: 0.3);
       transition: all 0.3s ease;
     }
 
@@ -132,7 +135,7 @@
   }
 
   &__excerpt {
-    padding-block: $space-content;
+    padding-block: variables.$space-content;
   }
 
   &__excerpt p {
@@ -169,7 +172,7 @@
 #next-btn:disabled {
   cursor: not-allowed;
   box-shadow: none;
-  outline: 2px solid $color-grey-dark-1;
+  outline: 2px solid variables.$color-grey-dark-1;
   &:hover::after {
     transform: translateX(-100%);
   }

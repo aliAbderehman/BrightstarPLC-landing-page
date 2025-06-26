@@ -1,17 +1,20 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .section-blog-detail {
-  padding-bottom: $space-section;
+  padding-bottom: variables.$space-section;
   display: grid;
   grid-template-rows: auto auto;
 }
 
 .blog-detail {
   // background-color: #774979;
-  padding-top: $space-section;
-  overflow: hidden;
+  padding-top: variables.$space-section;
+  // overflow: hidden;
 
   &__title {
     width: 100%;
-    margin-bottom: $space-between;
+    margin-bottom: variables.$space-between;
   }
 
   &__img {
@@ -19,7 +22,7 @@
     height: 46rem;
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: $space-content;
+    margin-bottom: variables.$space-content;
     // background-color: green;
     img {
       width: 100%;
@@ -31,25 +34,53 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
+    // grid-template-columns: 1fr auto;
     // background-color: #497972;
     width: 100%;
-    // overflow: hidden;
-    gap: 2rem;
+    justify-content: space-between;
+    overflow: hidden;
+    gap: 0;
     align-items: start;
-    padding: 0 2rem;
-    padding-top: $space-content;
-    padding-inline: $space-content;
+  }
+
+  &__detail {
+    box-shadow: 0 0 1rem rgba($color: variables.$color-black, $alpha: 0.1);
+    width: 70%;
+    padding: variables.$space-between;
+
+    padding-block: variables.$space-content;
+  }
+
+  &__post {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 4rem;
+  }
+
+  figure {
+    width: 100%;
+    border-radius: 16px;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 16px;
+    }
   }
 
   &__cards {
+    max-width: 35rem;
+    width: 100%;
+    display: inline;
+    // background-color: yellow;
     .scroll-spacer {
       display: none;
     }
     .featured-cards {
       display: flex;
       flex-direction: column;
-      gap: $space-content;
+      gap: variables.$space-content;
     }
   }
 
@@ -65,29 +96,25 @@
     font-weight: 600;
 
     &:first-child {
-      margin-left: $space-content;
+      margin-left: variables.$space-content;
     }
   }
 
-  &__detail {
-    box-shadow: 0 0 1rem rgba($color: $color-black, $alpha: 0.1);
-    display: flex;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    flex-direction: column;
-    justify-content: start;
-    padding-block: $space-content;
-  }
-
-  @include respond-down("break4") {
+  @include mixins.respond-down("break4") {
     &__content {
-      flex-direction: column;
+      // flex-direction: column;
+      // width: 100%;
+    }
+
+    &__detail {
+      width: 100%;
+      padding: variables.$space-content;
     }
 
     &__cards {
       width: 100%;
-      overflow: hidden;
-      padding-top: $space-content;
+      // overflow: hidden;
+      padding-top: variables.$space-content;
       .featured-cards {
         flex-direction: row;
       }
@@ -107,10 +134,37 @@
 
 .comments {
   // width: 50%;
-  padding-inline: $space-content;
+  padding-inline: variables.$space-content;
 }
 
 .comment-form {
   // width: 50%;
-  padding-inline: $space-content;
+  padding-inline: variables.$space-content;
+}
+
+.comment {
+  // background-color: green;
+  border-left: 2px solid #ddd;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.reply-btn,
+.toggle-replies-btn {
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.replies {
+  margin-top: 10px;
+}
+
+.reply {
+  width: 50%;
+
+  @include mixins.respond-down("break4") {
+    width: 100%;
+  }
 }

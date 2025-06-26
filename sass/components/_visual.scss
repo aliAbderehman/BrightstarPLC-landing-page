@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .featured-post {
   &__img-box {
     img {
@@ -54,13 +57,13 @@
     z-index: inherit;
   }
 
-  @include respond-down("break5") {
+  @include mixins.respond-down("break5") {
     position: relative;
     width: 100%;
     height: auto;
     padding-bottom: 30%; // for aspect ratio if needed
     background-size: contain;
-    margin-bottom: $space-content;
+    margin-bottom: variables.$space-content;
     // background-position: center;
   }
 }

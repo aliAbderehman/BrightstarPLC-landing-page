@@ -1,10 +1,13 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .showcase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: $space-between;
+  gap: variables.$space-between;
   align-items: stretch;
   // overflow: hidden;
-  padding: $space-between;
+  padding: variables.$space-between;
 
   &__img {
     width: 100%;
@@ -33,7 +36,7 @@
 
   &__testimonial {
     .stars i {
-      color: $color-white;
+      color: variables.$color-white;
       font-size: 2rem;
       align-self: flex-start;
     }
@@ -43,7 +46,7 @@
     background-image: linear-gradient(#4f7ede, #1c4fb8);
     display: flex;
     flex-direction: column;
-    gap: $space-between;
+    gap: variables.$space-between;
     transition: all 0.3s;
 
     &:hover {
@@ -70,7 +73,7 @@
     height: 35rem;
   }
 
-  @include respond-down("break5") {
+  @include mixins.respond-down("break5") {
     &__1 {
       grid-column: 2/4;
     }

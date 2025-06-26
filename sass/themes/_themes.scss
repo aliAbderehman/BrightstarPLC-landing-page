@@ -1,6 +1,6 @@
 // Import theme files
-@import "light";
-@import "dark";
+@use "light";
+@use "dark";
 
 // Default theme (light)
 :root {

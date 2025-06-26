@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .form {
   &__group:not(:last-child) {
     margin-bottom: 2rem;
@@ -34,7 +36,7 @@
     }
 
     &:focus:invalid {
-      border-bottom: 3px solid $secondary-color-dark;
+      border-bottom: 3px solid variables.$secondary-color-dark;
     }
 
     &::-webkit-input-placeholder {

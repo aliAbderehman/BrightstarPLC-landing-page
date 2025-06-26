@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 /* Mobile Nav Container */
 .mob-navigation {
   // overflow: hidden;
@@ -8,20 +11,20 @@
   &__navbar {
     width: 100vw;
     position: fixed;
-    padding: 1rem $space-between;
+    padding: 1rem variables.$space-between;
     top: 0;
     left: 0;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     background-color: var(--color-glass);
     border: 1px solid var(--color-glass-border);
-    box-shadow: 1rem 0rem 2rem rgba($color: $color-black, $alpha: 0.2);
+    box-shadow: 1rem 0rem 2rem rgba($color: variables.$color-black, $alpha: 0.2);
     display: none;
     align-items: center;
     z-index: 2000;
     // overflow: hidden;
     // background-color: green;
-    @include respond-down("break4") {
+    @include mixins.respond-down("break4") {
       display: flex;
       // justify-content: space-between;
     }
@@ -102,7 +105,7 @@
 
     background-color: var(--color-glass);
     border: 1px solid var(--color-glass-border);
-    box-shadow: 1rem 0rem 2rem rgba($color: $color-black, $alpha: 0.2);
+    box-shadow: 1rem 0rem 2rem rgba($color: variables.$color-black, $alpha: 0.2);
 
     position: fixed;
     top: 0;
@@ -120,7 +123,7 @@
     top: 0;
     left: -100%;
 
-    padding-top: $space-section;
+    padding-top: variables.$space-section;
     display: flex;
     justify-content: start;
     align-items: start;
@@ -135,7 +138,7 @@
   }
 
   &__item {
-    margin-left: $space-content;
+    margin-left: variables.$space-content;
 
     &:not(:last-child) {
       margin-bottom: 1rem;

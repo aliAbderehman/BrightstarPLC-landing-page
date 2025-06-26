@@ -1,11 +1,14 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .featured-blog {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: $space-between;
+  gap: variables.$space-between;
   justify-content: start;
 
   &__navigation {
-    gap: $space-between;
+    gap: variables.$space-between;
     display: flex;
     align-items: end;
     justify-content: center;
@@ -29,7 +32,7 @@
     display: flex;
     flex-direction: column;
     // width: 20rem;
-    padding-inline: $space-content * 2;
+    padding-inline: variables.$space-content * 2;
   }
 
   &__cards {
@@ -42,7 +45,7 @@
     flex: 1;
     min-width: 48rem;
     align-items: start;
-    gap: $space-content;
+    gap: variables.$space-content;
     padding: 3rem 4rem;
     border-radius: 14px;
     overflow-x: auto; /* enable horizontal scroll */
@@ -61,9 +64,9 @@
     }
   }
 
-  @include respond-down("break4") {
+  @include mixins.respond-down("break4") {
     grid-template-columns: 1fr;
-    gap: $space-between;
+    gap: variables.$space-between;
     // background-color: #4f7296;
 
     &__cards {
@@ -89,7 +92,7 @@
     border-radius: 8px;
     text-decoration: none;
     overflow: hidden;
-    box-shadow: $shadow;
+    box-shadow: variables.$shadow;
     scroll-snap-align: start;
     transition: transform 0.3s ease, border 0.3s ease;
 
@@ -102,10 +105,10 @@
       border: var(--color-primary) solid 2px;
     }
 
-    padding-bottom: $space-between;
+    padding-bottom: variables.$space-between;
 
     &:first-child {
-      margin-left: $space-section;
+      margin-left: variables.$space-section;
     }
   }
 
@@ -120,7 +123,7 @@
   }
 
   &__card-text {
-    margin-bottom: $space-between;
+    margin-bottom: variables.$space-between;
   }
 
   &__img-box {
@@ -158,8 +161,8 @@
   }
 }
 
-.featured-blog__nav {
-}
+// .featured-blog__nav {
+// }
 
 .scroll-spacer {
   flex: 0 0 8rem; // or whatever spacing you want before first card
@@ -198,25 +201,3 @@
 //   background: #f8f9fa;
 //   border-radius: 8px;
 // }
-
-.comment {
-  border-left: 2px solid #ddd;
-  padding-left: 10px;
-  margin-top: 10px;
-}
-
-.reply-btn,
-.toggle-replies-btn {
-  margin-top: 5px;
-  margin-right: 5px;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.replies {
-  margin-top: 10px;
-}
-
-.reply {
-  width: 50%;
-}
