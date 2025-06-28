@@ -3,6 +3,12 @@ let lenis;
 function initLenis() {
   // ✅ Skip Lenis on mobile
   const isMobile = window.innerWidth < 768;
+
+  const isLowEnd =
+    navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+
+  if (isMobile || isLowEnd) return;
+
   if (isMobile) return;
 
   // Destroy existing instance if any

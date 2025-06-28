@@ -95,9 +95,12 @@
     box-shadow: variables.$shadow;
     scroll-snap-align: start;
     transition: transform 0.3s ease, border 0.3s ease;
+    // margin: 2.4rem;
 
     a {
       text-decoration: inherit;
+      // background-color: green;
+      // margin: 2.4rem;
     }
 
     &:hover {

@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (visualElement) {
     visualElement.style.backgroundImage =
       currentTheme === "dark"
-        ? "url('/assets/images/dark/img-main-01.png')"
-        : "url('/assets/images/light/img-main-01.png')";
+        ? "url('/assets/images/dark/img-main-01.webp')"
+        : "url('/assets/images/light/img-main-01.webp')";
   }
 
   // Theme toggle logic

@@ -164,11 +164,13 @@
       border-radius: 6px !important;
 
       color: variables.$color-white;
-      box-shadow: 0 1.5rem 2rem rgba($color: variables.$color-black, $alpha: 0.15);
+      box-shadow: 0 1.5rem 2rem
+        rgba($color: variables.$color-black, $alpha: 0.15);
     }
 
     &:active {
-      box-shadow: 0 0.5rem 1rem rgba($color: variables.$color-black, $alpha: 0.15);
+      box-shadow: 0 0.5rem 1rem
+        rgba($color: variables.$color-black, $alpha: 0.15);
       transform: translateY(0);
     }
   }
@@ -218,7 +220,7 @@
   }
 
   &--read-more {
-    padding: 0 !important;
+    padding: 2.4rem !important;
     font-size: 1.6rem !important;
     font-weight: 600;
     color: var(--color-text);

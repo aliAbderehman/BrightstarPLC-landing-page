@@ -1,4 +1,7 @@
 const isMobile = window.innerWidth < 768;
+const isLowEnd =
+  navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+const maxParticles = isMobile || isLowEnd ? 50 : 80;
 
 function getParticleConfig(color, linkColor) {
   return {
@@ -8,9 +11,9 @@ function getParticleConfig(color, linkColor) {
     smooth: true,
     particles: {
       number: {
-        value: isMobile ? 70 : 100,
+        value: maxParticles,
         density: {
-          enable: true,
+          enable: false,
           area: 1000,
         },
       },

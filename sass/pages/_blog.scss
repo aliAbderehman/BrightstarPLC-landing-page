@@ -65,11 +65,12 @@
   }
 
   &__post a {
+    // background-color: green;
     display: flex;
     gap: 1.5rem;
     color: var(--color-text);
     text-decoration: none;
-    padding: 1.5rem 2rem;
+    padding: 2.4rem;
     width: 100%;
     overflow: hidden;
     height: 36rem;
