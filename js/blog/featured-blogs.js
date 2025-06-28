@@ -100,7 +100,7 @@ function renderCards(posts) {
           <div class="featured-blog__title-sec">
             <h3 class="heading-tertiary featured-blog__card-title u-margin-bottom-small">${title}</h3>
             <div class="lable-txt featured-blog__card-text">${excerpt}</div>
-            <p class="btn btn--read-more>Read More &rarr;</p>
+            <p class="btn btn--read-more">Read More &rarr;</p>
           </div>
         </div>
       </a>
