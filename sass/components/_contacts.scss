@@ -41,7 +41,19 @@
     justify-content: start;
     justify-items: start;
 
+    a {
+      text-decoration: none;
+    }
+
+    div a {
+      // background-color: green;
+      font-size: 2.4rem;
+      margin-left: variables.$space-between;
+      display: block;
+    }
+
     p {
+      // text-decoration: none;
       font-size: 2.4rem;
       margin-left: variables.$space-between;
     }
@@ -52,7 +64,16 @@
       width: 100%;
       stroke: var(--color-text);
       object-fit: contain;
+      fill: transparent;
+      transition: all 0.3s ease;
     }
+  }
+
+  &__card:hover svg {
+    // background-color: green;
+    // fill: var(--color-primary);
+    transform: scale(1.1);
+    // stroke: var(--color-primary);
   }
 
   &__icon-box {

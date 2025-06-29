@@ -426,7 +426,7 @@ body {
   transform: translateX(0%);
 }
 .btn--read-more {
-  padding: 0 !important;
+  padding: 2.4rem !important;
   font-size: 1.6rem !important;
   font-weight: 600;
   color: var(--color-text);
@@ -772,6 +772,14 @@ body {
   justify-content: start;
   justify-items: start;
 }
+.contacts__card a {
+  text-decoration: none;
+}
+.contacts__card div a {
+  font-size: 2.4rem;
+  margin-left: 2.4rem;
+  display: block;
+}
 .contacts__card p {
   font-size: 2.4rem;
   margin-left: 2.4rem;
@@ -781,6 +789,11 @@ body {
   width: 100%;
   stroke: var(--color-text);
   object-fit: contain;
+  fill: transparent;
+  transition: all 0.3s ease;
+}
+.contacts__card:hover svg {
+  transform: scale(1.1);
 }
 .contacts__icon-box {
   overflow: hidden;
@@ -893,6 +906,15 @@ body {
 }
 .footer .list-item {
   font-size: 1.6rem;
+}
+.footer .list-item a {
+  text-decoration: none;
+  transition: all 0.3s;
+  color: inherit;
+  display: block;
+}
+.footer .list-item a:hover {
+  color: var(--color-secondary);
 }
 .footer a {
   text-decoration: none;
@@ -2085,7 +2107,7 @@ body {
   gap: 1.5rem;
   color: var(--color-text);
   text-decoration: none;
-  padding: 1.5rem 2rem;
+  padding: 2.4rem;
   width: 100%;
   overflow: hidden;
   height: 36rem;

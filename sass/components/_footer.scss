@@ -73,6 +73,17 @@
     font-size: 1.6rem;
   }
 
+  .list-item a {
+    text-decoration: none;
+    transition: all 0.3s;
+    color: inherit;
+    display: block;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+
   a {
     text-decoration: none;
     transition: all 0.3s;
