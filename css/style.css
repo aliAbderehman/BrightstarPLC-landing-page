@@ -48,11 +48,9 @@ html {
   }
 }
 
-section h1,
-article h1,
-aside h1,
-nav h1 {
-  font-size: 2rem; /* or whatever size you want */
+:where(h1) {
+  margin-block: 0.67em;
+  font-size: 2em;
 }
 
 body {
