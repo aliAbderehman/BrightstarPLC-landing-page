@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== CORE NAVIGATION =====
   const navLinks = document.querySelectorAll(".nav-link");
   const activeIndicator = document.querySelector(".active-indicator");
-  let activeLink = document.querySelector('.nav-link[href="index.html"]');
+  let activeLink = document.querySelector('.nav-link[href="/"]');
   const breakpointMobile = 700;
 
   // Update indicator position
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 highlightLink("#services");
               }
             },
-            onLeave: () => highlightLink("index.html"),
+            onLeave: () => highlightLink("/"),
             onEnterBack: () => highlightLink("#services"),
-            onLeaveBack: () => highlightLink("index.html"),
+            onLeaveBack: () => highlightLink("/"),
           },
         });
       } else {
