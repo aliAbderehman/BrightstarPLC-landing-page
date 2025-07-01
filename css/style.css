@@ -920,6 +920,7 @@ body {
   transition: all 0.3s;
   color: inherit;
   display: block;
+  margin-left: 10px;
 }
 .footer .list-item a:hover {
   color: var(--color-secondary);
