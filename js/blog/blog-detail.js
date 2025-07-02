@@ -4,7 +4,7 @@ const container = document.getElementById("blogPostContainer");
 const blogImg = document.getElementById("blogPostImg");
 
 if (!slug) {
-  container.innerHTML = "<h1>Post not found.</h1>";
+  container.innerHTML = '<h1 class="heading-tertiary">Post not found.</h1>';
   throw new Error("No slug provided.");
 }
 
@@ -432,5 +432,5 @@ fetch(
   })
   .catch((err) => {
     console.error(err);
-    container.innerHTML = "<h1>Error loading post.</h1>";
+    container.innerHTML = `<h1 class="heading-tertiary">Error loading post.</h1>`;
   });
