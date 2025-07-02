@@ -4,7 +4,7 @@ const container = document.getElementById("blogPostContainer");
 const blogImg = document.getElementById("blogPostImg");
 
 if (!slug) {
-  container.innerHTML = '<h1 class="heading-tertiary">Post not found.</h1>';
+  container.innerHTML = '<h2 class="heading-tertiary">Post not found.</h2>';
   throw new Error("No slug provided.");
 }
 
@@ -342,9 +342,9 @@ fetch(
 
     blogImg.innerHTML = `
     <div class="blog-detail__img">
-    <h1 class="blog-detail__title heading-secondary container">${
+    <h2 class="blog-detail__title heading-secondary container">${
       post.title.rendered
-    }</h1>
+    }</h2>
           <img src="${
             post._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
           }" alt="${post.title.rendered}">
@@ -432,5 +432,5 @@ fetch(
   })
   .catch((err) => {
     console.error(err);
-    container.innerHTML = `<h1 class="heading-tertiary">Error loading post.</h1>`;
+    container.innerHTML = `<h2 class="heading-tertiary">Error loading post.</h2>`;
   });
