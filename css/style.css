@@ -17,7 +17,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--transition-duration)
+      var(--transition-timing),
+    color var(--transition-duration) var(--transition-timing);
 }
 
 .wavy {
@@ -48,13 +50,13 @@ html {
   }
 }
 
-article h1,
+/* article h1,
 section h1,
 nav h1,
 aside h1 {
   margin-block: 0.67em;
   font-size: 2em;
-}
+} */
 
 body {
   overflow-x: hidden;
@@ -259,7 +261,9 @@ body {
   border: 1px solid var(--color-glass-border);
 }
 
-.btn, .btn:link, .btn:visited {
+.btn,
+.btn:link,
+.btn:visited {
   padding: 1.5rem 3rem;
   border-radius: 0.5rem;
   line-height: 1.2;
@@ -350,11 +354,13 @@ body {
   background-color: rgba(69, 216, 243, 0.3);
   z-index: -1;
 }
-.btn--outlined:hover, .btn--outlined:active {
+.btn--outlined:hover,
+.btn--outlined:active {
   outline: 2px solid #00f2ff;
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
 }
-.btn--outlined:hover::after, .btn--outlined:active::after {
+.btn--outlined:hover::after,
+.btn--outlined:active::after {
   transform: translateX(0%);
 }
 .btn--text {
@@ -967,9 +973,9 @@ body {
 }
 @media (max-width: 53.1em) {
   .footer .list-item a,
-  .footer .footer a[href^=tel],
-  .footer .footer a[href^=mailto],
-  .footer .footer a[href*=maps] {
+  .footer .footer a[href^="tel"],
+  .footer .footer a[href^="mailto"],
+  .footer .footer a[href*="maps"] {
     font-size: 1.6rem;
     padding: 12px 8px;
     display: inline-block;
@@ -1214,7 +1220,8 @@ body {
   position: relative;
   left: -1.4rem;
 }
-.mob-navigation__link:link, .mob-navigation__link:visited {
+.mob-navigation__link:link,
+.mob-navigation__link:visited {
   display: block;
   font-size: 4rem;
   font-weight: 600;
@@ -1223,7 +1230,8 @@ body {
   text-transform: uppercase;
   transition: all 0.3s;
 }
-.mob-navigation__link:hover, .mob-navigation__link:active {
+.mob-navigation__link:hover,
+.mob-navigation__link:active {
   color: var(--color-secondary);
   transform: scale(1.05);
 }
@@ -1508,8 +1516,20 @@ body {
 .scroller__wrapper {
   overflow: hidden;
   width: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
 }
 
 .scroller {
@@ -1834,9 +1854,13 @@ body {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
   background-repeat: no-repeat;
   background-position: center center;
-  -webkit-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -webkit-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1846,7 +1870,8 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .slider .circle::before {
@@ -1943,7 +1968,11 @@ body {
   content: "";
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to top, var(--color-overlay-1), rgba(133, 146, 171, 0));
+  background-image: linear-gradient(
+    to top,
+    var(--color-overlay-1),
+    rgba(133, 146, 171, 0)
+  );
   position: absolute;
   top: 0;
   left: 0;
@@ -2534,7 +2563,12 @@ body {
   justify-content: center;
   margin-top: 12rem;
   will-change: transform;
-  background-image: linear-gradient(to bottom, var(--color-background), rgba(54, 113, 234, 0.8), var(--color-background));
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-background),
+    rgba(54, 113, 234, 0.8),
+    var(--color-background)
+  );
 }
 .section-services .services {
   width: 100%;
@@ -2634,7 +2668,7 @@ body {
   padding-inline: 2.4rem;
 }
 
-[data-theme=light],
+[data-theme="light"],
 :root {
   --color-primary: #143892;
   --color-primary-dark: #0b1e4f;
@@ -2656,7 +2690,7 @@ body {
   --color-footer-bg: linear-gradient(#4f7ede, #1c4fb8);
 }
 
-[data-theme=dark] {
+[data-theme="dark"] {
   --color-primary: #3eb6e6;
   --color-primary-dark: #3cacd8;
   --color-text: #f1f1f1;
@@ -2679,7 +2713,8 @@ body {
 }
 
 * {
-  transition: background-color 0.3s ease, color 0.2s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.2s ease,
+    border-color 0.3s ease;
 }
 
 /*# sourceMappingURL=style.css.map */
