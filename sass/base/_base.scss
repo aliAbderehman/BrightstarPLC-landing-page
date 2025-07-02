@@ -36,12 +36,11 @@ html {
   }
 }
 
-article h1,
-section h1,
-nav h1,
-aside h1 {
-  margin-block: 0.67em;
-  font-size: 2em;
+article h1.heading-primary,
+section h1.heading-primary,
+nav h1.heading-primary,
+aside h1.heading-primary {
+  font-size: 6rem;
 }
 
 body {
