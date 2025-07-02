@@ -136,6 +136,20 @@
     }
   }
 
+  @include mixins.respond-down("break4") {
+    .list-item a,
+    .footer a[href^="tel"],
+    .footer a[href^="mailto"],
+    .footer a[href*="maps"] {
+      font-size: 1.6rem;
+      padding: 12px 8px;
+      display: inline-block;
+      min-width: 48px;
+      min-height: 48px;
+      line-height: 1.4;
+    }
+  }
+
   @include mixins.respond-down("break5") {
     &__top {
       flex-direction: column;

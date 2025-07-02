@@ -965,6 +965,19 @@ body {
 .footer__socials svg:hover {
   fill: var(--color-secondary);
 }
+@media (max-width: 53.1em) {
+  .footer .list-item a,
+  .footer .footer a[href^=tel],
+  .footer .footer a[href^=mailto],
+  .footer .footer a[href*=maps] {
+    font-size: 1.6rem;
+    padding: 12px 8px;
+    display: inline-block;
+    min-width: 48px;
+    min-height: 48px;
+    line-height: 1.4;
+  }
+}
 @media (max-width: 48em) {
   .footer__top {
     flex-direction: column;
